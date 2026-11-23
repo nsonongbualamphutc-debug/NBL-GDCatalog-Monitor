@@ -689,6 +689,43 @@ body::after{opacity:.25}
 @media (max-width:1300px){.hero-l>.dbadges{display:none}.bigtxt{font-size:clamp(48px,7vw,100px)}}
 @media (max-width:900px){.hero-l>.statue,.hero-l>.halo,.bigtxt{display:none}}
 @media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
+
+/* ================= HERO v5 · layered landscape ================= */
+.hero-l{min-height:560px!important}
+.hero-l::after{background:linear-gradient(90deg,rgba(3,10,26,.92) 0%,rgba(3,10,26,.78) 30%,rgba(3,10,26,.25) 50%,rgba(3,10,26,0) 62%)!important}
+[data-theme=light] .hero-l::after{background:linear-gradient(90deg,rgba(6,22,48,.86) 0%,rgba(6,22,48,.7) 30%,rgba(6,22,48,.18) 50%,rgba(6,22,48,0) 62%)!important}
+.sky{position:absolute;inset:0;background:linear-gradient(180deg,#0b1a3a 0%,#27407a 28%,#7b5ea8 48%,#f08a4b 70%,#ffd29a 88%);animation:skyShift 30s ease-in-out infinite alternate}
+[data-theme=light] .sky{background:linear-gradient(180deg,#2f6db5 0%,#5f9ad6 30%,#a9c6ea 50%,#f7c58a 74%,#ffe7c2 90%)}
+@keyframes skyShift{to{filter:hue-rotate(-12deg) saturate(1.15)}}
+.sun{position:absolute;right:14%;top:34%;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle,rgba(255,244,214,.95),rgba(255,196,120,.55) 30%,rgba(255,160,90,0) 65%);filter:blur(2px);animation:sunP 6s ease-in-out infinite}
+@keyframes sunP{50%{transform:scale(1.06)}}
+.bigtxt{right:4%!important;top:12%!important;z-index:0}
+.bigtxt span{-webkit-text-stroke:1.8px rgba(255,255,255,.85)!important;color:rgba(255,255,255,.12)!important}
+.ly{position:absolute;left:-3%;right:-3%;background-repeat:no-repeat;pointer-events:none;will-change:transform}
+.ly-hills{bottom:15%;height:52%;background-image:url(assets/layer-hills.webp);background-size:auto 100%;background-position:right bottom;opacity:.95;animation:riseIn 1.4s cubic-bezier(.2,.8,.2,1) .2s both;filter:saturate(1.1)}
+.ly-lm{bottom:3%;height:52%;background-image:url(assets/layer-landmarks.webp);background-size:auto 100%;background-position:right bottom;animation:riseIn 1.4s cubic-bezier(.2,.8,.2,1) .5s both;filter:drop-shadow(0 -6px 18px rgba(255,200,120,.25))}
+@keyframes riseIn{from{opacity:0;transform:translateY(70px)}}
+.hero-l>.holo{right:calc(8% - 120px);bottom:-3%;width:480px;height:186px;z-index:2!important;background:url(assets/layer-holo.webp) center/contain no-repeat;max-width:none;animation:holoP 3.2s ease-in-out infinite,riseIn 1.2s .9s both;mix-blend-mode:screen;pointer-events:none}
+@keyframes holoP{50%{filter:brightness(1.35) hue-rotate(15deg);transform:scale(1.04)}}
+.hero-l>.statue{right:8%!important;bottom:6%!important;height:84%!important;animation:statueIn 1.6s cubic-bezier(.2,.8,.2,1) .8s both!important}
+.hero-l>.halo{right:calc(8% - 170px)!important;bottom:4%!important;width:580px!important;height:580px!important}
+.hero-l>.lotus{position:absolute;left:-2%;right:-2%;bottom:-5%;height:30%;z-index:2!important;max-width:none;background:url(assets/layer-lotus.webp) center bottom/auto 100% repeat-x;transform-origin:bottom center;animation:sway 7s ease-in-out infinite,riseIn 1.2s 1.1s both;pointer-events:none;filter:drop-shadow(0 -4px 12px rgba(0,0,0,.25))}
+@keyframes sway{0%,100%{transform:skewX(0) translateY(0)}50%{transform:skewX(-1.2deg) translateY(-4px)}}
+.hero-l>.dbadges{right:calc(8% + 250px)!important;bottom:auto!important;top:96px;z-index:3!important}
+.hero-l>.pcard{position:absolute;max-width:none;top:20px;right:20px;width:250px;z-index:4!important;border-radius:16px;overflow:hidden;background:rgba(3,10,26,.55);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(10px);box-shadow:0 16px 40px -14px rgba(0,0,0,.6);animation:popIn .9s cubic-bezier(.2,.9,.3,1.3) 1.4s both}
+.pcard .slides{position:relative;height:140px;overflow:hidden}
+.pcard .slide{inset:0!important}
+.pc-cap{display:flex;gap:10px;align-items:center;padding:9px 12px 4px;color:#fff}
+.pc-cap b{font-family:'Kanit';font-weight:500;font-size:13.5px;display:block;line-height:1.2}
+.pc-cap small{font-size:11px;color:#b9c8df}
+.pcard .pin{flex:none;width:12px;height:12px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#f43f5e;box-shadow:0 0 0 4px rgba(244,63,94,.25);animation:pinb 1.6s ease-in-out infinite}
+.pcard .sldots{padding:4px 12px 11px;margin:0}
+.pcard .sldots i{flex:1}
+.hero-l .ring svg{filter:drop-shadow(0 0 16px rgba(34,211,238,.45))}
+@media (max-width:1500px){.hero-l>.dbadges{display:none}}
+@media (max-width:1300px){.hero-l>.pcard{display:none}.ly-lm{opacity:.55}}
+@media (max-width:900px){.hero-l>.holo,.hero-l>.lotus{display:none}.ly{opacity:.35}}
+#exec{display:block!important}
 </style>
 </head>
 <body>
@@ -735,17 +772,21 @@ body::after{opacity:.25}
 <section class="hero">
   <div class="panel hero-l">
     <div class="scene" id="scene">
-      <div class="slides" id="slides"></div>
+      <div class="sky"></div><div class="sun"></div>
       <div class="rays"></div>
       <div class="clouds"><i></i><i></i><i></i><i></i></div>
-      <div class="bigtxt" data-depth="5"><span>NONG BUA</span><span>LAM PHU</span></div>
+      <div class="bigtxt" data-depth="3"><span>NONG BUA</span><span>LAM PHU</span></div>
+      <div class="ly ly-hills" data-depth="5"></div>
+      <div class="ly ly-lm" data-depth="9"></div>
       <div class="birds"><i class="b1"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b2"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b3"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b4"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b5"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i></div>
       <div class="flies" id="flies"></div>
     </div>
-    <div class="halo" data-depth="10"></div>
-    <img class="statue" src="assets/statue.webp" alt="พระบรมราชานุสาวรีย์สมเด็จพระนเรศวรมหาราช" data-depth="16" onerror="this.remove()">
+    <div class="halo" data-depth="12"></div>
+    <div class="holo" data-depth="14"></div>
+    <img class="statue" src="assets/statue.webp" alt="พระบรมราชานุสาวรีย์สมเด็จพระนเรศวรมหาราช" data-depth="15" onerror="this.remove()">
+    <div class="lotus" data-depth="24"></div>
     <div class="dbadges" data-depth="24"><div class="db1"><small>ชุดข้อมูล</small><b id="dbN">–</b></div><div class="db2"><small>หน่วยงาน</small><b id="dbO">–</b></div><div class="db3"><small>ผ่านครบ</small><b id="dbP">–</b></div></div>
-    <div class="slcap"><span class="pin"></span><div><b id="slCap"></b><small id="slSub"></small></div><div class="sldots" id="slDots"></div></div>
+    <div class="pcard" data-depth="-6"><div class="slides" id="slides"></div><div class="pc-cap"><span class="pin"></span><div><b id="slCap"></b><small id="slSub"></small></div></div><div class="sldots" id="slDots"></div></div>
     <span class="eyebrow">● Real-time Data Quality Check · <span id="scopeTx">เฉพาะหน่วยงานจังหวัด</span></span>
     <h2>ตรวจสถานะชุดข้อมูล<br><em>บัญชีข้อมูลจังหวัดหนองบัวลำภู</em></h2>
     <div class="srcsw" id="srcSw">
