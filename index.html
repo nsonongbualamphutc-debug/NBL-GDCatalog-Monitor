@@ -394,6 +394,50 @@ table.ds{width:100%;border-collapse:collapse;min-width:1250px}
 .irow .ks i.y{background:rgba(52,211,153,.18);color:var(--ok)}.irow .ks i.n{background:rgba(244,63,94,.15);color:var(--bad)}
 @media (max-width:1280px){.iss{grid-template-columns:repeat(2,minmax(0,1fr))}.isd .cols{grid-template-columns:1fr}}
 @media (max-width:700px){.iss{grid-template-columns:1fr}}
+/* quality / schedule / deep */
+.qbars .qb{display:grid;grid-template-columns:minmax(0,1fr) 120px 46px;gap:10px;align-items:center;padding:6px 8px;border-radius:9px;cursor:pointer;font-size:13px}
+.qbars .qb:hover{background:rgba(34,211,238,.06)}
+.qbars .qb .bar{margin:0;height:7px}.qbars .qb em{font-style:normal;text-align:right;font-family:'JetBrains Mono';font-size:12px}
+.big{font-family:'Kanit';font-size:44px;font-weight:700;line-height:1}
+.k4{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;margin:12px 0}
+.k4 div{padding:10px 12px;border-radius:12px;border:1px solid var(--line);border-left:3px solid var(--cc);cursor:pointer;transition:.15s}
+.k4 div:hover{background:rgba(255,255,255,.03)}
+.k4 b{font-family:'Kanit';font-size:24px;display:block;line-height:1.1;color:var(--cc)}.k4 span{font-size:12px;color:var(--tx2)}
+.lst{max-height:300px;overflow:auto}
+.li{display:flex;gap:10px;align-items:center;padding:8px 10px;border-radius:10px;border:1px solid var(--line);margin-bottom:6px;cursor:pointer;font-size:13px}
+.li:hover{border-color:var(--line2)}.li .b{flex:1;min-width:0}.li .b b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.li .b p{font-size:11.5px;color:var(--tx3)}
+.li .tg2{font-family:'Kanit';font-size:12px;font-weight:600;white-space:nowrap}
+.mdg{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:4px 12px;font-size:13px}
+.mdg span{display:flex;gap:6px;align-items:center}.mdg i{font-style:normal;font-weight:700}
+.trendbox{margin-top:14px}
+/* agency report */
+#rep{position:fixed;inset:0;z-index:140;background:#eef2f7;color:#0f172a;overflow:auto;display:none;font-family:'Sarabun'}
+#rep.on{display:block}
+#rep .page{max-width:1080px;margin:24px auto;background:#fff;border-radius:14px;box-shadow:0 20px 60px rgba(15,23,42,.18);padding:34px 40px}
+#rep .rbar{position:sticky;top:0;z-index:2;display:flex;gap:10px;justify-content:flex-end;padding:12px 20px;background:rgba(238,242,247,.92);backdrop-filter:blur(8px)}
+#rep .rbar button{height:40px;padding:0 16px;border-radius:10px;border:1px solid #cbd5e1;background:#fff;color:#0f172a;font-size:14px}
+#rep .rbar button.pri{background:#0e7490;color:#fff;border-color:#0e7490}
+#rep .rh{display:flex;gap:16px;align-items:center;border-bottom:3px solid #0e7490;padding-bottom:14px;margin-bottom:18px}
+#rep .rh img{height:64px}
+#rep h1{font-family:'Kanit';font-size:24px;font-weight:600;color:#0f172a}
+#rep h2{font-family:'Kanit';font-size:17px;font-weight:600;margin:22px 0 10px;color:#0e7490}
+#rep .rk{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+#rep .rk div{border:1px solid #e2e8f0;border-radius:12px;padding:12px;text-align:center}
+#rep .rk b{display:block;font-family:'Kanit';font-size:28px;line-height:1.1}
+#rep .rk span{font-size:12.5px;color:#475569}
+#rep table{width:100%;border-collapse:collapse;font-size:13px}
+#rep th{background:#f1f5f9;font-family:'Kanit';font-weight:500;text-align:left;padding:8px;border-bottom:2px solid #cbd5e1}
+#rep td{padding:8px;border-bottom:1px solid #e2e8f0;vertical-align:top}
+#rep .y{color:#059669;font-weight:700}#rep .n{color:#e11d48;font-weight:700}
+#rep .fx{color:#b45309;font-size:12px}
+#rep .rn{font-size:12px;color:#64748b;margin-top:18px}
+#rep canvas{max-height:200px}
+/* kiosk */
+.kbar{position:fixed;left:50%;bottom:18px;transform:translateX(-50%);z-index:130;display:none;align-items:center;gap:14px;padding:10px 18px;border-radius:999px;background:rgba(10,22,48,.92);border:1px solid var(--cy);box-shadow:0 0 30px rgba(34,211,238,.3);font-family:'Kanit';font-size:14px}
+body.kiosk .kbar{display:flex}
+.kbar .kp{width:140px;height:4px;border-radius:4px;background:rgba(255,255,255,.1);overflow:hidden}
+.kbar .kp i{display:block;height:100%;background:var(--cy);width:0}
+body.kiosk .top .ib:not(#btnKiosk),body.kiosk .ctrl,body.kiosk .pager{opacity:.25}
 /* history timeline */
 .tl{position:relative;padding-left:26px;max-height:720px;overflow:auto}
 .tl::before{content:"";position:absolute;left:9px;top:4px;bottom:4px;width:2px;background:linear-gradient(var(--cy),var(--vi),transparent)}
@@ -417,6 +461,7 @@ footer b{color:var(--tx2)}
 @media (max-width:1280px){.hero{grid-template-columns:1fr}.grid3{grid-template-columns:1fr 1fr}.grid3>:first-child{grid-column:span 2}.exec{grid-template-columns:1fr}}
 @media (max-width:820px){.grid3,.grid2{grid-template-columns:1fr}.grid3>:first-child{grid-column:auto}.bigrow{flex-direction:column}.hero-r{grid-template-columns:1fr}.brand p,.clock,.logos .chip{display:none}.hero-l h2{font-size:26px}}
 @media print{
+ body.rep-on>*:not(#rep){display:none!important}body.rep-on #rep{position:static;display:block;background:#fff}body.rep-on #rep .rbar{display:none}body.rep-on #rep .page{box-shadow:none;margin:0;padding:0;max-width:none}body.rep-on #rep *{color:inherit!important}
  body{background:#fff;color:#000}body::before,body::after,.top,.ticker,.toasts,.ctrl,.pager,.drawer,.ov{display:none!important}
  .panel{background:#fff;border:1px solid #ccc;box-shadow:none;backdrop-filter:none}
  .tbl-wrap{max-height:none;overflow:visible}.ds thead th{background:#eee;color:#000}
@@ -453,6 +498,7 @@ footer b{color:var(--tx2)}
     <div class="clock"><b id="clk">--:--:--</b><small id="dte"></small></div>
     <button class="ib" id="btnSync" title="ตรวจสอบทันที"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 3v6h-6"/></svg></button>
     <button class="ib" id="btnBell" title="ศูนย์แจ้งเตือน"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M6 8a6 6 0 1 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="badge" id="badge">0</span></button>
+    <button class="ib" id="btnKiosk" title="โหมดนำเสนอ / จอใหญ่ (กด K)"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg></button>
     <button class="ib" id="btnSet" title="ตั้งค่าเกณฑ์"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
   </div>
 </header>
@@ -502,6 +548,7 @@ footer b{color:var(--tx2)}
 <!-- EXEC SUMMARY -->
 <div class="sec-t rv"><span class="no">01</span><h2>สรุปสำหรับ<span>ผู้บริหาร</span></h2><p>ประมวลผลอัตโนมัติจากข้อมูลล่าสุด</p></div>
 <section class="rv exec" id="exec"></section>
+<section class="panel hd rv trendbox"><div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div><h3>แนวโน้มการผ่านเกณฑ์ (รายวัน)</h3><small id="trendNote"></small></div><div class="cv" style="height:260px"><canvas id="chTrend"></canvas></div></section>
 
 <!-- ISSUES -->
 <div class="sec-t rv"><span class="no">01·P</span><h2>ตรวจตาม<span>ประเด็น</span></h2><p>ประเด็นข้อมูลเชิงพื้นที่ (Visualization จังหวัด) · แยกช่องทาง API / ไฟล์ / Visualization และผลตามเกณฑ์ · คลิกการ์ดเพื่อดูรายชุด</p></div>
@@ -556,6 +603,14 @@ footer b{color:var(--tx2)}
     <div class="panel hd"><div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5 2 7.5L12 17l-6.5 4 2-7.5L2 9h7z"/></svg></div><h3>ชุดข้อมูลยอดนิยม</h3></div><div class="pills" id="vTopT" style="margin:-6px 0 8px"><button class="pill on" data-v="t">Total</button><button class="pill" data-v="r">Recent</button></div><div class="cv" style="height:236px"><canvas id="chVTop"></canvas></div></div>
     <div class="panel hd"><div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 21v-1a6 6 0 0 1 12 0v1"/></svg></div><h3>ยอดเข้าชมรายหน่วยงาน</h3></div><div class="cv"><canvas id="chVOrg"></canvas></div></div>
   </div>
+</section>
+
+<!-- DEEP QUALITY -->
+<div class="sec-t rv"><span class="no">04·Q</span><h2>คุณภาพข้อมูล<span>เชิงลึก</span></h2><p>ความครบถ้วน Metadata · ปฏิทินการปรับปรุงตามความถี่ที่ประกาศ · ตรวจเนื้อข้อมูลจริงผ่าน DataStore</p></div>
+<section class="grid3 rv" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+  <div class="panel hd"><div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><h3>ความครบถ้วน Metadata</h3></div><div id="qMd"></div></div>
+  <div class="panel hd"><div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></div><h3>ปฏิทินการปรับปรุงข้อมูล</h3></div><div id="qSch"></div></div>
+  <div class="panel hd"><div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.7 4 3 9 3s9-1.3 9-3V5"/><path d="M3 12c0 1.7 4 3 9 3s9-1.3 9-3"/></svg></div><h3>ตรวจเนื้อข้อมูล (DataStore)</h3></div><div id="qDeep"></div></div>
 </section>
 
 <!-- HISTORY -->
@@ -628,7 +683,7 @@ footer b{color:var(--tx2)}
 <!-- ALERT DRAWER -->
 <aside class="drawer" id="dAl">
   <div class="dh"><div><small>REAL-TIME ALERT CENTER</small><h3>ศูนย์แจ้งเตือน</h3></div><button class="ib x" data-close>✕</button></div>
-  <div class="tabs"><button class="pill on" data-t="ev">เหตุการณ์ล่าสุด</button><button class="pill" data-t="is">ประเด็นต้องแก้ไข</button><div class="sp"></div><button class="pill" id="clrEv">ล้างประวัติ</button></div>
+  <div class="tabs"><button class="pill on" data-t="ev">เหตุการณ์ล่าสุด</button><button class="pill" data-t="sv">บันทึกระบบ</button><button class="pill" data-t="is">ประเด็นต้องแก้ไข</button><div class="sp"></div><button class="pill" id="clrEv">ล้างประวัติ</button></div>
   <div class="db" id="alBody"></div>
 </aside>
 
@@ -650,6 +705,8 @@ footer b{color:var(--tx2)}
 </aside>
 
 <div class="toasts" id="toasts"></div>
+<div id="rep"></div>
+<div class="kbar" id="kbar"><span>● โหมดนำเสนอ</span><b id="kLab"></b><div class="kp"><i id="kProg"></i></div><button class="btn" id="kExit" style="height:32px">ออก (Esc)</button></div>
 <div class="spot" id="spot"><canvas id="spotfx"></canvas><div class="card" id="spotCard"></div></div>
 <canvas id="bgfx"></canvas>
 
@@ -659,62 +716,17 @@ footer b{color:var(--tx2)}
    Data: CKAN API (JSONP) https://nongbualamphu.gdcatalog.go.th
    ===================================================================== */
 'use strict';
+/*CORE-START*/
 const NBL_ORG='982246a4-95e9-49c8-bc9b-fb580b9b849a';
 const SRCS={
   prov:{key:'prov',site:'https://nongbualamphu.gdcatalog.go.th',fq:'',label:'ระบบบัญชีข้อมูลจังหวัดหนองบัวลำภู',short:'ระบบจังหวัด',host:'nongbualamphu.gdcatalog.go.th'},
   nat:{key:'nat',site:'https://gdcatalog.go.th',fq:'organization:'+NBL_ORG,label:'GD Catalog ส่วนกลาง · จังหวัดหนองบัวลำภู',short:'ระบบกลาง (gdcatalog.go.th)',host:'gdcatalog.go.th'}};
 const apiOf=k=>SRCS[k].site+'/api/3/action/';
 let SITE=SRCS.prov.site;
-const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
-const DEF={cur:2569,back:5,poll:5,strict:false,xls:true,sound:true,notif:false,prov:true};
-let CFG=Object.assign({},DEF,LS.get('gdhm.cfg',{}));
-
-const S={raw:[],ds:[],orgs:{},orgList:[],byOrg:{},groups:{},lastSync:null,lightMap:{prov:{},nat:{}},
-  f:{q:'',org:'',grp:'',fmt:'',type:'',chan:'',st:'all'},page:1,per:40,agSort:{k:'score',d:-1},agF:'all',agQ:'',
-  events:LS.get('gdhm.events',[]),unread:LS.get('gdhm.unread',0),nextAt:0,busy:false,charts:{},hist:[],store:{prov:{orgs:[],raw:[],ok:false},nat:{orgs:[],raw:[],ok:false}},src:LS.get('gdhm.src','prov'),views:LS.get('gdhm.views',{}),allOrgs:[],allRaw:[],excluded:{orgs:0,ds:0},viewsNext:0,viewsBusy:false};
-
-/* ---------- utils ---------- */
-const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
-const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const fmtN=n=>Number(n||0).toLocaleString('th-TH');
-const pct=(a,b)=>b?Math.round(a*1000/b)/10:0;
-const TH_M=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
-const thDate=d=>{if(!d)return'–';d=new Date(d);if(isNaN(d))return'–';return d.getDate()+' '+TH_M[d.getMonth()]+' '+(d.getFullYear()+543)};
-const thTime=d=>{d=new Date(d);return d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})};
-const ago=d=>{const s=(Date.now()-new Date(d))/1000;if(s<60)return'เมื่อสักครู่';if(s<3600)return Math.floor(s/60)+' นาทีที่แล้ว';if(s<86400)return Math.floor(s/3600)+' ชม.ที่แล้ว';return Math.floor(s/86400)+' วันที่แล้ว'};
-const utc=s=>s&&!/[zZ]|[+-]\d\d:?\d\d$/.test(s)?s+'Z':s;
 function beYearOf(dateStr){if(!dateStr)return null;const m=String(dateStr).match(/^(\d{4})/);if(!m)return null;let y=+m[1];return y<2400?y+543:y}
-
-/* ---------- JSONP (CKAN supports ?callback=) ---------- */
-let jpN=0;
-function jsonp(url,timeout=60000){return new Promise((res,rej)=>{
-  const cb='__gd'+(++jpN)+'_'+Date.now().toString(36);const s=document.createElement('script');
-  const t=setTimeout(()=>{clean();rej(new Error('หมดเวลาการเชื่อมต่อ'))},timeout);
-  function clean(){clearTimeout(t);try{delete window[cb]}catch(e){window[cb]=undefined}s.remove()}
-  window[cb]=d=>{clean();d&&d.success?res(d.result):rej(new Error('API ตอบกลับผิดพลาด'))};
-  s.onerror=()=>{clean();rej(new Error('เชื่อมต่อ API ไม่ได้'))};
-  s.src=url+(url.includes('?')?'&':'?')+'callback='+cb;document.head.appendChild(s);
-})}
-
-const fqOf=k=>SRCS[k].fq?'&fq='+encodeURIComponent(SRCS[k].fq):'';
-async function fetchAll(k){
-  const rows=1000;let start=0,out=[],count=Infinity;
-  while(start<count){const r=await jsonp(apiOf(k)+'package_search?rows='+rows+'&start='+start+fqOf(k)+'&sort=metadata_created%20desc');count=r.count;out=out.concat(r.results);start+=rows;if(!r.results.length)break}
-  return out;
-}
-const lkey=p=>p.metadata_modified+'|'+(p.num_resources==null?'':p.num_resources);
-async function fetchLight(k){
-  const rows=1000;let start=0,out=[],count=Infinity;
-  while(start<count){const r=await jsonp(apiOf(k)+'package_search?rows='+rows+'&start='+start+fqOf(k)+'&fl=id,metadata_modified,num_resources',30000);count=r.count;out=out.concat(r.results);start+=rows;if(!r.results.length)break}
-  const m={};out.forEach(p=>m[p.id]=lkey(p));return m;
-}
-async function fetchOrgs(){
-  try{return await jsonp(apiOf('prov')+'organization_list?all_fields=true&include_dataset_count=true&limit=1000',30000)}catch(e){return []}
-}
 /* national record → source dataset on provincial catalog (harvest) */
 function srcIdOf(p){const ex=p.extras||[];const a=ex.find(e=>e.key==='source_dataset_id');if(a&&a.value)return a.value;
   const h=ex.find(e=>e.key==='harvest_url');if(h&&h.value){const m=String(h.value).match(/\/dataset\/([^/?#]+)/);if(m)return decodeURIComponent(m[1])}return null}
-
 /* ---------- Provincial-only filter (ตัดข้อมูลกรม/ส่วนกลาง) ---------- */
 function isProv(name,title){const t=String(title||'').replace(/\u0e4d\u0e32/g,'\u0e33');return /หนองบัวลำภู/.test(t)||/nongbua|nongbualamphu|nbl|nbp|(^|_)nb(_|$)|-39$/i.test(name||'')}
 
@@ -759,6 +771,17 @@ const ISSUES=[
   {g:'การบริหารจัดการน้ำด้านภัยแล้ง',em:'💧',c:'#38bdf8',pbi:'https://app.powerbi.com/view?r=eyJrIjoiOTg0N2VjNmUtM2Q3Zi00ODNhLWIwODQtYzhlZjJkNDc1ZThiIiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'}];
 
 /* ---------- Analyze one dataset ---------- */
+/* metadata completeness (มาตรฐานคำอธิบายข้อมูล) */
+const MDF=[['notes','คำอธิบายชุดข้อมูล'],['maintainer','ผู้ติดต่อ/ผู้ดูแลข้อมูล'],['maintainer_email','อีเมลผู้ติดต่อ'],['data_source','แหล่งที่มาของข้อมูล'],['geo_coverage','ขอบเขตเชิงพื้นที่'],
+  ['first_year_of_data','ปีแรกของข้อมูล'],['last_year_of_data','ปีสุดท้ายของข้อมูล'],['update_frequency_unit','ความถี่การปรับปรุง'],['unit_of_measure','หน่วยวัด'],['tags','คำสำคัญ (Tag)'],
+  ['license_id','สัญญาอนุญาต'],['objective','วัตถุประสงค์'],['last_updated_date','วันที่ปรับปรุงล่าสุด'],['dict','พจนานุกรมข้อมูล (Data Dictionary)']];
+const DICT_RE=/data\s*_?dic|datadic|dictionary|พจนานุกรม|คำอธิบาย(?:ชุด)?ข้อมูล|โครงสร้างข้อมูล/i;
+function mdHas(p,k,res){const v=p[k];if(k==='tags')return (+p.num_tags||0)>0||(Array.isArray(p.tags)&&p.tags.length>0);
+  if(k==='dict')return res.some(r=>DICT_RE.test((r.name||'')+' '+(r.description||'')));
+  if(Array.isArray(v))return v.filter(x=>String(x||'').trim()).length>0;return v!=null&&String(v).trim()!==''&&!/^(ไม่มี|ไม่ทราบ|-)$/.test(String(v).trim())}
+/* update schedule (ความถี่การปรับปรุง → กำหนดครั้งถัดไป) */
+const FQD={'วัน':1,'สัปดาห์':7,'เดือน':30,'ไตรมาส':91,'ครึ่งปี':182,'ปี':365,'ตามเวลาจริง':1};
+function tsOf(x){if(!x)return 0;const t=Date.parse(/[zZ]|[+-]\d\d:?\d\d$/.test(x)||x.length<=10?x:x+'Z');return isNaN(t)?0:t}
 function analyze(p){
   const cur=CFG.cur,back=CFG.back,maxY=cur;
   const org=p.organization||{};const orgName=org.name||'ไม่ระบุ';
@@ -797,17 +820,85 @@ function analyze(p){
   if(!groups.length&&p._src)groups=(p._src.groups||[]).map(g=>g.title||g.display_name||g.name).filter(Boolean);
   const chan={api:0,file:0,viz:0};let dsx=0;res.forEach(r=>{r._ch=chanOf(r);chan[r._ch]++;if(r.datastore_active)dsx++});
   const channel=chan.api?'api':chan.file?'file':chan.viz?'viz':'none';
+  // metadata
+  const mdMiss=MDF.filter(([k])=>!mdHas(p,k,res)).map(x=>x[0]);const md=Math.round((MDF.length-mdMiss.length)*100/MDF.length);
+  // schedule
+  const unit=String(p.update_frequency_unit||'').trim();const ivl=parseFloat(p.update_frequency_interval)||1;const per=FQD[unit]?Math.round(FQD[unit]*ivl):null;
+  let lastTs=tsOf(p.last_updated_date);res.forEach(r=>{lastTs=Math.max(lastTs,tsOf(r.last_modified),tsOf(r.created))});
+  let sched='none',dueTs=0,lateDays=0;const NOW=Date.now();
+  if(per&&lastTs){dueTs=lastTs+per*864e5;lateDays=Math.floor((NOW-dueTs)/864e5);sched=lateDays>0?'late':-lateDays<=30?'soon':'ok'}
+  else if(!per)sched='none';else sched='nodate';
+  // deep content check (DataStore) — from collector
+  let deep=null;const DP=(S.deep||{});let dres=res.filter(r=>DP[r.id]);if(!dres.length&&p._src)dres=(p._src.resources||[]).filter(r=>DP[r.id]);
+  if(dres.length){const ys=new Set();let yc=0,enc=0,rows=0;dres.forEach(r=>{const x=DP[r.id];rows+=x.n||0;if(x.yc){yc++;(x.ys||[]).forEach(y=>ys.add(+y))}if(x.enc===false)enc++});
+    deep={n:dres.length,yc,ys,enc,rows,list:dres.map(r=>Object.assign({id:r.id,name:r.name},DP[r.id]))}}
   const fixes=[];
   if(!c1)fixes.push('เพิ่มข้อมูลย้อนหลังปี '+missBack.join(', ')+(CFG.strict?' (ระบุปีในชื่อไฟล์)':' หรือปรับปรุงช่วงปีใน metadata ให้ถูกต้อง'));
   if(!c2)fixes.push('นำเข้าข้อมูลปี '+cur+' (ระบุปี '+cur+' ในชื่อไฟล์ หรือปรับ "ปีสุดท้ายของข้อมูล" เป็น '+cur+')');
   if(!c3)fixes.push(uniq.length?'เพิ่มไฟล์รูปแบบ CSV / JSON'+(CFG.xls?' / XLSX':'')+' (ปัจจุบันมีเพียง '+uniq.join(', ')+')':'ยังไม่มีไฟล์ข้อมูล (resource) — ให้อัปโหลดไฟล์ CSV');
   return {id:p.id,name:p.name,title:p.title||p.name,org:orgName,orgTitle,groups,type:p.data_type||'ไม่ระบุ',
     years,meta,rs,missBack,req,c1,c2,c3,curVia,upd,score,status,fmts:uniq,fmtCount,declared,star,mrList,
-    nres:res.length,res,chan,channel,dsx,fy,ly,anomalies,fixes,mm:p.metadata_modified,mc:p.metadata_created,lud:p.last_updated_date,
+    nres:res.length,res,chan,channel,dsx,md,mdMiss,per,unit,lastTs,dueTs,lateDays,sched,deep,
+    deepCur:deep&&deep.yc?deep.ys.has(cur):null,mism:!!(deep&&deep.yc&&c2&&curVia!=='upd'&&!deep.ys.has(cur)),fy,ly,anomalies,fixes,mm:p.metadata_modified,mc:p.metadata_created,lud:p.last_updated_date,
     freq:[p.update_frequency_interval,p.update_frequency_unit].filter(Boolean).join(' '),geo:p.geo_coverage,maint:p.maintainer,email:p.maintainer_email,src:p.data_source,url:(p._site||SITE)+'/dataset/'+p.name,srcPkg:p._src||null,
     search:((p.title||'')+' '+orgTitle+' '+groups.join(' ')+' '+(p.name||'')).toLowerCase()};
 }
+function scoped(k){const P=CFG.prov,ex={orgs:0,ds:0},orgs={};let raw=[];const pv=S.store.prov,st=S.store[k];
+  pv.orgs.forEach(o=>{if(!P||isProv(o.name,o.title))orgs[o.name]=o;else ex.orgs++});
+  if(k==='prov'){raw=pv.raw.filter(p=>{const o=p.organization||{};const ok=!P||isProv(o.name,o.title);if(!ok)ex.ds++;return ok}).map(p=>Object.assign({},p,{_site:SRCS.prov.site}))}
+  else{const byId={};pv.raw.forEach(p=>{byId[p.id]=p;byId[p.name]=p});
+    raw=st.raw.map(p=>{const sp=byId[srcIdOf(p)]||null;const o=sp&&sp.organization?{name:sp.organization.name,title:sp.organization.title}:{name:'m:'+(p.maintainer||'ไม่ระบุ'),title:p.maintainer||'ไม่ระบุหน่วยงานผู้ดูแล'};
+      return Object.assign({},p,{organization:o,_src:sp,_site:SRCS.nat.site})})
+     .filter(p=>{const o=p.organization;const ok=!P||o.name.startsWith('m:')||isProv(o.name,o.title);if(!ok)ex.ds++;return ok});
+    raw.forEach(p=>{const o=p.organization;if(!orgs[o.name])orgs[o.name]={name:o.name,title:o.title}})}
+  return {raw,orgs,ex}}
+/*CORE-END*/
 
+const LS={get(k,d){try{const v=localStorage.getItem(k);return v==null?d:JSON.parse(v)}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+const DEF={cur:2569,back:5,poll:5,strict:false,xls:true,sound:true,notif:false,prov:true};
+let CFG=Object.assign({},DEF,LS.get('gdhm.cfg',{}));
+
+const S={raw:[],ds:[],orgs:{},orgList:[],byOrg:{},groups:{},lastSync:null,lightMap:{prov:{},nat:{}},
+  f:{q:'',org:'',grp:'',fmt:'',type:'',chan:'',st:'all'},page:1,per:40,agSort:{k:'score',d:-1},agF:'all',agQ:'',
+  events:LS.get('gdhm.events',[]),unread:LS.get('gdhm.unread',0),nextAt:0,busy:false,charts:{},hist:[],deep:{},shist:[],sevents:[],sdaily:null,sviewsAt:0,store:{prov:{orgs:[],raw:[],ok:false},nat:{orgs:[],raw:[],ok:false}},src:LS.get('gdhm.src','prov'),views:LS.get('gdhm.views',{}),allOrgs:[],allRaw:[],excluded:{orgs:0,ds:0},viewsNext:0,viewsBusy:false};
+
+/* ---------- utils ---------- */
+const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const fmtN=n=>Number(n||0).toLocaleString('th-TH');
+const pct=(a,b)=>b?Math.round(a*1000/b)/10:0;
+const TH_M=['ม.ค.','ก.พ.','มี.ค.','เม.ย.','พ.ค.','มิ.ย.','ก.ค.','ส.ค.','ก.ย.','ต.ค.','พ.ย.','ธ.ค.'];
+const thDate=d=>{if(!d)return'–';d=new Date(d);if(isNaN(d))return'–';return d.getDate()+' '+TH_M[d.getMonth()]+' '+(d.getFullYear()+543)};
+const thTime=d=>{d=new Date(d);return d.toLocaleTimeString('th-TH',{hour:'2-digit',minute:'2-digit',second:'2-digit'})};
+const ago=d=>{const s=(Date.now()-new Date(d))/1000;if(s<60)return'เมื่อสักครู่';if(s<3600)return Math.floor(s/60)+' นาทีที่แล้ว';if(s<86400)return Math.floor(s/3600)+' ชม.ที่แล้ว';return Math.floor(s/86400)+' วันที่แล้ว'};
+const utc=s=>s&&!/[zZ]|[+-]\d\d:?\d\d$/.test(s)?s+'Z':s;
+
+/* ---------- JSONP (CKAN supports ?callback=) ---------- */
+let jpN=0;
+function jsonp(url,timeout=60000){return new Promise((res,rej)=>{
+  const cb='__gd'+(++jpN)+'_'+Date.now().toString(36);const s=document.createElement('script');
+  const t=setTimeout(()=>{clean();rej(new Error('หมดเวลาการเชื่อมต่อ'))},timeout);
+  function clean(){clearTimeout(t);try{delete window[cb]}catch(e){window[cb]=undefined}s.remove()}
+  window[cb]=d=>{clean();d&&d.success?res(d.result):rej(new Error('API ตอบกลับผิดพลาด'))};
+  s.onerror=()=>{clean();rej(new Error('เชื่อมต่อ API ไม่ได้'))};
+  s.src=url+(url.includes('?')?'&':'?')+'callback='+cb;document.head.appendChild(s);
+})}
+
+const fqOf=k=>SRCS[k].fq?'&fq='+encodeURIComponent(SRCS[k].fq):'';
+async function fetchAll(k){
+  const rows=1000;let start=0,out=[],count=Infinity;
+  while(start<count){const r=await jsonp(apiOf(k)+'package_search?rows='+rows+'&start='+start+fqOf(k)+'&sort=metadata_created%20desc');count=r.count;out=out.concat(r.results);start+=rows;if(!r.results.length)break}
+  return out;
+}
+const lkey=p=>p.metadata_modified+'|'+(p.num_resources==null?'':p.num_resources);
+async function fetchLight(k){
+  const rows=1000;let start=0,out=[],count=Infinity;
+  while(start<count){const r=await jsonp(apiOf(k)+'package_search?rows='+rows+'&start='+start+fqOf(k)+'&fl=id,metadata_modified,num_resources',30000);count=r.count;out=out.concat(r.results);start+=rows;if(!r.results.length)break}
+  const m={};out.forEach(p=>m[p.id]=lkey(p));return m;
+}
+async function fetchOrgs(){
+  try{return await jsonp(apiOf('prov')+'organization_list?all_fields=true&include_dataset_count=true&limit=1000',30000)}catch(e){return []}
+}
 function buildAll(){
   S.ds=S.raw.map(analyze);S.ds.forEach(d=>{const v=S.views[d.id];d.vt=v?v.t:null;d.vr=v?v.r:null});
   S.byOrg={};S.groups={};
@@ -820,7 +911,7 @@ function buildAll(){
     o.p1=pct(o.c1,n);o.p2=pct(o.c2,n);o.p3=pct(o.c3,n);o.pp=pct(o.pass,n);
     o.score=n?Math.round((o.p1+o.p2+o.p3)/3*10)/10:-1;
     o.grade=!n?'–':o.score>=80?'A':o.score>=60?'B':o.score>=40?'C':'D';
-    o.last=L.reduce((m,d)=>d.mm>m?d.mm:m,'')});
+    o.last=L.reduce((m,d)=>d.mm>m?d.mm:m,'');o.md=n?Math.round(L.reduce((a,d)=>a+d.md,0)/n):-1;o.late=L.filter(d=>d.sched==='late').length;o.soon=L.filter(d=>d.sched==='soon').length});
   // history from system timestamps (dataset created · resource created · resource modified)
   const H=[];S.ds.forEach(d=>{if(d.mc)H.push({ts:+new Date(utc(d.mc)),k:'new',d,name:d.title,f:d.fmts[0]||''});
     d.res.forEach(r=>{const c=r.created?+new Date(utc(r.created)):0,m=r.last_modified||r.metadata_modified,mt=m?+new Date(utc(m)):0;
@@ -952,7 +1043,7 @@ function renderMatrix(){
   if(S.agF==='low')O=O.filter(o=>o.grade==='D');if(S.agF==='zero')O=O.filter(o=>!o.n);
   if(S.agQ)O=O.filter(o=>(o.title||'').toLowerCase().includes(S.agQ));
   const {k,d}=S.agSort;O.sort((a,b)=>{const x=k==='title'?String(a.title).localeCompare(b.title,'th'):(a[k]??-1)-(b[k]??-1);return x*d||b.n-a.n});
-  const H=[['title','หน่วยงานที่รับผิดชอบ'],['n','ชุดข้อมูล'],['p1','ย้อนหลัง '+CFG.back+' ปี'],['p2','ปี '+cur],['p3','Machine Readable'],['pp','ผ่านครบ'],['dist','สัดส่วนสถานะ'],['score','คะแนน'],['grade','เกรด']];
+  const H=[['title','หน่วยงานที่รับผิดชอบ'],['n','ชุดข้อมูล'],['p1','ย้อนหลัง '+CFG.back+' ปี'],['p2','ปี '+cur],['p3','Machine Readable'],['pp','ผ่านครบ'],['md','Metadata'],['late','เลยกำหนด'],['dist','สัดส่วนสถานะ'],['score','คะแนน'],['grade','เกรด'],['rep','รายงาน']];
   $('#mx').innerHTML=`<thead><tr>${H.map(h=>`<th data-k="${h[0]}" class="${k===h[0]?'s':''}">${h[1]}${k===h[0]?(d>0?' ▲':' ▼'):''}</th>`).join('')}</tr></thead><tbody>${O.map(o=>`
     <tr class="r ${S.f.org===o.name?'sel':''}" data-o="${esc(o.name)}">
       <td><div class="ag">${orgLogo(o)}<div><b>${esc(o.title)}</b><small>${o.n?'อัปเดตล่าสุด '+thDate(utc(o.last)):'ยังไม่มีชุดข้อมูลในระบบ'}</small></div></div></td>
@@ -961,15 +1052,18 @@ function renderMatrix(){
       <td><span class="hc" style="${heat(o.n?o.p2:-1)}">${o.n?o.p2+'%':'–'}</span></td>
       <td><span class="hc" style="${heat(o.n?o.p3:-1)}">${o.n?o.p3+'%':'–'}</span></td>
       <td><span class="hc" style="${heat(o.n?o.pp:-1)}">${o.n?o.pass+'/'+o.n:'–'}</span></td>
+      <td><span class="hc" style="${heat(o.n?o.md:-1)}">${o.n?o.md+'%':'–'}</span></td>
+      <td style="font-weight:700;color:${o.late?'#fda4af':'var(--tx3)'}">${o.n?(o.late||'–'):'–'}</td>
       <td><div class="mini" title="ผ่าน ${o.pass} · 2/3 ${o.near} · ไม่ผ่าน ${o.fail}">${o.n?`<i style="width:${pct(o.pass,o.n)}%;background:#34d399"></i><i style="width:${pct(o.near,o.n)}%;background:#f59e0b"></i><i style="width:${pct(o.fail,o.n)}%;background:#f43f5e"></i>`:''}</div></td>
       <td class="k" style="font-size:16px;font-weight:600">${o.n?o.score+'%':'–'}</td>
       <td><span class="grade" style="${gradeStyle(o.grade)}">${o.grade}</span></td>
+      <td>${o.n&&!String(o.name).startsWith('m:')?`<button class="btn" data-rep="${esc(o.name)}" style="height:32px;padding:0 10px" title="รายงานหน่วยงาน (ลิงก์ส่งให้หน่วยงานได้)">📄</button>`:''}</td>
     </tr>`).join('')}</tbody>`;
 }
 
 /* ---------- Dataset table ---------- */
-const STF=[['all','ทั้งหมด'],['pass','✓ ผ่านครบ 3 เกณฑ์'],['near','◐ ผ่าน 2/3'],['fail','✕ ผ่าน ≤1'],['c1','ขาดย้อนหลัง'],['c2','ขาดปีปัจจุบัน'],['c3','ไม่ Machine Readable'],['anom','metadata ผิดปกติ']];
-function stMatch(d,s){return s==='all'||(s==='c1'?!d.c1:s==='c2'?!d.c2:s==='c3'?!d.c3:s==='anom'?d.anomalies.some(a=>!a.startsWith('ไม่ได้ระบุ')):d.status===s)}
+const STF=[['all','ทั้งหมด'],['pass','✓ ผ่านครบ 3 เกณฑ์'],['near','◐ ผ่าน 2/3'],['fail','✕ ผ่าน ≤1'],['c1','ขาดย้อนหลัง'],['c2','ขาดปีปัจจุบัน'],['c3','ไม่ Machine Readable'],['late','เลยกำหนดปรับปรุง'],['md','Metadata < 70%'],['mism','ปีในชื่อ ≠ เนื้อข้อมูล'],['anom','metadata ผิดปกติ']];
+function stMatch(d,s){if(s==='late')return d.sched==='late';if(s==='md')return d.md<70;if(s==='mism')return d.mism;if(s&&s.startsWith('mf:'))return d.mdMiss.includes(s.slice(3));return s==='all'||(s==='c1'?!d.c1:s==='c2'?!d.c2:s==='c3'?!d.c3:s==='anom'?d.anomalies.some(a=>!a.startsWith('ไม่ได้ระบุ')):d.status===s)}
 function baseFiltered(){const f=S.f;return S.ds.filter(d=>(!f.q||d.search.includes(f.q))&&(!f.org||d.org===f.org)&&(!f.grp||(f.grp==='(ไม่ระบุกลุ่ม)'?!d.groups.length:d.groups.includes(f.grp)))&&(!f.fmt||d.fmts.includes(f.fmt))&&(!f.type||d.type===f.type)&&(!f.chan||(f.chan==='dsx'?d.dsx>0:d.channel===f.chan)))}
 function filtered(){return baseFiltered().filter(d=>stMatch(d,S.f.st)).sort((a,b)=>a.score-b.score||a.orgTitle.localeCompare(b.orgTitle,'th')||a.title.localeCompare(b.title,'th'))}
 function yrStrip(d){const cur=CFG.cur;let h='';for(let y=cur-CFG.back;y<=cur;y++){const has=d.years.has(y),isCur=y===cur;
@@ -983,7 +1077,8 @@ function fmtChips(d){if(!d.fmts.length)return'<span class="ft st1">ไม่ม�
 const ST_TX={pass:'✓ ผ่านครบ',near:'◐ 2/3',fail:'✕ ไม่ผ่าน'};
 function renderTable(){
   const base=baseFiltered();
-  $('#stPills').innerHTML=STF.map(([k,l])=>`<button class="pill ${S.f.st===k?'on':''}" data-st="${k}">${l}<i>${base.filter(d=>stMatch(d,k)).length}</i></button>`).join('');
+  const xst=S.f.st&&S.f.st.startsWith('mf:')?`<button class="pill on" data-st="${S.f.st}">ยังไม่กรอก: ${esc((MDF.find(x=>x[0]===S.f.st.slice(3))||[])[1]||'')}<i>${base.filter(d=>stMatch(d,S.f.st)).length}</i></button>`:'';
+  $('#stPills').innerHTML=xst+STF.map(([k,l])=>`<button class="pill ${S.f.st===k?'on':''}" data-st="${k}">${l}<i>${base.filter(d=>stMatch(d,k)).length}</i></button>`).join('');
   const L=filtered(),pages=Math.max(1,Math.ceil(L.length/S.per));if(S.page>pages)S.page=pages;
   const rows=L.slice((S.page-1)*S.per,S.page*S.per);
   $('#tb').innerHTML=rows.length?rows.map(d=>`<tr class="row" data-id="${d.id}">
@@ -1000,7 +1095,7 @@ function renderTable(){
   $('#pager').innerHTML=`<span>แสดง ${L.length?((S.page-1)*S.per+1)+'–'+Math.min(S.page*S.per,L.length):0} จาก <b style="color:var(--tx)">${fmtN(L.length)}</b> ชุดข้อมูล</span><div class="pg">${pg}</div>`;
   // agency banner
   const ab=$('#agBanner');const o=S.f.org&&S.byOrg[S.f.org];
-  if(o){ab.classList.add('on');ab.innerHTML=`${orgLogo(o)}<div><small style="color:var(--tx2)">กำลังดูหน่วยงาน</small><h4>${esc(o.title)}</h4></div><div class="stats"><div><b>${o.n}</b>ชุดข้อมูล</div><div><b style="color:var(--ok)">${o.pass}</b>ผ่านครบ</div><div><b style="color:var(--wn)">${o.near}</b>2/3</div><div><b style="color:var(--bad)">${o.fail}</b>ไม่ผ่าน</div><div><span class="grade" style="${gradeStyle(o.grade)}">${o.grade}</span></div></div><button class="ib" id="abX" title="ยกเลิก">✕</button>`}
+  if(o){ab.classList.add('on');ab.innerHTML=`${orgLogo(o)}<div><small style="color:var(--tx2)">กำลังดูหน่วยงาน</small><h4>${esc(o.title)}</h4></div><div class="stats"><div><b>${o.n}</b>ชุดข้อมูล</div><div><b style="color:var(--ok)">${o.pass}</b>ผ่านครบ</div><div><b style="color:var(--wn)">${o.near}</b>2/3</div><div><b style="color:var(--bad)">${o.fail}</b>ไม่ผ่าน</div><div><span class="grade" style="${gradeStyle(o.grade)}">${o.grade}</span></div></div>${String(o.name).startsWith('m:')?'':`<button class="btn" id="abRep">📄 รายงานหน่วยงาน</button><button class="btn" id="abLink">🔗 คัดลอกลิงก์</button>`}<button class="ib" id="abX" title="ยกเลิก">✕</button>`}
   else ab.classList.remove('on');
 }
 function renderLegend(){const cur=CFG.cur;$('#legend').innerHTML=`
@@ -1048,6 +1143,9 @@ function openDs(id){const d=S.ds.find(x=>x.id===id);if(!d)return;const cur=CFG.c
    <dt>ยอดเข้าชม</dt><dd>${d.vt!=null?'<b>'+fmtN(d.vt)+'</b> ครั้ง (รวม) · <b style="color:var(--gd)">'+fmtN(d.vr)+'</b> ครั้ง (ล่าสุด 14 วัน)':'กำลังโหลด…'}</dd>
    <dt>ผู้ดูแล</dt><dd>${esc(d.maint||'–')}${d.email?'<br><a href="mailto:'+esc(d.email)+'">'+esc(d.email)+'</a>':''}</dd>
   </dl></div>
+  <div class="blk"><h5>Metadata ${d.md}% (${MDF.length-d.mdMiss.length}/${MDF.length})</h5><div class="mdg">${MDF.map(([k,l])=>`<span><i style="color:${d.mdMiss.includes(k)?'var(--bad)':'var(--ok)'}">${d.mdMiss.includes(k)?'✕':'✓'}</i>${l}</span>`).join('')}</div></div>
+  <div class="blk"><h5>กำหนดการปรับปรุง</h5><dl class="kv"><dt>ความถี่ที่ประกาศ</dt><dd>${esc(d.freq||'ไม่ระบุ')}</dd><dt>ปรับปรุงครั้งล่าสุด</dt><dd>${d.lastTs?thDate(d.lastTs):'–'}</dd><dt>ครบกำหนดครั้งถัดไป</dt><dd>${d.dueTs?thDate(d.dueTs):'–'} ${schTag(d)}</dd></dl></div>
+  ${d.deep?`<div class="blk"><h5>ตรวจเนื้อข้อมูล (DataStore)</h5>${d.mism?`<div class="fix" style="margin-bottom:8px">⚠ ระบุว่ามีข้อมูลปี ${cur} แต่ไม่พบปี ${cur} ในคอลัมน์ปีของไฟล์</div>`:''}${d.deep.list.map(x=>`<div class="rl"><span class="cb dsx">${fmtN(x.n)} แถว</span><span>${esc(x.name||'')}<br><small style="color:var(--tx3)">${x.yc?'คอลัมน์ปี: '+esc(x.yc)+' · พบปี '+(x.ys&&x.ys.length?x.ys.join(', '):'–'):'ไม่พบคอลัมน์ปี'}${x.enc===false?' · <b style="color:#fda4af">หัวคอลัมน์ภาษาไทยเพี้ยน</b>':''}</small></span></div>`).join('')}</div>`:''}
   <div class="blk"><h5>ประวัติของชุดข้อมูลนี้</h5><div class="tl" style="max-height:260px">${S.hist.filter(h=>h.d.id===d.id).slice(0,40).map(x=>`<div class="ti" style="--cc:${HK[x.k][1]};cursor:default"><span class="k">${HK[x.k][0]}</span><div class="b"><b>${esc(x.name)}</b></div><time>${thDate(x.ts)}</time></div>`).join('')||'<p class="note">–</p>'}</div></div>
   <div class="blk"><h5>ไฟล์ข้อมูล (${d.nres})</h5>${d.res.map(r=>{const f=normFmt(r.format);const dsu=r.datastore_active?(SITE+'/api/3/action/datastore_search?resource_id='+r.id+'&limit=5'):'';return`<div class="rl"><span class="cb ${r._ch}">${CH_TX[r._ch]}</span><span class="ft st${starOf(f)}">${esc(f)}</span><span>${esc(r.name||'(ไม่มีชื่อ)')}</span>${dsu?`<a href="${esc(dsu)}" target="_blank" rel="noopener" class="cb dsx" title="เรียกข้อมูลผ่าน Data API (DataStore)">Data API</a>`:''}${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">↗</a>`:''}</div>`}).join('')||'<p class="note">ไม่มีไฟล์</p>'}</div>`;
   openDrawer('#dDs');
@@ -1056,7 +1154,7 @@ function openDrawer(id){$$('.drawer').forEach(d=>d.classList.remove('on'));$(id)
 function closeDrawers(){$$('.drawer').forEach(d=>d.classList.remove('on'));$('#ov').classList.remove('on')}
 
 /* ---------- Alerts / realtime ---------- */
-const EVC={new:['var(--cy)','＋'],imp:['var(--gd)','⬆'],up:['var(--ok)','▲'],down:['var(--bad)','▼'],upd:['var(--vi)','↻'],del:['var(--wn)','−'],info:['var(--bl)','ℹ'],err:['var(--bad)','!']};
+const EVC={new:['var(--cy)','＋'],del:['var(--wn)','−'],imp:['var(--gd)','⬆'],up:['var(--ok)','▲'],down:['var(--bad)','▼'],upd:['var(--vi)','↻'],del:['var(--wn)','−'],info:['var(--bl)','ℹ'],err:['var(--bad)','!']};
 function pushEvent(type,t,d,id,silent){const e={type,t,d,id,ts:Date.now()};S.events.unshift(e);S.events=S.events.slice(0,150);LS.set('gdhm.events',S.events);
   S.unread++;LS.set('gdhm.unread',S.unread);updBadge();if(!silent)toast(e);return e}
 function updBadge(){const b=$('#badge');b.textContent=S.unread>99?'99+':S.unread;b.classList.toggle('on',S.unread>0);if(S.unread>0){b.classList.remove('on');void b.offsetWidth;b.classList.add('on')}}
@@ -1072,7 +1170,10 @@ let alTab='ev';
 function renderAlerts(){
   $$('#dAl .tabs .pill[data-t]').forEach(b=>b.classList.toggle('on',b.dataset.t===alTab));
   if(alTab==='ev'){const L=S.events;$('#alBody').innerHTML=L.length?L.map((e,i)=>{const [c,ic]=EVC[e.type]||EVC.info;return`<div class="ev ${i<S.unread?'unread':''}" style="--cc:${c}" ${e.id?`data-id="${e.id}"`:''}><div class="ei">${ic}</div><div style="flex:1"><b>${esc(e.t)}</b><p>${esc(e.d||'')}</p><time>${thDate(e.ts)} ${thTime(e.ts)}</time></div></div>`}).join(''):'<div class="empty">ยังไม่มีเหตุการณ์ ระบบกำลังเฝ้าติดตามการเปลี่ยนแปลง…</div>'}
+  else if(alTab==='sv'){const L=(S.sevents||[]).filter(e=>e.src===S.src).slice().reverse().slice(0,200);const T={new:['new','ชุดข้อมูลใหม่'],imp:['imp','นำเข้าไฟล์'],del:['del','ชุดข้อมูลถูกนำออก']};
+    $('#alBody').innerHTML=`<p class="note" style="margin-bottom:10px">บันทึกโดยระบบเก็บข้อมูลอัตโนมัติ (GitHub Actions) ทุกชั่วโมง · ${SRCS[S.src].short}</p>`+(L.map(e=>{const [k,l]=T[e.type]||['info',e.type];const [c,ic]=EVC[k]||EVC.info;return`<div class="ev" style="--cc:${c}" ${e.id&&e.type!=='del'?`data-id="${e.id}"`:''}><div class="ei">${ic}</div><div style="flex:1"><b>${l}: ${esc(e.title||'')}</b><p>${esc(e.org||'')}${e.res?' · '+esc(e.res):''}</p><time>${thDate(e.ts)} ${thTime(e.ts)}</time></div></div>`}).join('')||'<div class="empty">ยังไม่มีบันทึก — ระบบจะเริ่มบันทึกเมื่อเปิดใช้ GitHub Actions</div>')}
   else{const I=[];const cur=CFG.cur;
+    S.ds.filter(d=>d.sched==='late'&&d.lateDays>30).sort((a,b)=>b.lateDays-a.lateDays).slice(0,40).forEach(d=>I.push(['upd',d.title,'เลยกำหนดปรับปรุง '+fmtN(d.lateDays)+' วัน · '+d.orgTitle,d.id]));
     Object.values(S.byOrg).filter(o=>!o.n).forEach(o=>I.push(['err',o.title,'ยังไม่มีชุดข้อมูลในระบบบัญชีข้อมูล',null]));
     Object.values(S.byOrg).filter(o=>o.n&&o.grade==='D').sort((a,b)=>a.score-b.score).forEach(o=>I.push(['down',o.title,`คะแนน ${o.score}% · ไม่ผ่าน ${o.fail}/${o.n} ชุด`,null,o.name]));
     S.ds.filter(d=>d.anomalies.some(a=>a.includes('ผิดปกติ')||a.includes('มากกว่า'))).forEach(d=>I.push(['info',d.title,d.anomalies[0],d.id]));
@@ -1106,26 +1207,32 @@ function diffSnap(k,old,silent){
 
 /* ---------- Sync loop ---------- */
 function setLive(st,tx){const l=$('#live');l.className='live '+(st||'');$('#liveTx').textContent=tx}
-function scoped(k){const P=CFG.prov,ex={orgs:0,ds:0},orgs={};let raw=[];const pv=S.store.prov,st=S.store[k];
-  pv.orgs.forEach(o=>{if(!P||isProv(o.name,o.title))orgs[o.name]=o;else ex.orgs++});
-  if(k==='prov'){raw=pv.raw.filter(p=>{const o=p.organization||{};const ok=!P||isProv(o.name,o.title);if(!ok)ex.ds++;return ok}).map(p=>Object.assign({},p,{_site:SRCS.prov.site}))}
-  else{const byId={};pv.raw.forEach(p=>{byId[p.id]=p;byId[p.name]=p});
-    raw=st.raw.map(p=>{const sp=byId[srcIdOf(p)]||null;const o=sp&&sp.organization?{name:sp.organization.name,title:sp.organization.title}:{name:'m:'+(p.maintainer||'ไม่ระบุ'),title:p.maintainer||'ไม่ระบุหน่วยงานผู้ดูแล'};
-      return Object.assign({},p,{organization:o,_src:sp,_site:SRCS.nat.site})})
-     .filter(p=>{const o=p.organization;const ok=!P||o.name.startsWith('m:')||isProv(o.name,o.title);if(!ok)ex.ds++;return ok});
-    raw.forEach(p=>{const o=p.organization;if(!orgs[o.name])orgs[o.name]={name:o.name,title:o.title}})}
-  return {raw,orgs,ex}}
 function applyScope(){const r=scoped(S.src);S.orgs=r.orgs;S.raw=r.raw;S.excluded=r.ex;SITE=SRCS[S.src].site}
-function renderAll(){buildAll();renderHero();renderExec();renderIssues();renderTicker();renderFeed();renderHistory();renderViews();renderCharts();fillSelects();renderMatrix();renderLegend();renderTable();if($('#dAl').classList.contains('on'))renderAlerts()}
+function renderAll(){buildAll();renderHero();renderExec();renderTrend();renderIssues();renderQuality();renderTicker();renderFeed();renderHistory();renderViews();renderCharts();fillSelects();renderMatrix();renderLegend();renderTable();if($('#dAl').classList.contains('on'))renderAlerts()}
 const cfgKey=()=>[CFG.cur,CFG.back,CFG.strict,CFG.xls,CFG.prov].join('|');
 async function loadSrc(k){
   if(k==='prov'){const [orgs,raw]=await Promise.all([fetchOrgs(),fetchAll('prov')]);S.store.prov={orgs,raw,ok:true}}
   else{try{S.store.nat={orgs:[],raw:await fetchAll('nat'),ok:true}}catch(e){S.store.nat={orgs:[],raw:[],ok:false,err:e.message}}}
   S.lightMap[k]={};S.store[k].raw.forEach(p=>S.lightMap[k][p.id]=lkey(p));
 }
-async function fullSync(initial,keys){
+/* ---------- Snapshot from GitHub Actions collector (data/*.json) ---------- */
+async function gj(f){const r=await fetch('data/'+f+'?v='+Math.floor(Date.now()/60000),{cache:'no-store'});if(!r.ok)throw new Error(f+' '+r.status);return r.json()}
+async function loadSnapshot(){
+  let meta;try{meta=await gj('meta.json')}catch(e){return false}
+  const [pv,nt,vw,dp,hs,ev]=await Promise.all(['prov.json','nat.json','views.json','deep.json','history.json','events.json'].map(f=>gj(f).catch(()=>null)));
+  if(!pv||!pv.raw||!pv.raw.length)return false;
+  S.store.prov={orgs:pv.orgs||[],raw:pv.raw,ok:true};S.store.nat=nt&&nt.raw?{orgs:[],raw:nt.raw,ok:true}:{orgs:[],raw:[],ok:false,err:'ไม่มีข้อมูลระบบกลางใน snapshot'};
+  ['prov','nat'].forEach(k=>{S.lightMap[k]={};S.store[k].raw.forEach(p=>S.lightMap[k][p.id]=lkey(p))});
+  if(vw&&vw.map){Object.entries(vw.map).forEach(([id,v])=>S.views[id]={t:v[0],r:v[1]});S.sdaily=vw.daily||{};S.sviewsAt=vw.updatedAt||0}
+  if(dp&&dp.map){S.deep=dp.map;S.deepAt=dp.updatedAt}
+  S.shist=Array.isArray(hs)?hs:[];S.sevents=Array.isArray(ev)?ev:[];S.snapAt=meta.generatedAt;
+  return true}
+function serverEventsSince(){const seen=LS.get('gdhm.seenTs',0);const L=(S.sevents||[]).filter(e=>e.ts>seen);
+  if(L.length&&seen){const nw=L.filter(e=>e.type==='new').length,im=L.filter(e=>e.type==='imp').length;toast({type:'imp',t:'ระบบบันทึกความเคลื่อนไหว '+L.length+' รายการ',d:'ชุดข้อมูลใหม่ '+nw+' · นำเข้าไฟล์ '+im+' · ตั้งแต่เข้าชมครั้งก่อน'})}
+  const mx=(S.sevents||[]).reduce((m,e)=>Math.max(m,e.ts),0);if(mx)LS.set('gdhm.seenTs',mx)}
+async function fullSync(initial,keys,fromSnap){
   keys=keys||['prov','nat'];setLive('sync','กำลังซิงก์…');
-  if(keys.includes('prov'))await loadSrc('prov');if(keys.includes('nat'))await loadSrc('nat');
+  if(!fromSnap){if(keys.includes('prov'))await loadSrc('prov');if(keys.includes('nat'))await loadSrc('nat');}
   if(S.src==='nat'&&!S.store.nat.ok){S.src='prov';LS.set('gdhm.src','prov');pushEvent('err','เชื่อมต่อระบบกลางไม่ได้',S.store.nat.err||'')}
   applyScope();renderAll();
   const sameCfg=LS.get('gdhm.snapcfg','')===cfgKey();let nn=0;
@@ -1134,13 +1241,14 @@ async function fullSync(initial,keys){
     LS.set('gdhm.snap.v3.'+k,snapshotOf(k))});
   LS.set('gdhm.snapcfg',cfgKey());
   if(initial&&nn)toast({type:'info',t:'มีการเปลี่ยนแปลง '+nn+' รายการ',d:'ตั้งแต่การเข้าชมครั้งก่อน · เปิดศูนย์แจ้งเตือนเพื่อดู'});
-  S.lastSync=new Date();$('#lastSync').textContent=thTime(S.lastSync);setLive('','LIVE');renderTicker();renderSync();
+  S.lastSync=new Date();$('#lastSync').textContent=thTime(S.lastSync)+(fromSnap?' (snapshot)':'');setLive('','LIVE');renderTicker();renderSync();
 }
 async function lightCheck(){
   if(S.busy)return;S.busy=true;
   try{setLive('sync','ตรวจการเปลี่ยนแปลง…');const ch=[];
     for(const k of ['prov','nat']){let m;try{m=await fetchLight(k)}catch(e){if(k==='prov')throw e;continue}const old=S.lightMap[k]||{};
       let c=Object.keys(m).length!==Object.keys(old).length;if(!c)for(const id in m)if(old[id]!==m[id]){c=true;break}if(c)ch.push(k)}
+    try{const [hs,ev]=await Promise.all([gj('history.json'),gj('events.json')]);if(Array.isArray(hs)){S.shist=hs;renderTrend()}if(Array.isArray(ev)){const before=(S.sevents||[]).length;S.sevents=ev;if(before&&ev.length>before)serverEventsSince()}}catch(e){}
     if(ch.length)await fullSync(false,ch);else{S.lastSync=new Date();$('#lastSync').textContent=thTime(S.lastSync);setLive('','LIVE')}}
   catch(e){setLive('err','ขาดการเชื่อมต่อ');if(!S._errShown){S._errShown=true;pushEvent('err','เชื่อมต่อ GD Catalog ไม่ได้',e.message+' · จะลองใหม่อัตโนมัติ')}}
   finally{S.busy=false;S.nextAt=Date.now()+CFG.poll*60000;if(document.querySelector('.live:not(.err)'))S._errShown=false}
@@ -1167,8 +1275,9 @@ function bind(){
   $('#stPills').onclick=e=>{const b=e.target.closest('[data-st]');if(b){S.f.st=b.dataset.st;S.page=1;renderTable()}};
   $('#pager').onclick=e=>{const b=e.target.closest('[data-p]');if(b&&!b.disabled){S.page=+b.dataset.p;renderTable();$('#dsSec').scrollIntoView({behavior:'smooth'})}};
   $('#tb').onclick=e=>{const r=e.target.closest('tr[data-id]');if(r)openDs(r.dataset.id)};
-  $('#agBanner').onclick=e=>{if(e.target.closest('#abX'))setF('org','',false)};
-  $('#mx').onclick=e=>{const th=e.target.closest('th[data-k]');if(th){const k=th.dataset.k==='dist'?'pp':th.dataset.k==='grade'?'score':th.dataset.k;S.agSort={k,d:S.agSort.k===k?-S.agSort.d:(k==='title'?1:-1)};renderMatrix();return}
+  $('#agBanner').onclick=e=>{if(e.target.closest('#abX'))setF('org','',false);if(e.target.closest('#abRep'))location.hash='org-'+S.f.org;if(e.target.closest('#abLink'))copyLink(S.f.org)};
+  $('#mx').onclick=e=>{const rb=e.target.closest('[data-rep]');if(rb){e.stopPropagation();location.hash='org-'+rb.dataset.rep;return}
+    const th=e.target.closest('th[data-k]');if(th){if(th.dataset.k==='rep')return;const k=th.dataset.k==='dist'?'pp':th.dataset.k==='grade'?'score':th.dataset.k;S.agSort={k,d:S.agSort.k===k?-S.agSort.d:(k==='title'?1:-1)};renderMatrix();return}
     const r=e.target.closest('tr[data-o]');if(r){const o=S.byOrg[r.dataset.o];if(!o.n){toast({type:'info',t:o.title,d:'ยังไม่มีชุดข้อมูลในระบบบัญชีข้อมูล'});return}setF('org',S.f.org===r.dataset.o?'':r.dataset.o)}};
   $('#agQ').addEventListener('input',e=>{S.agQ=e.target.value.trim().toLowerCase();renderMatrix()});
   $('#agPills').onclick=e=>{const b=e.target.closest('[data-v]');if(b){S.agF=b.dataset.v;$$('#agPills .pill').forEach(x=>x.classList.toggle('on',x===b));renderMatrix()}};
@@ -1200,12 +1309,12 @@ function renderFeed(){
 
 /* ---------- Views (tracking_summary via package_show) ---------- */
 const dkey=(d=new Date())=>d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
-async function fetchViews(){if(S.viewsBusy||!S.ds.length)return;const vsrc=S.src;S.viewsBusy=true;const L=S.ds.slice();let i=0,done=0;const N=L.length;
+async function fetchViews(force){if(S.viewsBusy||!S.ds.length)return;if(!force&&S.sviewsAt&&Date.now()-S.sviewsAt<8*3600e3){S.viewsNext=0;renderViews();return}const vsrc=S.src;S.viewsBusy=true;const L=S.ds.slice();let i=0,done=0;const N=L.length;
   const prog=()=>{$('#vTotS').textContent='กำลังดึงยอดเข้าชม '+done+'/'+N+' ชุด…'};prog();
   const old=Object.assign({},S.views);
   const worker=async()=>{while(i<N){const d=L[i++];try{const r=await jsonp(apiOf(S.src)+'package_show?id='+encodeURIComponent(d.id)+'&include_tracking=true',25000);const t=r.tracking_summary||{};S.views[d.id]={t:+t.total||0,r:+t.recent||0}}catch(e){}done++;if(done%15===0)prog()}};
   try{await Promise.all(Array.from({length:8},worker));
-    if(vsrc!==S.src)return;LS.set('gdhm.views',S.views);
+    if(vsrc!==S.src)return;S.viewsLocal=true;LS.set('gdhm.views',S.views);
     const tot=S.ds.reduce((a,d)=>a+((S.views[d.id]||{}).t||0),0),rec=S.ds.reduce((a,d)=>a+((S.views[d.id]||{}).r||0),0);
     const VD=LS.get('gdhm.vday',{});const k=dkey()+'|'+S.src+(CFG.prov?'p':'a');VD[k]=VD[k]||{first:tot};VD[k].last=tot;VD[k].rec=rec;VD[k].at=Date.now();
     const keys=Object.keys(VD).sort();if(keys.length>400)keys.slice(0,keys.length-400).forEach(x=>delete VD[x]);LS.set('gdhm.vday',VD);
@@ -1218,13 +1327,15 @@ async function fetchViews(){if(S.viewsBusy||!S.ds.length)return;const vsrc=S.src
 let vTopMode='t';
 function renderViews(){const D=S.ds.filter(d=>d.vt!=null);if(!D.length)return;
   const tot=D.reduce((a,d)=>a+d.vt,0),rec=D.reduce((a,d)=>a+d.vr,0),zero=D.filter(d=>!d.vt).length;
-  anim($('#vTot'),tot);$('#vTotS').textContent='จาก '+fmtN(D.length)+' ชุดข้อมูล · อัปเดต '+thTime(Date.now());
+  anim($('#vTot'),tot);$('#vTotS').textContent='จาก '+fmtN(D.length)+' ชุดข้อมูล · อัปเดต '+(S.sviewsAt&&!S.viewsLocal?thDate(S.sviewsAt)+' '+thTime(S.sviewsAt):thTime(Date.now()));
   anim($('#vRec'),rec);$('#vRecS').textContent='ชุดข้อมูลที่มีผู้เข้าชมช่วงนี้ '+fmtN(D.filter(d=>d.vr>0).length)+' ชุด';
   anim($('#vZero'),zero);$('#vZeroS').textContent=pct(zero,D.length)+'% ของชุดข้อมูล — ควรประชาสัมพันธ์';
-  const VD=LS.get('gdhm.vday',{}),suf='|'+S.src+(CFG.prov?'p':'a');const days=Object.keys(VD).filter(k=>k.endsWith(suf)).sort();
-  const today=VD[dkey()+suf];let prevLast=null;const series=days.map(k=>{const v=VD[k];const inc=prevLast!=null?v.last-prevLast:v.last-v.first;prevLast=v.last;return[k.split('|')[0],Math.max(0,inc),v.rec]});
+  let series,days;const SD=S.sdaily;const sk=S.src+(CFG.prov?'':'_all');
+  if(SD&&Object.keys(SD).length){days=Object.keys(SD).filter(k=>SD[k][sk]).sort();let prev=null;series=days.map(k=>{const v=SD[k][sk];const inc=prev!=null?v[0]-prev:0;prev=v[0];return[k,Math.max(0,inc),v[1]]})}
+  else{const VD=LS.get('gdhm.vday',{}),suf='|'+S.src+(CFG.prov?'p':'a');days=Object.keys(VD).filter(k=>k.endsWith(suf)).sort();
+  let prevLast=null;series=days.map(k=>{const v=VD[k];const inc=prevLast!=null?v.last-prevLast:v.last-v.first;prevLast=v.last;return[k.split('|')[0],Math.max(0,inc),v.rec]})}
   const todayInc=series.length?series[series.length-1][1]:0;anim($('#vDay'),todayInc);
-  $('#vDayS').textContent=days.length>1?'เทียบกับยอดสะสมเมื่อวาน':'เริ่มบันทึกวันนี้ · ข้อมูลรายวันจะสะสมทุกวัน';
+  $('#vDayS').textContent=days.length>1?'เทียบกับยอดสะสมเมื่อวาน'+(SD&&Object.keys(SD).length?' (บันทึกโดยระบบ)':''):'เริ่มบันทึกวันนี้ · ข้อมูลรายวันจะสะสมทุกวัน';
   const ss=series.slice(-30);
   mk('chVDay',{type:'line',data:{labels:ss.map(x=>{const [y,m,d]=x[0].split('-');return +d+' '+TH_M[+m-1]}),datasets:[
     {label:'เข้าชมรายวัน',data:ss.map(x=>x[1]),borderColor:'#34d399',backgroundColor:'rgba(52,211,153,.15)',fill:true,tension:.35,pointRadius:3,yAxisID:'y'},
@@ -1272,6 +1383,79 @@ function renderSync(){const box=$('#syncBox');if(!S.store.prov.ok)return;
   </div>`;
   S.syncStat={pv:pv.length,pub,miss:miss.length,mm:mism.length};
 }
+
+/* ---------- Deep quality: metadata · schedule · content ---------- */
+function schTag(d){const m={late:['var(--bad)','เลยกำหนด '+fmtN(d.lateDays)+' วัน'],soon:['var(--wn)','ใกล้ครบกำหนด'],ok:['var(--ok)','ตามกำหนด'],none:['var(--tx3)','ไม่ระบุความถี่'],nodate:['var(--tx3)','ไม่มีวันที่']}[d.sched];return`<span class="tg2" style="color:${m[0]}">${m[1]}</span>`}
+function renderQuality(){const D=S.ds,n=D.length;if(!n)return;
+  // metadata
+  const avg=Math.round(D.reduce((a,d)=>a+d.md,0)/n);const fr=MDF.map(([k,l])=>[k,l,D.filter(d=>!d.mdMiss.includes(k)).length]).sort((a,b)=>a[2]-b[2]);
+  $('#qMd').innerHTML=`<div style="display:flex;align-items:baseline;gap:10px"><span class="big" style="color:${avg>=80?'var(--ok)':avg>=60?'var(--cy)':'var(--wn)'}">${avg}%</span><span class="note">ความครบถ้วนเฉลี่ย ${MDF.length} รายการ · ต่ำกว่า 70%: <b style="color:#fda4af">${D.filter(d=>d.md<70).length}</b> ชุด</span></div>
+   <p class="note" style="margin:8px 0 6px">คลิกรายการเพื่อดูชุดข้อมูลที่ยังไม่กรอก</p><div class="qbars">${fr.map(([k,l,v])=>`<div class="qb" data-mf="${k}"><span>${l}</span><div class="bar"><i style="width:${pct(v,n)}%;background:${pct(v,n)>=80?'#34d399':pct(v,n)>=50?'#22d3ee':'#f43f5e'}"></i></div><em>${pct(v,n)}%</em></div>`).join('')}</div>`;
+  // schedule
+  const c=k=>D.filter(d=>d.sched===k).length;const late=D.filter(d=>d.sched==='late').sort((a,b)=>b.lateDays-a.lateDays);
+  const months=[];const now=new Date();for(let i=0;i<6;i++){const m=new Date(now.getFullYear(),now.getMonth()+i,1);months.push([m.getFullYear(),m.getMonth()])}
+  const due=months.map(([y,m])=>D.filter(d=>d.dueTs&&new Date(d.dueTs).getFullYear()===y&&new Date(d.dueTs).getMonth()===m).length);const mx=Math.max(1,...due);
+  $('#qSch').innerHTML=`<div class="k4"><div style="--cc:var(--bad)" data-st="late"><b>${c('late')}</b><span>เลยกำหนดปรับปรุง</span></div><div style="--cc:var(--wn)" data-sch="soon"><b>${c('soon')}</b><span>ครบกำหนดใน 30 วัน</span></div><div style="--cc:var(--ok)" data-sch="ok"><b>${c('ok')}</b><span>ตามกำหนด</span></div><div style="--cc:var(--tx3)" data-mf="update_frequency_unit"><b style="color:var(--tx2)">${c('none')+c('nodate')}</b><span>ไม่ระบุความถี่/วันที่</span></div></div>
+   <p class="note" style="margin-bottom:6px">ครบกำหนดปรับปรุง 6 เดือนข้างหน้า</p><div style="display:flex;gap:6px;align-items:flex-end;height:70px;margin-bottom:12px">${due.map((v,i)=>`<div style="flex:1;text-align:center;font-size:11px;color:var(--tx2)"><div style="height:${Math.max(3,v/mx*48)}px;border-radius:5px 5px 0 0;background:linear-gradient(180deg,#fbbf24,#f59e0b)"></div>${TH_M[months[i][1]]}<br><b style="color:var(--tx)">${v}</b></div>`).join('')}</div>
+   <div class="lst">${late.slice(0,30).map(d=>`<div class="li" data-id="${d.id}"><div class="b"><b>${esc(d.title)}</b><p>${esc(d.orgTitle)} · ความถี่ ${esc(d.freq)} · ล่าสุด ${thDate(d.lastTs)}</p></div><span class="tg2" style="color:#fda4af">+${fmtN(d.lateDays)} วัน</span></div>`).join('')||'<div class="empty">ไม่มีชุดที่เลยกำหนด 🎉</div>'}</div>`;
+  // deep
+  const has=D.filter(d=>d.deep);
+  if(!has.length){$('#qDeep').innerHTML=`<div class="empty" style="padding:24px 6px">ยังไม่มีผลตรวจเนื้อข้อมูล<br><span class="note">ผลจะขึ้นอัตโนมัติเมื่อเปิดใช้ GitHub Actions (ตรวจวันละครั้ง)${S.src==='nat'?' · ระบบกลางใช้ผลของชุดข้อมูลต้นทาง':''}</span></div>`;return}
+  const yc=has.filter(d=>d.deep.yc),conf=has.filter(d=>d.deepCur),mism=has.filter(d=>d.mism),enc=has.filter(d=>d.deep.enc>0),rows=has.reduce((a,d)=>a+d.deep.rows,0);
+  $('#qDeep').innerHTML=`<div style="display:flex;align-items:baseline;gap:10px"><span class="big" style="color:var(--vi)">${fmtN(has.length)}</span><span class="note">ชุดข้อมูลที่ตรวจเนื้อหาได้ · ${fmtN(rows)} แถว${S.deepAt?' · ตรวจ '+thDate(S.deepAt):''}</span></div>
+   <div class="k4"><div style="--cc:var(--ok)"><b>${conf.length}</b><span>ยืนยันพบปี ${CFG.cur} ในเนื้อข้อมูล</span></div><div style="--cc:var(--bad)" data-st="mism"><b>${mism.length}</b><span>ระบุปี ${CFG.cur} แต่ไม่พบในข้อมูล</span></div><div style="--cc:var(--cy)"><b>${yc.length}</b><span>มีคอลัมน์ปี</span></div><div style="--cc:var(--wn)"><b>${enc.length}</b><span>หัวคอลัมน์ภาษาไทยเพี้ยน</span></div></div>
+   <div class="lst">${mism.concat(enc.filter(d=>!d.mism)).slice(0,30).map(d=>`<div class="li" data-id="${d.id}"><div class="b"><b>${esc(d.title)}</b><p>${esc(d.orgTitle)} · ${d.mism?'พบปี '+([...d.deep.ys].sort().slice(-4).join(', ')||'–'):'encoding ไม่ใช่ UTF-8'}</p></div><span class="tg2" style="color:${d.mism?'#fda4af':'#fcd34d'}">${d.mism?'ปีไม่ตรง':'ภาษาเพี้ยน'}</span></div>`).join('')||'<div class="empty">ไม่พบปัญหา 🎉</div>'}</div>`;
+}
+
+/* ---------- Trend (from collector history) ---------- */
+function renderTrend(){const H=(S.shist||[]).filter(h=>h[S.src]);const note=$('#trendNote');
+  if(H.length<2){note.textContent=H.length?'(เริ่มบันทึก '+thDate(H[0].d)+' · กราฟจะสะสมทุกวัน)':'(ข้อมูลจะเริ่มสะสมเมื่อเปิดใช้ GitHub Actions)';}
+  else note.textContent='('+thDate(H[0].d)+' – '+thDate(H[H.length-1].d)+')';
+  const L=H.slice(-120);const lab=L.map(h=>{const [y,m,d]=h.d.split('-');return +d+' '+TH_M[+m-1]});const v=k=>L.map(h=>{const x=h[S.src];return x.n?pct(x[k],x.n):null});
+  mk('chTrend',{type:'line',data:{labels:lab,datasets:[
+    {label:'ผ่านครบ 3 เกณฑ์',data:v('pass'),borderColor:'#34d399',backgroundColor:'rgba(52,211,153,.15)',fill:true,tension:.3,borderWidth:3,pointRadius:L.length<40?3:0},
+    {label:'ย้อนหลัง '+CFG.back+' ปี',data:v('c1'),borderColor:'#22d3ee',tension:.3,pointRadius:0},
+    {label:'ปี '+CFG.cur,data:v('c2'),borderColor:'#fbbf24',tension:.3,pointRadius:0},
+    {label:'Machine Readable',data:v('c3'),borderColor:'#a78bfa',tension:.3,pointRadius:0},
+    {label:'Metadata เฉลี่ย',data:L.map(h=>h[S.src].md),borderColor:'#f472b6',borderDash:[5,4],tension:.3,pointRadius:0}]},
+   options:{maintainAspectRatio:false,plugins:{legend:{position:'bottom',labels:{boxWidth:10}},tooltip:{callbacks:{label:c=>' '+c.dataset.label+': '+c.raw+'%'}}},scales:{y:{min:0,max:100,ticks:{callback:x=>x+'%'},grid:{color:'rgba(120,170,255,.07)'}},x:{grid:{display:false}}}}});
+}
+
+/* ---------- Agency report (#org-<name>) ---------- */
+function copyLink(name){const u=location.href.split('#')[0]+'#org-'+name;try{navigator.clipboard.writeText(u).then(()=>toast({type:'info',t:'คัดลอกลิงก์แล้ว',d:u}),()=>prompt('คัดลอกลิงก์',u))}catch(e){prompt('คัดลอกลิงก์',u)}}
+function openReport(name){const o=S.byOrg[name];if(!o||!o.n){toast({type:'err',t:'ไม่พบหน่วยงาน',d:name});return closeReport()}
+  const cur=CFG.cur,L=o.list.slice().sort((a,b)=>a.score-b.score||a.title.localeCompare(b.title,'th'));const now=new Date();
+  const ck=v=>v?'<span class="y">✓</span>':'<span class="n">✕</span>';
+  const late=L.filter(d=>d.sched==='late');
+  $('#rep').innerHTML=`<div class="rbar"><button id="rpLink">🔗 คัดลอกลิงก์ส่งหน่วยงาน</button><button class="pri" id="rpPrint">🖨 พิมพ์ / บันทึก PDF</button><button id="rpX">✕ ปิด</button></div>
+  <div class="page">
+   <div class="rh"><img src="${$('.logos img').src}" alt=""><div style="flex:1"><div style="font-size:13px;color:#475569">รายงานสถานะชุดข้อมูลรายหน่วยงาน · ${esc(SRCS[S.src].label)}</div><h1>${esc(o.title)}</h1><div style="font-size:13px;color:#475569">ข้อมูล ณ ${now.toLocaleDateString('th-TH',{day:'numeric',month:'long',year:'numeric'})} เวลา ${thTime(now)} น. · เกณฑ์: ย้อนหลัง ${CFG.back} ปี (${cur-CFG.back}–${cur-1}) · ปีปัจจุบัน ${cur} · Machine Readable</div></div><img src="${$('.logos .chip img').src}" alt="" style="height:44px"></div>
+   <div class="rk"><div><b>${o.n}</b><span>ชุดข้อมูล</span></div><div><b style="color:#059669">${o.pass}</b><span>ผ่านครบ 3 เกณฑ์</span></div><div><b>${o.score}%</b><span>คะแนน · เกรด ${o.grade}</span></div><div><b>${o.md}%</b><span>ความครบ Metadata</span></div><div><b style="color:${o.late?'#e11d48':'#059669'}">${o.late}</b><span>เลยกำหนดปรับปรุง</span></div></div>
+   <h2>ผลตรวจรายเกณฑ์</h2><table><tr><th>ย้อนหลัง ${CFG.back} ปี</th><th>ปี ${cur}</th><th>Machine Readable</th><th>API</th><th>DataStore</th></tr><tr><td>${o.c1}/${o.n} (${o.p1}%)</td><td>${o.c2}/${o.n} (${o.p2}%)</td><td>${o.c3}/${o.n} (${o.p3}%)</td><td>${L.filter(d=>d.chan.api).length}</td><td>${L.filter(d=>d.dsx).length}</td></tr></table>
+   <div id="rpTrendW" style="display:none"><h2>แนวโน้มคะแนน</h2><canvas id="rpTrend"></canvas></div>
+   <h2>รายการชุดข้อมูลและสิ่งที่ต้องดำเนินการ</h2>
+   <table><tr><th style="width:34%">ชุดข้อมูล</th><th>ย้อนหลัง</th><th>ปี ${cur}</th><th>MR</th><th>Metadata</th><th>กำหนดปรับปรุง</th><th style="width:30%">สิ่งที่ต้องแก้ไข</th></tr>
+   ${L.map(d=>`<tr><td><b>${esc(d.title)}</b><div style="font-size:11.5px;color:#64748b">${d.fmts.join(', ')||'ไม่มีไฟล์'} · ${CH_TX[d.channel]}</div></td><td>${ck(d.c1)}</td><td>${ck(d.c2)}</td><td>${ck(d.c3)}</td><td>${d.md}%</td>
+    <td style="font-size:12px">${d.sched==='late'?'<span class="n">เลย '+d.lateDays+' วัน</span>':d.sched==='soon'?'<span style="color:#b45309">ใกล้ครบ '+thDate(d.dueTs)+'</span>':d.sched==='ok'?'ครบ '+thDate(d.dueTs):'ไม่ระบุ'}</td>
+    <td class="fx">${d.fixes.map(esc).join('<br>')}${d.mdMiss.length?'<br>กรอก Metadata: '+d.mdMiss.map(k=>MDF.find(x=>x[0]===k)[1]).join(', '):''}${d.mism?'<br>ตรวจสอบเนื้อข้อมูลปี '+cur:''}</td></tr>`).join('')}</table>
+   <p class="rn">จัดทำโดยระบบตรวจสถานะข้อมูลอัตโนมัติ สำนักงานสถิติจังหวัดหนองบัวลำภู · โทร 0 4231 6736 · ลิงก์รายงานนี้: ${esc(location.href.split('#')[0]+'#org-'+name)}</p>
+  </div>`;
+  $('#rep').classList.add('on');document.body.classList.add('rep-on');$('#rep').scrollTop=0;
+  $('#rpX').onclick=()=>{history.replaceState(null,'',location.pathname+location.search);closeReport()};$('#rpPrint').onclick=()=>window.print();$('#rpLink').onclick=()=>copyLink(name);
+  const H=(S.shist||[]).filter(h=>h[S.src]&&h[S.src].orgs&&h[S.src].orgs[name]);
+  if(H.length>1){$('#rpTrendW').style.display='block';new Chart($('#rpTrend'),{type:'line',data:{labels:H.map(h=>thDate(h.d)),datasets:[{label:'คะแนน (%)',data:H.map(h=>h[S.src].orgs[name][2]),borderColor:'#0e7490',backgroundColor:'rgba(14,116,144,.12)',fill:true,tension:.3},{label:'Metadata (%)',data:H.map(h=>h[S.src].orgs[name][3]),borderColor:'#db2777',tension:.3}]},options:{plugins:{legend:{labels:{color:'#334155'}}},scales:{y:{min:0,max:100,ticks:{color:'#334155'}},x:{ticks:{color:'#334155'}}}}})}
+}
+function closeReport(){$('#rep').classList.remove('on');document.body.classList.remove('rep-on')}
+function routeHash(){const m=location.hash.match(/^#org-(.+)$/);if(m){const n=decodeURIComponent(m[1]);if(S.src==='nat'&&!S.byOrg[n]&&S.store.prov.ok){S.src='prov';applyScope();renderAll()}openReport(n)}else closeReport()}
+
+/* ---------- Kiosk / presentation mode ---------- */
+let kT=null,kI=0,kStart=0;const KDUR=20000;
+function kioskTargets(){return[$('.hero')].concat($$('.sec-t')).filter(Boolean)}
+function kioskStep(){const T=kioskTargets();if(kI>=T.length)kI=0;const el=T[kI];window.scrollTo({top:el.getBoundingClientRect().top+scrollY-90,behavior:'smooth'});
+  $('#kLab').textContent=el.classList.contains('hero')?'ภาพรวม':(el.querySelector('h2')||{}).textContent||'';kStart=Date.now();kI++}
+function kioskOn(){if(document.body.classList.contains('kiosk'))return;document.body.classList.add('kiosk');closeDrawers();try{document.documentElement.requestFullscreen&&document.documentElement.requestFullscreen().catch(()=>{})}catch(e){}
+  kI=0;kioskStep();kT=setInterval(()=>{const p=(Date.now()-kStart)/KDUR;$('#kProg').style.width=Math.min(100,p*100)+'%';if(p>=1)kioskStep()},200)}
+function kioskOff(){if(!document.body.classList.contains('kiosk'))return;document.body.classList.remove('kiosk');clearInterval(kT);try{document.fullscreenElement&&document.exitFullscreen()}catch(e){}}
 
 /* ---------- History ---------- */
 const HK={new:['ชุดข้อมูลใหม่','var(--cy)','#22d3ee'],imp:['นำเข้าไฟล์','var(--gd)','#fbbf24'],upd:['ปรับปรุงไฟล์','var(--vi)','#a78bfa']};
@@ -1359,7 +1543,13 @@ function reveal(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIn
   $('#tl').onclick=e=>{const r=e.target.closest('[data-id]');if(r)openDs(r.dataset.id)};
   $('#hKind').onclick=e=>{const b=e.target.closest('[data-v]');if(b){HF.k=b.dataset.v;$$('#hKind .pill').forEach(x=>x.classList.toggle('on',x===b));renderHistory()}};
   $('#hPer').onchange=e=>{HF.per=+e.target.value;renderHistory()};$('#hOrg').onchange=e=>{HF.org=e.target.value;renderHistory()};$('#hExp').onclick=expHist;
-  $('#vRef').onclick=()=>fetchViews();
+  $('#vRef').onclick=()=>fetchViews(true);
+  document.querySelector('#qMd').parentNode.parentNode.onclick=e=>{const r=e.target.closest('[data-id]');if(r)return openDs(r.dataset.id);const f=e.target.closest('[data-mf]');if(f){S.f.st='mf:'+f.dataset.mf;S.page=1;renderTable();$('#dsSec').scrollIntoView({behavior:'smooth'});return}
+    const st=e.target.closest('[data-st]');if(st){S.f.st=st.dataset.st;S.page=1;renderTable();$('#dsSec').scrollIntoView({behavior:'smooth'})}};
+  $('#btnKiosk').onclick=()=>document.body.classList.contains('kiosk')?kioskOff():kioskOn();$('#kExit').onclick=kioskOff;
+  document.addEventListener('keydown',e=>{if(/INPUT|SELECT|TEXTAREA/.test((e.target||{}).tagName||''))return;if(e.key==='k'||e.key==='K'||e.key==='f'&&!e.ctrlKey&&!e.metaKey)document.body.classList.contains('kiosk')?kioskOff():kioskOn();if(e.key==='Escape'){kioskOff();if($('#rep').classList.contains('on')){history.replaceState(null,'',location.pathname+location.search);closeReport()}}});
+  document.addEventListener('fullscreenchange',()=>{if(!document.fullscreenElement)kioskOff()});
+  addEventListener('hashchange',routeHash);
   $('#iss').onclick=e=>{if(e.target.closest('[data-stop]'))return;const c=e.target.closest('[data-i]');if(!c)return;const i=+c.dataset.i;issSel=issSel===i?null:i;issTab='all';renderIssues();if(issSel!=null)setTimeout(()=>$('#isd').scrollIntoView({behavior:'smooth',block:'nearest'}),60)};
   $('#isd').onclick=e=>{const t=e.target.closest('#issT [data-v]');if(t){issTab=t.dataset.v;renderIssueDetail();return}
     if(e.target.closest('#issX')){issSel=null;renderIssues();return}if(e.target.closest('#issExp')){expIssue();return}
@@ -1369,7 +1559,9 @@ function reveal(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIn
     toast({type:'info',t:'สลับไปยัง '+SRCS[S.src].short,d:fmtN(S.ds.length)+' ชุดข้อมูล · '+SRCS[S.src].host})};
   $('#syncBox').onclick=e=>{const t=e.target.closest('#syTabs [data-v]');if(t){syTab=t.dataset.v;renderSync();return}const r=e.target.closest('tr[data-o]');if(r&&S.src==='prov'){setF('org',r.dataset.o)}};$('#vTopT').onclick=e=>{const b=e.target.closest('[data-v]');if(b){vTopMode=b.dataset.v;$$('#vTopT .pill').forEach(x=>x.classList.toggle('on',x===b));renderViews()}};
   const msgs=['กำลังดึงรายการชุดข้อมูลทั้งหมด…','กำลังตรวจปีย้อนหลังและปีปัจจุบัน…','กำลังตรวจมาตรฐาน Machine Readable…','กำลังสรุปผลรายหน่วยงาน…'];let mi=0;const mt=setInterval(()=>{$('#loadMsg').textContent=msgs[mi++%msgs.length]},1400);
-  try{await fullSync(true);await new Promise(r=>setTimeout(r,Math.max(0,2400-(Date.now()-t0))));clearInterval(mt);$('#loader').classList.add('hide');setTimeout(()=>$('#loader').remove(),700);reveal();fetchViews();S.nextAt=Date.now()+CFG.poll*60000}
+  try{const snap=await loadSnapshot();await fullSync(true,null,snap);if(snap)serverEventsSince();
+    await new Promise(r=>setTimeout(r,Math.max(0,2400-(Date.now()-t0))));clearInterval(mt);$('#loader').classList.add('hide');setTimeout(()=>$('#loader').remove(),700);reveal();routeHash();
+    if(snap){S.nextAt=Date.now()+CFG.poll*60000;lightCheck()}else S.nextAt=Date.now()+CFG.poll*60000;fetchViews()}
   catch(e){clearInterval(mt);$('#loadMsg').textContent='ไม่สามารถเชื่อมต่อระบบบัญชีข้อมูลได้';const b=$('#loadErr');b.style.display='block';b.innerHTML=esc(e.message)+'<br><br><button class="btn pri" onclick="location.reload()">ลองใหม่</button>';setLive('err','ขาดการเชื่อมต่อ')}
 })();
 </script>
