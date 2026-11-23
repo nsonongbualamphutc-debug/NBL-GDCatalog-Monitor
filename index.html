@@ -647,7 +647,7 @@ function jsonp(url,timeout=60000){return new Promise((res,rej)=>{
   function clean(){clearTimeout(t);try{delete window[cb]}catch(e){window[cb]=undefined}s.remove()}
   window[cb]=d=>{clean();d&&d.success?res(d.result):rej(new Error('API ตอบกลับผิดพลาด'))};
   s.onerror=()=>{clean();rej(new Error('เชื่อมต่อ API ไม่ได้'))};
-  s.src=url+(url.includes('?')?'&':'?')+'callback='+cb+'&_='+Date.now();document.head.appendChild(s);
+  s.src=url+(url.includes('?')?'&':'?')+'callback='+cb;document.head.appendChild(s);
 })}
 
 const fqOf=k=>SRCS[k].fq?'&fq='+encodeURIComponent(SRCS[k].fq):'';
