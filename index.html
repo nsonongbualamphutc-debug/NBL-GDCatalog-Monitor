@@ -610,7 +610,11 @@ body::after{opacity:.25}
 @media (max-width:1300px){.hero-l>*{max-width:72%}.hero-l h2{font-size:34px}}
 @media (max-width:900px){.hero-l>*{max-width:100%}.hero-l::after{background:linear-gradient(90deg,rgba(3,8,20,.92),rgba(3,8,20,.7))}.hero-l .floatc{display:none}}
 /* page intro banners */
-.pintro{min-height:132px;position:relative;overflow:hidden;background:linear-gradient(90deg,var(--panel) 30%,color-mix(in srgb,var(--panel) 55%,transparent) 55%,transparent 80%),var(--pimg,none) right center/cover no-repeat,linear-gradient(120deg,color-mix(in srgb,var(--cy) 12%,var(--panel)),var(--panel) 60%)}
+.pintro{min-height:150px;position:relative;overflow:hidden;background:linear-gradient(120deg,color-mix(in srgb,var(--cy) 10%,var(--panel)),var(--panel) 60%)}
+.pintro::before{content:"";position:absolute;inset:0;background:var(--pimg,none) right center/auto 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 22%,#000 62%);mask-image:linear-gradient(90deg,transparent 22%,#000 62%);z-index:0;animation:pin2 18s ease-in-out infinite alternate}
+@keyframes pin2{to{background-position:right 3% center}}
+[data-theme=dark] .pintro::before{filter:brightness(.62) saturate(1.25)}
+.pintro>*{position:relative;z-index:1}
 .pintro .pi-t h2{font-size:27px}
 .pintro .pi-leg{background:color-mix(in srgb,var(--panel) 80%,transparent);padding:8px 12px;border-radius:12px;backdrop-filter:blur(8px);border:1px solid var(--line)}
 /* action center icons */
@@ -629,6 +633,62 @@ body::after{opacity:.25}
 .panel{border-radius:20px}
 .crit{border-top:3px solid var(--cc)}
 .crit .v b{color:var(--cc)}
+
+/* ================= HERO SCENE (animated, layered) ================= */
+.hero-l{min-height:540px!important;background:#06101f!important}
+.hero-l>*{z-index:3!important}
+.hero-l::after{z-index:1!important;background:linear-gradient(90deg,rgba(3,8,20,.94) 0%,rgba(3,8,20,.82) 34%,rgba(3,8,20,.35) 56%,rgba(3,8,20,0) 72%),linear-gradient(0deg,rgba(3,8,20,.7),transparent 35%)!important}
+.hero-l>.scene,.hero-l>.statue,.hero-l>.halo,.hero-l>.dbadges,.hero-l>.slcap{position:absolute;max-width:none}
+.hero-l>.scene{inset:0;z-index:0!important;overflow:hidden;border-radius:inherit}
+.slides{position:absolute;inset:0}
+.slide{position:absolute;inset:-3%;background-size:cover;background-position:center 60%;opacity:0;transition:opacity 1.8s ease;will-change:transform,opacity}
+.slide.on{opacity:1;animation:kb 10s linear forwards}
+@keyframes kb{from{transform:scale(1.03) translate(0,0)}to{transform:scale(1.16) translate(-2.5%,-1.5%)}}
+.rays{position:absolute;inset:-20%;background:conic-gradient(from 200deg at 78% -10%,transparent 0deg,rgba(255,236,200,.13) 8deg,transparent 16deg,rgba(255,236,200,.09) 26deg,transparent 36deg,rgba(255,236,200,.11) 48deg,transparent 60deg);animation:rays 14s ease-in-out infinite alternate;mix-blend-mode:screen}
+@keyframes rays{to{transform:rotate(6deg) translateX(2%)}}
+.clouds i{position:absolute;border-radius:50%;background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,0));filter:blur(6px);animation:cloud linear infinite}
+.clouds i:nth-child(1){width:420px;height:120px;top:6%;animation-duration:70s;animation-delay:-10s}
+.clouds i:nth-child(2){width:300px;height:90px;top:18%;animation-duration:95s;animation-delay:-50s;opacity:.7}
+.clouds i:nth-child(3){width:520px;height:140px;top:2%;animation-duration:120s;animation-delay:-80s;opacity:.5}
+.clouds i:nth-child(4){width:260px;height:70px;top:26%;animation-duration:85s;animation-delay:-30s;opacity:.6}
+@keyframes cloud{from{transform:translateX(-40vw)}to{transform:translateX(120vw)}}
+.bigtxt{position:absolute;right:3%;top:9%;text-align:right;font-family:'Kanit';font-weight:800;line-height:.88;letter-spacing:.04em;font-size:clamp(56px,8.2vw,150px);pointer-events:none;will-change:transform}
+.bigtxt span{display:block;color:rgba(255,255,255,.08);-webkit-text-stroke:1.6px rgba(255,255,255,.75);background:linear-gradient(100deg,transparent 30%,rgba(255,255,255,.95) 45%,rgba(103,232,249,.9) 50%,transparent 62%) -200% 0/250% 100% no-repeat;-webkit-background-clip:text;background-clip:text;animation:shine 6s ease-in-out infinite,txtIn 1.6s cubic-bezier(.2,.8,.2,1) both;text-shadow:0 0 40px rgba(103,232,249,.25)}
+.bigtxt span:nth-child(2){animation-delay:1.2s,.25s}
+@keyframes shine{0%,40%{background-position:-200% 0}70%,100%{background-position:200% 0}}
+@keyframes txtIn{from{opacity:0;transform:translateY(40px);letter-spacing:.3em}}
+.birds i{position:absolute;left:-60px;width:26px;animation:fly linear infinite}
+.birds svg{width:100%;overflow:visible;animation:flap .7s ease-in-out infinite alternate;transform-origin:center}
+.birds path{fill:none;stroke:rgba(15,25,40,.85);stroke-width:1.8;stroke-linecap:round}
+.birds .b1{top:20%;animation-duration:32s}.birds .b2{top:24%;width:20px;animation-duration:36s;animation-delay:-4s}.birds .b3{top:16%;width:16px;animation-duration:40s;animation-delay:-9s}
+.birds .b4{top:30%;width:22px;animation-duration:44s;animation-delay:-20s}.birds .b5{top:13%;width:14px;animation-duration:38s;animation-delay:-26s}
+@keyframes fly{0%{transform:translate(0,0)}25%{transform:translate(30vw,-20px)}50%{transform:translate(60vw,10px)}75%{transform:translate(90vw,-14px)}100%{transform:translate(125vw,4px)}}
+@keyframes flap{from{transform:scaleY(1)}to{transform:scaleY(-.6)}}
+.flies i{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;background:#fde68a;box-shadow:0 0 10px 2px rgba(253,230,138,.8);animation:rise linear infinite;opacity:0}
+@keyframes rise{0%{transform:translate(0,0);opacity:0}10%{opacity:1}90%{opacity:.8}100%{transform:translate(var(--dx),-480px);opacity:0}}
+.hero-l>.halo{right:calc(6% - 60px);bottom:-60px;width:520px;height:520px;z-index:2!important;border-radius:50%;background:radial-gradient(circle,rgba(253,224,71,.35),rgba(251,146,60,.12) 40%,transparent 68%);animation:halo 4s ease-in-out infinite;pointer-events:none}
+@keyframes halo{50%{transform:scale(1.08);opacity:.8}}
+.hero-l>.statue{right:6%;bottom:0;height:94%;z-index:2!important;filter:drop-shadow(0 0 28px rgba(253,224,71,.35)) drop-shadow(0 20px 30px rgba(0,0,0,.5));animation:statueIn 1.6s cubic-bezier(.2,.8,.2,1) both;transform-origin:bottom center;pointer-events:none;will-change:transform}
+@keyframes statueIn{from{opacity:0;transform:translateY(60px) scale(.94)}}
+.hero-l>.dbadges{right:calc(6% + 230px);bottom:70px;z-index:3!important;display:flex;flex-direction:column;gap:12px;pointer-events:none}
+.dbadges div{padding:9px 16px 9px 14px;border-radius:14px;background:rgba(8,18,40,.55);border:1px solid rgba(255,255,255,.22);backdrop-filter:blur(10px);box-shadow:0 10px 30px -10px rgba(0,0,0,.6);animation:bob 4s ease-in-out infinite,popIn .8s cubic-bezier(.2,.9,.3,1.4) both;min-width:130px}
+.dbadges div small{display:block;font-size:11.5px;color:#b9c8df}
+.dbadges div b{font-family:'Kanit';font-size:24px;color:#fff;line-height:1.1}
+.dbadges .db1{border-left:3px solid #22d3ee;animation-delay:0s,1s}.dbadges .db2{border-left:3px solid #a78bfa;margin-left:34px;animation-delay:-1.3s,1.2s}.dbadges .db3{border-left:3px solid #34d399;animation-delay:-2.6s,1.4s}
+@keyframes bob{50%{transform:translateY(-8px)}}
+@keyframes popIn{from{opacity:0;transform:scale(.6) translateY(20px)}}
+.hero-l>.slcap{right:26px;bottom:18px;z-index:3!important;display:flex;align-items:center;gap:10px;padding:8px 14px;border-radius:14px;background:rgba(3,8,20,.55);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(8px);color:#fff}
+.slcap b{font-family:'Kanit';font-weight:500;font-size:13.5px;display:block;line-height:1.2}
+.slcap small{font-size:11px;color:#b9c8df}
+.slcap .pin{width:12px;height:12px;border-radius:50% 50% 50% 0;transform:rotate(-45deg);background:#f43f5e;box-shadow:0 0 0 4px rgba(244,63,94,.25);animation:pinb 1.6s ease-in-out infinite}
+@keyframes pinb{50%{transform:rotate(-45deg) translate(2px,-2px)}}
+.sldots{display:flex;gap:5px;margin-left:6px}
+.sldots i{width:22px;height:4px;border-radius:3px;background:rgba(255,255,255,.25);overflow:hidden;cursor:pointer;pointer-events:auto}
+.sldots i.on::after{content:"";display:block;height:100%;background:#67e8f9;animation:prog var(--dur,7s) linear forwards}
+@keyframes prog{from{width:0}to{width:100%}}
+@media (max-width:1300px){.hero-l>.dbadges{display:none}.bigtxt{font-size:clamp(48px,7vw,100px)}}
+@media (max-width:900px){.hero-l>.statue,.hero-l>.halo,.bigtxt{display:none}}
+@media (prefers-reduced-motion:reduce){.slide.on{animation:none}}
 </style>
 </head>
 <body>
@@ -674,7 +734,18 @@ body::after{opacity:.25}
 <!-- HERO -->
 <section class="hero">
   <div class="panel hero-l">
-    <div class="floatc"><span>● จังหวัดหนองบัวลำภู</span><span>● ตรวจอัตโนมัติทุก 5 นาที</span></div>
+    <div class="scene" id="scene">
+      <div class="slides" id="slides"></div>
+      <div class="rays"></div>
+      <div class="clouds"><i></i><i></i><i></i><i></i></div>
+      <div class="bigtxt" data-depth="5"><span>NONG BUA</span><span>LAM PHU</span></div>
+      <div class="birds"><i class="b1"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b2"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b3"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b4"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i><i class="b5"><svg viewBox="0 0 24 10"><path d="M0 7 Q6 0 12 7 Q18 0 24 7"/></svg></i></div>
+      <div class="flies" id="flies"></div>
+    </div>
+    <div class="halo" data-depth="10"></div>
+    <img class="statue" src="assets/statue.webp" alt="พระบรมราชานุสาวรีย์สมเด็จพระนเรศวรมหาราช" data-depth="16" onerror="this.remove()">
+    <div class="dbadges" data-depth="24"><div class="db1"><small>ชุดข้อมูล</small><b id="dbN">–</b></div><div class="db2"><small>หน่วยงาน</small><b id="dbO">–</b></div><div class="db3"><small>ผ่านครบ</small><b id="dbP">–</b></div></div>
+    <div class="slcap"><span class="pin"></span><div><b id="slCap"></b><small id="slSub"></small></div><div class="sldots" id="slDots"></div></div>
     <span class="eyebrow">● Real-time Data Quality Check · <span id="scopeTx">เฉพาะหน่วยงานจังหวัด</span></span>
     <h2>ตรวจสถานะชุดข้อมูล<br><em>บัญชีข้อมูลจังหวัดหนองบัวลำภู</em></h2>
     <div class="srcsw" id="srcSw">
@@ -724,7 +795,7 @@ body::after{opacity:.25}
 <div class="pgfoot"><span></span><button class="btn pri" data-go="issues">ถัดไป: ตามประเด็น ›</button></div>
 </div>
 <div class="page" data-pg="issues">
-<div class="pintro rv" style="--pimg:url(assets/page-issues.png)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></div><div class="pi-t"><h2>ตรวจตามประเด็น</h2><p>แต่ละประเด็นมีชุดข้อมูลกี่ชุด เป็น API หรือไฟล์ และผ่านเกณฑ์หรือยัง · <b>คลิกการ์ดเพื่อดูรายชุด</b></p></div><div class="pi-leg"><span><i class="lg-dot" style="background:var(--ok)"></i>ผ่านครบ</span><span><i class="lg-dot" style="background:var(--wn)"></i>ผ่าน 2 ใน 3</span><span><i class="lg-dot" style="background:var(--bad)"></i>ยังไม่ผ่าน</span></div></div>
+<div class="pintro rv" style="--pimg:url(assets/page-issues.webp)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l9 5-9 5-9-5 9-5z"/><path d="M3 12l9 5 9-5"/><path d="M3 17l9 5 9-5"/></svg></div><div class="pi-t"><h2>ตรวจตามประเด็น</h2><p>แต่ละประเด็นมีชุดข้อมูลกี่ชุด เป็น API หรือไฟล์ และผ่านเกณฑ์หรือยัง · <b>คลิกการ์ดเพื่อดูรายชุด</b></p></div><div class="pi-leg"><span><i class="lg-dot" style="background:var(--ok)"></i>ผ่านครบ</span><span><i class="lg-dot" style="background:var(--wn)"></i>ผ่าน 2 ใน 3</span><span><i class="lg-dot" style="background:var(--bad)"></i>ยังไม่ผ่าน</span></div></div>
 <!-- ISSUES -->
 <section class="rv"><div class="iss" id="iss"></div><div class="panel hd isd" id="isd"></div></section>
 
@@ -732,7 +803,7 @@ body::after{opacity:.25}
 <div class="pgfoot"><button class="btn" data-go="overview">‹ ภาพรวม</button><button class="btn pri" data-go="agency">ถัดไป: ตามหน่วยงาน ›</button></div>
 </div>
 <div class="page" data-pg="agency">
-<div class="pintro rv" style="--pimg:url(assets/page-agency.png)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div><div class="pi-t"><h2>ตรวจตามหน่วยงาน</h2><p>หน่วยงานไหนทำได้ดี หน่วยงานไหนต้องเร่งรัด · <b>คลิกชื่อหน่วยงาน</b>เพื่อดูชุดข้อมูล · ปุ่ม 📄 เปิดรายงานส่งหน่วยงาน</p></div><div class="pi-leg"><span><span class="grade" style="background:linear-gradient(135deg,#059669,#34d399);color:#022c22;width:24px;height:24px;font-size:12px">A</span>≥80%</span><span><span class="grade" style="background:linear-gradient(135deg,#0891b2,#22d3ee);color:#042f2e;width:24px;height:24px;font-size:12px">B</span>≥60%</span><span><span class="grade" style="background:linear-gradient(135deg,#d97706,#fbbf24);color:#422006;width:24px;height:24px;font-size:12px">C</span>≥40%</span><span><span class="grade" style="background:linear-gradient(135deg,#be123c,#f43f5e);color:#fff;width:24px;height:24px;font-size:12px">D</span>&lt;40%</span></div></div>
+<div class="pintro rv" style="--pimg:url(assets/page-agency.webp)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/><path d="M9 21v-6h6v6"/></svg></div><div class="pi-t"><h2>ตรวจตามหน่วยงาน</h2><p>หน่วยงานไหนทำได้ดี หน่วยงานไหนต้องเร่งรัด · <b>คลิกชื่อหน่วยงาน</b>เพื่อดูชุดข้อมูล · ปุ่ม 📄 เปิดรายงานส่งหน่วยงาน</p></div><div class="pi-leg"><span><span class="grade" style="background:linear-gradient(135deg,#059669,#34d399);color:#022c22;width:24px;height:24px;font-size:12px">A</span>≥80%</span><span><span class="grade" style="background:linear-gradient(135deg,#0891b2,#22d3ee);color:#042f2e;width:24px;height:24px;font-size:12px">B</span>≥60%</span><span><span class="grade" style="background:linear-gradient(135deg,#d97706,#fbbf24);color:#422006;width:24px;height:24px;font-size:12px">C</span>≥40%</span><span><span class="grade" style="background:linear-gradient(135deg,#be123c,#f43f5e);color:#fff;width:24px;height:24px;font-size:12px">D</span>&lt;40%</span></div></div>
 <!-- AGENCY MATRIX -->
 <section class="panel hd rv">
   <div class="ctrl" style="margin-bottom:6px">
@@ -756,7 +827,7 @@ body::after{opacity:.25}
 <div class="pgfoot"><button class="btn" data-go="issues">‹ ตามประเด็น</button><button class="btn pri" data-go="quality">ถัดไป: คุณภาพข้อมูล ›</button></div>
 </div>
 <div class="page" data-pg="quality">
-<div class="pintro rv" style="--pimg:url(assets/page-quality.png)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="pi-t"><h2>คุณภาพข้อมูล</h2><p>ข้อมูลมีครบทุกปีไหม เป็นไฟล์ประเภทไหน กรอกคำอธิบายครบไหม และอัปเดตตามกำหนดหรือเปล่า</p></div></div>
+<div class="pintro rv" style="--pimg:url(assets/page-quality.webp)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div><div class="pi-t"><h2>คุณภาพข้อมูล</h2><p>ข้อมูลมีครบทุกปีไหม เป็นไฟล์ประเภทไหน กรอกคำอธิบายครบไหม และอัปเดตตามกำหนดหรือเปล่า</p></div></div>
 <!-- DEEP QUALITY -->
 <div class="sec-t rv"><h2>คุณภาพข้อมูล<span>เชิงลึก</span></h2><p>ความครบถ้วน Metadata · ปฏิทินการปรับปรุงตามความถี่ที่ประกาศ · ตรวจเนื้อข้อมูลจริงผ่าน DataStore</p></div>
 <section class="grid3 rv" style="grid-template-columns:repeat(3,minmax(0,1fr))">
@@ -783,7 +854,7 @@ body::after{opacity:.25}
 <div class="pgfoot"><button class="btn" data-go="agency">‹ ตามหน่วยงาน</button><button class="btn pri" data-go="activity">ถัดไป: ความเคลื่อนไหว ›</button></div>
 </div>
 <div class="page" data-pg="activity">
-<div class="pintro rv" style="--pimg:url(assets/page-activity.png)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="pi-t"><h2>ความเคลื่อนไหว</h2><p>ใครนำเข้าข้อมูลอะไร เมื่อไหร่ และมีคนเข้าชมข้อมูลมากน้อยแค่ไหน</p></div><div class="pi-leg"><span><i class="lg-dot" style="background:var(--cy)"></i>ชุดข้อมูลใหม่</span><span><i class="lg-dot" style="background:var(--gd)"></i>นำเข้าไฟล์</span><span><i class="lg-dot" style="background:var(--vi)"></i>ปรับปรุงไฟล์</span></div></div>
+<div class="pintro rv" style="--pimg:url(assets/page-activity.webp)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div><div class="pi-t"><h2>ความเคลื่อนไหว</h2><p>ใครนำเข้าข้อมูลอะไร เมื่อไหร่ และมีคนเข้าชมข้อมูลมากน้อยแค่ไหน</p></div><div class="pi-leg"><span><i class="lg-dot" style="background:var(--cy)"></i>ชุดข้อมูลใหม่</span><span><i class="lg-dot" style="background:var(--gd)"></i>นำเข้าไฟล์</span><span><i class="lg-dot" style="background:var(--vi)"></i>ปรับปรุงไฟล์</span></div></div>
 <!-- LIVE IMPORT FEED -->
 <div class="sec-t rv"><h2>การนำเข้าข้อมูล<span>ล่าสุด</span></h2><p>ชุดข้อมูลใหม่และไฟล์ที่หน่วยงานนำเข้า เรียงตามเวลา · ระบบแจ้งเตือนทันทีเมื่อมีรายการใหม่</p>
   <div class="feedtabs pills" id="feedTabs"><button class="pill on" data-v="res">ไฟล์ที่นำเข้า</button><button class="pill" data-v="ds">ชุดข้อมูลใหม่</button><button class="pill" data-v="upd">ปรับปรุงไฟล์</button></div></div>
@@ -831,7 +902,7 @@ body::after{opacity:.25}
 <div class="pgfoot"><button class="btn" data-go="quality">‹ คุณภาพข้อมูล</button><button class="btn pri" data-go="table">ถัดไป: ตรวจรายชุด ›</button></div>
 </div>
 <div class="page" data-pg="table">
-<div class="pintro rv" style="--pimg:url(assets/page-table.png)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><div class="pi-t"><h2>ตรวจรายชุดข้อมูล</h2><p>ค้นหาชุดข้อมูลใดก็ได้ ดูว่าผ่านเกณฑ์ไหน ขาดปีอะไร · <b>คลิกแถว</b>เพื่อดูสิ่งที่ต้องแก้ไข</p></div></div>
+<div class="pintro rv" style="--pimg:url(assets/page-table.webp)"><div class="pi-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div><div class="pi-t"><h2>ตรวจรายชุดข้อมูล</h2><p>ค้นหาชุดข้อมูลใดก็ได้ ดูว่าผ่านเกณฑ์ไหน ขาดปีอะไร · <b>คลิกแถว</b>เพื่อดูสิ่งที่ต้องแก้ไข</p></div></div>
 <!-- DATASET CHECKER -->
 <div id="dsSec"></div>
 <section class="panel hd">
@@ -1123,7 +1194,7 @@ function buildAll(){
 /* ---------- Render: hero / KPIs ---------- */
 function anim(el,to,suf=''){const from=parseFloat(el.dataset.v||0);el.dataset.v=to;const t0=performance.now(),dur=1100,dec=String(to).includes('.')?1:0;
   (function f(t){const k=Math.min(1,(t-t0)/dur),e=1-Math.pow(1-k,3);el.innerHTML=(from+(to-from)*e).toFixed(dec)+suf;if(k<1)requestAnimationFrame(f)})(t0)}
-function renderHero(){
+function renderHero(){try{const D0=S.ds;if($('#dbN')){$('#dbN').textContent=fmtN(D0.length);$('#dbO').textContent=fmtN(Object.values(S.byOrg).filter(o=>o.n).length);$('#dbP').textContent=pct(D0.filter(d=>d.status==='pass').length,D0.length)+'%'}}catch(e){}
   const D=S.ds,n=D.length,cur=CFG.cur;
   const pass=D.filter(d=>d.status==='pass').length,c1=D.filter(d=>d.c1).length,c2=D.filter(d=>d.c2).length,c3=D.filter(d=>d.c3).length;
   const orgsW=Object.values(S.byOrg).filter(o=>o.n>0).length,orgsAll=Object.keys(S.byOrg).length;
@@ -1158,9 +1229,9 @@ function renderExec(){
       // each criterion fix raises score by 100/(3n); points needed
       const need=Math.max(1,Math.ceil((tgt-o.score)*3*o.n/100));const nx=o.grade==='D'?'C':o.grade==='C'?'B':'A';return Object.assign({need,nx,miss:o.n*3-(o.c1+o.c2+o.c3)},o)})
     .sort((a,b)=>b.miss-a.miss).slice(0,7);
-  $('#exec').innerHTML=`<div class="act">${C.map(x=>{const [lv,hot]=lvl(x.n);return`<div class="ac ${hot}" style="--cc:${x.n?x.c:'var(--ok)'}" data-act="${x.k}"><img class="ico3d" src="assets/act-${x.k}.png" alt="" onerror="this.remove()"><span class="lv">● ${lv}</span>
+  $('#exec').innerHTML=`<div class="act">${C.map(x=>{const [lv,hot]=lvl(x.n);return`<div class="ac ${hot}" style="--cc:${x.n?x.c:'var(--ok)'}" data-act="${x.k}"><img class="ico3d" src="assets/act-${x.k}.webp" alt="" onerror="this.remove()"><span class="lv">● ${lv}</span>
       <div class="nb"><b>${fmtN(x.n)}</b><span>ชุด · ${pct(x.n,n)}%</span></div><h4>${x.t}</h4><p>${x.p}</p><div class="go"><span>ดูรายการที่ต้องแก้</span><i>→</i></div></div>`}).join('')}</div>
-    ${near.length?`<div class="qw" data-act="near"><img class="qwi" src="assets/act-near.png" alt="" onerror="this.remove()"><b>${fmtN(near.length)}</b><div class="t"><h4>ชุดข้อมูล "ใกล้ผ่าน" — แก้เพียง 1 จุดก็ผ่านครบ 3 เกณฑ์</h4><p>เริ่มจากกลุ่มนี้ได้ผลเร็วที่สุด · ถ้าแก้ครบ อัตราผ่านจะเพิ่มจาก ${pct(D.filter(d=>d.status==='pass').length,n)}% เป็น ${pct(D.filter(d=>d.status==='pass').length+near.length,n)}%</p></div><span class="btn pri">เริ่มแก้เลย →</span></div>`:''}`;
+    ${near.length?`<div class="qw" data-act="near"><img class="qwi" src="assets/act-near.webp" alt="" onerror="this.remove()"><b>${fmtN(near.length)}</b><div class="t"><h4>ชุดข้อมูล "ใกล้ผ่าน" — แก้เพียง 1 จุดก็ผ่านครบ 3 เกณฑ์</h4><p>เริ่มจากกลุ่มนี้ได้ผลเร็วที่สุด · ถ้าแก้ครบ อัตราผ่านจะเพิ่มจาก ${pct(D.filter(d=>d.status==='pass').length,n)}% เป็น ${pct(D.filter(d=>d.status==='pass').length+near.length,n)}%</p></div><span class="btn pri">เริ่มแก้เลย →</span></div>`:''}`;
   $('#actAgency').innerHTML=`<div class="ph"><div class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 21h18"/><path d="M5 21V7l7-4 7 4v14"/></svg></div><h3>หน่วยงานที่ควรเร่งแก้ไข</h3><small>เรียงตามจำนวนจุดที่ยังไม่ผ่าน</small></div>
     <div class="agl">${O.map((o,i)=>`<div class="ar" data-o="${esc(o.name)}"><span class="rk">${i+1}</span><div class="nm"><b>${esc(o.title)}</b><small>ผ่านครบ ${o.pass}/${o.n} ชุด · คะแนน ${o.score}%</small></div>
       <div><div class="mini" style="height:10px"><i style="width:${pct(o.pass,o.n)}%;background:#34d399"></i><i style="width:${pct(o.near,o.n)}%;background:#f59e0b"></i><i style="width:${pct(o.fail,o.n)}%;background:#f43f5e"></i></div><small style="font-size:11px;color:var(--tx3)">แก้อีก ${o.need} จุด → เกรด ${o.nx}</small></div>
@@ -1184,7 +1255,7 @@ function issueData(I){const L=S.ds.filter(d=>d.groups.includes(I.g));const n=L.l
     c1:c(d=>d.c1),c2:c(d=>d.c2),c3:c(d=>d.c3),pass:c(d=>d.status==='pass'),orgs:new Set(L.map(d=>d.org)).size,pbi:viz[0]||I.pbi}}
 function renderIssues(){const D=ISSUES.map(issueData);
   const mb=(lab,v,n,col)=>`<div class="mbar"><span>${lab}</span><div class="bar"><i style="width:${pct(v,n)}%;background:${col}"></i></div><em>${n?pct(v,n)+'%':'–'}</em></div>`;
-  $('#iss').innerHTML=D.map((x,i)=>`<div class="ic2 ${issSel===i?'on':''}" data-i="${i}" style="--cc:${x.I.c}"><div class="ic-img" style="background-image:url(assets/issue-${i+1}.png),linear-gradient(135deg,color-mix(in srgb,${x.I.c} 55%,#0b1730),color-mix(in srgb,${x.I.c} 15%,#0b1730))"><span>ประเด็นที่ ${i+1}</span></div>
+  $('#iss').innerHTML=D.map((x,i)=>`<div class="ic2 ${issSel===i?'on':''}" data-i="${i}" style="--cc:${x.I.c}"><div class="ic-img" style="background-image:url(assets/issue-${i+1}.webp),linear-gradient(135deg,color-mix(in srgb,${x.I.c} 55%,#0b1730),color-mix(in srgb,${x.I.c} 15%,#0b1730))"><span>ประเด็นที่ ${i+1}</span></div>
     <h4>${esc(x.I.g)}</h4><div class="rw"><b>${x.n}</b><span>ชุดข้อมูล · ${x.orgs} หน่วยงาน</span></div>
     <div class="chn"><span class="cb api">API ${x.api}</span><span class="cb file">ไฟล์ ${x.file}</span>${x.vizOnly?`<span class="cb viz">Viz ${x.vizOnly}</span>`:''}<span class="cb dsx">DataStore ${x.dsx}</span></div>
     ${mb('ย้อนหลัง',x.c1,x.n,'#22d3ee')}${mb('ปี '+CFG.cur,x.c2,x.n,'#fbbf24')}${mb('MR',x.c3,x.n,'#a78bfa')}
@@ -1195,7 +1266,7 @@ function renderIssueDetail(D){const box=$('#isd');if(issSel==null){box.classList
   const row=d=>`<div class="irow" data-id="${d.id}"><div class="b"><b>${esc(d.title)}</b><p>${esc(d.orgTitle)} · ${d.fmts.join(', ')||'ไม่มีไฟล์'}${d.dsx?' · DataStore':''}</p>${d.fixes.length?`<p style="color:var(--wnTx)">⚠ ${esc(d.fixes[0])}</p>`:''}</div><div class="ks" title="ย้อนหลัง · ปี ${CFG.cur} · MR"><i class="${d.c1?'y':'n'}">${d.c1?'✓':'✕'}</i><i class="${d.c2?'y':'n'}">${d.c2?'✓':'✕'}</i><i class="${d.c3?'y':'n'}">${d.c3?'✓':'✕'}</i></div></div>`;
   const ap=L.filter(d=>d.chan.api>0),fi=L.filter(d=>d.channel==='file'),vz=L.filter(d=>d.channel==='viz'||d.channel==='none');
   const so=a=>a.sort((p,q)=>p.score-q.score||p.title.localeCompare(q.title,'th'));
-  box.innerHTML=`<div class="hd2"><span class="isthumb" style="background-image:url(assets/issue-${issSel+1}.png),linear-gradient(135deg,${x.I.c},#0b1730)"></span><div><small style="color:var(--tx2)">ประเด็น</small><h3>${esc(x.I.g)}</h3></div>
+  box.innerHTML=`<div class="hd2"><span class="isthumb" style="background-image:url(assets/issue-${issSel+1}.webp),linear-gradient(135deg,${x.I.c},#0b1730)"></span><div><small style="color:var(--tx2)">ประเด็น</small><h3>${esc(x.I.g)}</h3></div>
     <div class="pills" id="issT" style="margin-left:12px"><button class="pill ${issTab==='all'?'on':''}" data-v="all">ทั้งหมด<i>${x.n}</i></button><button class="pill ${issTab==='fail'?'on':''}" data-v="fail">ยังไม่ผ่านครบ<i>${x.n-x.pass}</i></button></div>
     <div class="sp"></div><button class="btn" id="issToTbl">เปิดในตารางตรวจ</button><button class="btn" id="issExp">ส่งออก CSV ประเด็นนี้</button><button class="ib" id="issX">✕</button></div>
    <p class="note" style="margin-bottom:12px">ช่องสี ✓/✕ ด้านขวา = ย้อนหลัง ${CFG.back} ปี · ปี ${CFG.cur} · Machine Readable &nbsp;|&nbsp; <b style="color:var(--okTx)">API</b> = เชื่อมต่อผ่าน API ต้นทาง (เช่น catalogapi.nso.go.th) · <b style="color:var(--blTx)">ไฟล์</b> = อัปโหลด/ดาวน์โหลดไฟล์ · <b style="color:var(--viTx)">DataStore</b> = ไฟล์ที่ระบบเปิด Data API ให้เรียกได้</p>
@@ -1731,6 +1802,34 @@ function puzzle(){const el=$('#puz');if(!el)return;const src='data:image/png;bas
 /* ---------- Scroll reveal ---------- */
 function reveal(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.08});$$('.rv').forEach(el=>io.observe(el))}
 
+/* ---------- Hero scene: slides · parallax · fireflies ---------- */
+const SLIDES=[ // [ภาพ, ชื่อสถานที่, คำบรรยาย] — แก้/เพิ่มได้
+  ['assets/s-phuphan.webp','ภูพานน้อย','ชมเมืองหนองบัวลำภูยามเย็น'],
+  ['assets/hero.webp','เมืองแห่งดอกบัว','หนองบัวลำภู · ข้อมูลเพื่อการพัฒนา'],
+  ['assets/s-phachom.webp','ผาชมเมือง','จุดชมวิวทิวทัศน์จังหวัดหนองบัวลำภู'],
+  ['assets/s-waterfall.webp','น้ำตกเฒ่าโต้','แหล่งท่องเที่ยวเชิงธรรมชาติ'],
+  ['assets/s-night.webp','หนองบัวลำภูยามค่ำคืน','ท่องเที่ยวเชิงวัฒนธรรม'],
+  ['assets/s-shrine.webp','สถานที่ศักดิ์สิทธิ์คู่เมือง','มรดกทางวัฒนธรรม']];
+const SL_DUR=7000;let slI=-1,slT=null;
+function heroInit(){const box=$('#slides');if(!box)return;
+  box.innerHTML=SLIDES.map((x,i)=>`<div class="slide" style="background-image:url('${x[0]}')"></div>`).join('');
+  $('#slDots').innerHTML=SLIDES.map((x,i)=>`<i data-sl="${i}" style="--dur:${SL_DUR/1000}s"></i>`).join('');
+  $('#slDots').onclick=e=>{const d=e.target.closest('[data-sl]');if(d){showSlide(+d.dataset.sl)}};
+  SLIDES.forEach(x=>{const im=new Image();im.src=x[0]});showSlide(0);
+  // fireflies
+  $('#flies').innerHTML=Array.from({length:26},()=>`<i style="left:${Math.random()*100}%;--dx:${(Math.random()-.5)*160}px;animation-duration:${8+Math.random()*10}s;animation-delay:${-Math.random()*14}s;transform:scale(${.5+Math.random()})"></i>`).join('');
+  // parallax
+  const hero=$('.hero-l'),L=$$('.hero-l [data-depth]');let tx=0,ty=0,cx=0,cy=0;
+  hero.addEventListener('mousemove',e=>{const r=hero.getBoundingClientRect();tx=(e.clientX-r.left)/r.width-.5;ty=(e.clientY-r.top)/r.height-.5});
+  hero.addEventListener('mouseleave',()=>{tx=0;ty=0});
+  (function loop(){cx+=(tx-cx)*.06;cy+=(ty-cy)*.06;L.forEach(el=>{const d=+el.dataset.depth;el.style.translate=`${-cx*d}px ${-cy*d*.6}px`});requestAnimationFrame(loop)})();
+}
+function showSlide(i){const S2=$$('#slides .slide');if(!S2.length)return;slI=(i+S2.length)%S2.length;
+  S2.forEach((el,k)=>{if(k===slI){el.classList.remove('on');void el.offsetWidth;el.classList.add('on')}else el.classList.remove('on')});
+  $$('#slDots i').forEach((d,k)=>{d.classList.remove('on');if(k===slI){void d.offsetWidth;d.classList.add('on')}});
+  $('#slCap').textContent=SLIDES[slI][1];$('#slSub').textContent=SLIDES[slI][2];
+  clearTimeout(slT);slT=setTimeout(()=>showSlide(slI+1),SL_DUR)}
+
 /* ---------- Pages ---------- */
 const PAGES=['overview','issues','agency','quality','activity','table'];let curPage='overview';
 function setPage(pg,keepScroll){if(!PAGES.includes(pg))pg='overview';curPage=pg;
@@ -1744,7 +1843,7 @@ function setTheme(t){document.documentElement.dataset.theme=t;try{localStorage.s
 
 /* ---------- Boot ---------- */
 (async function boot(){
-  puzzle();bgFX();bind();updBadge();tickClock();setInterval(tickClock,1000);const t0=Date.now();
+  puzzle();bgFX();heroInit();bind();updBadge();tickClock();setInterval(tickClock,1000);const t0=Date.now();
   $('#feedTabs').onclick=e=>{const b=e.target.closest('[data-v]');if(b){feedMode=b.dataset.v;$$('#feedTabs .pill').forEach(x=>x.classList.toggle('on',x===b));renderFeed()}};
   $('#feed').onclick=e=>{const r=e.target.closest('[data-id]');if(r)openDs(r.dataset.id)};
   $('#tl').onclick=e=>{const r=e.target.closest('[data-id]');if(r)openDs(r.dataset.id)};
