@@ -353,6 +353,47 @@ table.ds{width:100%;border-collapse:collapse;min-width:1250px}
 .syi{display:flex;gap:10px;align-items:center;padding:9px 12px;border-radius:10px;border:1px solid var(--line);margin-bottom:6px;font-size:13px}
 .syi .b{flex:1;min-width:0}.syi .b b{display:block;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.syi .b p{color:var(--tx2);font-size:12px}
 @media (max-width:1100px){.hsum.five{grid-template-columns:repeat(2,1fr)}}
+/* issues */
+.iss{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.ic2{position:relative;padding:16px 16px 14px;border-radius:16px;background:linear-gradient(160deg,color-mix(in srgb,var(--cc) 16%,rgba(13,27,52,.8)),rgba(10,20,40,.85));border:1px solid color-mix(in srgb,var(--cc) 35%,transparent);cursor:pointer;transition:.25s;overflow:hidden}
+.ic2:hover{transform:translateY(-3px);box-shadow:0 14px 34px -12px color-mix(in srgb,var(--cc) 60%,transparent)}
+.ic2.on{border-color:var(--cc);box-shadow:0 0 0 1px var(--cc),0 0 30px -6px var(--cc)}
+.ic2 .em{position:absolute;right:-8px;top:-10px;font-size:64px;opacity:.16;transform:rotate(-8deg)}
+.ic2 h4{font-size:15.5px;font-weight:600;line-height:1.3;min-height:40px;padding-right:30px}
+.ic2 .rw{display:flex;align-items:baseline;gap:8px;margin:8px 0 10px}
+.ic2 .rw b{font-family:'Kanit';font-size:34px;line-height:1;color:#fff}
+.ic2 .rw span{font-size:12.5px;color:var(--tx2)}
+.chn{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.cb{display:inline-flex;align-items:center;gap:5px;font-family:'Kanit';font-size:12px;padding:3px 9px;border-radius:7px;border:1px solid}
+.cb.api{color:#6ee7b7;border-color:rgba(52,211,153,.5);background:rgba(52,211,153,.1)}
+.cb.file{color:#93c5fd;border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.1)}
+.cb.viz{color:#fcd34d;border-color:rgba(245,158,11,.5);background:rgba(245,158,11,.1)}
+.cb.dsx{color:#c4b5fd;border-color:rgba(139,92,246,.5);background:rgba(139,92,246,.1)}
+.cb.none{color:var(--tx3);border-color:var(--line)}
+.mbar{display:grid;grid-template-columns:62px 1fr 42px;gap:6px;align-items:center;font-size:11.5px;color:var(--tx2);margin-top:4px}
+.mbar .bar{margin:0;height:6px}
+.mbar em{font-style:normal;text-align:right;font-family:'JetBrains Mono';font-size:11px;color:var(--tx)}
+.ic2 .ft2{display:flex;justify-content:space-between;align-items:center;margin-top:10px;font-size:12px}
+.ic2 .ft2 a{font-family:'Kanit';font-size:12px;padding:3px 10px;border-radius:999px;border:1px solid var(--line2);color:var(--tx)}
+.ic2 .ft2 a:hover{border-color:var(--cc)}
+.isd{margin-top:16px;display:none}
+.isd.on{display:block;animation:tin2 .4s ease}
+@keyframes tin2{from{opacity:0;transform:translateY(-8px)}}
+.isd .hd2{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.isd .hd2 h3{font-size:19px;font-weight:600}
+.isd .cols{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.isd .col{border:1px solid var(--line);border-radius:14px;padding:12px;background:rgba(255,255,255,.02);max-height:560px;overflow:auto}
+.isd .col h5{font-family:'Kanit';font-size:14px;font-weight:500;margin-bottom:10px;display:flex;align-items:center;gap:8px;position:sticky;top:-12px;background:#0b1730;padding:6px 0;z-index:1}
+.irow{display:flex;gap:10px;align-items:flex-start;padding:9px 10px;border-radius:10px;border:1px solid var(--line);margin-bottom:6px;cursor:pointer;transition:.15s;background:rgba(4,9,20,.3)}
+.irow:hover{border-color:var(--line2);background:rgba(34,211,238,.05)}
+.irow .b{flex:1;min-width:0}
+.irow .b b{display:block;font-size:13.5px;font-weight:600;line-height:1.35}
+.irow .b p{font-size:11.5px;color:var(--tx3);margin-top:2px}
+.irow .ks{display:flex;gap:3px;flex:none}
+.irow .ks i{width:20px;height:20px;border-radius:6px;display:grid;place-items:center;font-style:normal;font-size:11px;font-weight:700}
+.irow .ks i.y{background:rgba(52,211,153,.18);color:var(--ok)}.irow .ks i.n{background:rgba(244,63,94,.15);color:var(--bad)}
+@media (max-width:1280px){.iss{grid-template-columns:repeat(2,minmax(0,1fr))}.isd .cols{grid-template-columns:1fr}}
+@media (max-width:700px){.iss{grid-template-columns:1fr}}
 /* history timeline */
 .tl{position:relative;padding-left:26px;max-height:720px;overflow:auto}
 .tl::before{content:"";position:absolute;left:9px;top:4px;bottom:4px;width:2px;background:linear-gradient(var(--cy),var(--vi),transparent)}
@@ -462,6 +503,10 @@ footer b{color:var(--tx2)}
 <div class="sec-t rv"><span class="no">01</span><h2>สรุปสำหรับ<span>ผู้บริหาร</span></h2><p>ประมวลผลอัตโนมัติจากข้อมูลล่าสุด</p></div>
 <section class="rv exec" id="exec"></section>
 
+<!-- ISSUES -->
+<div class="sec-t rv"><span class="no">01·P</span><h2>ตรวจตาม<span>ประเด็น</span></h2><p>ประเด็นข้อมูลเชิงพื้นที่ (Visualization จังหวัด) · แยกช่องทาง API / ไฟล์ / Visualization และผลตามเกณฑ์ · คลิกการ์ดเพื่อดูรายชุด</p></div>
+<section class="rv"><div class="iss" id="iss"></div><div class="panel hd isd" id="isd"></div></section>
+
 <!-- CHARTS -->
 <div class="sec-t rv"><span class="no">02</span><h2>ภาพรวม<span>ความครบถ้วน</span></h2><p>ปีที่มีข้อมูล · ประเภทไฟล์ข้อมูล · ระดับการผ่านเกณฑ์</p></div>
 <section class="rv grid3">
@@ -545,6 +590,7 @@ footer b{color:var(--tx2)}
     <select id="fGrp"><option value="">กลุ่มข้อมูลทั้งหมด</option></select>
     <select id="fFmt"><option value="">ประเภทไฟล์ทั้งหมด</option></select>
     <select id="fType"><option value="">ประเภทข้อมูลทั้งหมด</option></select>
+    <select id="fChan"><option value="">ทุกช่องทาง</option><option value="api">มี API</option><option value="file">ไฟล์ (ไม่มี API)</option><option value="viz">Visualization/ลิงก์เว็บเท่านั้น</option><option value="dsx">เปิด Data API (DataStore)</option></select>
     <button class="btn" id="clr">ล้างตัวกรอง</button>
     <button class="btn pri" id="exp"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="M7 10l5 5 5-5"/><path d="M12 15V3"/></svg>ส่งออก CSV</button>
     <button class="btn" onclick="window.print()">พิมพ์</button>
@@ -558,7 +604,7 @@ footer b{color:var(--tx2)}
       <th style="width:28%">ชุดข้อมูล / หน่วยงานที่รับผิดชอบ</th>
       <th>กลุ่มข้อมูล</th>
       <th id="thYrs">ปีที่มีข้อมูล</th>
-      <th>ประเภทไฟล์ข้อมูล</th>
+      <th>ประเภทไฟล์ / ช่องทาง</th>
       <th class="c">ย้อนหลัง</th><th class="c" id="thCur">ปีปัจจุบัน</th><th class="c">MR</th>
       <th class="c">ผล</th>
     </tr></thead><tbody id="tb"></tbody></table>
@@ -624,7 +670,7 @@ const DEF={cur:2569,back:5,poll:5,strict:false,xls:true,sound:true,notif:false,p
 let CFG=Object.assign({},DEF,LS.get('gdhm.cfg',{}));
 
 const S={raw:[],ds:[],orgs:{},orgList:[],byOrg:{},groups:{},lastSync:null,lightMap:{prov:{},nat:{}},
-  f:{q:'',org:'',grp:'',fmt:'',type:'',st:'all'},page:1,per:40,agSort:{k:'score',d:-1},agF:'all',agQ:'',
+  f:{q:'',org:'',grp:'',fmt:'',type:'',chan:'',st:'all'},page:1,per:40,agSort:{k:'score',d:-1},agF:'all',agQ:'',
   events:LS.get('gdhm.events',[]),unread:LS.get('gdhm.unread',0),nextAt:0,busy:false,charts:{},hist:[],store:{prov:{orgs:[],raw:[],ok:false},nat:{orgs:[],raw:[],ok:false}},src:LS.get('gdhm.src','prov'),views:LS.get('gdhm.views',{}),allOrgs:[],allRaw:[],excluded:{orgs:0,ds:0},viewsNext:0,viewsBusy:false};
 
 /* ---------- utils ---------- */
@@ -694,6 +740,24 @@ function starOf(f){return STAR[f]||1}
 const MR_OPEN=new Set(['CSV','TSV','JSON','GEOJSON','XML','KML','API','ODS','SHP','WMS','WFS','RDF','TTL','JSON-LD','JSONLD']);
 function isMR(f){return MR_OPEN.has(f)||(CFG.xls&&(f==='XLS'||f==='XLSX'))}
 
+/* ---------- Channel: API / ไฟล์ / Visualization ---------- */
+const FILE_EXT=/\.(csv|tsv|xlsx?|ods|json|geojson|xml|pdf|docx?|pptx?|png|jpe?g|gif|zip|rar|7z|shp|kml|kmz|txt)$/i;
+function chanOf(r){const f=normFmt(r.format),u=String(r.url||'');const path=u.split(/[?#]/)[0];
+  if(f==='API'||/\/api\/|\/api\?|\/api$|catalogapi\.|apis\d*\.|datastore_search|\/services?\/|\/rest\/|[?&]format=(json|csv|xml)/i.test(u))return'api';
+  if(r.url_type==='upload'||FILE_EXT.test(path)||(/download/i.test(u)&&f!=='HTML'))return'file';
+  if(f==='HTML'||/powerbi|tableau|datastudio|lookerstudio|dvis|\/views\//i.test(u))return'viz';
+  return['CSV','XLSX','XLS','JSON','XML','PDF','DOCX','DOC','PNG','JPG','RAR','ZIP','TXT'].includes(f)?'file':'viz'}
+const CH_TX={api:'API',file:'ไฟล์',viz:'Visualization',none:'ไม่มีทรัพยากร'};
+const ISSUES=[
+  {g:'การพัฒนาคุณภาพชีวิต',em:'🏡',c:'#22d3ee',pbi:'https://app.powerbi.com/view?r=eyJrIjoiNzFlNjMxOGYtZDBjMC00M2RlLWEzYjYtODA4ZmI2YmJkOWI2IiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
+  {g:'การบริหารงบประมาณ',em:'💰',c:'#34d399',pbi:'https://app.powerbi.com/view?r=eyJrIjoiNzFlNjMxOGYtZDBjMC00M2RlLWEzYjYtODA4ZmI2YmJkOWI2IiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
+  {g:'การส่งเสริมการท่องเที่ยว และการค้า (OTOP)',em:'🛍️',c:'#f472b6',pbi:'https://app.powerbi.com/view?r=eyJrIjoiNzFlNjMxOGYtZDBjMC00M2RlLWEzYjYtODA4ZmI2YmJkOWI2IiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
+  {g:'การจัดการขยะมูลฝอย',em:'♻️',c:'#a3e635',pbi:'https://app.powerbi.com/view?r=eyJrIjoiNzFlNjMxOGYtZDBjMC00M2RlLWEzYjYtODA4ZmI2YmJkOWI2IiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
+  {g:'การบริหารจัดการภัยพิบัติ',em:'🚨',c:'#f43f5e',pbi:'https://app.powerbi.com/view?r=eyJrIjoiNzFlNjMxOGYtZDBjMC00M2RlLWEzYjYtODA4ZmI2YmJkOWI2IiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
+  {g:'เศรษฐกิจฐานราก',em:'🌾',c:'#fbbf24',pbi:'https://app.powerbi.com/view?r=eyJrIjoiOTE5ZjNhZGMtNDcyMC00N2VmLTg5MDQtMTUwYzEzOTYyOGNjIiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
+  {g:'ท่องเที่ยวเชิงวัฒนธรรม',em:'🛕',c:'#c084fc',pbi:'https://app.powerbi.com/view?r=eyJrIjoiMmQ1MjY1NTktMWRmNi00MmExLWFmYjQtMjUwNWYyN2QwYjAxIiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
+  {g:'การบริหารจัดการน้ำด้านภัยแล้ง',em:'💧',c:'#38bdf8',pbi:'https://app.powerbi.com/view?r=eyJrIjoiOTg0N2VjNmUtM2Q3Zi00ODNhLWIwODQtYzhlZjJkNDc1ZThiIiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'}];
+
 /* ---------- Analyze one dataset ---------- */
 function analyze(p){
   const cur=CFG.cur,back=CFG.back,maxY=cur;
@@ -729,14 +793,17 @@ function analyze(p){
   const c3=mrList.length>0;
   const score=(c1?1:0)+(c2?1:0)+(c3?1:0);
   const status=score===3?'pass':score===2?'near':'fail';
-  const groups=(p.groups||[]).map(g=>g.title||g.display_name||g.name).filter(Boolean);
+  let groups=(p.groups||[]).map(g=>g.title||g.display_name||g.name).filter(Boolean);
+  if(!groups.length&&p._src)groups=(p._src.groups||[]).map(g=>g.title||g.display_name||g.name).filter(Boolean);
+  const chan={api:0,file:0,viz:0};let dsx=0;res.forEach(r=>{r._ch=chanOf(r);chan[r._ch]++;if(r.datastore_active)dsx++});
+  const channel=chan.api?'api':chan.file?'file':chan.viz?'viz':'none';
   const fixes=[];
   if(!c1)fixes.push('เพิ่มข้อมูลย้อนหลังปี '+missBack.join(', ')+(CFG.strict?' (ระบุปีในชื่อไฟล์)':' หรือปรับปรุงช่วงปีใน metadata ให้ถูกต้อง'));
   if(!c2)fixes.push('นำเข้าข้อมูลปี '+cur+' (ระบุปี '+cur+' ในชื่อไฟล์ หรือปรับ "ปีสุดท้ายของข้อมูล" เป็น '+cur+')');
   if(!c3)fixes.push(uniq.length?'เพิ่มไฟล์รูปแบบ CSV / JSON'+(CFG.xls?' / XLSX':'')+' (ปัจจุบันมีเพียง '+uniq.join(', ')+')':'ยังไม่มีไฟล์ข้อมูล (resource) — ให้อัปโหลดไฟล์ CSV');
   return {id:p.id,name:p.name,title:p.title||p.name,org:orgName,orgTitle,groups,type:p.data_type||'ไม่ระบุ',
     years,meta,rs,missBack,req,c1,c2,c3,curVia,upd,score,status,fmts:uniq,fmtCount,declared,star,mrList,
-    nres:res.length,res,fy,ly,anomalies,fixes,mm:p.metadata_modified,mc:p.metadata_created,lud:p.last_updated_date,
+    nres:res.length,res,chan,channel,dsx,fy,ly,anomalies,fixes,mm:p.metadata_modified,mc:p.metadata_created,lud:p.last_updated_date,
     freq:[p.update_frequency_interval,p.update_frequency_unit].filter(Boolean).join(' '),geo:p.geo_coverage,maint:p.maintainer,email:p.maintainer_email,src:p.data_source,url:(p._site||SITE)+'/dataset/'+p.name,srcPkg:p._src||null,
     search:((p.title||'')+' '+orgTitle+' '+groups.join(' ')+' '+(p.name||'')).toLowerCase()};
 }
@@ -807,6 +874,37 @@ function renderTicker(){
   $('#tick').innerHTML=(items.length?items:['ข้อมูลทุกชุดผ่านเกณฑ์']).map(s=>`<span>${s}</span>`).join('');
 }
 
+/* ---------- Issues ---------- */
+let issSel=null,issTab='all';
+function issueData(I){const L=S.ds.filter(d=>d.groups.includes(I.g));const n=L.length,c=f=>L.filter(f).length;
+  const viz=[];L.forEach(d=>d.res.forEach(r=>{if(r._ch==='viz'&&/powerbi/i.test(r.url||''))viz.push(r.url)}));
+  return{I,L,n,api:c(d=>d.chan.api>0),file:c(d=>d.channel==='file'),vizOnly:c(d=>d.channel==='viz'||d.channel==='none'),dsx:c(d=>d.dsx>0),
+    c1:c(d=>d.c1),c2:c(d=>d.c2),c3:c(d=>d.c3),pass:c(d=>d.status==='pass'),orgs:new Set(L.map(d=>d.org)).size,pbi:viz[0]||I.pbi}}
+function renderIssues(){const D=ISSUES.map(issueData);
+  const mb=(lab,v,n,col)=>`<div class="mbar"><span>${lab}</span><div class="bar"><i style="width:${pct(v,n)}%;background:${col}"></i></div><em>${n?pct(v,n)+'%':'–'}</em></div>`;
+  $('#iss').innerHTML=D.map((x,i)=>`<div class="ic2 ${issSel===i?'on':''}" data-i="${i}" style="--cc:${x.I.c}"><span class="em">${x.I.em}</span>
+    <h4>${esc(x.I.g)}</h4><div class="rw"><b>${x.n}</b><span>ชุดข้อมูล · ${x.orgs} หน่วยงาน</span></div>
+    <div class="chn"><span class="cb api">API ${x.api}</span><span class="cb file">ไฟล์ ${x.file}</span>${x.vizOnly?`<span class="cb viz">Viz ${x.vizOnly}</span>`:''}<span class="cb dsx">DataStore ${x.dsx}</span></div>
+    ${mb('ย้อนหลัง',x.c1,x.n,'#22d3ee')}${mb('ปี '+CFG.cur,x.c2,x.n,'#fbbf24')}${mb('MR',x.c3,x.n,'#a78bfa')}
+    <div class="ft2"><span class="sc ${x.n&&x.pass===x.n?'pass':pct(x.pass,x.n)>=50?'near':'fail'}">ผ่านครบ ${x.pass}/${x.n}</span><a href="${esc(x.pbi)}" target="_blank" rel="noopener" data-stop>Visualization ↗</a></div></div>`).join('');
+  renderIssueDetail(D)}
+function renderIssueDetail(D){const box=$('#isd');if(issSel==null){box.classList.remove('on');return}D=D||ISSUES.map(issueData);const x=D[issSel];box.classList.add('on');box.style.setProperty('--cc',x.I.c);
+  let L=x.L.slice();if(issTab==='fail')L=L.filter(d=>d.status!=='pass');
+  const row=d=>`<div class="irow" data-id="${d.id}"><div class="b"><b>${esc(d.title)}</b><p>${esc(d.orgTitle)} · ${d.fmts.join(', ')||'ไม่มีไฟล์'}${d.dsx?' · DataStore':''}</p>${d.fixes.length?`<p style="color:#fcd34d">⚠ ${esc(d.fixes[0])}</p>`:''}</div><div class="ks" title="ย้อนหลัง · ปี ${CFG.cur} · MR"><i class="${d.c1?'y':'n'}">${d.c1?'✓':'✕'}</i><i class="${d.c2?'y':'n'}">${d.c2?'✓':'✕'}</i><i class="${d.c3?'y':'n'}">${d.c3?'✓':'✕'}</i></div></div>`;
+  const ap=L.filter(d=>d.chan.api>0),fi=L.filter(d=>d.channel==='file'),vz=L.filter(d=>d.channel==='viz'||d.channel==='none');
+  const so=a=>a.sort((p,q)=>p.score-q.score||p.title.localeCompare(q.title,'th'));
+  box.innerHTML=`<div class="hd2"><span style="font-size:30px">${x.I.em}</span><div><small style="color:var(--tx2)">ประเด็น</small><h3>${esc(x.I.g)}</h3></div>
+    <div class="pills" id="issT" style="margin-left:12px"><button class="pill ${issTab==='all'?'on':''}" data-v="all">ทั้งหมด<i>${x.n}</i></button><button class="pill ${issTab==='fail'?'on':''}" data-v="fail">ยังไม่ผ่านครบ<i>${x.n-x.pass}</i></button></div>
+    <div class="sp"></div><button class="btn" id="issToTbl">เปิดในตารางตรวจ</button><button class="btn" id="issExp">ส่งออก CSV ประเด็นนี้</button><button class="ib" id="issX">✕</button></div>
+   <p class="note" style="margin-bottom:12px">ช่องสี ✓/✕ ด้านขวา = ย้อนหลัง ${CFG.back} ปี · ปี ${CFG.cur} · Machine Readable &nbsp;|&nbsp; <b style="color:#6ee7b7">API</b> = เชื่อมต่อผ่าน API ต้นทาง (เช่น catalogapi.nso.go.th) · <b style="color:#93c5fd">ไฟล์</b> = อัปโหลด/ดาวน์โหลดไฟล์ · <b style="color:#c4b5fd">DataStore</b> = ไฟล์ที่ระบบเปิด Data API ให้เรียกได้</p>
+   <div class="cols">
+    <div class="col"><h5><span class="cb api">API</span>${ap.length} ชุด</h5>${so(ap).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
+    <div class="col"><h5><span class="cb file">ไฟล์</span>${fi.length} ชุด</h5>${so(fi).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
+    <div class="col"><h5><span class="cb viz">Visualization / ลิงก์</span>${vz.length} ชุด</h5>${so(vz).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
+   </div>`}
+function expIssue(){const x=issueData(ISSUES[issSel]);dl('ประเด็น_'+x.I.g.replace(/[^\u0E00-\u0E7Fa-zA-Z0-9]+/g,'_')+'_'+stamp()+'.csv',[['ประเด็น','ชุดข้อมูล','หน่วยงานที่รับผิดชอบ','ช่องทาง','API','ไฟล์','Visualization','DataStore','ประเภทไฟล์','ย้อนหลัง '+CFG.back+' ปี','ปี '+CFG.cur,'Machine Readable','สถานะ','สิ่งที่ต้องแก้ไข','ลิงก์'],
+  ...x.L.map(d=>[x.I.g,d.title,d.orgTitle,CH_TX[d.channel],d.chan.api,d.chan.file,d.chan.viz,d.dsx,d.fmts.join(' '),d.c1?'ผ่าน':'ไม่ผ่าน',d.c2?'ผ่าน':'ไม่ผ่าน',d.c3?'ผ่าน':'ไม่ผ่าน',d.score+'/3',d.fixes.join(' ; '),d.url])])}
+
 /* ---------- Charts ---------- */
 Chart.defaults.color='#9fb3d1';Chart.defaults.font.family='Sarabun';Chart.defaults.font.size=12.5;Chart.defaults.borderColor='rgba(120,170,255,.1)';
 const FCOL={CSV:'#22d3ee',XLSX:'#3b82f6',XLS:'#60a5fa',JSON:'#a78bfa',XML:'#c084fc',API:'#34d399',PDF:'#f43f5e',HTML:'#f59e0b',DOCX:'#fb7185',PNG:'#fda4af',RAR:'#94a3b8','ไม่ระบุ':'#475569'};
@@ -872,7 +970,7 @@ function renderMatrix(){
 /* ---------- Dataset table ---------- */
 const STF=[['all','ทั้งหมด'],['pass','✓ ผ่านครบ 3 เกณฑ์'],['near','◐ ผ่าน 2/3'],['fail','✕ ผ่าน ≤1'],['c1','ขาดย้อนหลัง'],['c2','ขาดปีปัจจุบัน'],['c3','ไม่ Machine Readable'],['anom','metadata ผิดปกติ']];
 function stMatch(d,s){return s==='all'||(s==='c1'?!d.c1:s==='c2'?!d.c2:s==='c3'?!d.c3:s==='anom'?d.anomalies.some(a=>!a.startsWith('ไม่ได้ระบุ')):d.status===s)}
-function baseFiltered(){const f=S.f;return S.ds.filter(d=>(!f.q||d.search.includes(f.q))&&(!f.org||d.org===f.org)&&(!f.grp||(f.grp==='(ไม่ระบุกลุ่ม)'?!d.groups.length:d.groups.includes(f.grp)))&&(!f.fmt||d.fmts.includes(f.fmt))&&(!f.type||d.type===f.type))}
+function baseFiltered(){const f=S.f;return S.ds.filter(d=>(!f.q||d.search.includes(f.q))&&(!f.org||d.org===f.org)&&(!f.grp||(f.grp==='(ไม่ระบุกลุ่ม)'?!d.groups.length:d.groups.includes(f.grp)))&&(!f.fmt||d.fmts.includes(f.fmt))&&(!f.type||d.type===f.type)&&(!f.chan||(f.chan==='dsx'?d.dsx>0:d.channel===f.chan)))}
 function filtered(){return baseFiltered().filter(d=>stMatch(d,S.f.st)).sort((a,b)=>a.score-b.score||a.orgTitle.localeCompare(b.orgTitle,'th')||a.title.localeCompare(b.title,'th'))}
 function yrStrip(d){const cur=CFG.cur;let h='';for(let y=cur-CFG.back;y<=cur;y++){const has=d.years.has(y),isCur=y===cur;
   let cls='yr'+(isCur?' cur':'');let tip=y+': ';
@@ -880,6 +978,7 @@ function yrStrip(d){const cur=CFG.cur;let h='';for(let y=cur-CFG.back;y<=cur;y++
   else if(isCur&&d.c2&&d.curVia==='upd'){cls+=' upd';tip+='อนุมานจากวันที่ปรับปรุงล่าสุด'}
   else{cls+=' miss';tip+='ไม่พบข้อมูล'}
   h+=`<div class="${cls}" title="${tip}"><b>${String(y).slice(2)}</b>${has?'✓':(isCur&&d.curVia==='upd'?'~':'✕')}</div>`}return`<div class="yrs">${h}</div>`}
+function chanChips(d){const o=['api','file','viz'].filter(k=>d.chan[k]).map(k=>`<span class="cb ${k}">${CH_TX[k]} ×${d.chan[k]}</span>`);if(d.dsx)o.push(`<span class="cb dsx" title="เปิดใช้ DataStore — เรียกผ่าน Data API ได้">DataStore ×${d.dsx}</span>`);return o.length?`<div class="chn" style="margin:5px 0 0">${o.join('')}</div>`:'<span class="cb none">ไม่มีทรัพยากร</span>'}
 function fmtChips(d){if(!d.fmts.length)return'<span class="ft st1">ไม่มีไฟล์</span>';return`<div class="fm">${d.fmts.map(f=>`<span class="ft st${starOf(f)}" title="${d.fmtCount[f]} ไฟล์">${esc(f)}${d.fmtCount[f]>1?' ×'+d.fmtCount[f]:''}</span>`).join('')}</div><div class="stars" style="margin-top:3px">${'★'.repeat(d.star)}<i>${'★'.repeat(Math.max(0,4-d.star))}</i></div>`}
 const ST_TX={pass:'✓ ผ่านครบ',near:'◐ 2/3',fail:'✕ ไม่ผ่าน'};
 function renderTable(){
@@ -890,7 +989,7 @@ function renderTable(){
   $('#tb').innerHTML=rows.length?rows.map(d=>`<tr class="row" data-id="${d.id}">
     <td class="ttl"><b>${esc(d.title)}</b><small>${esc(d.orgTitle)} · ${esc(d.type)}${d.vt!=null?` · <span style="color:var(--cy)">👁 ${fmtN(d.vt)}</span>${d.vr?` <span style="color:var(--gd)">(+${fmtN(d.vr)} ล่าสุด)</span>`:''}`:''}</small></td>
     <td>${d.groups.length?d.groups.slice(0,2).map(g=>`<span class="gp" title="${esc(g)}">${esc(g)}</span>`).join('')+(d.groups.length>2?`<span class="gp">+${d.groups.length-2}</span>`:''):'<span style="color:var(--tx3);font-size:12px">ไม่ระบุ</span>'}</td>
-    <td>${yrStrip(d)}</td><td>${fmtChips(d)}</td>
+    <td>${yrStrip(d)}</td><td>${fmtChips(d)}${chanChips(d)}</td>
     <td style="text-align:center"><span class="ck ${d.c1?'y':'n'}">${d.c1?'✓':'✕'}</span></td>
     <td style="text-align:center"><span class="ck ${d.c2?'y':'n'}">${d.c2?'✓':'✕'}</span></td>
     <td style="text-align:center"><span class="ck ${d.c3?'y':'n'}">${d.c3?'✓':'✕'}</span></td>
@@ -917,7 +1016,7 @@ function fillSelects(){
   const tc={};S.ds.forEach(d=>tc[d.type]=(tc[d.type]||0)+1);
   keep('#fType',Object.entries(tc).sort((a,b)=>b[1]-a[1]).map(([t,c])=>[t,t+' ('+c+')']),'ประเภทข้อมูลทั้งหมด');
 }
-function setF(k,v,scroll=true){S.f[k]=v;S.page=1;const m={org:'#fOrg',grp:'#fGrp',fmt:'#fFmt',type:'#fType'};if(m[k])$(m[k]).value=v;renderTable();renderMatrix();if(scroll)$('#dsSec').scrollIntoView({behavior:'smooth'})}
+function setF(k,v,scroll=true){S.f[k]=v;S.page=1;const m={org:'#fOrg',grp:'#fGrp',fmt:'#fFmt',type:'#fType',chan:'#fChan'};if(m[k])$(m[k]).value=v;renderTable();renderMatrix();if(scroll)$('#dsSec').scrollIntoView({behavior:'smooth'})}
 
 /* ---------- Dataset drawer ---------- */
 function openDs(id){const d=S.ds.find(x=>x.id===id);if(!d)return;const cur=CFG.cur;
@@ -939,6 +1038,7 @@ function openDs(id){const d=S.ds.find(x=>x.id===id);if(!d)return;const cur=CFG.c
    <dt>กลุ่มข้อมูล</dt><dd>${d.groups.length?d.groups.map(g=>`<span class="gp">${esc(g)}</span>`).join(' '):'ไม่ระบุ'}</dd>
    <dt>ประเภทข้อมูล</dt><dd>${esc(d.type)}</dd>
    <dt>ประเภทไฟล์ข้อมูล</dt><dd>${fmtChips(d)}</dd>
+   <dt>ช่องทางเผยแพร่</dt><dd>${chanChips(d)}</dd>
    <dt>รูปแบบที่ประกาศ</dt><dd>${d.declared.length?esc(d.declared.join(', ')):'–'}</dd>
    <dt>ช่วงปีใน metadata</dt><dd>${d.fy||'–'} – ${d.ly||'–'}</dd>
    <dt>ความถี่ปรับปรุง</dt><dd>${esc(d.freq||'–')}</dd>
@@ -949,7 +1049,7 @@ function openDs(id){const d=S.ds.find(x=>x.id===id);if(!d)return;const cur=CFG.c
    <dt>ผู้ดูแล</dt><dd>${esc(d.maint||'–')}${d.email?'<br><a href="mailto:'+esc(d.email)+'">'+esc(d.email)+'</a>':''}</dd>
   </dl></div>
   <div class="blk"><h5>ประวัติของชุดข้อมูลนี้</h5><div class="tl" style="max-height:260px">${S.hist.filter(h=>h.d.id===d.id).slice(0,40).map(x=>`<div class="ti" style="--cc:${HK[x.k][1]};cursor:default"><span class="k">${HK[x.k][0]}</span><div class="b"><b>${esc(x.name)}</b></div><time>${thDate(x.ts)}</time></div>`).join('')||'<p class="note">–</p>'}</div></div>
-  <div class="blk"><h5>ไฟล์ข้อมูล (${d.nres})</h5>${d.res.map(r=>{const f=normFmt(r.format);return`<div class="rl"><span class="ft st${starOf(f)}">${esc(f)}</span><span>${esc(r.name||'(ไม่มีชื่อ)')}</span>${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">↗</a>`:''}</div>`}).join('')||'<p class="note">ไม่มีไฟล์</p>'}</div>`;
+  <div class="blk"><h5>ไฟล์ข้อมูล (${d.nres})</h5>${d.res.map(r=>{const f=normFmt(r.format);const dsu=r.datastore_active?(SITE+'/api/3/action/datastore_search?resource_id='+r.id+'&limit=5'):'';return`<div class="rl"><span class="cb ${r._ch}">${CH_TX[r._ch]}</span><span class="ft st${starOf(f)}">${esc(f)}</span><span>${esc(r.name||'(ไม่มีชื่อ)')}</span>${dsu?`<a href="${esc(dsu)}" target="_blank" rel="noopener" class="cb dsx" title="เรียกข้อมูลผ่าน Data API (DataStore)">Data API</a>`:''}${r.url?`<a href="${esc(r.url)}" target="_blank" rel="noopener">↗</a>`:''}</div>`}).join('')||'<p class="note">ไม่มีไฟล์</p>'}</div>`;
   openDrawer('#dDs');
 }
 function openDrawer(id){$$('.drawer').forEach(d=>d.classList.remove('on'));$(id).classList.add('on');$('#ov').classList.add('on')}
@@ -1016,7 +1116,7 @@ function scoped(k){const P=CFG.prov,ex={orgs:0,ds:0},orgs={};let raw=[];const pv
     raw.forEach(p=>{const o=p.organization;if(!orgs[o.name])orgs[o.name]={name:o.name,title:o.title}})}
   return {raw,orgs,ex}}
 function applyScope(){const r=scoped(S.src);S.orgs=r.orgs;S.raw=r.raw;S.excluded=r.ex;SITE=SRCS[S.src].site}
-function renderAll(){buildAll();renderHero();renderExec();renderTicker();renderFeed();renderHistory();renderViews();renderCharts();fillSelects();renderMatrix();renderLegend();renderTable();if($('#dAl').classList.contains('on'))renderAlerts()}
+function renderAll(){buildAll();renderHero();renderExec();renderIssues();renderTicker();renderFeed();renderHistory();renderViews();renderCharts();fillSelects();renderMatrix();renderLegend();renderTable();if($('#dAl').classList.contains('on'))renderAlerts()}
 const cfgKey=()=>[CFG.cur,CFG.back,CFG.strict,CFG.xls,CFG.prov].join('|');
 async function loadSrc(k){
   if(k==='prov'){const [orgs,raw]=await Promise.all([fetchOrgs(),fetchAll('prov')]);S.store.prov={orgs,raw,ok:true}}
@@ -1053,8 +1153,8 @@ function tickClock(){const d=new Date();$('#clk').textContent=d.toLocaleTimeStri
 function dl(name,rows){const csv='﻿'+rows.map(r=>r.map(v=>{v=String(v==null?'':v);return/[",\n]/.test(v)?'"'+v.replace(/"/g,'""')+'"':v}).join(',')).join('\r\n');
   const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8'}));a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000)}
 const stamp=()=>{const d=new Date();return(d.getFullYear()+543)+String(d.getMonth()+1).padStart(2,'0')+String(d.getDate()).padStart(2,'0')};
-function expDs(){const cur=CFG.cur;dl('ตรวจสถานะชุดข้อมูล_'+stamp()+'.csv',[['หน่วยงานที่รับผิดชอบ','ชุดข้อมูล','กลุ่มข้อมูล','ประเภทข้อมูล','ประเภทไฟล์ข้อมูล','ระดับ Open Data (ดาว)','ปีที่พบข้อมูล','ปีที่ขาด (ย้อนหลัง)','เกณฑ์1 ย้อนหลัง '+CFG.back+' ปี','เกณฑ์2 ปี '+cur,'เกณฑ์3 Machine Readable','ผ่าน (เกณฑ์)','สถานะ','สิ่งที่ต้องแก้ไข','ปรับปรุงล่าสุด','ยอดเข้าชมรวม','เข้าชมล่าสุด (14 วัน)','ลิงก์'],
-  ...filtered().map(d=>[d.orgTitle,d.title,d.groups.join(' | '),d.type,d.fmts.join(' '),d.star,[...d.years].sort().join(' '),d.missBack.join(' '),d.c1?'ผ่าน':'ไม่ผ่าน',d.c2?'ผ่าน':'ไม่ผ่าน',d.c3?'ผ่าน':'ไม่ผ่าน',d.score+'/3',ST_TX[d.status].replace(/^\S+\s/,''),d.fixes.join(' ; '),thDate(d.lud),d.vt??'',d.vr??'',d.url])])}
+function expDs(){const cur=CFG.cur;dl('ตรวจสถานะชุดข้อมูล_'+stamp()+'.csv',[['หน่วยงานที่รับผิดชอบ','ชุดข้อมูล','กลุ่มข้อมูล','ประเภทข้อมูล','ประเภทไฟล์ข้อมูล','ช่องทาง','API (ทรัพยากร)','ไฟล์ (ทรัพยากร)','Visualization (ทรัพยากร)','DataStore','ระดับ Open Data (ดาว)','ปีที่พบข้อมูล','ปีที่ขาด (ย้อนหลัง)','เกณฑ์1 ย้อนหลัง '+CFG.back+' ปี','เกณฑ์2 ปี '+cur,'เกณฑ์3 Machine Readable','ผ่าน (เกณฑ์)','สถานะ','สิ่งที่ต้องแก้ไข','ปรับปรุงล่าสุด','ยอดเข้าชมรวม','เข้าชมล่าสุด (14 วัน)','ลิงก์'],
+  ...filtered().map(d=>[d.orgTitle,d.title,d.groups.join(' | '),d.type,d.fmts.join(' '),CH_TX[d.channel],d.chan.api,d.chan.file,d.chan.viz,d.dsx,d.star,[...d.years].sort().join(' '),d.missBack.join(' '),d.c1?'ผ่าน':'ไม่ผ่าน',d.c2?'ผ่าน':'ไม่ผ่าน',d.c3?'ผ่าน':'ไม่ผ่าน',d.score+'/3',ST_TX[d.status].replace(/^\S+\s/,''),d.fixes.join(' ; '),thDate(d.lud),d.vt??'',d.vr??'',d.url])])}
 function expAg(){dl('สรุปรายหน่วยงาน_'+stamp()+'.csv',[['หน่วยงานที่รับผิดชอบ','จำนวนชุดข้อมูล','ย้อนหลัง '+CFG.back+' ปี (%)','ปี '+CFG.cur+' (%)','Machine Readable (%)','ผ่านครบ','ผ่าน 2/3','ไม่ผ่าน','คะแนน (%)','เกรด'],
   ...Object.values(S.byOrg).sort((a,b)=>b.score-a.score).map(o=>[o.title,o.n,o.n?o.p1:'',o.n?o.p2:'',o.n?o.p3:'',o.pass,o.near,o.fail,o.n?o.score:'',o.grade])])}
 
@@ -1062,8 +1162,8 @@ function expAg(){dl('สรุปรายหน่วยงาน_'+stamp()+'.c
 function bind(){
   let qt;$('#q').addEventListener('input',e=>{clearTimeout(qt);qt=setTimeout(()=>{S.f.q=e.target.value.trim().toLowerCase();S.page=1;renderTable()},180)});
   $('#fOrg').onchange=e=>setF('org',e.target.value,false);$('#fGrp').onchange=e=>setF('grp',e.target.value,false);
-  $('#fFmt').onchange=e=>setF('fmt',e.target.value,false);$('#fType').onchange=e=>setF('type',e.target.value,false);
-  $('#clr').onclick=()=>{S.f={q:'',org:'',grp:'',fmt:'',type:'',st:'all'};$('#q').value='';['#fOrg','#fGrp','#fFmt','#fType'].forEach(s=>$(s).value='');S.page=1;renderTable();renderMatrix()};
+  $('#fFmt').onchange=e=>setF('fmt',e.target.value,false);$('#fType').onchange=e=>setF('type',e.target.value,false);$('#fChan').onchange=e=>setF('chan',e.target.value,false);
+  $('#clr').onclick=()=>{S.f={q:'',org:'',grp:'',fmt:'',type:'',chan:'',st:'all'};$('#q').value='';['#fOrg','#fGrp','#fFmt','#fType','#fChan'].forEach(s=>$(s).value='');S.page=1;renderTable();renderMatrix()};
   $('#stPills').onclick=e=>{const b=e.target.closest('[data-st]');if(b){S.f.st=b.dataset.st;S.page=1;renderTable()}};
   $('#pager').onclick=e=>{const b=e.target.closest('[data-p]');if(b&&!b.disabled){S.page=+b.dataset.p;renderTable();$('#dsSec').scrollIntoView({behavior:'smooth'})}};
   $('#tb').onclick=e=>{const r=e.target.closest('tr[data-id]');if(r)openDs(r.dataset.id)};
@@ -1260,8 +1360,12 @@ function reveal(){const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIn
   $('#hKind').onclick=e=>{const b=e.target.closest('[data-v]');if(b){HF.k=b.dataset.v;$$('#hKind .pill').forEach(x=>x.classList.toggle('on',x===b));renderHistory()}};
   $('#hPer').onchange=e=>{HF.per=+e.target.value;renderHistory()};$('#hOrg').onchange=e=>{HF.org=e.target.value;renderHistory()};$('#hExp').onclick=expHist;
   $('#vRef').onclick=()=>fetchViews();
+  $('#iss').onclick=e=>{if(e.target.closest('[data-stop]'))return;const c=e.target.closest('[data-i]');if(!c)return;const i=+c.dataset.i;issSel=issSel===i?null:i;issTab='all';renderIssues();if(issSel!=null)setTimeout(()=>$('#isd').scrollIntoView({behavior:'smooth',block:'nearest'}),60)};
+  $('#isd').onclick=e=>{const t=e.target.closest('#issT [data-v]');if(t){issTab=t.dataset.v;renderIssueDetail();return}
+    if(e.target.closest('#issX')){issSel=null;renderIssues();return}if(e.target.closest('#issExp')){expIssue();return}
+    if(e.target.closest('#issToTbl')){setF('grp',ISSUES[issSel].g);return}const r=e.target.closest('[data-id]');if(r)openDs(r.dataset.id)};
   $('#srcSw').onclick=e=>{const b=e.target.closest('[data-s]');if(!b||b.dataset.s===S.src)return;if(b.dataset.s==='nat'&&!S.store.nat.ok){toast({type:'err',t:'ระบบกลางยังเชื่อมต่อไม่ได้',d:S.store.nat.err||'กำลังลองใหม่'});return}
-    S.src=b.dataset.s;LS.set('gdhm.src',S.src);S.f={q:'',org:'',grp:'',fmt:'',type:'',st:'all'};$('#q').value='';S.page=1;HF.org='';applyScope();renderAll();fetchViews();
+    S.src=b.dataset.s;LS.set('gdhm.src',S.src);S.f={q:'',org:'',grp:'',fmt:'',type:'',chan:'',st:'all'};$('#q').value='';S.page=1;HF.org='';applyScope();renderAll();fetchViews();
     toast({type:'info',t:'สลับไปยัง '+SRCS[S.src].short,d:fmtN(S.ds.length)+' ชุดข้อมูล · '+SRCS[S.src].host})};
   $('#syncBox').onclick=e=>{const t=e.target.closest('#syTabs [data-v]');if(t){syTab=t.dataset.v;renderSync();return}const r=e.target.closest('tr[data-o]');if(r&&S.src==='prov'){setF('org',r.dataset.o)}};$('#vTopT').onclick=e=>{const b=e.target.closest('[data-v]');if(b){vTopMode=b.dataset.v;$$('#vTopT .pill').forEach(x=>x.classList.toggle('on',x===b));renderViews()}};
   const msgs=['กำลังดึงรายการชุดข้อมูลทั้งหมด…','กำลังตรวจปีย้อนหลังและปีปัจจุบัน…','กำลังตรวจมาตรฐาน Machine Readable…','กำลังสรุปผลรายหน่วยงาน…'];let mi=0;const mt=setInterval(()=>{$('#loadMsg').textContent=msgs[mi++%msgs.length]},1400);
