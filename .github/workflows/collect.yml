@@ -1,0 +1,47 @@
+name: เก็บข้อมูล GD Catalog (ทุกชั่วโมง)
+
+on:
+  schedule:
+    - cron: '7 * * * *'      # ทุกชั่วโมง นาทีที่ 7 (เวลา UTC)
+  workflow_dispatch:          # กดรันเองได้ที่แท็บ Actions
+    inputs:
+      force:
+        description: 'ดึงยอดเข้าชมและตรวจเนื้อข้อมูลใหม่ทันที (1 = ใช่)'
+        required: false
+        default: '0'
+
+permissions:
+  contents: write
+
+concurrency:
+  group: collect-gdcatalog
+  cancel-in-progress: false
+
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    timeout-minutes: 40
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: ดึงข้อมูลและตรวจตามเกณฑ์
+        env:
+          FORCE: ${{ github.event.inputs.force }}
+        run: node scripts/collect.mjs
+
+      - name: บันทึกผลลง repo
+        run: |
+          git config user.name  "nbl-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data
+          if git diff --cached --quiet; then
+            echo "ไม่มีข้อมูลเปลี่ยนแปลง"
+          else
+            git commit -m "data: อัปเดต $(TZ=Asia/Bangkok date '+%Y-%m-%d %H:%M')"
+            git pull --rebase --autostash || true
+            git push
+          fi
