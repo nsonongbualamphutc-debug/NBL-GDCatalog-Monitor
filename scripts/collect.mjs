@@ -142,11 +142,11 @@ if (FORCE || NOW - (views.updatedAt || 0) > 6 * 3600e3) {
 let deep = await readJSON('deep.json', { updatedAt: 0, map: {} });
 if (FORCE || NOW - (deep.updatedAt || 0) > 20 * 3600e3) {
   log('deep check…');
-  CFG.prov = true;
-  const R = []; for (const p of C.scoped('prov').raw) for (const r of p.resources) if (r.datastore_active) R.push(r.id);
+  // ตรวจทุกชุดข้อมูล (รวมระดับกรม) และลองเรียกไฟล์ตารางทุกไฟล์ เพราะสถานะ datastore_active เชื่อไม่ได้เสมอ
+  const R = []; for (const p of prov) for (const r of p.resources || []) if (r.datastore_active || /^(csv|xlsx?|tsv)$/i.test(String(r.format || '').trim())) R.push(r.id);
   const YEAR_COL = /(^|[^a-z])(year|yr|fiscal)|ปี|พ\.?ศ/i;
   const out = await pool(R, 6, async id => {
-    const a = await get(API('prov') + 'datastore_search?resource_id=' + id + '&limit=0', 2);
+    let a; try { a = await get(API('prov') + 'datastore_search?resource_id=' + id + '&limit=0', 1); } catch { return null; }
     const fields = (a.fields || []).filter(f => f.id !== '_id');
     const names = fields.map(f => f.id);
     const enc = !names.some(n => /Ã|à¸|à¹|�/.test(n));
@@ -171,8 +171,8 @@ S.deep = deep.map || {};
 
 // ---------- daily history of compliance ----------
 const history = await readJSON('history.json', []);
-function stats(k) {
-  CFG.prov = true;
+function stats(k, provOnly = true) {
+  CFG.prov = provOnly;
   const sc = C.scoped(k); S.orgs = sc.orgs;
   const D = sc.raw.map(C.analyze), n = D.length, c = f => D.filter(f).length;
   const orgsOut = {};
@@ -182,7 +182,7 @@ function stats(k) {
   return { n, pass: c(d => d.status === 'pass'), c1: c(d => d.c1), c2: c(d => d.c2), c3: c(d => d.c3), api: c(d => d.chan.api > 0), dsx: c(d => d.dsx > 0),
     md: n ? Math.round(D.reduce((a, d) => a + d.md, 0) / n) : 0, late: c(d => d.sched === 'late'), mism: c(d => d.mism), orgs: orgsOut, issues };
 }
-const entry = { d: TODAY, cfg: [CFG.cur, CFG.back], prov: stats('prov') };
+const entry = { d: TODAY, cfg: [CFG.cur, CFG.back], prov: stats('prov'), prov_all: stats('prov', false) };
 if (nat.length) entry.nat = stats('nat');
 const hi = history.findIndex(h => h.d === TODAY);
 if (hi >= 0) history[hi] = entry; else history.push(entry);
