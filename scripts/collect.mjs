@@ -20,6 +20,8 @@ const html = await fs.readFile(path.join(ROOT, 'index.html'), 'utf8');
 const core = html.match(/\/\*CORE-START\*\/([\s\S]*?)\/\*CORE-END\*\//)[1];
 const DEF = Function('return ' + html.match(/const DEF=(\{[^;]*\});/)[1])();
 const CFG = Object.assign({}, DEF);
+// admin-controlled target year (data/config.json written by admin.html)
+try { const ac = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'config.json'), 'utf8')); if (ac.target) { if (+ac.target.year > 2500) CFG.cur = +ac.target.year; if (+ac.target.back > 0) CFG.back = +ac.target.back; } } catch {}
 const S = { orgs: {}, store: { prov: { orgs: [], raw: [], ok: false }, nat: { orgs: [], raw: [], ok: false } }, deep: {} };
 const C = Function('CFG', 'S', core + '\nreturn {SRCS,analyze,scoped,ISSUES,toBE,PBI:typeof PBI!=="undefined"?PBI:{}};')(CFG, S);
 const API = k => C.SRCS[k].site + '/api/3/action/';
