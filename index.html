@@ -384,6 +384,7 @@ table.ds{width:100%;border-collapse:collapse;min-width:1250px}
 .cb.viz{color:var(--wnTx);border-color:rgba(245,158,11,.5);background:rgba(245,158,11,.1)}
 .cb.dsx{color:var(--viTx);border-color:rgba(139,92,246,.5);background:rgba(139,92,246,.1)}
 .cb.none{color:var(--tx3);border-color:var(--line)}
+.chn2{font-size:11px;color:var(--tx3);margin:-4px 0 8px}.chn2 b{color:var(--tx2);font-family:'JetBrains Mono'}
 .mbar{display:grid;grid-template-columns:62px 1fr 42px;gap:6px;align-items:center;font-size:11.5px;color:var(--tx2);margin-top:4px}
 .mbar .bar{margin:0;height:6px}
 .mbar em{font-style:normal;text-align:right;font-family:'JetBrains Mono';font-size:11px;color:var(--tx)}
@@ -646,8 +647,8 @@ body::after{opacity:.25}
 @media (max-width:900px){.hero-l>*{max-width:100%}.hero-l::after{background:linear-gradient(90deg,rgba(3,8,20,.92),rgba(3,8,20,.7))}.hero-l .floatc{display:none}}
 /* page intro banners */
 .pintro{min-height:150px;position:relative;overflow:hidden;background:linear-gradient(120deg,color-mix(in srgb,var(--cy) 10%,var(--panel)),var(--panel) 60%)}
-.pintro::before{content:"";position:absolute;inset:0;background:var(--pimg,none) right center/auto 100% no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 22%,#000 62%);mask-image:linear-gradient(90deg,transparent 22%,#000 62%);z-index:0;animation:pin2 18s ease-in-out infinite alternate}
-@keyframes pin2{to{background-position:right 3% center}}
+.pintro::before{content:"";position:absolute;top:0;bottom:0;right:0;left:auto;width:min(62%,820px);background:var(--pimg,none) center/cover no-repeat;-webkit-mask-image:linear-gradient(90deg,transparent 0,#000 55%);mask-image:linear-gradient(90deg,transparent 0,#000 55%);z-index:0;transform-origin:right center;animation:pin2 18s ease-in-out infinite alternate;will-change:transform}
+@keyframes pin2{from{transform:scale(1)}to{transform:scale(1.07)}}
 [data-theme=dark] .pintro::before{filter:brightness(.62) saturate(1.25)}
 .pintro>*{position:relative;z-index:1}
 .pintro .pi-t h2{font-size:27px}
@@ -1128,6 +1129,7 @@ function chanOf(r){const f=normFmt(r.format),u=String(r.url||'');const path=u.sp
   if(r.url_type==='upload'||FILE_EXT.test(path)||(/download/i.test(u)&&f!=='HTML'))return'file';
   if(f==='HTML'||/powerbi|tableau|datastudio|lookerstudio|dvis|\/views\//i.test(u))return'viz';
   return['CSV','XLSX','XLS','JSON','XML','PDF','DOCX','DOC','PNG','JPG','RAR','ZIP','TXT'].includes(f)?'file':'viz'}
+const DSP={};/* ผลลองเรียก DataStore จริง rid→1/0 */
 const CH_TX={api:'API',file:'ไฟล์',viz:'Visualization',none:'ไม่มีทรัพยากร'};
 const ISSUES=[
   {g:'การพัฒนาคุณภาพชีวิต',em:'🏡',c:'#22d3ee',pbi:'https://app.powerbi.com/view?r=eyJrIjoiNzFlNjMxOGYtZDBjMC00M2RlLWEzYjYtODA4ZmI2YmJkOWI2IiwidCI6ImY2NGQzMTgzLTc2OTEtNGZjYi1hNWVmLTM5ZWJjMDgyYmZmOSIsImMiOjEwfQ%3D%3D'},
@@ -1189,8 +1191,8 @@ function analyze(p){
   const status=score===3?'pass':score===2?'near':'fail';
   let groups=(p.groups||[]).map(g=>g.title||g.display_name||g.name).filter(Boolean);
   if(!groups.length&&p._src)groups=(p._src.groups||[]).map(g=>g.title||g.display_name||g.name).filter(Boolean);
-  const chan={api:0,file:0,viz:0};let dsx=0;res.forEach(r=>{r._ch=chanOf(r);chan[r._ch]++;if(r.datastore_active)dsx++});
-  const channel=chan.api?'api':chan.file?'file':chan.viz?'viz':'none';
+  const chan={api:0,file:0,viz:0};let dsx=0;res.forEach(r=>{r._ch=chanOf(r);chan[r._ch]++;if(r.datastore_active||DSP[r.id]===1){r._dsx=1;dsx++}});
+  const channel=(chan.api||dsx)?'api':chan.file?'file':chan.viz?'viz':'none';
   // metadata
   const mdMiss=MDF.filter(([k])=>!mdHas(p,k,res)).map(x=>x[0]);const md=Math.round((MDF.length-mdMiss.length)*100/MDF.length);
   // schedule
@@ -1254,6 +1256,17 @@ function jsonp(url,timeout=60000){return new Promise((res,rej)=>{
   s.onerror=()=>{clean();rej(new Error('เชื่อมต่อ API ไม่ได้'))};
   s.src=url+(url.includes('?')?'&':'?')+'callback='+cb;document.head.appendChild(s);
 })}
+
+/* ลองเรียก DataStore จริง (สถานะ datastore_active บน Catalog เชื่อไม่ได้เสมอ) */
+let dspLoaded=false,probing=false;const DSPK='gdhm.dsp';
+function loadDSP(){if(dspLoaded)return;dspLoaded=true;try{const C=JSON.parse(localStorage.getItem(DSPK)||'{}'),now=Date.now();Object.entries(C).forEach(([k,v])=>{if(now-v[1]<864e5)DSP[k]=v[0]})}catch(e){}}
+async function probeDS(){if(probing)return;loadDSP();
+  const todo=[];S.ds.forEach(d=>d.res.forEach(r=>{if(r._ch==='file'&&!r.datastore_active&&DSP[r.id]==null&&/^(CSV|XLSX|XLS|TSV)$/.test(normFmt(r.format)))todo.push(r)}));
+  if(!todo.length)return;probing=true;let i=0,hit=0;const site=SITE;
+  const work=async()=>{while(i<todo.length&&i<400){const r=todo[i++];let ok=0;try{await jsonp(site+'/api/3/action/datastore_search?resource_id='+r.id+'&limit=0',15000);ok=1}catch(e){}DSP[r.id]=ok;hit+=ok}};
+  await Promise.all([work(),work(),work(),work()]);
+  try{const C=JSON.parse(localStorage.getItem(DSPK)||'{}');todo.forEach(r=>{if(DSP[r.id]!=null)C[r.id]=[DSP[r.id],Date.now()]});localStorage.setItem(DSPK,JSON.stringify(C))}catch(e){}
+  if(hit&&site===SITE)renderAll();probing=false}
 
 const fqOf=k=>SRCS[k].fq?'&fq='+encodeURIComponent(SRCS[k].fq):'';
 async function fetchAll(k){
@@ -1375,29 +1388,29 @@ function pbiDetail(g){const x=pbiOf(g);if(!x)return`<div class="pbd wait"><b>Pow
 let issSel=null,issTab='all';
 function issueData(I){const L=S.ds.filter(d=>d.groups.includes(I.g));const n=L.length,c=f=>L.filter(f).length;
   const viz=[];L.forEach(d=>d.res.forEach(r=>{if(r._ch==='viz'&&/powerbi/i.test(r.url||''))viz.push(r.url)}));
-  return{I,L,n,api:c(d=>d.chan.api>0),file:c(d=>d.channel==='file'),vizOnly:c(d=>d.channel==='viz'||d.channel==='none'),dsx:c(d=>d.dsx>0),
+  return{I,L,n,api:c(d=>d.channel==='api'),src:c(d=>d.chan.api>0),file:c(d=>d.channel==='file'),vizOnly:c(d=>d.channel==='viz'||d.channel==='none'),dsx:c(d=>d.dsx>0),
     c1:c(d=>d.c1),c2:c(d=>d.c2),c3:c(d=>d.c3),pass:c(d=>d.status==='pass'),orgs:new Set(L.map(d=>d.org)).size,pbi:viz[0]||I.pbi}}
 function renderIssues(){const D=ISSUES.map(issueData);
   const mb=(lab,v,n,col)=>`<div class="mbar"><span>${lab}</span><div class="bar"><i style="width:${pct(v,n)}%;background:${col}"></i></div><em>${n?pct(v,n)+'%':'–'}</em></div>`;
   $('#iss').innerHTML=D.map((x,i)=>`<div class="ic2 ${issSel===i?'on':''}" data-i="${i}" style="--cc:${x.I.c}"><div class="ic-img" style="background-image:url(assets/issue-${i+1}.webp),linear-gradient(135deg,color-mix(in srgb,${x.I.c} 55%,#0b1730),color-mix(in srgb,${x.I.c} 15%,#0b1730))"><span>ประเด็นที่ ${i+1}</span></div>
     <h4>${esc(x.I.g)}</h4><div class="rw"><b>${x.n}</b><span>ชุดข้อมูล · ${x.orgs} หน่วยงาน</span></div>
-    <div class="chn"><span class="cb api">API ${x.api}</span><span class="cb file">ไฟล์ ${x.file}</span>${x.vizOnly?`<span class="cb viz">Viz ${x.vizOnly}</span>`:''}<span class="cb dsx">DataStore ${x.dsx}</span></div>
+    <div class="chn"><span class="cb api" title="API ต้นทาง ${x.src} · Data API (DataStore) ${x.dsx}">API ${x.api}</span><span class="cb file" title="มีแต่ไฟล์ ยังเรียกผ่าน API ไม่ได้">ไฟล์อย่างเดียว ${x.file}</span>${x.vizOnly?`<span class="cb viz">ลิงก์กราฟ ${x.vizOnly}</span>`:''}</div><div class="chn2">API = ต้นทาง <b>${x.src}</b> + Data API (DataStore) <b>${x.dsx}</b></div>
     ${mb('ย้อนหลัง',x.c1,x.n,'#22d3ee')}${mb('ปี '+CFG.cur,x.c2,x.n,'#fbbf24')}${mb('MR',x.c3,x.n,'#a78bfa')}
     ${(p=>p?`<div class="pbc"><span>Power BI</span><div class="pbar"><i style="width:${pct(p.api,p.n)}%" class="a"></i><i style="width:${pct(p.mix,p.n)}%" class="m"></i><i style="width:${pct(p.file,p.n)}%" class="f"></i></div><em>${pct(p.api,p.n)}% API${p.bad?` · <b>⚠ ${p.bad}</b>`:""}</em></div>`:`<div class="pbc w"><span>Power BI</span><em>รอตรวจ</em></div>`)(pbiOf(x.I.g))}<div class="ft2"><span class="sc ${x.n&&x.pass===x.n?'pass':pct(x.pass,x.n)>=50?'near':'fail'}">ผ่านครบ ${x.pass}/${x.n}</span><a href="${esc(x.pbi)}" target="_blank" rel="noopener" data-stop>Visualization ↗</a></div></div>`).join('');
   renderPbiSum();renderIssueDetail(D)}
 function renderIssueDetail(D){const box=$('#isd');if(issSel==null){box.classList.remove('on');return}D=D||ISSUES.map(issueData);const x=D[issSel];box.classList.add('on');box.style.setProperty('--cc',x.I.c);
   let L=x.L.slice();if(issTab==='fail')L=L.filter(d=>d.status!=='pass');
   const row=d=>`<div class="irow" data-id="${d.id}"><div class="b"><b>${esc(d.title)}</b><p>${esc(d.orgTitle)} · ${d.fmts.join(', ')||'ไม่มีไฟล์'}${d.dsx?' · DataStore':''}</p>${d.fixes.length?`<p style="color:var(--wnTx)">⚠ ${esc(d.fixes[0])}</p>`:''}</div><div class="ks" title="ย้อนหลัง · ปี ${CFG.cur} · MR"><i class="${d.c1?'y':'n'}">${d.c1?'✓':'✕'}</i><i class="${d.c2?'y':'n'}">${d.c2?'✓':'✕'}</i><i class="${d.c3?'y':'n'}">${d.c3?'✓':'✕'}</i></div></div>`;
-  const ap=L.filter(d=>d.chan.api>0),fi=L.filter(d=>d.channel==='file'),vz=L.filter(d=>d.channel==='viz'||d.channel==='none');
+  const ap=L.filter(d=>d.channel==='api'),fi=L.filter(d=>d.channel==='file'),vz=L.filter(d=>d.channel==='viz'||d.channel==='none');
   const so=a=>a.sort((p,q)=>p.score-q.score||p.title.localeCompare(q.title,'th'));
   box.innerHTML=`<div class="hd2"><span class="isthumb" style="background-image:url(assets/issue-${issSel+1}.webp),linear-gradient(135deg,${x.I.c},#0b1730)"></span><div><small style="color:var(--tx2)">ประเด็น</small><h3>${esc(x.I.g)}</h3></div>
     <div class="pills" id="issT" style="margin-left:12px"><button class="pill ${issTab==='all'?'on':''}" data-v="all">ทั้งหมด<i>${x.n}</i></button><button class="pill ${issTab==='fail'?'on':''}" data-v="fail">ยังไม่ผ่านครบ<i>${x.n-x.pass}</i></button></div>
     <div class="sp"></div><button class="btn" id="issToTbl">เปิดในตารางตรวจ</button><button class="btn" id="issExp">ส่งออก CSV ประเด็นนี้</button><button class="ib" id="issX">✕</button></div>
-   <p class="note" style="margin-bottom:12px">ช่องสี ✓/✕ ด้านขวา = ย้อนหลัง ${CFG.back} ปี · ปี ${CFG.cur} · Machine Readable &nbsp;|&nbsp; <b style="color:var(--okTx)">API</b> = เชื่อมต่อผ่าน API ต้นทาง (เช่น catalogapi.nso.go.th) · <b style="color:var(--blTx)">ไฟล์</b> = อัปโหลด/ดาวน์โหลดไฟล์ · <b style="color:var(--viTx)">DataStore</b> = ไฟล์ที่ระบบเปิด Data API ให้เรียกได้</p>
+   <p class="note" style="margin-bottom:12px">ช่องสี ✓/✕ ด้านขวา = ย้อนหลัง ${CFG.back} ปี · ปี ${CFG.cur} · Machine Readable &nbsp;|&nbsp; <b style="color:var(--okTx)">API</b> = เรียกข้อมูลผ่าน API ได้ ทั้ง API ต้นทาง (เช่น catalogapi.nso.go.th) และไฟล์ที่ Catalog เปิด Data API (DataStore) ให้ · <b style="color:var(--blTx)">ไฟล์อย่างเดียว</b> = มีแต่ไฟล์ดาวน์โหลด ยังเรียกผ่าน API ไม่ได้</p>
    ${pbiDetail(x.I.g)}<h4 class="sub-h">ชุดข้อมูลบน GD Catalog ของประเด็นนี้</h4>
    <div class="cols">
-    <div class="col"><h5><span class="cb api">API</span>${ap.length} ชุด</h5>${so(ap).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
-    <div class="col"><h5><span class="cb file">ไฟล์</span>${fi.length} ชุด</h5>${so(fi).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
+    <div class="col"><h5><span class="cb api">API</span>${ap.length} ชุด <small style="color:var(--tx3);font-weight:400">ต้นทาง ${x.src} · DataStore ${x.dsx}</small></h5>${so(ap).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
+    <div class="col"><h5><span class="cb file">ไฟล์อย่างเดียว</span>${fi.length} ชุด</h5>${so(fi).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
     <div class="col"><h5><span class="cb viz">Visualization / ลิงก์</span>${vz.length} ชุด</h5>${so(vz).map(row).join('')||'<div class="empty">ไม่มี</div>'}</div>
    </div>`}
 function expIssue(){const x=issueData(ISSUES[issSel]);dl('ประเด็น_'+x.I.g.replace(/[^\u0E00-\u0E7Fa-zA-Z0-9]+/g,'_')+'_'+stamp()+'.csv',[['ประเด็น','ชุดข้อมูล','หน่วยงานที่รับผิดชอบ','ช่องทาง','API','ไฟล์','Visualization','DataStore','ประเภทไฟล์','ย้อนหลัง '+CFG.back+' ปี','ปี '+CFG.cur,'Machine Readable','สถานะ','สิ่งที่ต้องแก้ไข','ลิงก์'],
@@ -1617,7 +1630,7 @@ function diffSnap(k,old,silent){
 /* ---------- Sync loop ---------- */
 function setLive(st,tx){const l=$('#live');l.className='live '+(st||'');$('#liveTx').textContent=tx}
 function applyScope(){const r=scoped(S.src);S.orgs=r.orgs;S.raw=r.raw;S.excluded=r.ex;SITE=SRCS[S.src].site}
-function renderAll(){buildAll();renderHero();renderExec();renderIssues();renderQuality();renderTicker();renderFeed();renderHistory();renderViews();renderCharts();fillSelects();renderMatrix();renderLegend();renderTable();if($('#dAl').classList.contains('on'))renderAlerts()}
+function renderAll(){loadDSP();buildAll();setTimeout(probeDS,1200);renderHero();renderExec();renderIssues();renderQuality();renderTicker();renderFeed();renderHistory();renderViews();renderCharts();fillSelects();renderMatrix();renderLegend();renderTable();if($('#dAl').classList.contains('on'))renderAlerts()}
 const cfgKey=()=>[CFG.cur,CFG.back,CFG.strict,CFG.xls,CFG.prov].join('|');
 async function loadSrc(k){
   if(k==='prov'){const [orgs,raw]=await Promise.all([fetchOrgs(),fetchAll('prov')]);S.store.prov={orgs,raw,ok:true}}
