@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html lang="th">
+<html lang="th" data-theme="light">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>คู่มือนำเข้าและอัปเดตชุดข้อมูล</title>
+<script>try{const t=localStorage.getItem("gdguide.theme");if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
@@ -13,9 +14,10 @@
    COLOUR/TYPE: เขียวน้ำทะเลเข้มของ GD Catalog #003647/#206B82 + ชมพูบัว (หนองบัวลำภู) เป็นสีเน้น · Kanit หัวเรื่อง Sarabun เนื้อความ
    LAYOUT: แถบเต็มจอสลับสี แต่ละขั้น = ข้อความซ้าย หน้าจอจำลองขวา ซ้อนกันบนมือถือ */
 :root{color-scheme:light dark;
---bg:light-dark(#ffffff,#071a20);--bg2:light-dark(#f1f7f8,#0c242c);--ink:light-dark(#10262d,#e6f1f3);--ink2:light-dark(#47616a,#9fb8bf);--line:light-dark(#d6e5e8,#1d3c45);
---deep:#003647;--teal:#206b82;--teal2:light-dark(#206b82,#5fb4cc);--lotus:#e2477a;--lotus2:light-dark(#c42e62,#ff7aa4);--ok:light-dark(#0b8a5a,#3fd49a);--bad:light-dark(#c62f45,#ff7488);--warn:light-dark(#b86b00,#ffb547);
---card:light-dark(#ffffff,#0f2a33);--shadow:0 18px 40px -22px rgba(0,40,55,.45)}
+--bg:light-dark(#f7fafb,#061820);--bg2:light-dark(#eef5f7,#0a222b);--ink:light-dark(#0f2730,#e6f1f3);--ink2:light-dark(#4b6670,#9fb8bf);--line:light-dark(#dbe8eb,#1c3b44);
+--deep:#003647;--teal:#206b82;--teal2:light-dark(#1b6a82,#5fb4cc);--lotus:#e2477a;--lotus2:light-dark(#c42e62,#ff7aa4);--ok:light-dark(#0b8a5a,#3fd49a);--bad:light-dark(#c62f45,#ff7488);--warn:light-dark(#b86b00,#ffb547);
+--card:light-dark(#ffffff,#0e2831);--glass:light-dark(rgba(255,255,255,.72),rgba(14,40,49,.7));--shadow:light-dark(0 20px 44px -26px rgba(0,54,71,.35),0 20px 44px -24px rgba(0,0,0,.7));
+--hero1:light-dark(#ffffff,#00202c);--hero2:light-dark(#e4f3f7,#003647);--heroInk:light-dark(#0b2a34,#eaf6f8);--heroInk2:light-dark(#46636c,#b6d3da)}
 :root[data-theme=light]{color-scheme:light}:root[data-theme=dark]{color-scheme:dark}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
@@ -26,35 +28,61 @@ p{margin:.4em 0}a{color:var(--teal2)}
 .band{padding:clamp(32px,5vw,72px) max(5vw,16px)}.in{max-width:1180px;margin:0 auto}
 .alt{background:var(--bg2)}
 /* hero */
-.hero{background:radial-gradient(1200px 500px at 85% -10%,rgba(226,71,122,.35),transparent 60%),linear-gradient(160deg,#00293a,#003647 45%,#0d5368);color:#eaf6f8;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;inset:auto -10% -55% auto;width:620px;height:620px;border-radius:50%;background:radial-gradient(circle,rgba(95,180,204,.25),transparent 65%)}
-.hero .in{position:relative;z-index:1;display:grid;gap:28px}
-.kick{display:inline-flex;gap:8px;align-items:center;font-family:Kanit;font-size:14px;padding:5px 12px;border-radius:99px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2)}
-.hero h1{font-size:clamp(34px,5.4vw,56px);font-weight:700;margin:14px 0 10px}
-.hero h1 span{color:#ff9cbc}
-.hero p.lead{font-size:clamp(17px,2vw,20px);color:#bfdbe2;max-width:760px}
+.hero{background:radial-gradient(900px 480px at 92% -8%,color-mix(in srgb,var(--lotus) 26%,transparent),transparent 62%),radial-gradient(700px 420px at -5% 110%,color-mix(in srgb,#5fb4cc 30%,transparent),transparent 60%),linear-gradient(165deg,var(--hero1),var(--hero2));color:var(--heroInk);position:relative;overflow:hidden;padding-top:18px}
+.hero .in{position:relative;z-index:1}
+.topbar{display:flex;align-items:center;gap:12px;margin-bottom:clamp(18px,4vw,40px)}
+.brand{display:flex;align-items:center;gap:10px;font-family:Kanit;font-weight:500;font-size:15px}
+.brand i{width:34px;height:34px;border-radius:11px;background:linear-gradient(135deg,var(--teal),var(--deep));display:grid;place-items:center;color:#fff;font-style:normal;font-size:16px;box-shadow:0 8px 18px -8px var(--teal)}
+.topbar .sp{flex:1}
+.tbtn{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--glass);color:var(--ink);font-family:Kanit;font-size:15px;cursor:pointer;backdrop-filter:blur(10px);text-decoration:none}
+.tbtn:hover{border-color:var(--teal2)}.tbtn svg{width:18px;height:18px}
+.hgrid{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);gap:clamp(20px,4vw,56px);align-items:center}
+.kick{display:inline-flex;gap:8px;align-items:center;font-family:Kanit;font-size:14px;padding:6px 13px;border-radius:99px;background:var(--glass);border:1px solid var(--line);color:var(--ink2)}
+.kick b{width:8px;height:8px;border-radius:50%;background:var(--ok);box-shadow:0 0 0 4px color-mix(in srgb,var(--ok) 25%,transparent)}
+.hero h1{font-size:clamp(34px,5.2vw,58px);font-weight:700;margin:16px 0 12px;letter-spacing:-.01em}
+.hero h1 span{background:linear-gradient(90deg,var(--lotus2),#7a5cff 55%,var(--teal2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero p.lead{font-size:clamp(17px,2vw,20px);color:var(--heroInk2);max-width:620px}
+.ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px}
+.stats div b{display:block;font-family:Kanit;font-size:30px;line-height:1;color:var(--heroInk)}.stats div span{font-size:14px;color:var(--heroInk2)}
+/* hero visual */
+.hv{position:relative;min-height:360px}
+.hv .gl{position:absolute;border-radius:22px;background:var(--glass);border:1px solid color-mix(in srgb,var(--line) 70%,transparent);backdrop-filter:blur(14px);box-shadow:var(--shadow);padding:16px 18px}
+.hv .g1{left:0;top:6%;width:62%;animation:fl 7s ease-in-out infinite}
+.hv .g2{right:0;top:30%;width:52%;animation:fl 7s ease-in-out -2.5s infinite}
+.hv .g3{left:14%;bottom:0;width:58%;animation:fl 7s ease-in-out -4.5s infinite}
+@keyframes fl{50%{transform:translateY(-10px)}}
+.gl small{font-family:Kanit;font-size:12.5px;color:var(--ink2);display:block;margin-bottom:8px}
+.csvl{font:12.5px/1.7 ui-monospace,Consolas,monospace;color:var(--ink)}.csvl em{font-style:normal;color:var(--lotus2)}
+.apil{font:12px/1.6 ui-monospace,Consolas,monospace;color:var(--teal2);word-break:break-all}
+.apil i{font-style:normal;display:inline-block;padding:1px 8px;border-radius:6px;background:color-mix(in srgb,var(--ok) 16%,transparent);color:var(--ok);font-family:Kanit;margin-bottom:6px}
+.ring{display:flex;gap:14px;align-items:center}
+.ring .r{--p:0;width:72px;height:72px;border-radius:50%;flex:none;display:grid;place-items:center;background:radial-gradient(closest-side,var(--card) 76%,transparent 78%),conic-gradient(var(--ok) calc(var(--p)*1%),var(--line) 0);font-family:Kanit;font-weight:600;font-size:18px;transition:--p 1s}
+.ring ul{list-style:none;margin:0;padding:0;font-size:14px}.ring li{display:flex;gap:6px;align-items:center}.ring li b{color:var(--ok)}
 /* route */
-.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;position:relative;margin-top:8px;padding:26px 8px 8px}
-.route::before{content:"";position:absolute;left:12%;right:12%;top:62px;height:4px;border-radius:4px;background:linear-gradient(90deg,#5fb4cc,#ff7aa4)}
-.route .dot{position:absolute;top:56px;left:12%;width:16px;height:16px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(255,255,255,.25),0 0 24px #ff7aa4;animation:ride 6s cubic-bezier(.6,0,.4,1) infinite}
-@keyframes ride{0%{left:12%}25%{left:37%}50%{left:62%}75%,100%{left:86%}}
-.st{text-align:center;position:relative;padding:0 6px}
-.st .ic{width:76px;height:76px;margin:0 auto 12px;border-radius:24px;display:grid;place-items:center;background:linear-gradient(145deg,rgba(255,255,255,.16),rgba(255,255,255,.04));border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(6px);position:relative;z-index:1}
-.st .ic svg{width:40px;height:40px}
-.st b{display:block;font-family:Kanit;font-size:17px;font-weight:500}.st small{color:#a9cbd3;font-size:14px}
-.crit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.cr{padding:16px 18px;border-radius:18px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.18)}
-.cr b{font-family:Kanit;font-size:20px;color:#fff;display:block}.cr span{color:#bcd7de;font-size:15px}
-.cr i{font-style:normal;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:#ff7aa4;color:#3b0718;font-family:Kanit;font-weight:700;margin-right:8px}
+.route{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));position:relative;margin-top:clamp(26px,4vw,44px);padding:22px 8px 6px;border-radius:24px;background:var(--glass);border:1px solid var(--line);backdrop-filter:blur(10px)}
+.route::before{content:"";position:absolute;left:12.5%;right:12.5%;top:58px;height:4px;border-radius:4px;background:linear-gradient(90deg,#5fb4cc,#7a5cff,#ff7aa4)}
+.route .dot{position:absolute;top:52px;left:12.5%;width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid var(--lotus);box-shadow:0 0 18px var(--lotus);animation:ride 6s cubic-bezier(.6,0,.4,1) infinite}
+@keyframes ride{0%{left:12.5%}25%{left:37.5%}50%{left:62.5%}75%,100%{left:87.5%}}
+.st{text-align:center;position:relative;padding:0 6px 10px;text-decoration:none;color:inherit}
+.st .ic{width:72px;height:72px;margin:0 auto 10px;border-radius:22px;display:grid;place-items:center;background:linear-gradient(145deg,var(--teal),var(--deep));position:relative;z-index:1;box-shadow:0 12px 24px -12px var(--teal);transition:transform .2s}
+.st:hover .ic{transform:translateY(-4px) scale(1.04)}
+.st .ic svg{width:36px;height:36px}
+.st b{display:block;font-family:Kanit;font-size:16.5px;font-weight:500}.st small{color:var(--ink2);font-size:14px}
+.crit{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:14px}
+.cr{padding:16px 18px;border-radius:18px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+.cr b{font-family:Kanit;font-size:19px;display:flex;align-items:center}.cr span{color:var(--ink2);font-size:15px}
+.cr i{font-style:normal;display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;background:linear-gradient(135deg,var(--lotus),#ff8fb0);color:#fff;font-family:Kanit;font-weight:700;margin-right:10px;flex:none}
 /* nav */
-nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav.toc{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 82%,transparent);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid var(--line)}
+nav.toc .pg{position:absolute;left:0;bottom:-1px;height:3px;width:0;background:linear-gradient(90deg,var(--teal2),#7a5cff,var(--lotus))}
 nav.toc .scroll{display:flex;gap:6px;max-width:1180px;margin:0 auto;padding:10px max(5vw,16px)}
 nav.toc a{flex:none;text-decoration:none;color:var(--ink2);font-family:Kanit;font-size:15px;padding:8px 14px;border-radius:99px;border:1px solid transparent;min-height:40px;display:flex;align-items:center;gap:6px}
 nav.toc a:hover,nav.toc a.on{color:var(--ink);border-color:var(--line);background:var(--bg2)}
 nav.toc a em{font-style:normal;width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--teal);color:#fff;font-size:12px}
 /* section head */
 .sh{display:flex;gap:18px;align-items:flex-start;margin-bottom:26px}
-.sh .no{flex:none;width:64px;height:64px;border-radius:20px;display:grid;place-items:center;font-family:Kanit;font-size:30px;font-weight:700;color:#fff;background:linear-gradient(145deg,var(--teal),var(--deep));box-shadow:var(--shadow)}
+.sh .no{flex:none;width:64px;height:64px;border-radius:20px;background-size:200% 200%;display:grid;place-items:center;font-family:Kanit;font-size:30px;font-weight:700;color:#fff;background:linear-gradient(145deg,var(--teal),var(--deep));box-shadow:var(--shadow)}
 .sh p{color:var(--ink2);max-width:760px}
 /* step rows */
 .step{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.15fr);gap:clamp(20px,4vw,48px);align-items:start;padding:26px 0;border-top:1px dashed var(--line)}
@@ -129,53 +157,114 @@ details p,details ol{color:var(--ink2);margin:0 0 12px}
 .prog{height:10px;border-radius:99px;background:var(--line);overflow:hidden;margin:14px 0 18px}.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--teal),var(--lotus));transition:width .4s}
 .cta{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:10px 18px;border-radius:12px;font-family:Kanit;font-size:16px;text-decoration:none;border:0;cursor:pointer}
 .cta.p{background:var(--lotus);color:#fff}.cta.s{background:transparent;color:var(--ink);border:1px solid var(--line)}
-footer{background:var(--deep);color:#bcd7de;font-size:15px}
+footer{background:linear-gradient(120deg,#00293a,#003647 60%,#3a1530);color:#bcd7de;font-size:15px}
 footer b{color:#fff;font-family:Kanit}
 .scroll{overflow-x:auto}
 @media(max-width:900px){.step{grid-template-columns:1fr}.duo,.chk{grid-template-columns:1fr}.cal{grid-template-columns:repeat(2,minmax(0,1fr))}nav.toc{position:static}}
 @media(max-width:600px){.route{grid-template-columns:repeat(2,minmax(0,1fr));row-gap:22px}.route::before,.route .dot{display:none}.crit{grid-template-columns:1fr}.side{grid-template-columns:1fr}.side ul{display:none}.sh .no{width:48px;height:48px;font-size:22px}table{font-size:13.5px}.stack thead{display:none}.stack tr{display:grid;padding-block:10px;border-bottom:1px solid var(--line)}.stack td{display:flow-root;border:0;padding:3px 0;padding-inline-start:8em;text-align:start}.stack td::before{content:attr(data-l);float:inline-start;width:7.5em;margin-inline-start:-8em;white-space:normal;color:var(--ink2)}.stack td:empty{display:none}}
 @media(prefers-reduced-motion:reduce){.route .dot,.hot{animation:none}html{scroll-behavior:auto}}
 @media print{nav.toc,.cta{display:none}.band{padding:18px 0}.hero{background:#003647!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}.step{break-inside:avoid}}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}.rv.on{opacity:1;transform:none}
+/* quick start */
+.qs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.qc{position:relative;display:block;text-decoration:none;color:inherit;padding:20px;border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);transition:transform .2s,border-color .2s;overflow:hidden}
+.qc:hover{transform:translateY(-4px);border-color:var(--teal2)}
+.qc::after{content:"";position:absolute;right:-40px;top:-40px;width:130px;height:130px;border-radius:50%;background:var(--g);opacity:.18}
+.qc .e{width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:var(--g);color:#fff;margin-bottom:12px}.qc .e svg{width:24px;height:24px}
+.qc b{font-family:Kanit;font-size:19px;display:block}.qc p{color:var(--ink2);font-size:15.5px}.qc span{font-family:Kanit;color:var(--teal2);font-size:15px}
+/* tools */
+.tool{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:22px;align-items:start}
+.drop{border:2px dashed color-mix(in srgb,var(--teal2) 55%,transparent);border-radius:22px;padding:28px 20px;text-align:center;background:var(--card);cursor:pointer;transition:.2s;display:block}
+.drop:hover,.drop.ov{border-color:var(--lotus);background:color-mix(in srgb,var(--lotus) 6%,var(--card))}
+.drop svg{width:46px;height:46px;color:var(--teal2)}.drop b{display:block;font-family:Kanit;font-size:18px;margin:6px 0 2px}.drop small{color:var(--ink2)}
+.drop input{position:absolute;width:1px;height:1px;opacity:0}
+.res{border-radius:22px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow);padding:18px 20px;min-height:220px}
+.res .hd{display:flex;gap:14px;align-items:center;margin-bottom:12px}
+.res .sc{width:64px;height:64px;border-radius:18px;display:grid;place-items:center;font-family:Kanit;font-weight:700;font-size:22px;color:#fff;flex:none}
+.res ul{list-style:none;margin:0;padding:0}.res li{display:flex;gap:10px;padding:8px 0;border-top:1px solid var(--line);font-size:15.5px}.res li i{font-style:normal;flex:none;width:24px;height:24px;border-radius:8px;display:grid;place-items:center;font-size:13px;color:#fff}
+.res li small{display:block;color:var(--ink2);font-size:14px}
+.yrs{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 2px}.yrs span{font-family:Kanit;font-size:13.5px;padding:3px 10px;border-radius:8px;border:1px solid}
+.yrs .y1{color:var(--ok);border-color:color-mix(in srgb,var(--ok) 45%,transparent);background:color-mix(in srgb,var(--ok) 10%,transparent)}.yrs .y0{color:var(--bad);border-color:color-mix(in srgb,var(--bad) 45%,transparent)}
+.empty{color:var(--ink2);text-align:center;padding:40px 10px}
+/* my tasks */
+.mine{display:grid;gap:14px}
+.msel{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.msel select{font:16px Sarabun;min-height:46px;padding:0 14px;border-radius:12px;border:1px solid var(--line);background:var(--card);color:var(--ink);flex:1;min-width:240px}
+.mk{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.mk div{padding:14px;border-radius:16px;background:var(--card);border:1px solid var(--line)}.mk b{display:block;font-family:Kanit;font-size:28px;line-height:1.1}.mk span{color:var(--ink2);font-size:14px}
+.tk{display:flex;gap:12px;align-items:center;padding:12px 14px;border-radius:14px;background:var(--card);border:1px solid var(--line)}
+.tk .tt{flex:1}.tk .tt b{display:block;font-weight:600}.tk .tt small{color:var(--ink2)}
+.tk .chip{font-family:Kanit;font-size:12.5px;padding:2px 9px;border-radius:99px;margin-right:4px;white-space:nowrap;display:inline-block}
+.chip.c2{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}.chip.c1{background:color-mix(in srgb,var(--warn) 16%,transparent);color:var(--warn)}.chip.c3{background:color-mix(in srgb,#7a5cff 16%,transparent);color:light-dark(#5b3fd6,#b4a3ff)}
+.tk a{flex:none}
+.copy{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;padding:0 12px;min-height:36px;font-family:Kanit;font-size:14px;cursor:pointer}
+.copy.ok{border-color:var(--ok);color:var(--ok)}
+.share{display:grid;grid-template-columns:auto minmax(0,1fr);gap:24px;align-items:center}
+#qr{background:#fff;padding:12px;border-radius:18px;box-shadow:var(--shadow);width:184px;height:184px}
+#qr img,#qr canvas{width:160px!important;height:160px!important}
+@media(max-width:900px){.hgrid,.tool{grid-template-columns:1fr}.hv{min-height:330px}.qs{grid-template-columns:1fr}.mk{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:600px){.hv{display:none}.share{grid-template-columns:1fr;justify-items:start}.topbar .brand span{display:none}}
+@media(prefers-reduced-motion:reduce){.hv .gl{animation:none}.rv{opacity:1;transform:none;transition:none}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
 <body>
-
 <header class="band hero">
  <div class="in">
-  <div>
-   <span class="kick">คู่มือสำหรับเจ้าหน้าที่หน่วยงาน · GD Catalog จังหวัดหนองบัวลำภู</span>
-   <h1>นำเข้าและอัปเดตชุดข้อมูล<br><span>ให้ผ่านเกณฑ์</span> ใน 4 สถานี</h1>
-   <p class="lead">ทำตามทีละขั้นพร้อมภาพหน้าจอระบบจริง ใช้เวลาประมาณ 15 นาทีต่อชุดข้อมูล ทำครั้งเดียว ข้อมูลไหลไปถึงรายงานผู้บริหารและแดชบอร์ดจังหวัดโดยอัตโนมัติ</p>
+  <div class="topbar"><div class="brand"><i>บ</i><span>GD Catalog จังหวัดหนองบัวลำภู · คู่มือหน่วยงาน</span></div><div class="sp"></div>
+   <a class="tbtn" href="index.html" id="dashLink"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="13" rx="2"/><path d="M8 21h8"/></svg><span>แดชบอร์ด</span></a>
+   <button class="tbtn" id="theme" type="button" aria-label="สลับโหมดสว่าง/มืด"><span id="thIc"></span><span id="thTx">โหมดมืด</span></button></div>
+  <div class="hgrid">
+   <div>
+    <span class="kick"><b></b>อัปเดตตามระบบจริง 24 พ.ย. 2569</span>
+    <h1>นำเข้าและอัปเดตชุดข้อมูล <span>ให้ผ่านเกณฑ์</span> ใน 4 สถานี</h1>
+    <p class="lead">ทำตามทีละขั้นพร้อมหน้าจอระบบจริง มีเครื่องมือตรวจไฟล์ก่อนอัปโหลด และรายการงานของหน่วยงานท่านให้กดไปแก้ได้ทันที</p>
+    <div class="ctas"><a class="cta p" href="#start">เริ่มเลย →</a><a class="cta s" href="#tool">ตรวจไฟล์ CSV ของฉัน</a><a class="cta s" href="#mine">งานของหน่วยงานฉัน</a></div>
+    <div class="stats"><div><b>15 นาที</b><span>ต่อชุดข้อมูลใหม่</span></div><div><b>5 นาที</b><span>ต่อการอัปเดตแต่ละปี</span></div><div><b>3 เกณฑ์</b><span>ที่แดชบอร์ดตรวจ</span></div></div>
+   </div>
+   <div class="hv" aria-hidden="true">
+    <div class="gl g1"><small>① ไฟล์ CSV ของหน่วยงาน</small><div class="csvl">ปี,อำเภอ,รายการ,จำนวน,หน่วย<br><em>2564</em>,เมือง,นักท่องเที่ยว,10980,คน<br><em>2565</em>,เมือง,นักท่องเที่ยว,11520,คน<br>…<br><em>2569</em>,เมือง,นักท่องเที่ยว,14200,คน</div></div>
+    <div class="gl g2"><small>③ Data API</small><div class="apil"><i>สำเร็จ ✓</i><br>/api/3/action/datastore_search?resource_id=…</div></div>
+    <div class="gl g3"><small>④ ผลบนแดชบอร์ด</small><div class="ring"><div class="r" id="hring">0%</div><ul><li><b>✓</b>ย้อนหลัง 5 ปี</li><li><b>✓</b>ปีปัจจุบัน 2569</li><li><b>✓</b>Machine Readable</li></ul></div></div>
+   </div>
   </div>
-  <div class="route" aria-label="เส้นทางข้อมูล 4 สถานี">
-   <span class="dot"></span>
-   <div class="st"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><path d="M10 4h14l8 8v24H10z"/><path d="M24 4v8h8"/><path d="M15 21h12M15 26h12M15 31h8"/></svg></div><b>1. เตรียมไฟล์</b><small>CSV ตารางเดียว ครบ 6 ปี</small></div>
-   <div class="st"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><path d="M20 28V8M12 16l8-8 8 8"/><path d="M6 26v8h28v-8"/></svg></div><b>2. นำเข้า Catalog</b><small>กรอกข้อมูลเมตา + อัปโหลด</small></div>
-   <div class="st"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><ellipse cx="20" cy="10" rx="12" ry="4"/><path d="M8 10v20c0 2.2 5.4 4 12 4s12-1.8 12-4V10"/><path d="M8 20c0 2.2 5.4 4 12 4s12-1.8 12-4"/></svg></div><b>3. Data API ทำงาน</b><small>ระบบแปลงเป็น API เอง</small></div>
-   <div class="st"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="7" width="30" height="22" rx="3"/><path d="M11 22l6-6 5 4 7-8"/><path d="M14 34h12"/></svg></div><b>4. ผ่านเกณฑ์</b><small>ขึ้นสีเขียวบนแดชบอร์ด</small></div>
+  <div class="route" aria-label="เส้นทางข้อมูล 4 สถานี"><span class="dot"></span>
+   <a class="st" href="#prep"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><path d="M10 4h14l8 8v24H10z"/><path d="M24 4v8h8"/><path d="M15 21h12M15 26h12M15 31h8"/></svg></div><b>1. เตรียมไฟล์</b><small>CSV ตารางเดียว ครบ 6 ปี</small></a>
+   <a class="st" href="#new"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><path d="M20 28V8M12 16l8-8 8 8"/><path d="M6 26v8h28v-8"/></svg></div><b>2. นำเข้า Catalog</b><small>กรอกข้อมูลเมตา + อัปโหลด</small></a>
+   <a class="st" href="#update"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><path d="M32 14a13 13 0 0 0-23-4M8 26a13 13 0 0 0 23 4"/><path d="M8 4v7h7M32 36v-7h-7"/></svg></div><b>3. อัปเดตปีใหม่</b><small>แทนไฟล์เดิม ไม่ลบ</small></a>
+   <a class="st" href="#check"><div class="ic"><svg viewBox="0 0 40 40" fill="none" stroke="#fff" stroke-width="2"><rect x="5" y="7" width="30" height="22" rx="3"/><path d="M11 22l6-6 5 4 7-8"/><path d="M14 34h12"/></svg></div><b>4. ผ่านเกณฑ์</b><small>ขึ้นสีเขียวบนแดชบอร์ด</small></a>
   </div>
   <div class="crit">
    <div class="cr"><b><i>1</i>ย้อนหลัง 5 ปี</b><span>มีข้อมูลครบปี 2564–2568</span></div>
    <div class="cr"><b><i>2</i>ปีปัจจุบัน 2569</b><span>มีข้อมูลปีล่าสุดแล้ว</span></div>
-   <div class="cr"><b><i>3</i>Machine Readable</b><span>เป็นไฟล์ที่คอมพิวเตอร์อ่านต่อได้ เช่น CSV ไม่ใช่ PDF หรือรูปภาพ</span></div>
+   <div class="cr"><b><i>3</i>Machine Readable</b><span>ไฟล์ที่คอมพิวเตอร์อ่านต่อได้ เช่น CSV ไม่ใช่ PDF หรือรูปภาพ</span></div>
   </div>
  </div>
 </header>
 
 <nav class="toc"><div class="scroll">
- <a href="#prep"><em>1</em>เตรียมไฟล์</a><a href="#new"><em>2</em>นำเข้าชุดข้อมูลใหม่</a><a href="#update"><em>3</em>อัปเดตให้เป็นปัจจุบัน</a><a href="#check"><em>4</em>ตรวจผล</a><a href="#faq">ปัญหาที่พบบ่อย</a><a href="#list">เช็กลิสต์</a>
-</div></nav>
+ <a href="#start">เริ่มตรงไหน</a><a href="#prep"><em>1</em>เตรียมไฟล์</a><a href="#tool">ตรวจไฟล์</a><a href="#new"><em>2</em>นำเข้าชุดใหม่</a><a href="#update"><em>3</em>อัปเดตปีใหม่</a><a href="#check"><em>4</em>ตรวจผล</a><a href="#mine">งานของหน่วยงานฉัน</a><a href="#faq">ปัญหาที่พบบ่อย</a><a href="#list">เช็กลิสต์</a><a href="#share">แชร์คู่มือ</a>
+</div><span class="pg" id="pg"></span></nav>
 
+<section class="band alt" id="start"><div class="in">
+ <div class="sh rv"><div class="no">→</div><div><h2>ท่านอยู่สถานการณ์ไหน?</h2><p>เลือกการ์ดที่ตรงกับท่าน แล้วข้ามไปขั้นที่ต้องทำได้เลย</p></div></div>
+ <div class="qs">
+  <a class="qc rv" href="#prep" style="--g:linear-gradient(135deg,#206b82,#003647)"><div class="e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg></div><b>ยังไม่เคยลงชุดข้อมูลนี้</b><p>มีข้อมูลในเครื่อง แต่ยังไม่อยู่บน Catalog</p><span>สถานี 1 → 2 · ประมาณ 15 นาที →</span></a>
+  <a class="qc rv" href="#update" style="--g:linear-gradient(135deg,#e2477a,#a3245a)"><div class="e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12a9 9 0 0 1-15.5 6.2M3 12a9 9 0 0 1 15.5-6.2"/><path d="M3 20v-5h5M21 4v5h-5"/></svg></div><b>มีแล้ว แต่ยังไม่มีปี 2569</b><p>ชุดข้อมูลขึ้น “ผ่าน 2 ใน 3” บนแดชบอร์ด</p><span>สถานี 3 · ประมาณ 5 นาที →</span></a>
+  <a class="qc rv" href="#mine" style="--g:linear-gradient(135deg,#7a5cff,#4a2fc0)"><div class="e"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M9 11l3 3 8-8"/><path d="M20 12v7a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h9"/></svg></div><b>ไม่รู้ว่าต้องแก้ชุดไหน</b><p>ดูรายการงานของหน่วยงานท่านพร้อมปุ่มไปแก้</p><span>งานของหน่วยงานฉัน →</span></a>
+ </div>
+</div></section>
 <!-- ===== 1 PREP ===== -->
 <section class="band" id="prep"><div class="in">
- <div class="sh"><div class="no">1</div><div><h2>เตรียมไฟล์ให้ผ่านตั้งแต่แรก</h2><p>ไฟล์ที่ดี = ผ่าน 2 ใน 3 เกณฑ์ทันที (ย้อนหลังครบ + Machine Readable) และระบบแปลงเป็น Data API ได้สำเร็จ</p></div></div>
+ <div class="sh rv"><div class="no">1</div><div><h2>เตรียมไฟล์ให้ผ่านตั้งแต่แรก</h2><p>ไฟล์ที่ดี = ผ่าน 2 ใน 3 เกณฑ์ทันที (ย้อนหลังครบ + Machine Readable) และระบบแปลงเป็น Data API ได้สำเร็จ</p></div></div>
  <div class="rules">
-  <div class="rule"><span class="n">กฎข้อ 1</span><b>ตารางเดียว หัวตารางแถวเดียว</b><p>ไม่รวมเซลล์ (Merge) ไม่มีหัวตาราง 2 ชั้น ไม่มีชื่อรายงานหรือหมายเหตุบนหัวไฟล์</p></div>
-  <div class="rule"><span class="n">กฎข้อ 2</span><b>1 แถว = 1 ค่า</b><p>เรียงข้อมูลลงด้านล่าง มีคอลัมน์ <b>ปี</b> ชัดเจน ไม่กางปีออกเป็นคอลัมน์ 2564, 2565, …</p></div>
-  <div class="rule"><span class="n">กฎข้อ 3</span><b>ตัวเลขเป็นตัวเลขล้วน</b><p>ไม่ใส่ลูกน้ำ หน่วย หรือ “-” ในช่องตัวเลข ใส่หน่วยไว้ในคอลัมน์ <b>หน่วย</b> แยก</p></div>
-  <div class="rule"><span class="n">กฎข้อ 4</span><b>รวมทุกปีในไฟล์เดียว</b><p>ใส่ข้อมูล 2564–2569 ไว้ในไฟล์เดียวกัน ปีหน้าเพิ่มแถวต่อท้าย ไม่แยกไฟล์รายปี</p></div>
-  <div class="rule"><span class="n">กฎข้อ 5</span><b>บันทึกเป็น CSV UTF-8</b><p>ภาษาไทยไม่เพี้ยน และระบบแปลงเป็น Data API ได้ทันที</p></div>
+  <div class="rule rv"><span class="n">กฎข้อ 1</span><b>ตารางเดียว หัวตารางแถวเดียว</b><p>ไม่รวมเซลล์ (Merge) ไม่มีหัวตาราง 2 ชั้น ไม่มีชื่อรายงานหรือหมายเหตุบนหัวไฟล์</p></div>
+  <div class="rule rv"><span class="n">กฎข้อ 2</span><b>1 แถว = 1 ค่า</b><p>เรียงข้อมูลลงด้านล่าง มีคอลัมน์ <b>ปี</b> ชัดเจน ไม่กางปีออกเป็นคอลัมน์ 2564, 2565, …</p></div>
+  <div class="rule rv"><span class="n">กฎข้อ 3</span><b>ตัวเลขเป็นตัวเลขล้วน</b><p>ไม่ใส่ลูกน้ำ หน่วย หรือ “-” ในช่องตัวเลข ใส่หน่วยไว้ในคอลัมน์ <b>หน่วย</b> แยก</p></div>
+  <div class="rule rv"><span class="n">กฎข้อ 4</span><b>รวมทุกปีในไฟล์เดียว</b><p>ใส่ข้อมูล 2564–2569 ไว้ในไฟล์เดียวกัน ปีหน้าเพิ่มแถวต่อท้าย ไม่แยกไฟล์รายปี</p></div>
+  <div class="rule rv"><span class="n">กฎข้อ 5</span><b>บันทึกเป็น CSV UTF-8</b><p>ภาษาไทยไม่เพี้ยน และระบบแปลงเป็น Data API ได้ทันที</p></div>
  </div>
  <div class="duo">
   <div><p class="verdict no">✕ แบบนี้ไม่ผ่าน</p>
@@ -187,7 +276,7 @@ footer b{color:#fff;font-family:Kanit}
    <tbody><tr><td>2564</td><td>เมือง</td><td>นักท่องเที่ยว</td><td class="n">10980</td><td>คน</td></tr><tr><td>2564</td><td>นากลาง</td><td>นักท่องเที่ยว</td><td class="n">7450</td><td>คน</td></tr><tr><td>…</td><td>…</td><td>…</td><td class="n">…</td><td>…</td></tr><tr><td>2569</td><td>เมือง</td><td>นักท่องเที่ยว</td><td class="n">14200</td><td>คน</td></tr><tr><td>2569</td><td>นากลาง</td><td>นักท่องเที่ยว</td><td class="n">9640</td><td>คน</td></tr></tbody></table></div>
    <p style="font-size:15px;color:var(--ink2)">ตัวเลขในตารางนี้เป็นตัวอย่างประกอบเท่านั้น</p></div>
  </div>
- <div class="step" style="margin-top:18px">
+ <div class="step rv" style="margin-top:18px">
   <div class="t"><h3><b>✓</b>บันทึกจาก Excel เป็น CSV UTF-8</h3>
    <ol><li>เปิดไฟล์ใน Excel ให้เหลือ<b>ชีตเดียว</b> ตามกฎข้างบน</li><li>กด <span class="key">File</span> → <span class="key">Save As</span></li><li>ช่อง Save as type เลือก <span class="key">CSV UTF-8 (Comma delimited) (*.csv)</span></li><li>ตั้งชื่อไฟล์เป็นภาษาอังกฤษหรือตัวเลข เช่น <code>tourist_2564-2569.csv</code> แล้วกด Save</li></ol>
    <div class="note i"><b>เคล็ดลับ:</b> อย่าเลือก “CSV (Comma delimited)” ตัวธรรมดา ภาษาไทยจะกลายเป็นตัวอักษรต่างดาวบนเว็บ</div></div>
@@ -201,11 +290,22 @@ footer b{color:#fff;font-family:Kanit}
  </div>
 </div></section>
 
-<!-- ===== 2 NEW ===== -->
-<section class="band alt" id="new"><div class="in">
- <div class="sh"><div class="no">2</div><div><h2>นำเข้าชุดข้อมูลใหม่</h2><p>ทำครั้งเดียวต่อ 1 ชุดข้อมูล ปีต่อไปใช้วิธีอัปเดตในสถานีที่ 3 แทน ไม่ต้องสร้างใหม่</p></div></div>
 
- <div class="step">
+<section class="band alt" id="tool"><div class="in">
+ <div class="sh rv"><div class="no">✓</div><div><h2>ตรวจไฟล์ CSV ก่อนอัปโหลด</h2><p>ลากไฟล์มาวาง ระบบตรวจกฎทั้ง 5 ข้อและบอกจุดที่ต้องแก้ทันที <b>ไฟล์ไม่ถูกส่งออกจากเครื่องของท่าน</b></p></div></div>
+ <div class="tool">
+  <div class="rv"><label class="drop" id="drop"><input type="file" id="file" accept=".csv,text/csv"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M4 14v5a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-5"/></svg><b>ลากไฟล์ CSV มาวาง หรือกดเลือกไฟล์</b><small>รองรับ .csv · ตรวจภายในเบราว์เซอร์</small></label>
+   <p style="margin-top:14px;display:flex;gap:8px;flex-wrap:wrap"><button class="copy" id="tplDl" type="button">⬇ ดาวน์โหลดแม่แบบ CSV</button><button class="copy" id="tplCp" type="button">คัดลอกแม่แบบ</button></p>
+   <p style="font-size:14.5px;color:var(--ink2)">แม่แบบมีคอลัมน์ ปี · อำเภอ · รายการ · จำนวน · หน่วย พร้อมตัวอย่างปี 2564–2569 เปิดใน Excel แล้วแทนค่าของท่าน</p></div>
+  <div class="res rv" id="res"><div class="empty">ผลตรวจจะแสดงตรงนี้</div></div>
+ </div>
+</div></section>
+
+<!-- ===== 2 NEW ===== -->
+<section class="band" id="new"><div class="in">
+ <div class="sh rv"><div class="no">2</div><div><h2>นำเข้าชุดข้อมูลใหม่</h2><p>ทำครั้งเดียวต่อ 1 ชุดข้อมูล ปีต่อไปใช้วิธีอัปเดตในสถานีที่ 3 แทน ไม่ต้องสร้างใหม่</p></div></div>
+
+ <div class="step rv">
   <div class="t"><h3><b>1</b>เข้าสู่ระบบ</h3>
    <ol><li>เปิด <a href="https://nongbualamphu.gdcatalog.go.th">nongbualamphu.gdcatalog.go.th</a> กด <span class="key">เข้าสู่ระบบ</span> มุมขวาบน</li><li>กรอก Username หรือ Email และรหัสผ่าน</li><li>กรอก<b>รหัส 6 หลัก</b>จากแอปยืนยันตัวตนในมือถือ (2FA) รหัสเปลี่ยนทุก 30 วินาที</li></ol>
    <div class="note i">ยังไม่มีบัญชี ลืมรหัสผ่าน หรือเปลี่ยนมือถือแล้วเข้าแอป 2FA ไม่ได้ → ติดต่อ <b>สำนักงานสถิติจังหวัด โทร 0 4231 6736</b></div></div>
@@ -215,7 +315,7 @@ footer b{color:#fff;font-family:Kanit}
     <div class="fld"><label>รหัสยืนยัน</label><div class="inp hot" style="letter-spacing:.4em;font-weight:600">4 8 2 9 1 7</div></div><span class="btn">ยืนยัน</span><p style="font-size:12px;color:#777;margin-top:8px">⏱ รหัสจะเปลี่ยนทุก 30 วินาที</p></div></div>
  </div>
 
- <div class="step">
+ <div class="step rv">
   <div class="t"><h3><b>2</b>กด “เพิ่มชุดข้อมูล” แล้วเลือกประเภท</h3>
    <ol><li>กดเมนู <span class="key">ชุดข้อมูล</span> แล้วกดปุ่ม <span class="key">เพิ่มชุดข้อมูล</span></li><li>แถบซ้าย “กรุณาเลือกประเภทของชุดข้อมูล” เลือก <span class="key">ข้อมูลสถิติ</span></li></ol>
    <div class="note i">ข้อมูลตัวเลขรายปี (จำนวน ร้อยละ มูลค่า) ให้เลือก <b>ข้อมูลสถิติ</b> เสมอ จะมีช่อง “ปีข้อมูลที่เริ่มต้นจัดทำ” และ “ปีข้อมูลล่าสุด” ให้กรอก ซึ่งแดชบอร์ดใช้ตรวจเกณฑ์</div></div>
@@ -225,7 +325,7 @@ footer b{color:#fff;font-family:Kanit}
     <div><div class="stg"><span class="on">① สร้างชุดข้อมูล</span><span>② เพิ่มข้อมูล</span></div><div class="fld"><label><em>*</em> ประเภทชุดข้อมูล</label><div class="inp" style="background:#eee">ข้อมูลสถิติ</div></div><div class="fld"><label><em>*</em> ชื่อชุดข้อมูล</label><div class="inp">จำนวนนักท่องเที่ยว จำแนกรายอำเภอ</div></div><div class="fld"><label><em>*</em> องค์กร</label><div class="inp sel">สำนักงาน…จังหวัดหนองบัวลำภู</div></div></div></div></div></div>
  </div>
 
- <div class="step">
+ <div class="step rv">
   <div class="t"><h3><b>3</b>กรอกข้อมูลเมตา (ช่องที่มีผลต่อเกณฑ์)</h3>
    <p>ช่องที่มี <b style="color:var(--lotus2)">*</b> ต้องกรอกทุกช่อง ตารางด้านล่างคือช่องที่<b>มักกรอกผิด</b>และกระทบผลตรวจ</p>
    <div class="note w"><b>สำคัญที่สุด:</b> ช่อง <b>การเข้าถึง</b> ค่าเริ่มต้นเป็น “ส่วนตัว” ต้องเปลี่ยนเป็น <b>สาธารณะ</b> ไม่อย่างนั้นประชาชนและแดชบอร์ดจะมองไม่เห็นชุดข้อมูล ตอนนี้มี <b>22 ชุด</b>ในจังหวัดที่ยังเป็นส่วนตัวอยู่</div></div>
@@ -254,7 +354,7 @@ footer b{color:#fff;font-family:Kanit}
    <tr><td>วันที่ปรับปรุงข้อมูลล่าสุด</td><td>วันที่อัปโหลดไฟล์ครั้งนี้</td><td>บอกว่าข้อมูลสดแค่ไหน</td></tr>
   </tbody></table></div>
 
- <div class="step">
+ <div class="step rv">
   <div class="t"><h3><b>4</b>อัปโหลดไฟล์ CSV</h3>
    <ol><li>หน้า “② เพิ่มข้อมูล” กด <span class="key">อัปโหลด</span> แล้วเลือกไฟล์ CSV ที่เตรียมไว้</li><li><b>ชื่อ</b>: ตั้งชื่อไฟล์ให้อ่านรู้เรื่อง เช่น “จำนวนนักท่องเที่ยว รายอำเภอ”</li><li><b>นามสกุลของไฟล์</b>: <span class="key">CSV</span></li><li>กรอก <b>ปีข้อมูลที่เริ่มต้นจัดทำ</b> และ <b>ปีข้อมูลล่าสุดที่เผยแพร่</b> ของไฟล์นี้อีกครั้ง</li><li>กด <span class="key">เสร็จสิ้น</span> (หรือ <span class="key">เพิ่ม</span>)</li></ol>
    <div class="note i">ถ้าข้อมูลมาจาก API ของหน่วยงานแม่ ให้กด <span class="key l">ลิงก์</span> แล้ววาง URL ของ API แทนการอัปโหลด</div></div>
@@ -267,7 +367,7 @@ footer b{color:#fff;font-family:Kanit}
     <div style="text-align:right"><span class="btn g">บันทึกและเพิ่มรายการ</span> <span class="btn hot">เสร็จสิ้น</span></div></div></div>
  </div>
 
- <div class="step">
+ <div class="step rv">
   <div class="t"><h3><b>5</b>รอ 1–5 นาที แล้วตรวจว่า Data API ทำงาน</h3>
    <ol><li>เปิดไฟล์ที่เพิ่งอัปโหลด กด <span class="key">จัดการ</span> → แท็บ <span class="key">ที่จัดเก็บข้อมูล</span></li><li>สถานะต้องเป็น <b style="color:var(--ok)">สำเร็จ</b></li><li>ดูแท็บ <span class="key">Data Dictionary</span> ช่องตัวเลขควรเป็น <b>numeric</b> ไม่ใช่ text</li></ol>
    <div class="note g"><b>ทำไมต้องตรวจ:</b> ถ้าสถานะสำเร็จ ไฟล์ CSV จะกลายเป็น <b>Data API</b> ให้ Power BI และแดชบอร์ดดึงไปใช้ได้ทันทีโดยไม่ต้องดาวน์โหลด</div></div>
@@ -279,11 +379,11 @@ footer b{color:#fff;font-family:Kanit}
 </div></section>
 
 <!-- ===== 3 UPDATE ===== -->
-<section class="band" id="update"><div class="in">
- <div class="sh"><div class="no">3</div><div><h2>อัปเดตข้อมูลให้เป็นปัจจุบัน</h2><p>ทุกครั้งที่มีข้อมูลปีใหม่ ใช้เวลา 5 นาที</p></div></div>
+<section class="band alt" id="update"><div class="in">
+ <div class="sh rv"><div class="no">3</div><div><h2>อัปเดตข้อมูลให้เป็นปัจจุบัน</h2><p>ทุกครั้งที่มีข้อมูลปีใหม่ ใช้เวลา 5 นาที</p></div></div>
  <div class="big"><span>♻️</span><div>แทนไฟล์ในทรัพยากรเดิม อย่าลบแล้วสร้างใหม่<small>ทรัพยากรเดิมมีรหัส (resource id) ที่รายงาน Power BI และระบบอื่นผูกไว้ ถ้าลบทิ้ง รายงานจังหวัดจะดึงข้อมูลไม่ได้ทันที เราเพิ่งพบรายงานพังเพราะเรื่องนี้ไปแล้วหลายตาราง</small></div></div>
 
- <div class="step">
+ <div class="step rv">
   <div class="t"><h3><b>1</b>เปิดทรัพยากรที่จะอัปเดต</h3>
    <ol><li>เข้าชุดข้อมูลของหน่วยงาน กด <span class="key">จัดการ</span></li><li>กดแท็บ <span class="key">ทรัพยากร</span></li><li>คลิกชื่อไฟล์เดิม จะเข้าหน้า <b>แก้ไขทรัพยากร</b></li></ol></div>
   <div class="mock"><div class="mb"><i></i><i></i><i></i><span>…/dataset/resources/<b>ชื่อชุดข้อมูล</b></span></div>
@@ -293,7 +393,7 @@ footer b{color:#fff;font-family:Kanit}
     <span class="btn g">+ เพิ่มทรัพยากรใหม่</span></div></div>
  </div>
 
- <div class="step">
+ <div class="step rv">
   <div class="t"><h3><b>2</b>แทนไฟล์ แก้ปี แล้วบันทึก</h3>
    <ol><li>กด <span class="key l">ล้างการอัพโหลดนี้</span> แล้วกด <span class="key">อัปโหลด</span> เลือกไฟล์ใหม่</li><li>ไฟล์ใหม่ต้องมี<b>ทุกปีเหมือนเดิม + ปีใหม่</b> และหัวคอลัมน์ต้องชื่อเดิม</li><li>แก้ <b>ปีข้อมูลล่าสุดที่เผยแพร่</b> เป็น 2569 และ <b>วันที่ปรับปรุงข้อมูลล่าสุด</b> เป็นวันนี้</li><li>กด <span class="key">ปรับปรุงทรัพยากร</span></li></ol>
    <div class="note w"><b>ห้าม</b>กดปุ่ม <b>ลบ</b> สีแดงในหน้านี้ และห้ามเปลี่ยนชื่อหัวคอลัมน์ กราฟในรายงานผูกกับชื่อคอลัมน์ไว้</div></div>
@@ -305,7 +405,7 @@ footer b{color:#fff;font-family:Kanit}
     <div style="display:flex;justify-content:space-between"><span class="btn r" style="opacity:.55">ลบ ✕</span><span class="btn hot">ปรับปรุงทรัพยากร</span></div></div></div>
  </div>
 
- <div class="step">
+ <div class="step rv">
   <div class="t"><h3><b>3</b>อัปเดตข้อมูลเมตาของชุดข้อมูลด้วย</h3>
    <ol><li>กลับไปแท็บ <span class="key">แก้ไขข้อมูลเมตา</span></li><li>แก้ <b>ปีข้อมูลล่าสุดที่เผยแพร่</b> และ <b>วันที่ปรับปรุงข้อมูลล่าสุด</b> ให้ตรงกับไฟล์</li><li>กด <span class="key">ปรับปรุงชุดข้อมูล</span></li><li>ตรวจแท็บ <span class="key">ที่จัดเก็บข้อมูล</span> ว่าสถานะ <b style="color:var(--ok)">สำเร็จ</b> อีกครั้ง</li></ol>
    <div class="note i">ถ้าลืมแก้ปีในข้อมูลเมตา แดชบอร์ดจะเห็นปีในไฟล์กับปีในข้อมูลเมตาไม่ตรงกัน และขึ้นเตือนให้แก้</div></div>
@@ -326,9 +426,9 @@ footer b{color:#fff;font-family:Kanit}
 </div></section>
 
 <!-- ===== 4 CHECK ===== -->
-<section class="band alt" id="check"><div class="in">
- <div class="sh"><div class="no">4</div><div><h2>ตรวจผลบนแดชบอร์ดจังหวัด</h2><p>ระบบตรวจซ้ำอัตโนมัติทุกชั่วโมง ผลจะขึ้นภายใน 1 ชั่วโมงหลังอัปเดต</p></div></div>
- <div class="step">
+<section class="band" id="check"><div class="in">
+ <div class="sh rv"><div class="no">4</div><div><h2>ตรวจผลบนแดชบอร์ดจังหวัด</h2><p>ระบบตรวจซ้ำอัตโนมัติทุกชั่วโมง ผลจะขึ้นภายใน 1 ชั่วโมงหลังอัปเดต</p></div></div>
+ <div class="step rv">
   <div class="t"><ol><li>เปิด <a href="https://nsonongbualamphutc-debug.github.io/NBL-GDCatalog-Monitor/">แดชบอร์ดตรวจสถานะข้อมูล GD Catalog</a></li><li>ไปหน้า <span class="key">หน่วยงาน</span> แล้วคลิกชื่อหน่วยงานของท่าน</li><li>กด <span class="key">📄 รายงานหน่วยงาน</span> จะเห็นทุกชุดข้อมูลพร้อมสิ่งที่ต้องแก้</li></ol>
    <div class="scroll"><table class="stack"><thead><tr><th>สถานะ</th><th>ความหมาย</th><th>ทำอะไรต่อ</th></tr></thead><tbody>
     <tr><td><b style="color:var(--ok)">● ผ่านครบ</b></td><td>ครบทั้ง 3 เกณฑ์</td><td>อัปเดตตามรอบ</td></tr>
@@ -345,9 +445,19 @@ footer b{color:#fff;font-family:Kanit}
  </div>
 </div></section>
 
+
+<section class="band alt" id="mine"><div class="in">
+ <div class="sh rv"><div class="no">★</div><div><h2>งานของหน่วยงานฉัน</h2><p>เลือกหน่วยงาน ระบบดึงรายการชุดข้อมูลจากผลตรวจล่าสุด พร้อมปุ่มไปหน้าแก้ไขบน Catalog</p></div></div>
+ <div class="mine rv">
+  <div class="msel"><select id="org" aria-label="เลือกหน่วยงาน"><option value="">กำลังโหลดรายชื่อหน่วยงาน…</option></select><a class="cta s" id="orgRep" href="index.html" style="display:none">ดูรายงานเต็มบนแดชบอร์ด →</a></div>
+  <div id="mout"><div class="empty">เลือกหน่วยงานเพื่อดูรายการงาน</div></div>
+  <p style="font-size:14px;color:var(--ink2)">ตรวจแบบย่อจากข้อมูลเมตาและชื่อไฟล์ ผลละเอียดดูได้ที่แดชบอร์ด</p>
+ </div>
+</div></section>
+
 <!-- ===== FAQ ===== -->
 <section class="band" id="faq"><div class="in">
- <div class="sh"><div class="no">?</div><div><h2>ปัญหาที่พบบ่อย</h2><p>กดเพื่อดูวิธีแก้</p></div></div>
+ <div class="sh rv"><div class="no">?</div><div><h2>ปัญหาที่พบบ่อย</h2><p>กดเพื่อดูวิธีแก้</p></div></div>
  <details><summary>ภาษาไทยในไฟล์กลายเป็นตัวอักษรแปลก ๆ</summary><p>ไฟล์ไม่ได้บันทึกเป็น UTF-8 ให้เปิดไฟล์ต้นฉบับใน Excel แล้ว Save As เป็น “CSV UTF-8 (Comma delimited)” ใหม่ จากนั้นแทนไฟล์ตามสถานีที่ 3</p></details>
  <details><summary>“ที่จัดเก็บข้อมูล” ขึ้นว่าไม่สำเร็จ หรือไม่มีข้อมูล</summary><ol><li>ตรวจว่าไฟล์เป็นตารางเดียว หัวตารางแถวเดียว ไม่มีเซลล์ว่างทั้งแถวคั่น</li><li>ชื่อคอลัมน์ห้ามซ้ำกัน และห้ามว่าง</li><li>แก้ไฟล์แล้วแทนไฟล์ใหม่ ระบบจะลองแปลงอีกครั้ง ถ้ายังไม่ได้ ติดต่อสำนักงานสถิติจังหวัด</li></ol></details>
  <details><summary>Data Dictionary บอกว่าคอลัมน์ตัวเลขเป็น text</summary><p>มีค่าที่ไม่ใช่ตัวเลขปนอยู่ เช่น “12,450” “-” “n/a” หรือมีหน่วยต่อท้าย ให้ลบลูกน้ำและหน่วยออก ช่องที่ไม่มีข้อมูลให้เว้นว่าง</p></details>
@@ -359,31 +469,104 @@ footer b{color:#fff;font-family:Kanit}
 
 <!-- ===== CHECKLIST ===== -->
 <section class="band alt" id="list"><div class="in">
- <div class="sh"><div class="no">✓</div><div><h2>เช็กลิสต์ก่อนกดบันทึก</h2><p>ติ๊กได้เลย ระบบจำไว้ในเครื่องของท่าน</p></div></div>
+ <div class="sh rv"><div class="no">✓</div><div><h2>เช็กลิสต์ก่อนกดบันทึก</h2><p>ติ๊กได้เลย ระบบจำไว้ในเครื่องของท่าน</p></div></div>
  <div class="prog"><i id="pbar"></i></div>
  <div class="chk" id="chk"></div>
  <p style="margin-top:20px"><button class="cta s" id="reset" type="button">ล้างเช็กลิสต์</button> <a class="cta p" href="https://nongbualamphu.gdcatalog.go.th">ไปที่ GD Catalog จังหวัด →</a></p>
 </div></section>
 
+
+<section class="band" id="share"><div class="in share">
+ <div id="qr" class="rv" aria-label="QR Code ของคู่มือ"></div>
+ <div class="rv"><h2>แชร์คู่มือให้เพื่อนร่วมงาน</h2><p style="color:var(--ink2)">สแกน QR เพื่อเปิดคู่มือบนมือถือ หรือคัดลอกลิงก์ส่งในกลุ่มไลน์ของหน่วยงาน พิมพ์ QR ติดหน้าห้องประชุมได้</p>
+  <p style="display:flex;gap:10px;flex-wrap:wrap;align-items:center"><code id="url" style="padding:8px 12px;border-radius:10px;background:var(--bg2);border:1px solid var(--line)"></code><button class="copy" id="cpUrl" type="button">คัดลอกลิงก์</button></p></div>
+</div></section>
 <footer class="band"><div class="in">
  <b>สำนักงานสถิติจังหวัดหนองบัวลำภู</b><br>ศาลากลางจังหวัดหนองบัวลำภู ชั้น 2 ถ.หนองบัวลำภู–เลย ต.ลำภู อ.เมือง จ.หนองบัวลำภู 39000 · โทร 0 4231 6736 · saraban_nblamphu@nso.mail.go.th<br>
  <span style="font-size:13.5px">ชื่อปุ่มและช่องในคู่มือนี้ตรงกับระบบ GD Catalog จังหวัด ณ 24 พ.ย. 2569</span>
 </div></footer>
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
 {
-const items=['ไฟล์เป็นตารางเดียว หัวตารางแถวเดียว ไม่มี Merge','มีคอลัมน์ “ปี” และข้อมูลครบ 2564–2569','ช่องตัวเลขไม่มีลูกน้ำ หน่วย หรือขีด','บันทึกเป็น CSV UTF-8','การเข้าถึง = สาธารณะ','ใส่ปีข้อมูลที่เริ่มต้นจัดทำ และปีล่าสุดที่เผยแพร่','อัปเดตโดยแทนไฟล์เดิม ไม่ลบทรัพยากร','แก้วันที่ปรับปรุงข้อมูลล่าสุด','“ที่จัดเก็บข้อมูล” สถานะสำเร็จ','ตรวจผลบนแดชบอร์ดจังหวัดแล้ว'];
-const K='gdguide.chk';let st={};try{st=JSON.parse(localStorage.getItem(K)||'{}')}catch(e){}
-const box=document.getElementById('chk'),bar=document.getElementById('pbar');
-const esc=s=>s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+const CAT='https://nongbualamphu.gdcatalog.go.th',CUR=2569,Y0=2564;
+const GUIDE='https://nsonongbualamphutc-debug.github.io/NBL-GDCatalog-Monitor/guide.html',DASH='https://nsonongbualamphutc-debug.github.io/NBL-GDCatalog-Monitor/';
+const onPages=/github\.io$/.test(location.hostname);
+if(!onPages){$('#dashLink').href=DASH;$('#orgRep').href=DASH}
+/* theme */
+const sun='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',moon='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>';
+const paintTh=()=>{const d=document.documentElement.dataset.theme==='dark';$('#thIc').innerHTML=d?sun:moon;$('#thTx').textContent=d?'โหมดสว่าง':'โหมดมืด'};
+$('#theme').addEventListener('click',()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark';LS.set('gdguide.theme',r.dataset.theme);paintTh()});paintTh();
+/* checklist */
+const items=['ไฟล์เป็นตารางเดียว หัวตารางแถวเดียว ไม่มี Merge','มีคอลัมน์ “ปี” และข้อมูลครบ 2564–2569','ช่องตัวเลขไม่มีลูกน้ำ หน่วย หรือขีด','บันทึกเป็น CSV UTF-8 และผ่านเครื่องมือตรวจไฟล์','การเข้าถึง = สาธารณะ','ใส่ปีข้อมูลที่เริ่มต้นจัดทำ และปีล่าสุดที่เผยแพร่','อัปเดตโดยแทนไฟล์เดิม ไม่ลบทรัพยากร','แก้วันที่ปรับปรุงข้อมูลล่าสุด','“ที่จัดเก็บข้อมูล” สถานะสำเร็จ','ตรวจผลบนแดชบอร์ดจังหวัดแล้ว'];
+const K='gdguide.chk';let st={};try{st=JSON.parse(LS.get(K)||'{}')}catch(e){}
+const box=$('#chk'),bar=$('#pbar');
 box.innerHTML=items.map((t,i)=>`<label><input type="checkbox" data-i="${i}" ${st[i]?'checked':''}><span>${esc(t)}</span></label>`).join('');
-const upd=()=>{const n=box.querySelectorAll('input:checked').length;bar.style.width=(n*100/items.length)+'%'};
-box.addEventListener('change',e=>{const i=e.target.dataset.i;st[i]=e.target.checked;try{localStorage.setItem(K,JSON.stringify(st))}catch(x){}upd()});
-document.getElementById('reset').addEventListener('click',()=>{st={};try{localStorage.removeItem(K)}catch(x){}box.querySelectorAll('input').forEach(c=>c.checked=false);upd()});
-upd();
-const links=[...document.querySelectorAll('nav.toc a')];const secs=links.map(a=>document.querySelector(a.getAttribute('href')));
-const io=new IntersectionObserver(es=>{es.forEach(en=>{if(en.isIntersecting){links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}})},{rootMargin:'-40% 0px -55% 0px'});
-secs.forEach(s=>s&&io.observe(s));
+const upd=()=>{bar.style.width=(box.querySelectorAll('input:checked').length*100/items.length)+'%'};
+box.addEventListener('change',e=>{st[e.target.dataset.i]=e.target.checked;LS.set(K,JSON.stringify(st));upd()});
+$('#reset').addEventListener('click',()=>{st={};LS.set(K,'{}');box.querySelectorAll('input').forEach(c=>c.checked=false);upd()});upd();
+/* nav highlight + progress + reveal */
+const links=[...document.querySelectorAll('nav.toc a')];
+const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting)links.forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-40% 0px -55% 0px'});
+links.forEach(a=>{const t=document.querySelector(a.getAttribute('href'));t&&io.observe(t)});
+const pg=$('#pg');const onScroll=()=>{const h=document.documentElement;pg.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100||0)+'%'};addEventListener('scroll',onScroll,{passive:true});
+const rio=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('on');rio.unobserve(en.target)}}),{rootMargin:'0px 0px -8% 0px'});
+document.querySelectorAll('.rv').forEach(e=>rio.observe(e));
+/* hero ring */
+const hr=$('#hring');let p=0;const tick=()=>{p=Math.min(100,p+4);hr.style.setProperty('--p',p);hr.textContent=p+'%';if(p<100)requestAnimationFrame(tick)};setTimeout(tick,600);
+/* copy helper */
+const copy=async(t,btn,ok)=>{try{await navigator.clipboard.writeText(t);const o=btn.textContent;btn.textContent=ok||'คัดลอกแล้ว ✓';btn.classList.add('ok');setTimeout(()=>{btn.textContent=o;btn.classList.remove('ok')},1800)}catch(e){btn.textContent='คัดลอกไม่ได้ ให้เลือกข้อความเอง'}};
+/* template */
+const TPL='ปี,อำเภอ,รายการ,จำนวน,หน่วย\n'+[2564,2565,2566,2567,2568,2569].flatMap(y=>['เมืองหนองบัวลำภู','นากลาง','โนนสัง','ศรีบุญเรือง','สุวรรณคูหา','นาวัง'].map(a=>`${y},${a},รายการข้อมูล,,หน่วย`)).join('\n')+'\n';
+$('#tplDl').addEventListener('click',e=>{try{const b=new Blob(['﻿'+TPL],{type:'text/csv;charset=utf-8'});const a=document.createElement('a');a.href=URL.createObjectURL(b);a.download='template_ชุดข้อมูล_2564-2569.csv';document.body.appendChild(a);a.click();a.remove()}catch(x){copy(TPL,e.target,'ดาวน์โหลดไม่ได้ คัดลอกแทนแล้ว ✓')}});
+$('#tplCp').addEventListener('click',e=>copy(TPL,e.target));
+/* CSV checker */
+const parse=t=>{const R=[];let row=[],f='',q=false;for(let i=0;i<t.length;i++){const c=t[i];if(q){if(c==='"'){if(t[i+1]==='"'){f+='"';i++}else q=false}else f+=c}else if(c==='"')q=true;else if(c===','){row.push(f);f=''}else if(c==='\n'||c==='\r'){if(c==='\r'&&t[i+1]==='\n')i++;row.push(f);R.push(row);row=[];f=''}else f+=c}if(f!==''||row.length){row.push(f);R.push(row)}return R.filter(r=>r.some(v=>v.trim()!==''))};
+const check=(name,buf)=>{const out=[];let txt,utf=true;try{txt=new TextDecoder('utf-8',{fatal:true}).decode(buf)}catch(e){utf=false;txt=new TextDecoder('windows-874').decode(buf)}
+ txt=txt.replace(/^﻿/,'');const R=parse(txt);
+ out.push(utf?[1,'บันทึกเป็น UTF-8','ภาษาไทยแสดงถูกต้องบนเว็บ']:[0,'ไม่ใช่ UTF-8','ภาษาไทยจะเพี้ยน ให้ Save As เป็น “CSV UTF-8 (Comma delimited)”']);
+ if(R.length<2)return {out:[...out,[0,'ไม่พบข้อมูล','ไฟล์ว่างหรือมีแถวเดียว']],yrs:null,n:0};
+ const h0=R[0].map(v=>v.trim());const title=h0.filter(Boolean).length<=1&&R[1]&&R[1].filter(v=>v.trim()).length>1;
+ const h=(title?R[1]:R[0]).map(v=>v.trim()),filled=h.filter(Boolean).length;
+ out.push(title?[0,'แถวแรกเป็นชื่อรายงาน ไม่ใช่หัวตาราง','ลบแถวชื่อรายงานออก ให้แถวแรกเป็นชื่อคอลัมน์']:filled<h.length?[0,'มีหัวคอลัมน์ว่าง '+(h.length-filled)+' คอลัมน์','ตั้งชื่อทุกคอลัมน์ หรือลบคอลัมน์ว่างทิ้ง']:new Set(h).size<h.length?[0,'ชื่อคอลัมน์ซ้ำกัน','ชื่อคอลัมน์ต้องไม่ซ้ำ']:[1,'หัวตารางแถวเดียว '+h.length+' คอลัมน์',h.slice(0,6).join(' · ')+(h.length>6?' …':'')]);
+ const wide=h.filter(x=>/^25\d\d$/.test(x));
+ if(wide.length>=2)out.push([0,'กางปีเป็นคอลัมน์ ('+wide.join(', ')+')','ให้เปลี่ยนเป็นคอลัมน์ “ปี” 1 คอลัมน์ แล้วเรียงข้อมูลลงด้านล่าง']);
+ const D=R.slice(title?2:1);const yi=h.findIndex(x=>/^(ปี|ปี พ\.?ศ\.?|ปีงบประมาณ|year|ปีข้อมูล)$/i.test(x.replace(/\s/g,''))||/^ปี/.test(x));
+ let yrs=null;
+ if(yi<0&&wide.length<2)out.push([0,'ไม่พบคอลัมน์ “ปี”','เพิ่มคอลัมน์ชื่อ “ปี” ใส่ปี พ.ศ. ทุกแถว']);
+ if(yi>=0){const ys=new Set(D.map(r=>parseInt((r[yi]||'').replace(/\D/g,''))).filter(y=>y>2400&&y<2700));yrs=ys;const need=[];for(let y=Y0;y<=CUR;y++)if(!ys.has(y))need.push(y);out.push(need.length?[0,'ปีไม่ครบ ขาด '+need.join(', '),'เกณฑ์ต้องมีปี '+Y0+'–'+CUR]:[1,'ปีครบ '+Y0+'–'+CUR,'ผ่านเกณฑ์ย้อนหลังและปีปัจจุบัน'])}
+ if(wide.length>=2)yrs=new Set(wide.map(Number));
+ const bad=[];h.forEach((c,j)=>{if(j===yi)return;const v=D.map(r=>(r[j]||'').trim()).filter(Boolean);if(v.length<3)return;const num=v.filter(x=>/^-?\d+(\.\d+)?$/.test(x)).length,dirty=v.filter(x=>/^-?[\d,]+(\.\d+)?\s*[^\d\s,.]*$/.test(x)&&/[,]|[^\d.\-]/.test(x)&&/\d/.test(x));if((num+dirty.length)/v.length>.6&&dirty.length)bad.push(c+' (เช่น “'+dirty[0]+'”)')});
+ out.push(bad.length?[0,'ตัวเลขมีลูกน้ำหรือหน่วยปน',bad.slice(0,3).join(' · ')+' → ลบลูกน้ำ/หน่วยออก ให้เหลือตัวเลขล้วน']:[1,'ช่องตัวเลขเป็นตัวเลขล้วน','ระบบจะเก็บเป็น numeric']);
+ const dash=D.filter(r=>r.some(v=>/^\s*-\s*$/.test(v))).length;if(dash)out.push([0,'มีช่องที่ใส่ “-” '+dash+' แถว','ช่องที่ไม่มีข้อมูลให้เว้นว่าง']);
+ const ragged=D.filter(r=>r.length!==h.length).length;if(ragged)out.push([0,'จำนวนคอลัมน์ไม่เท่ากัน '+ragged+' แถว','อาจมีเซลล์ที่ Merge หรือมีลูกน้ำเกินในข้อความ']);
+ if(!/\.csv$/i.test(name))out.push([0,'นามสกุลไฟล์ไม่ใช่ .csv','บันทึกใหม่เป็น CSV UTF-8']);
+ return {out,yrs,n:D.length,cols:h.length}};
+const render=(name,r)=>{const ok=r.out.filter(x=>x[0]).length,all=r.out.length,pass=ok===all;const sc=Math.round(ok*100/all);
+ const yr=r.yrs?`<div class="yrs">${Array.from({length:CUR-Y0+1},(_,i)=>Y0+i).map(y=>`<span class="${r.yrs.has(y)?'y1':'y0'}">${y} ${r.yrs.has(y)?'✓':'✕'}</span>`).join('')}</div>`:'';
+ $('#res').innerHTML=`<div class="hd"><div class="sc" style="background:${pass?'linear-gradient(135deg,#0b8a5a,#3fd49a)':sc>=60?'linear-gradient(135deg,#b86b00,#ffb547)':'linear-gradient(135deg,#c62f45,#ff7488)'}">${pass?'✓':sc+'%'}</div><div><b style="font-family:Kanit;font-size:18px">${pass?'ไฟล์พร้อมอัปโหลด':'ต้องแก้อีก '+(all-ok)+' จุด'}</b><br><small style="color:var(--ink2)">${esc(name)} · ${r.n.toLocaleString()} แถว${r.cols?' · '+r.cols+' คอลัมน์':''}</small></div></div>${yr}<ul>${r.out.map(([g,t,d])=>`<li><i style="background:${g?'var(--ok)':'var(--bad)'}">${g?'✓':'✕'}</i><div>${esc(t)}<small>${esc(d)}</small></div></li>`).join('')}</ul>${pass?'<p style="margin-top:10px"><a class="cta p" href="#new">ไปขั้นนำเข้า →</a></p>':''}`};
+const handle=f=>{if(!f)return;if(f.size>30e6){$('#res').innerHTML='<div class="empty">ไฟล์ใหญ่เกิน 30 MB</div>';return}const rd=new FileReader();rd.onload=()=>{try{render(f.name,check(f.name,rd.result))}catch(e){$('#res').innerHTML='<div class="empty">อ่านไฟล์ไม่ได้</div>'}};rd.readAsArrayBuffer(f)};
+const dr=$('#drop');$('#file').addEventListener('change',e=>handle(e.target.files[0]));
+['dragover','dragenter'].forEach(t=>dr.addEventListener(t,e=>{e.preventDefault();dr.classList.add('ov')}));['dragleave','drop'].forEach(t=>dr.addEventListener(t,e=>{e.preventDefault();dr.classList.remove('ov')}));
+dr.addEventListener('drop',e=>handle(e.dataTransfer.files[0]));
+/* my tasks */
+const MR=/^(CSV|JSON|XML|API|RDF|XLS|XLSX|TSV|GEOJSON|ODS)$/i;
+const yrsOf=p=>{const s=[p.title,...(p.resources||[]).map(r=>r.name)].join(' ');const m=(s.match(/25[4-7]\d/g)||[]).map(Number);const ly=parseInt(p.last_year_of_data),fy=parseInt(p.first_year_of_data);return{max:Math.max(isNaN(ly)?0:ly,...m,0),min:Math.min(isNaN(fy)?9999:fy,...(m.length?m:[9999]))}};
+let DATA=null;
+const showOrg=o=>{const L=DATA.raw.filter(p=>(p.organization||{}).name===o);const rep=$('#orgRep');rep.style.display=o?'':'none';rep.href=(onPages?'index.html':DASH)+'#org-'+encodeURIComponent(o);LS.set('gdguide.org',o);
+ if(!o){$('#mout').innerHTML='<div class="empty">เลือกหน่วยงานเพื่อดูรายการงาน</div>';return}
+ if(!L.length){$('#mout').innerHTML='<div class="empty">หน่วยงานนี้ยังไม่มีชุดข้อมูลสาธารณะ → เริ่มที่สถานี 1–2</div>';return}
+ const T=L.map(p=>{const y=yrsOf(p);const f=[];if(y.max<CUR)f.push(['c2','ยังไม่มีปี '+CUR]);if(y.min>Y0)f.push(['c1','ขาดย้อนหลัง']);if(!(p.resources||[]).some(r=>MR.test(String(r.format||'').trim())))f.push(['c3','ไม่ใช่ Machine Readable']);return{p,f}}).sort((a,b)=>b.f.length-a.f.length);
+ const todo=T.filter(t=>t.f.length);const c=k=>todo.filter(t=>t.f.some(x=>x[0]===k)).length;
+ $('#mout').innerHTML=`<div class="mk"><div><b>${L.length}</b><span>ชุดข้อมูลทั้งหมด</span></div><div><b style="color:var(--ok)">${L.length-todo.length}</b><span>ผ่านแล้ว</span></div><div><b style="color:var(--bad)">${c('c2')}</b><span>ต้องเพิ่มปี ${CUR}</span></div><div><b style="color:var(--warn)">${c('c1')+c('c3')}</b><span>ขาดย้อนหลัง / ไม่ใช่ CSV</span></div></div>
+ ${todo.length?todo.slice(0,40).map(({p,f})=>`<div class="tk"><div class="tt"><b>${esc(p.title)}</b><small>${f.map(x=>`<span class="chip ${x[0]}">${esc(x[1])}</span>`).join('')}</small></div><a class="copy" style="display:inline-flex;align-items:center;text-decoration:none" href="${CAT}/dataset/resources/${encodeURIComponent(p.name)}" target="_blank" rel="noopener">แก้ไข →</a></div>`).join('')+(todo.length>40?`<p class="empty">และอีก ${todo.length-40} ชุด ดูทั้งหมดบนแดชบอร์ด</p>`:''):'<div class="empty">🎉 ทุกชุดผ่านเกณฑ์แบบย่อแล้ว</div>'}`};
+fetch((onPages?'':DASH)+'data/prov.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(j=>{DATA=j;const orgs=[...new Map(j.raw.map(p=>[(p.organization||{}).name,(p.organization||{}).title])).entries()].filter(x=>x[0]).sort((a,b)=>a[1].localeCompare(b[1],'th'));
+ $('#org').innerHTML='<option value="">— เลือกหน่วยงานของท่าน —</option>'+orgs.map(([n,t])=>`<option value="${esc(n)}">${esc(t)}</option>`).join('');const sv=LS.get('gdguide.org');if(sv&&orgs.some(o=>o[0]===sv)){$('#org').value=sv;showOrg(sv)}}).catch(()=>{$('#org').innerHTML='<option value="">โหลดรายชื่อไม่ได้ในหน้าตัวอย่างนี้</option>';$('#mout').innerHTML=`<div class="empty">เปิดคู่มือจาก <a href="${GUIDE}#mine">เว็บไซต์จริง</a> เพื่อดูงานของหน่วยงาน หรือดูที่ <a href="${DASH}">แดชบอร์ด</a></div>`});
+$('#org').addEventListener('change',e=>DATA&&showOrg(e.target.value));
+/* share */
+$('#url').textContent=GUIDE;$('#cpUrl').addEventListener('click',e=>copy(GUIDE,e.target));
+try{new QRCode($('#qr'),{text:GUIDE,width:160,height:160,colorDark:'#003647',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.M})}catch(e){$('#qr').textContent='QR'}
 }
 </script>
 </body>
