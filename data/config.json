@@ -1,0 +1,54 @@
+{
+ "v": 1,
+ "updatedAt": "2026-11-24T14:30:00Z",
+ "target": {
+  "year": 2569,
+  "back": 5
+ },
+ "rounds": [
+  {
+   "id": "r2569",
+   "name": "ข้อมูลปี 2569",
+   "year": 2569,
+   "open": "2026-11-24",
+   "due": "",
+   "remind": [
+    14,
+    7,
+    3,
+    1
+   ],
+   "report": "",
+   "note": "",
+   "on": true
+  }
+ ],
+ "orgDue": {},
+ "notified": {},
+ "announce": {
+  "on": false,
+  "level": "info",
+  "text": "",
+  "until": ""
+ },
+ "contact": {
+  "unit": "สำนักงานสถิติจังหวัดหนองบัวลำภู",
+  "phone": "0 4231 6736",
+  "phone2": "0 4231 6737",
+  "email": "saraban_nblamphu@nso.mail.go.th",
+  "line": ""
+ },
+ "flow": {
+  "every": 1,
+  "minute": 7,
+  "pbi": "06:00",
+  "ds": "1–5 นาที"
+ },
+ "auth": {
+  "alg": "PBKDF2-SHA256",
+  "iter": 310000,
+  "salt": "c5a8a4b3d956ecc13e4fc51f80c0d693",
+  "hash": "3d4cd523ec2e272ffbb4c18a9432d3f80fe803b63a57cec3ac050df07d2761bd"
+ },
+ "log": []
+}
