@@ -21,7 +21,7 @@ const core = html.match(/\/\*CORE-START\*\/([\s\S]*?)\/\*CORE-END\*\//)[1];
 const DEF = Function('return ' + html.match(/const DEF=(\{[^;]*\});/)[1])();
 const CFG = Object.assign({}, DEF);
 const S = { orgs: {}, store: { prov: { orgs: [], raw: [], ok: false }, nat: { orgs: [], raw: [], ok: false } }, deep: {} };
-const C = Function('CFG', 'S', core + '\nreturn {SRCS,analyze,scoped,ISSUES,toBE};')(CFG, S);
+const C = Function('CFG', 'S', core + '\nreturn {SRCS,analyze,scoped,ISSUES,toBE,PBI:typeof PBI!=="undefined"?PBI:{}};')(CFG, S);
 const API = k => C.SRCS[k].site + '/api/3/action/';
 
 // ---------- http ----------
@@ -168,6 +168,22 @@ if (FORCE || NOW - (deep.updatedAt || 0) > 20 * 3600e3) {
   await writeJSON('deep.json', deep);
 }
 S.deep = deep.map || {};
+
+// ---------- ตรวจ resource ที่รายงาน Power BI ใช้ (วันละครั้ง) ----------
+let pbic = await readJSON('pbi_check.json', { updatedAt: 0, map: {} });
+if (FORCE || bkkDate(pbic.updatedAt || 0) !== TODAY) {
+  const items = [];
+  for (const P of Object.values(C.PBI || {})) for (const r of P.rows || []) for (const x of r.s || []) if (x.k === 'api' && x.r && x.h) items.push([x.h, x.r]);
+  const uniq = [...new Map(items.map(i => [i[1], i])).values()];
+  log('pbi check', uniq.length, 'resources');
+  const out = await pool(uniq, 4, async ([h, rid]) => {
+    try { const a = await get('https://' + h + '/api/3/action/datastore_search?resource_id=' + rid + '&limit=0', 1); return { t: a.total ?? null }; }
+    catch (e) { return { e: /404|not found|API error/i.test(e.message) ? 'gone' : 'err' }; }
+  });
+  const map = {}; uniq.forEach(([, rid], i) => { if (out[i]) map[rid] = out[i]; });
+  pbic = { updatedAt: NOW, map };
+  await writeJSON('pbi_check.json', pbic);
+}
 
 // ---------- daily history of compliance ----------
 const history = await readJSON('history.json', []);
