@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="th" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow,noarchive">
+<meta name="referrer" content="no-referrer">
+<meta name="author" content="สำนักงานสถิติจังหวัดหนองบัวลำภู">
+<meta name="copyright" content="© 2569 สำนักงานสถิติจังหวัดหนองบัวลำภู">
+<title>ระบบผู้ดูแล · GD Catalog Monitor หนองบัวลำภู</title>
+<script>try{const t=localStorage.getItem('gdadm.theme');if(t)document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Kanit:wght@400;500;600;700&family=Sarabun:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light dark;
+--bg:light-dark(#f4f8fa,#06141b);--bg2:light-dark(#eaf2f5,#0b1f27);--card:light-dark(#fff,#0e2731);--ink:light-dark(#0f2730,#e6f1f3);--ink2:light-dark(#567079,#9fb8bf);--line:light-dark(#dce8ec,#1d3c46);
+--teal:#206b82;--deep:#003647;--lotus:#e2477a;--vio:#7a5cff;--ok:light-dark(#0b8a5a,#3fd49a);--bad:light-dark(#c62f45,#ff7488);--warn:light-dark(#b86b00,#ffb547);
+--sh:light-dark(0 18px 40px -26px rgba(0,54,71,.35),0 18px 40px -22px rgba(0,0,0,.7));--glass:light-dark(rgba(255,255,255,.75),rgba(14,39,49,.72))}
+[data-theme=light]{color-scheme:light}[data-theme=dark]{color-scheme:dark}
+*{box-sizing:border-box}[hidden]{display:none!important}html,body{margin:0}
+body{background:var(--bg);color:var(--ink);font:16px/1.6 Sarabun,"Noto Sans Thai",sans-serif;min-height:100vh}
+h1,h2,h3,h4{font-family:Kanit,sans-serif;font-weight:600;line-height:1.3;margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--teal)}
+.logos{display:inline-flex;gap:6px;align-items:center;padding:6px 10px;border-radius:14px;background:#fff;box-shadow:0 6px 16px -10px rgba(0,0,0,.35)}.logos img{height:34px;width:auto;display:block}
+/* lock */
+.lock{min-height:100vh;display:grid;place-items:center;padding:20px;background:radial-gradient(circle at 15% 15%,rgba(122,92,255,.28),transparent 40%),radial-gradient(circle at 85% 80%,rgba(226,71,122,.25),transparent 40%),radial-gradient(circle at 70% 10%,rgba(34,211,238,.22),transparent 35%),var(--bg)}
+.lk{width:min(430px,100%);padding:30px 28px;border-radius:28px;background:var(--glass);backdrop-filter:blur(18px);border:1px solid var(--line);box-shadow:0 40px 80px -40px rgba(0,30,40,.6);text-align:center}
+.lk h1{font-size:23px;margin:16px 0 4px}.lk p{color:var(--ink2);margin:0 0 18px;font-size:14.5px}
+.pin{display:flex;gap:8px;justify-content:center;margin-bottom:14px}
+.pin input{width:100%;min-height:56px;text-align:center;font:600 26px Kanit;letter-spacing:10px;border-radius:16px;border:1.5px solid var(--line);background:var(--card)}
+.pin input:focus{outline:none;border-color:var(--vio);box-shadow:0 0 0 4px rgba(122,92,255,.2)}
+.lk .err{color:var(--bad);font-size:14.5px;min-height:22px;margin-top:6px}
+.lk small{display:block;color:var(--ink2);font-size:12.5px;margin-top:16px}
+.shake{animation:sh .4s}@keyframes sh{20%,60%{transform:translateX(-8px)}40%,80%{transform:translateX(8px)}}
+/* app */
+.app{display:grid;grid-template-columns:250px 1fr;min-height:100vh}
+.side{position:sticky;top:0;height:100vh;padding:18px 14px;background:linear-gradient(180deg,#003647,#062a36 60%,#160f3a);color:#dbeff3;display:flex;flex-direction:column;gap:6px}
+.side .br{display:flex;gap:10px;align-items:center;padding:4px 6px 16px;border-bottom:1px solid rgba(255,255,255,.1);margin-bottom:10px}
+.side .br b{font:600 15px/1.3 Kanit;color:#fff}.side .br small{display:block;color:#9cc8d2;font-size:12px}
+.side .br i{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:linear-gradient(135deg,var(--vio),var(--lotus));font-style:normal;font-size:20px}
+.nv{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;color:#cfe6ec;text-decoration:none;cursor:pointer;border:0;background:none;text-align:left;font:500 15px Kanit;width:100%}
+.nv:hover{background:rgba(255,255,255,.07)}.nv.on{background:linear-gradient(90deg,rgba(122,92,255,.55),rgba(226,71,122,.35));color:#fff;box-shadow:inset 3px 0 0 #fff}
+.nv span{width:22px;text-align:center}.nv em{margin-left:auto;font-style:normal;font-size:12px;padding:1px 8px;border-radius:99px;background:var(--lotus);color:#fff}
+.side .sp{flex:1}.side .ft{font-size:12px;color:#8fb3bc;padding:8px 6px}
+.main{min-width:0}
+.top{position:sticky;top:0;z-index:10;display:flex;gap:10px;align-items:center;padding:12px 26px;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--line)}
+.top h2{font-size:20px;flex:1}
+.chip{display:inline-flex;align-items:center;gap:6px;padding:6px 12px;border-radius:99px;font:500 13.5px Kanit;border:1px solid var(--line);background:var(--card)}
+.chip.dr{border-color:color-mix(in srgb,var(--warn) 55%,transparent);background:color-mix(in srgb,var(--warn) 12%,var(--card));color:var(--warn)}
+.chip.ok{border-color:color-mix(in srgb,var(--ok) 50%,transparent);color:var(--ok)}
+.b{display:inline-flex;align-items:center;justify-content:center;gap:7px;min-height:40px;padding:8px 16px;border-radius:12px;border:1px solid var(--line);background:var(--card);cursor:pointer;font:500 15px Kanit;text-decoration:none;color:var(--ink)}
+.b:hover{border-color:var(--teal)}.b.p{border:0;color:#fff;background:linear-gradient(135deg,var(--vio),var(--lotus));box-shadow:0 10px 24px -12px rgba(226,71,122,.8)}
+.b.g{border:0;color:#fff;background:linear-gradient(135deg,#0b8a5a,#22b07d)}.b.l{border:0;color:#fff;background:#06c755}.b.r{color:var(--bad)}
+.b.sm{min-height:32px;padding:4px 10px;font-size:13.5px;border-radius:9px}.b[disabled]{opacity:.45;pointer-events:none}
+.wrap{padding:22px 26px 60px;max-width:1280px}
+.vw{display:none}.vw.on{display:block;animation:fi .25s}@keyframes fi{from{opacity:0;transform:translateY(6px)}}
+.g{display:grid;gap:16px}.g4{grid-template-columns:repeat(4,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g2{grid-template-columns:1fr 1fr}
+@media(max-width:1100px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){.g4,.g3,.g2{grid-template-columns:1fr}}
+.cd{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:18px 20px;box-shadow:var(--sh);min-width:0}
+.cd h3{font-size:17px;margin-bottom:10px;display:flex;gap:8px;align-items:center}
+.cd h3 small{margin-left:auto;font:400 13px Sarabun;color:var(--ink2)}
+.k{position:relative;overflow:hidden}.k b{display:block;font:700 34px/1.1 Kanit;font-variant-numeric:tabular-nums}.k span{color:var(--ink2);font-size:14px}
+.k::after{content:"";position:absolute;right:-30px;top:-30px;width:110px;height:110px;border-radius:50%;background:var(--g);opacity:.14}
+.k i{font-style:normal;font-size:13px;display:block;margin-top:4px}
+.hero2{display:grid;grid-template-columns:1.2fr 1fr;gap:16px;margin-bottom:16px}
+@media(max-width:1000px){.hero2{grid-template-columns:1fr}}
+.cdn{color:#fff;background:radial-gradient(circle at 90% 10%,rgba(255,255,255,.2),transparent 40%),linear-gradient(130deg,#003647,#206b82 50%,#7a5cff);border:0}
+.cdn small{opacity:.85}.cdn .big{display:flex;gap:10px;margin:10px 0}
+.cdn .big div{flex:1;text-align:center;padding:8px 4px;border-radius:14px;background:rgba(255,255,255,.14)}.cdn .big b{display:block;font:700 34px/1.1 Kanit;font-variant-numeric:tabular-nums}.cdn .big span{font-size:12.5px;opacity:.85}
+.cdn .bar{height:8px;border-radius:9px;background:rgba(255,255,255,.2);overflow:hidden}.cdn .bar i{display:block;height:100%;background:linear-gradient(90deg,#3fd49a,#ffd166)}
+.fld{display:flex;flex-direction:column;gap:4px;margin-bottom:12px}.fld label{font:500 14px Kanit;color:var(--ink2)}
+.fld input,.fld select,.fld textarea{min-height:42px;padding:8px 12px;border-radius:12px;border:1.5px solid var(--line);background:var(--bg);width:100%}
+.fld textarea{min-height:84px;resize:vertical}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--vio)}
+.fld .hint{font-size:12.5px;color:var(--ink2)}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+.seg{display:inline-flex;padding:4px;border-radius:12px;background:var(--bg2);border:1px solid var(--line);gap:4px;flex-wrap:wrap}
+.seg button{border:0;background:none;padding:6px 14px;border-radius:9px;cursor:pointer;font:500 14px Kanit;color:var(--ink2)}.seg button.on{background:var(--card);color:var(--ink);box-shadow:0 2px 8px -3px rgba(0,0,0,.25)}
+.sw{position:relative;width:48px;height:28px;flex:none}.sw input{opacity:0;width:0;height:0}.sw i{position:absolute;inset:0;border-radius:99px;background:var(--line);transition:.2s;cursor:pointer}.sw i::after{content:"";position:absolute;left:3px;top:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:.2s;box-shadow:0 2px 5px rgba(0,0,0,.25)}
+.sw input:checked+i{background:linear-gradient(90deg,var(--vio),var(--lotus))}.sw input:checked+i::after{transform:translateX(20px)}
+.rch{display:flex;gap:6px;flex-wrap:wrap;align-items:center}.rch span{display:inline-flex;gap:6px;align-items:center;padding:4px 6px 4px 12px;border-radius:99px;background:color-mix(in srgb,#f59e0b 14%,var(--card));border:1px solid color-mix(in srgb,#f59e0b 40%,transparent);font:500 13.5px Kanit}
+.rch span button{border:0;background:rgba(0,0,0,.08);width:20px;height:20px;border-radius:50%;cursor:pointer;font-size:11px}
+.rch input{width:70px;min-height:32px;padding:4px 8px;border-radius:9px;border:1px solid var(--line);background:var(--bg)}
+.rd{border:1px solid var(--line);border-radius:18px;padding:16px 18px;margin-bottom:14px;background:var(--card);position:relative}
+.rd.act{border-color:var(--vio);box-shadow:0 0 0 3px rgba(122,92,255,.15)}
+.rd .tag{position:absolute;top:-11px;left:16px;font:600 12px Kanit;color:#fff;background:linear-gradient(90deg,var(--vio),var(--lotus));padding:2px 10px;border-radius:99px}
+.tl{position:relative;height:120px;margin:10px 8px 0}.tl .ax{position:absolute;left:0;right:0;top:54px;height:6px;border-radius:9px;background:var(--line)}.tl .ax i{position:absolute;left:0;top:0;bottom:0;border-radius:9px;background:linear-gradient(90deg,#10b981,#22d3ee,#7a5cff)}
+.tl .ms{position:absolute;top:48px;transform:translateX(-50%);width:110px;display:flex;flex-direction:column;align-items:center}.tl .pt{width:18px;height:18px;border-radius:50%;border:4px solid var(--c);background:var(--card)}.tl .ms.past .pt{background:var(--c)}
+.tl .lb{position:absolute;top:26px;font-size:12px;text-align:center;color:var(--ink2);line-height:1.3}.tl .lb b{display:block;color:var(--ink);font:600 12.5px Kanit}.tl .ms.up .lb{top:auto;bottom:24px}
+.tl .now{position:absolute;top:14px;bottom:20px;width:2px;background:var(--lotus)}.tl .now span{position:absolute;top:-4px;left:50%;transform:translateX(-50%);font:600 11px Kanit;color:#fff;background:var(--lotus);padding:1px 7px;border-radius:99px;white-space:nowrap}
+.tb{width:100%;border-collapse:collapse;font-size:14.5px}
+.tb th{position:sticky;top:0;background:var(--bg2);text-align:left;font:600 13.5px Kanit;color:var(--ink2);padding:10px;border-bottom:1px solid var(--line);white-space:nowrap;cursor:pointer;z-index:1}
+.tb td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+.tb tr:hover td{background:color-mix(in srgb,var(--vio) 4%,transparent)}
+.tb td.org{font-weight:600;max-width:320px}.tb td.org small{display:block;font-weight:400;color:var(--ink2);font-size:12.5px}
+.tb input[type=date]{min-height:34px;padding:3px 8px;border-radius:9px;border:1px solid var(--line);background:var(--bg);font-size:13.5px}
+.pb{width:110px;height:8px;border-radius:9px;background:var(--line);overflow:hidden;display:inline-block;vertical-align:middle;margin-right:6px}.pb i{display:block;height:100%;border-radius:9px}
+.st{display:inline-block;font:600 12.5px Kanit;padding:3px 10px;border-radius:99px;white-space:nowrap}
+.st.ok{background:color-mix(in srgb,var(--ok) 15%,transparent);color:var(--ok)}.st.w{background:color-mix(in srgb,var(--warn) 15%,transparent);color:var(--warn)}.st.x{background:color-mix(in srgb,var(--bad) 14%,transparent);color:var(--bad)}.st.r{background:var(--bad);color:#fff}
+.tw{overflow:auto;border:1px solid var(--line);border-radius:16px;background:var(--card)}
+.ann{display:flex;gap:10px;align-items:center;justify-content:center;padding:10px 16px;border-radius:12px;color:#fff;font:500 15px Kanit;background:linear-gradient(90deg,#206b82,#003647)}.ann.warn{background:linear-gradient(90deg,#b86b00,#e08e00)}.ann.urgent{background:linear-gradient(90deg,#c62f45,#e2477a)}
+.pipe{display:flex;gap:0;align-items:flex-start;margin:6px 0 4px;flex-wrap:wrap}
+.pipe>div{flex:1;min-width:130px;text-align:center;position:relative;padding:6px}
+.pipe .pi{width:52px;height:52px;margin:0 auto 6px;border-radius:16px;display:grid;place-items:center;color:#fff;font-size:22px;background:var(--g)}
+.pipe b{display:block;font:600 14px Kanit}.pipe small{color:var(--ink2);font-size:12.5px}
+.pipe>div:not(:last-child)::after{content:"";position:absolute;top:31px;left:calc(50% + 32px);right:calc(-50% + 32px);height:3px;background:repeating-linear-gradient(90deg,var(--teal) 0 7px,transparent 7px 14px);background-size:28px 3px;animation:fx 1s linear infinite;opacity:.6}@keyframes fx{to{background-position:28px 0}}
+.runs{display:grid;gap:8px;margin-top:10px}.runs div{display:flex;gap:10px;align-items:center;font-size:14px;padding:8px 12px;border-radius:12px;background:var(--bg2)}
+.dot{width:10px;height:10px;border-radius:50%;flex:none}.dot.s{background:var(--ok)}.dot.f{background:var(--bad)}.dot.q{background:var(--warn);animation:bl 1s infinite}@keyframes bl{50%{opacity:.3}}
+.msg{padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:var(--bg2);font-size:14.5px;margin:8px 0}
+.msg.w{border-color:color-mix(in srgb,var(--warn) 45%,transparent);background:color-mix(in srgb,var(--warn) 9%,transparent)}.msg.g{border-color:color-mix(in srgb,var(--ok) 45%,transparent);background:color-mix(in srgb,var(--ok) 8%,transparent)}.msg.b{border-color:color-mix(in srgb,var(--bad) 45%,transparent);background:color-mix(in srgb,var(--bad) 8%,transparent)}
+.rem{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:14px;border:1px solid var(--line);margin-bottom:8px;background:var(--bg)}
+.rem .t{flex:1;min-width:0}.rem .t b{display:block;font:600 14.5px Kanit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.rem .t small{color:var(--ink2);font-size:12.5px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);opacity:0;pointer-events:none;z-index:99;padding:12px 18px;border-radius:14px;background:#0f2730;color:#fff;font:500 15px Kanit;box-shadow:0 20px 40px -20px rgba(0,0,0,.6);transition:.3s}.toast.on{opacity:1;transform:translate(-50%,0)}
+.diff{font-size:14px;margin:0;padding-left:18px}.diff li{margin:3px 0}
+.chart{width:100%;height:200px}
+.empty{padding:20px;text-align:center;color:var(--ink2)}
+.wz{margin-bottom:16px;background:linear-gradient(120deg,color-mix(in srgb,#7a5cff 10%,var(--card)),var(--card) 55%)}
+.wz .st4{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:10px}@media(max-width:800px){.wz .st4{grid-template-columns:1fr 1fr}}
+.wz .s{display:flex;gap:10px;align-items:flex-start;padding:12px;border-radius:14px;border:1px solid var(--line);background:var(--card);cursor:pointer;text-align:left;font:inherit;color:inherit}
+.wz .s:hover{border-color:var(--vio)}.wz .s i{flex:none;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:600 14px Kanit;font-style:normal;background:var(--bg2);border:2px solid var(--line)}
+.wz .s.dn i{background:var(--ok);border-color:var(--ok);color:#fff}.wz .s b{display:block;font:600 14.5px Kanit}.wz .s small{color:var(--ink2);font-size:12.5px;line-height:1.4;display:block}
+.foot{margin-top:30px;font-size:12.5px;color:var(--ink2);text-align:center}
+code{font-size:13px;padding:1px 6px;border-radius:6px;background:var(--bg2)}
+@media(max-width:900px){.app{grid-template-columns:1fr}.side{position:sticky;top:0;z-index:20;height:auto;flex-direction:row;overflow-x:auto;padding:8px;gap:4px}.side .br,.side .sp,.side .ft{display:none}.nv{white-space:nowrap;width:auto;padding:8px 12px}.top{top:56px;padding:10px 14px;flex-wrap:wrap}.wrap{padding:16px 14px 50px}.tb th{top:0}}
+</style>
+</head>
+<body>
+<div class="lock" id="lock">
+ <form class="lk" id="lkF" autocomplete="off">
+  <span class="logos"><img src="data:image/webp;base64,UklGRt4lAABXRUJQVlA4WAoAAAAQAAAAfwAAeAAAQUxQSKwHAAABoMb//yE3+m52s3FSBG1q29bd1bbb1LZt84zadnBKjdRuqq03dWNjd/6/BzszOzvzn+cRMQHQZGCppv3Wbz9iibNardY4S9SOnWv7NirpC300Vuq+93lcso2ctSfG3d3cN4R7vg0Wn0kkVz7bN6ycO8cqzY/JIdfHnxhQkk9enQ/Ek0rt1k2N+ePe5oyN1JzyV1nOfB+eR2r/uLYcR8r+nkFajJvqzwmPMe9IqxeacKHUYdJwwoL82uv2grQd00xj5mVZpPWvw4xa8tlMHMxd7a6dEpHERbbWXSulrhMn2QazNkrdJG6yn8xaKH2TeLrRXX2FY4iv681q8zpInGXrTCpbRdwVxqpreB5/6GsNNdWPJx5H+qon/3Xi8zz1LCNOJ7dWS60kXtH9YHWYwonXjDaqI8zOLaLEGmoIekY832xQwQziemIt14U85xvtN7psPHE+83tX+d3lHe1zc1HXPO59Lu8a02Hi/xgXGIBKqTpwyROASZHaTYG5pIPpDQF0qqWA15by8DinBzQDQJU/PZwbtAaomqQLke4AfuztlO+ZusBg0sWEigCaRns5M+iaB7BDH6gvgBDLaCfM5yMAnwc6sdsEFHp331deHfsJoGq8TlhCgMCnQgt58+mSG3oznciqCRiv0jpZHtEU44Z5pJdhgNs1ivGVU/KTw3bdWAh43aGUinIqZ9MVN+MF3TgKmG6Qva6chgKFwyNWN6IAwxkS6smZRfQTQj7qRgQM2E60TEa1T0R9UDVFN677AKOIUltJBJwh+lAM9dN0w1oMKJ9EFBsqErCbiI4b0SRDN94VA4wHiegvIwCPQ0REk4EWWbqCLjYiYbkJ+N5GRPEVgDbZ+uL/lIhsfYF9RESHjUDLLH0xbCMiOm/yfeawHkCTDH3BLIcX/n4vHDYAaJiuH8Udpju8DMBOh3UAqqfqxk0fhykO50yY6HCoMFAiXjciAKDuJodNwDSHPOsaL5/nuhEFBO5Itkt0dCCiSYjRjV+BhSQ+C6icJLYZe3RjKrBJohdQ9pPYX1isGxOAvWIJ1VDgFBML9+inFzmN4HdeLGuH926SzFxWO0UnLEHuO0hcsK3Pk6Lkxo904rCxgyBBLDNTBq3eoQ9CT+wjaSHxs5yYKfqQXLLAMxlk/U/OzbYZunDdK9gi53DvXBnzzTd0YQUMC5hUbjfPG1KsB9bpQUYToK0gdb8ghkjlNECNDB246QlUyhBjNB0IuCaRWBTm/3RgGYCgeDF6WQxA6yyxtBrAUIF7qfUBNM4Us4fBcYUYxZRFQQv3/jEBNWNJfJdRxDdKjJ42xxLe2XsCNSwkfiUY4kWvidGr8sW+cC7SCz7nSPxlNUg3F8ToaZ0NfEtvjGL/kjjrDpkNSfpY8U9c22PAshyp2nIK3JU6hQU8S2sArPkiYQmVg9+klqHgXY5tNgBDPjKx3ZA9IFNiOdA+m1tvSwMYYBVE7LPkoWOCiK0rYNjKq8w+AFDnZaZDxnhfJzAkyyFvFIAiFk5tNDi0TLIRUfYEOF3C6kCpAwF0zeZSbAgA1H7FiIi+lnEuMFaEUsMALOBRWhcAKH+PkUgl5wyRYpQcBpiO8Mc+GQBCL5L48yDnME+CkgcCoTe5s8kMIPQCSW6Hgg1yJShlIFDtOWd2eAMocoGYWF4TJTzPSlHKIKD2a67s9wFQ/DwxEr/uqwRGCVKUPAio95YjRwMAVL4pMJKcDkULPJdBqUOABq+5cSgAQMNYxkjyYwllMFsOZUxwQ61YTuzwAdDxHSOZf0Dh0BdySPgzEOWvc2GLN2CYliKQzMSaSmEqYzKILtRC8F7tZczxBPx/y2MkdzMUz39dHr3vCNP0VI296gqgWjQj2W/KKocu6YIsSlvoiRZ3tMSiqwPobyV5bDRcaNrpBNHf1RH0e6ZmXo/1AYL/zCEno71dgVJPmRP0dak/vovWRtqfJQF0vkfOfq0N13ZLY04QXagNzyFPNXCnHYCSf2SSs8JYuHqdIDhDn0abETr7mcoejCsIeI+1MObUTneXBUQw5gwJ59sBgVNv2VWTEt43EDB2uWxjjJy9EwrXF71BCub83dYE7+a7Pqgh89bG+ibAq31kNiloqQo1Vn1sd44o78yUkkDJSf8mM5fkfg1v6QUg/4BoGykZ1xDqrGuxK0BEn3e18wEqDPn1XJwywptz69uHAjDUWvTITop+bg611n+sDFHO4x19ixphCPp+7KoT5y2v38XFxb23vn0V+/+2GeOaB5kAtzJt1sUkksKfmkO9Ne7YmSKO1jvbwtoWBICAwJDChQuHFgou6AMAxvwlO224+EEgxV82gZqLR9oFpUQtZ/7fu2TO3Llz5syZM3fu3Hnzl64+eN6SSi69UhXq9vspnblCi3uCoHa3/i+J8ePjeHdosHK4jfHivyrQpnnqB2I8SFruB81WPZrLgYh60LJ772s2jd3qZ4bG/Sc8yhOYZj7M9gMHg6bcyrIzTTyZVxacDBwQ+dkmMJWlnh8aDI6aGqy5l5TLBNXkPV9Xzw28LdDlt4dpKonb3z0AfA7u/NudNFel3d7cu5ABHA+oHvbrxdfx2UpkfXt97pehNfyhh8H1O09cejDmTW6O6OvLJzetmtyxbjA0CVZQOCAMHgAAsFgAnQEqgAB5AD41EoZDIiEOfugQAaJbADPIBhKrIxqj9R+//9h/8v+y5fqjPJo5n/4X3Q/MT+3/6z+hf2/4C/mX/p/2v4Av1A/139v/Hf4y/UN/Zf9R6gP5v/bf+l/d/eM/0P7Ye4z+1f7P2AP67/YesP/xP/Q9gD9tvVw/5/7a/Bd/Vv9d+23/S+Q79jf/V7AH/n9QDhGP5n2c/278ZfM/v6eT/ar+z+xp/b9+Do3/e+h38l+3P5H+9fun/fvZD/TeBv5F+pf6b1Bfxz+Wf5L+2/ub/b/eo9L/3Xa259/aP+j/k/YI9a/p/+q/xX7r/6H0jv7v0G+s//B+1z7AP5j/RP9f/df3c+Lv9p/nPEw+6f6n9kvgA/mP9X/4H+H/JX6WP5r/sf6D/Q/tp7UPz7+/f9n/N/vX/oPsG/ln9M/1/9+/yv/o/yf///7v3YexP9r/ZI/U1zhUhbRmh+Seg2zBKfeYayttuoRWE+6oV1u1nwdnu4kLdBZOTQoQCRF771puFIRhcoYHTZ8VqULZnqOTceP/Kepa9jfSN69Am1txoaDFn2WHs2tDZlGptwFtYGvPoBknlHwhSCL0oHBdxUpvcRmJdv7kyVVY/3Rs+MSVV3+0Qq+qbaCjvWt5X2RMblWScQiHvw9C07D8u712GMZINBkrL2i37v3xKP1vxbj1Cbw6PNVsLog5gYCA7DhQYQc3D2ZI/tPzPG6IFjvJLaMu8nNXaQkhWiVvXRnUWx1d0ymfb9O0HrhmOjrs0ST+qyoZhHkFhwn3vlDzhWbqNgl1AiPI5PejXI5rn0NzO7ln8IZURWZykKTkGLUAh4AkEgMp62tFGGn6R0lNbQXw4SOoZ5mmdqxMbxYfCLG/LpJAWJwWYb2KKtZzno7Rz//laDkq6Q+2liyrrd7whuoVwHOIlDNk39xv/jgwTe2dYbHc2ueSlgtV2bOYGYHnsAD+/2AZI8A/y3K93pUgcZJtqbmMirUp1a7J+6hvxtj/+409ZEU6JEjWNsSjRrC3x6MlefvOGsV7uGk4RaD/AeNkTdC3m1+To5JKklyi8khSP0xvsU7sch2pkgG5z4jPuDspAl12b/0PPSQipstPdhNYFMJTw3SDWZBupXR1LM6+yTJGpS4rVyCs5oPBZNMP1Hw7LTMk5SO9ceh8UNyV5vKgxi3aJ3PRgORXWg5MBmegI/uJ9lXPNos580vWemH9nRHIw7YnkMxbMtmSFo8aLht4nRyulEgR/UaOm+im/XEFwWJBNSbKZm9tCBTsBikntpKlBDNnBrtfhppoxf99nFUABiiyyUSwXZRNmOP8mZ8CLJ/pjG+2ldEQ4n2SZeA7jJkR/I8TkjnboLtRJfSB3EQUOBjfAaz4Jsw+7cqGK8x2YWscSbTQP9FJV393xxrQuqzfnj29k9bXtvu/b22P//apkyDQYGwkLxlrhTLeR3WczQv5ycKIa2Oj1o5FC6jIfTjdH3XyaDFr1xNTk4YDuktqy1ovt+U93fJJ09xtOq+Sbha9pS3MYA8isZrOD6CTd3TSrlTXVF9wOCZ06SOTPtAt3SfQ7cSAQ1KG2lT8KrcIZrrCntmb75KgBcZ08R2U1QICrKNedDyR8l/5i33NUfyQFU4Xe1fqXw+Oq7iPRfmXC0+suvP05rH3ip3tgmA66PYBwkbkwpNcrGX/ZwrVwlVohZCLllSeyY1s7EL6bC+N8wJ/HtdLXz5HVyadvkxb9s2bnl4V7F0Rb6iZ4X4rAbHpSY/vJliafiarohRRVMCNCTGHVYwIfmMxoWPABVqpqt0qTzvIWupZvh6Flx/8QE/lpD8HnOnlXeTQq+GJWfaA0PMeq09j9l4iO3/tBnFWl6ww8R2b7Hjlk6EQBPaTlR7mTpR6WdZKobzRW0DH7xz2upcnZF0YaikE1y5QW/fkQuWx4X9Cf9KrZXgAvjYVdw052JWSaEWc5sogSYK0frn03I4+sMjWCNoNd1gGVJT/p4rVQ1yc6aYLBTI5OpUnkbXLYC7E/BENZm4O8sn9+Z8nJOFRUJq/UsH/X2DeVdoOkMlybg/Q7KX2s+zS+r5XbQBLdWIjBR1kAM9/C1JBPFiaEzoVN8axRHLWRkWRvufBzhE05ehjfHk+GdG2tiyTQp4t1rlVtObQdirOYVerFisxZSDqhntO5S72AarpJ94sELqNPD6uMwMKQZx2Zn5Mn3JmE7JbqOZSxaWRIiEL3VBOE7mzzE4dS10TuaGlzXda8oJyv4SW4yhZpHvue+3EN2g6DhEYDeAnZT3Ss20yIvG8Hj0Q5iXOHmpH04CbRyeFw/IsuEaBeMQmV+tAJ/0ZJcgpdDBzJM9p58OH6aVHMSIrNi9RbR2la3NK9CiPKlVKY1rpiOLDX3TEIok0bf8hvtltimUyx7pn784ElR2RYSbhZs/5Zy2r5N7kmTOw8ftzP5iK3XBZpPj1vxGJXpiEkRBvpv7/ojsn6HJD63G1SMvLF/8Uc1M8Kb4woMsSlhf3izHkPDsbNMxk9gk4Cnx+gMD611Q4u9rQ0X7uMs1koIBrKcAIqhhbF19w3NV8EHBEBoqFiHEMFFBRi1zHNnqGwcjGXzl/vTy0yrJLaPBaZhyINAkZA8KoJ5HDSKMufMK6Nc8ZDRGzZdtR/RR1onV6l9zaHLrA/o7PyYXvNLYY/Rk4AhbGULR3aN5RODMXOUJ+ZiA2BEFom+qJoRt12esBZwgoISE6hQQC5B1gUfizHBoGCLLssYkHtapJ9oC1OqrKPFUwyqIVjFRxTYtFASRzn6tDM1a2jMdnOpCLI4vnDvK3nLJSll921SdUUP/brvKHqQU1jtkd3KmqrQrJF9w5BL6x+hJFg5icDydUKvZLmbqi2KrJ2ybm7jiJ5/UC6L47E+B7KONlVWH4Q9ROFHgZs457GPeA7WmqPWlAwt0zONzU//HUTMFnPF/0TIKCqMIdigISRLMV13dxCeuL/xrifcxp2tTL96U76OJtAe1q9uIp1pq/Y2AAnWhmNZ/r7wKdXAIOcR0FZNmJI0adMNzokYMZinevdFl92bwauTgvOPz7IuFHklKJIMwdTZwSl61l0g439dIyqUUG3vCjdJ9Gs1ULtAs0h0DsSF5wCq48Np1PWWATlIrVpsnFlemfyQ9LQMZyVQYtCUR8IN2/wqA0WzICTl3LkZA9KMZ8jaKuGUgGtxgVoYJCic1/7e+srgG85+D6rMsNLbnY5O2DugEC3uPIvuZ7W7lVY3AOye4EhwVVA1xfBdpMtPZvgm6hRfRUZOKHFV4on70u7lGEshL9KbzHiYSU3z0H+vvKnj8hjxGwu5/vGFl7UfuK6mDWGfO2pwple9RfndJzhPaZoAYep2afTC6W1CfFWBloEeHRvC3ki9cuioqtYDAyBSRDovSOUL1ewL7Rta8l913DSz6iFui3xJYuHQpQVfV1GNa0D+IB/lXa4XPBL05ThTErLnQVKODX7Pcz3OURV7r7w3tQeoErRHpt8svDsBNvCJvgFfhljgaMkexrZG09I1sl+GYVv6BQ5w7VB70KFuBqnUM8+dauiIXAMOVN6UwtgwXR/jVEs94NWF4WmNpm2WqqbncEs4onz1s8kNu/KGZ3Npt8LZobt2laHxDZiunZ6Ng8aTTRLh7sW7mPvBzMeDgko5kehIxlcyo4DDSRgmJasognNhhJVmZBu9ZZn+uB3VFq755EUkUTfrIOP9b6gZL6jdFYHSiyGlT9o+Cp0P5Pmj6E90hX5WLQSSXVEpd1na8rXxMcrsdSk+Rk+5QkYHX70RB200SCGmuaLpdOcULaRX1rRzo4YbxMtAldIyGZYV8on/SIfeNUMLRgEKqIhZIbdcDjsrRW/AsG4pzyAIGT9WGnlyO2rvinVBiQltw9sd3sbUpN8QfDudm5T1GcHAtD1YW9aQFVQRAoDW7y4KfzpwHkJ8EBOeWyutY7KBwA9FWbcg6YDVXwAL4AseY3pH9wPcJuxGyd8cQgwO5aLezxYhzfhCIUlhPLW17bAbv1hE8bfuT+fFoS9wLlR4q3ifoofHC8WWWAoH9eFVs0EGb32ZvnnYQP0ORP/zN8jVPEBVHEhU6UHYslMh8DkaLLISIhffUDsAFEByqK2paV9roMm54TUALFeCAgH1cUCKBfeD4Aqfeds06nHM9AbteAiZS+pWafYa167jqC/IvhT65WFe87uS2NfwQL3jYvSOhYAF+Xc/Dvb/N49Qs5r3beu4BDQJB4hJYHnlT/r+PJvFzJb8YvwWlTPqHQ6eFBEbCoowa3IdmchX3Grfpy3zjxJMo0/mRJA21Rznmhgdt6yxJn2ju5GS8C/eudYx+Mf5udP4aug+HwOb3+durAbBB5eeW2WP0N1GEKAlULi0SuQTYGmoG4IPKkW+QbprG9BdR4NWS8MQp1qMfpbIjAHaNWL9gDcLtY/L+F7ySJY3UUG4TFEQjeBDp3GtPTRsJm4eUag2EoEMmoyNcoNCu+S39ABlt6Cg7WJdi6t87sDEhKvGLvMvPPJAVcAxA6fD0bUdGaRnPhhdZVpixCO+Januz85tgAaieXuBKOJsxo2Tbhh/KuQRfvkTXqnIg1sbnfclKwIKFSbswxn1Z8dV/TFq4Ia1ECPhtI4ZkXmiibO6AJBVYP2rULLZtx1Sml00Zfiucp3l8Pg5VytKb5Hvbi2c5egc4nb+i7iOR7VA4Cxu5mVp0hKP4P5b8/nXFCVQ0GjfhGsImTwuS8R0nIUR0+grMEpfPpf8twww2TRD1tNe9nhB+ZnleKpWrQtnc+tGMLMLx0gLUgjFA3nOYh3FrxhhTrziqGHKvC88L53qN56ureuK0ws0me7nPf49Sa/bAk6JKGEWlMdgNqcv1ga/OLBbIxr9qyHwE5CkrvZG7Q+GTPczib8wc1d7fW+wdtixlfqSolJ0JAOSYbTBQOc8L5i0FTvDNQJLmVk+Yhfl/NiiD0j82vvFvgp4znITD4H1BqAKDZ0Y5gylnfyvJKYniF+ps7T3e2BZqD/EigM8kc8J0eVSG9FZRxn/OCTwM2jZ0hTsQKA/WbIWAPHv5lIlxBcfY77P1JIQx4764U0TD+V7yadqYqZ+MOv5BcEi94WCIE527r42UOcbE7UBDnrM9nwO7hTS39qbqVjwvNMucZC5pMHPBTHoHoF2ewEWrH+Jz2f+oenQmbNf5XRREoj0c0fCZutbrETGP+iqTIipzbTDwAIMXI2C40fTrSxr0QplThI/RrQdNjTWCQAo1Lxyo0F+DhC0WR8RVURvYG1MkbyATO1725O74SgWZ2fsH2/GBAmSBsf/8p0vJgrFOZaX1pOssJbvIbC65Blohano2FbfsPUQSw0qGNeLq4lW4stXSn2SaLgrs39D89V5T3CfrSfdio1hUn5thEQz3/YHI3P/yU88an62Ctb5YMjDqYkdysmbfdqfWKsX55Ozz4l+FEE44isLrcb89ueukmglZ6hhytiqKtyl8Zj0AnTwGJMFGh5OrTX2ZkTBMKJ45i/1v83yhnfJMEaUifxln2DRGL5pk45Dp8qI29hsGqRPOsV+KsI74or8tpUfgsiOgb+dPWANA3sR/0Ocphc85c+L2h9V2lL60F4tlmtrRrAWsm2t987u7zwEMPpVQd7l8/3jSveK0hWZVjbkWaAVNcZrty6hsSr3Xzy44I7nc2atXGUitbbszwsRDIbylnryRd5u4D04RJMBr44/eGjxRUEqB3kpOE0fXzRodzRU25TMm7DR+sUtE7+y729Ebvr9RDMqORqAx0WTxu89RMWK9Yl8YnFrskJmbrNoXmBHTDlE4i2jKTbJh6jpNikYNxL6/IdNpMQSf2nGHBzmwEWqn9DBiCc2bNG8KVpeQ9+wTc25d/AEh1naBnSPQ+61cwTe495t+SuVWkla+MCDwVZyUpjTNL5LnVS2eKPBc1dU3jkOzEcZ5p7adINPSy2GWApSDAmtBpP80z4AoEOr0G2BomHawZgzER8+EChhUPKBNFIRxg0hA4pAgMyiHc4LFnn2kIadjpR65wiVC98TfmJrqvdaB1dQfv8SlxMgaZtCsY9JHP28CSzS1beYK5+65kWKrf2gmQOIN2TL8NCKVg6CFjum15Hfex5Q1//vcl2hgwJf+OwhvQe7K9TDGDOjVCaD4FVqnLhzqy1F/6cUZuaEe5sAj6pG1fjVSM+jWMfcOzhtWQcz4/EI4PGMaQhF8atubX9uehQ+qiWacoYY0KUhnnFxr1TWmtOWTBDvD0kiS5Fd50UDW0Wyx0+yrGHXwFR2sycYt4xYvQ0dGAu322eC/yBJlv7lw+KPl8HlddjWf/dH/NOc7eE5G+JznV/Bo228MIFxgPA69DpTsVyTZ5CwV+sNBp1c1Q0SE4Sxocsobxqs+YkIMLty2lJ8MPm5qjmHh4PpYv4sJUish+aHCGQ4ShZH18BzCFgx7GkbPnzKsubJuNnoHEy+r88z+1uiz3sgSRbz5zhogQcVLrGUn4MsdY9ytGHkMKs/AV+939irDcOk4giM2oIVBRgP2mYuj/+NxDnKiMt7H4KGT/KVoDiCv+/z8C5OfL+FyDigVeobojxEeWgwVmObAnKBlrDGVr1tZ8T8h6vphumHMB5OILspluTaSUmuV2ExJEe+xiJaqVzdba/n943PcsKCmEySFrxt4Gk+YKVtTrjlMIxR6jxL7NjDSxKHtZP0pdH+pGcvlRxLCVXxwBDrsQQJ26KiaSeNAJ//HkgEZQYWUYjT4CY65Z+KbJIU49X63BUyEjxD2fO2yhoI8SSoyyXV5GfC0b8SXwsw6xPPanPAOjgLmw/9UY09VrT6sJFL7kBo2Onbtw0hFKi9oPK1u1QV9RR3U46xArZxalBp7VZgBjtihVRhsWX1vzz8LNbdoikJFSjDUBsGvCVkdMAF3gZVV0EwyTQHjm2dCCretdKIXHub90F+6VDHI6JbuJDaWy8k5iubp4OU77OOvFMnOMhC6nb8LiN/qk4ChG6DuLn1kIqw4QbGiiVbI8iyoFFlZAh4eid1TMEkGRFBslYkH4Xb6jyXZg2yjGxU4/8VhtEIWn0YJ7cS00scGPw+/3oGZhdbxRfhXwF2YPW33CjyR+Oe4KtKue1aW+Aw5f5bRIYeqd31nChoaSjy3xXLCRl3jwmsMAWJEyK5BMPyPfh9Hp5pnNlg5Q8dUGec9WelUXWF8UfYBX3DGUEqHVpkGs06hlt/Mb/a6ru3xxhv5K+PiVUoUYPgFFBIby9cYIC/1EM8RxECSHS436SMICVOzzus2pOCgWyarmTs+IuogcQm5QKKWCH6L08fC/rmoJ3Yudk8LlPWvIvuRiKwrsZZB6Jzj8wt0GXU72I+J6jC+PCIvuNxY2cjE50y5//wOrjsb0+RH2knv5BxzH83/hI0pvNS6q/lT50Sv6iLaEebZ72A2f+LgJb1S3KyzpTSJp3H7qU16AEJbO7nIdlWOrTAINqNzKwpRixXC3rpswWx0/z5yr+TavgVcXQG4ZlIkEM2yZ0BcCAfPcNMSMb+xCyRkHzUWvxVj+LRQJSTxGaEGExdmLHXPaeR6HfgXUKWGfDX7YZ35vkwEkAPgY3fM1eT5hhlw8crDUulTXrdnkzYZoT9kgzPoaH2YdQqy1auJMRehf+jiOSZ05MLgMlNivexjNj5DyO3sbqTxanOE1tvv1DKXzOg+2rag1Td7kVnr5k/zbuaZSoI9HhHOay6RXr+PSD0OxzIlJaQq16gaCpD0cO12lP0O2yS0cQ5eDQvm1nXmI/D8RfIh1/ylF5emn7JBFTsbYT/1RsjxGqpBcH6PXfLuJ7vy+/XYL8zidXkI70iap99nt3yS3ABMhhHbI8CRCUGB/H0lUDqC9npua8sf682gTR4nLDYt5sl1HWPYKJP2zmb7c8vKzSANhA1yHpTN6Hvgc+U+s6mDEQEPCdaD1y2h2VJpxsx6o4HGnqIvIsCU5pdn3lwZjg0rHmaLq3B/kTQ71yXRglkgUAqfK8ZVotoTD9wv+1vG03+vqV8vGAwI0ziADX3+bWzfjFKH7kRuT4SfOXpH03RghE3Sa72Gx5g4Fl5v/o62Er8unDWr6VeEWw7oGrp+HA1WV1P/eFQwSCV+evKbyhoPcye7i4bDDcQLEE1HNHE78/DWGdRur5xW3nobI6sj5jMwamZ+yeuXapsN7k+VUczGyhg9uHYB8IvFhaAbl0XkeLK+9f7bMPHNx/+WovTNVfwGayM3YhwqMwM0PC/+J6Km4NIFD71d8HxNDs1MkqGT/HX9JpKQhaaF6cJPfdUnYKsUX8F0YeWUlEPsNpUz1dw1aoYzSwd7faxD8kSPFRzsZ3CJENiBnlzxhCTp4zFQzJBgRy3Irxsa3Z0oR0eXIcWybqwEOrpHWoVpbtv00jYB2vqnF9zvSlI+aKI7lQC2cUCbQ6ITNN2heZ5EysaMTVca9BzR1o3s0ZBJ3mBQEA7t8MnESq/MmuEgH5lwg4yU2FeuANc/Pgrn0+eNSlT1YNNpdyFHXUFerk1o7fDa+efDEa8nipnoT7EJgEW06DHOwuKHysecUlI7wxYO7phKOdsp4GU61yTdNLt/mG9gPiYvHPxBV2DvHKTeWZDYJSPsVulNhC2B4Pn8CeInt39jW4b/QQI4Uf+kPgNsGxH19742ZuHSSc/+N8kw7zfRkFqoOoeGKUKfiNZUiAQZKBTcPW1FcwUmgAYxVxoMCW2drxxk32R+ZTZsYqiWoCIqYgWE5g9NSx8ZRDrTWGy9acGwW1Kq3Do+kxiqZsI2l4cPidV5rK2X3T3BsgfH0kqqyMsLwCSNUgpjxADSZf9IHxtlIkcajTA6L+3Wr57GlB6KrFbP1FlSPpxmoJKD0WQyqUQX9eN09N5t0bVJbXYPjfDT8/yR8XQ/0KuXki4gTsYDC5weT+PzoSesrYY19SikJ0QYS/zFyKkvZ9pMxmIYFCOtvrXsgjLHsP5lq7zYOJO68I8wALs7xn6+SaFs89Jq6XIoAUrrdEQLGUSQ/abgmjZgo19RBD7/XFgV3ZPUNTnAxXx6p8jFuhXU6v68m4q+xEzWlKkSvKbEJ8zp75h5NHsoQ1BYf+L7Z7I1x/wa2gXTiZZ6T8HBUaX9tk2JFK5ouYlZT2AXVWHrl29XrTXGCZApirtDSxTHXcd9EA/7E55goL3W491nXvpf4gcRQ7tlF0imLikfqkCFn5wDqLtl9hxJFV8DcSviaPql1YqiJASAInpya3PG+3gCanT3/I2WGECDSY+mLsozaDbp5M8NFhb+iB8vA44Sk+N1xg91MZmXH574XLQ/bflEF4eigVUmiE8Q6WJHX9xwHa2N8hz7ppXOtJJRV9aygjTPeALtEP/LAuAy1tPV7AK2Dn6ieZxa0Ik4tNQ4sZU+0iJw2+UtDo3+s/vQrXfQtTYd4C93e/4Xo2B3BI4ycmvIbOYAfr9qPK18uLyDYAt2JlzkAq+9N7oQ6SHJcrNZMoo7F5GjaUMHp7OeCddfkjehA7hYJdnyHYLUdGxpWck2W/M+zWda4v/IjzVliE2XDBeT3gwOFGwNIk3YVKBIHK257wgsM9X73g3SOY1S9kzA73W8d2K+foRCnIyXZTmIaiVMcx4Mv2FbE521z5iPrvlrmJYCpggIzMDhiAlhOD+3RLWYwL9v4mENAc8ip+MqkOBsPrYReWVP+LJmwjoym9H6ACSu/zELQpTpDf5YszL8ZNP6m/LmDO3mh+jNgrE4LDXmoM7e+OiIK3YqXtdY7mRoXzw1iLAjGoufrHpOOQauFy7I6Ii2NsDmbz4sT3l4SJbQueNOLIKng1o8cB64PLAlA2MUxQF+Gd3uCmlaBCJmdRxSeVmjLO2Y6LTjoKrkhY9K4GJH1qZHnRcmofzitL46vmmcIt30lGzQWCmWgzYuCW+GcA55KGRAMntg08iprLyiBiVAWlOP/h5QyAkQAngArPpi/g+TM/46KIJJGz39AHnEfRDiaAYhsJZnFnwxEgFy48dFoTpocngDeaCcAlrNyXDXsLH8duITsF6blff18qiVYRcJKnT54dE1Kk5l4R/Cn7HBAOSOvZ67pMf/rZhemxyVzA14GFkd+NXzDd3RY9JVO0BYZbGTErBG/MvkJwaEMbgcjQHitJNj1K1GZYPbab/ksxDWw5MZ7A6BU7l6fkXzNYKLEU3dGq1kAx7f4NSXGgRSprtC128qncoMmtLGI6cCB2I9W5BmKUcqe7MTb4lrUqVPsHIAA+PilznG0GI6vp5gBbGSK5nUB7zzOYqsvaL4Wt50+S2/8ei9YAAcS6W4rR8AAAAAA" alt="ตราจังหวัดหนองบัวลำภู"><img src="data:image/webp;base64,UklGRmISAABXRUJQVlA4WAoAAAAQAAAAfwAARwAAQUxQSB4JAAAB8Ib///qk///d2BijO2R0+IZx2IpidxcWYBB2d7GJ3THfMGx9YbzCxBevYYGdlEqMfAl2IKOkF/A48Xw+x/R4vupcREwA/j7zN/bWSZuAvp5/FRblq3XgcejaCWmqbPhfg/mHZa3rfTfclC++PzJx/V+UW1JHWB2SS2B6ZcZfkyQEWPAsZzbgkmT3VyS4wAOOqZT7bYFtM/6KBm+zWT5hFana4QYMO6AbPXoOl6WmrDQ7/PFmy7sX8/TQ7YhO5qel0Kb5s9SoDWi/Yuu5iqo3IvSN0YXVa0KfacxSbc8g8MWJTEJICmfJYl0sJIxhYCnuT92sCgghpHm/QYK3DkyyGXLN2AoB8SZ7KV9MNm6CDqcTxqVgLYQn3fo9Pj4h+eopIx3wnzG8sWUxjLoSs2DmDtkGQ+hwbAtDFFjItH1A305OljyA02vesolO0CU3idB/EbBPh32Ht0kPiVZt3r1VtHxGD0cedDpQzbAPbMPf+2RlzKNtOx/nX1o2or23l5ujlZ5O4gl9ZVu2MYxPGpDyNCS5UeqN7+rfwHAcbHPghbc8Y0hxzWgAzqFLVm3ctWteO13EEfq6jmzTocL/oGpwSssEAMJCQl/Wq3XCbwy/gW0OJDnVnl1MLgLgJRNmuVWrogm9sifbcJ8vCiTTk8kYAFOJtuLWuCkYrnPYxu7zoMjm4W9qXQGLXMqDJzRfXFuxldBrhoNt3Gt7720apHhnBqwihBBNv+U0RKKd/XuGRzz2qesnVg/6UGYLwQfKPaPr+TRVQq1WEcbJYB37spBJZEiaqh32EkJI89BJcf6NFHJcG4tChhdG7KOfEeutiThIJrtVUh7zk/rgF5raTlrMIYyzwD6IzjHJ/XUYORVLqOOGJ3DQoZZCzjMZvWQotGCjgcp2Ud+EOY1KSpqBbBSAEzQNPRiCCOMqsJGh/Ihb07LZhHZynyR9AL7VFBKvR2PwiOG9PSthfrUg7p1zJuUl71IwqFIaVX+akRqGrWAn0yKpd9Oyoc2EkOmdHhjSeFdQSCIHAOcaof/qylKYouywvVJwnJAc3rkFoD9Aox4MoLeS4SDYivPHU7s/f7WUk3DvF1YM7l8pJIkLnCf033xZC85fI/uqgzrWSk5uBPNuGs1IdKpniAN7uX9V9l5b6xPU8sVBC+cvFHKPe5TQN3Rlsf2EvPK8UGi9WhmqBbbQaCJLGS6DvdzLCCEPXFMemexWT9ZC8IlCmgm9uj+L7SPUeI+86yb7lVOZsImGOYnLXp4KSrPiqHfhTYttqsVMjh+0ah4J9jpKqLI+JM47J8V+kXK7Ph1EWt3UZ68hjRSF18HfHp51f/aqw+iyy9Z0Du+0+CAEawWUEkLIh8Hjs60t71xxPP9t0v+e53SjwTqmDH+w1eKAxKyszIcHfEJvdwNMfnngEaWUOEgrlupRLBes3XLgyJlToWZgaYP3C8BoA9rI552HfUgVjnkj8wKr2+05KJFIJLE1d/cfoEok+w5IJBLJgd2f62e7/Fa+zCvu7bE9eyTR/299zGx2cJeXFBcXF5eoy14VtzYvv/iS9+jMZ/2HZhBS8CAlPT2tlc/3sQPHhGrs8HG1kUmrjS1WZMy3XPHqaIeZuTkLrcHuph+WQqdt42S9BPsK9nZfLH8b7c9hM/MPy3QDDL1yrL2n5GXMoBk3ytI3djf56wFn/KXYLp7ip5dCB6+9/VZ+ad3IdnamxkYWNk4WfxEAd9ixY2M9A8/ePxo6MHD9qZtJ185Lt60L6mL6lwHAb82JyH4dgg/Jzu+fPbpvQHd//959vLnsUrry+wCG3ZfvWhXYq/+Updv279i4MrSXPQesaiIL/l4AuK4DwhfMGNfX19UYLKzP+QFoeebW1pZ8Dgv9J2tr8OOYLe2gDW+kFUtYyYN/nIkkXhuP5hcJN6/H8n4UvlSWkJB40hxOF27IEm5s52hhW7vkO8xJvJEgu9YVgH5bodAnonqBj1AoNIWZALCSvW2QV33x9xX62cHGGhZ+fg4w8hUKhSYwE1CMXAFHP6HQb4aNfcAnQogi0RpDm3IV5P0xvrPA3FQAMz/frvEDXbhw8/MxgLUdxdTR0FcoFJoChvGKXKJ+2Q9A93q1Sqm5M0mlUqlSndam8ACEv7M6rWlSqVTvBkjv6G3UqD8NDVSpVOpUp1VpfADBr2w5tzUqlbKlzx+NhBBS3BGLqpq3p5PHNl1KSyOXpfRKra+rnW32McS4UKO6bhkbD0ND/t57U1UqlTrNzf5eS/oWolwCAPojxo+b8DDFLmhq8NyaqK2v+ADmV9lezgwKCZmefTeYDHYLmZaabhcUEjy3ZtPGd6YA5lS7oFPg+LHblP0ykicHTQn9cMas7OxhUryicXFPQnaLVI2EEBLIuZ9lODR4ZXNE3L3Y4j//VJ6yDQoJmluzeWn9kjfk8PkvNgAnKFoaE52RqwcAmQc3F1HmVdpdTQQAqdw08zaALUV6AJB5LKqEMquyje+O2JiYX9UjMmIB4MbVNjWXpKrbPgUbAwjZua4l+cTJk0WZ/GFkAsAvXXnq7qJzZ858/B3ULOnmip1PNWGh5c7AnOaS/IL8qmwuAL2s/VsKuABmV9pdvUE5IkcY6QtsKeQC4GQf2ljCBxCuCCipyMvPe60Zln6YcuuKQ9XH/MzSz9WRPQjZueG9EYDF1QLO02dcmJSu+Ok+AOx7YwBAPzs6SlkglzeUfBYAF9+28/RyjS5iiPri4+Bgv71CC32TokQHh3MFdIdFX/3sHey3lM4hs9w9PQY0jMg4Tmdbt9XTI5yQ9ZSoN4aUCicEkim2HWqXnpI7Ozi0OVdMFxNV1tnT5z75IgCmKKsV5aWVuTRyaddvtQpFOVFYy5Iox/J5mE8qysl2UPKOdamuUygURNE5S6lQKEqah6fWegNIlnF/bVGUNb5rFHcnZPfGD5RFNQLwMzRl9V/9JqirFYqKlp16ALi5R7pW15RVNGaWCwAMiBSJ1k0bqwcAY7uh21qxSDxrMmfgQEq3cYDx4g0bJvEoGNMNXdeIReJZQXrOS8WRG6aF2Yxebg5g4ACYRojFS1wD/czCQzsIJ+kBcJuuD3QViVe3AwaKRCLxFB6oY/3Rda1IPMplmj7++gFWUDggHgkAANAlAJ0BKoAASAA+PRqKQ6IhoRRq7nggA8S1DgClA06pa5QXlj988yypP2X8W8MgU3sQx8fqJ7i/MA5xPmA/VX9lfdI/yP6Ye5H7XfgA/nn+y9Hb2I/3K9g39kPTL9jH9yP3H9q//65yr/cO2P7VevGDznxhsViByj+q8S2k7/Y/UA/iX9v/1X2wfJ5nP+oPYE/lH9d/5frZewX9uPYz/VJv532XEHAZoZ57yxB61Y7k9pp+07YNelgI7EuOjgojyQnc1uKn5/0GvCglsdqAMpSWTjCrtAh1K8AwUg+cgEjBcoo3zMJ8wWuUiSn2d2aUKPaVZ9uFs22//kRuCtNu949/O6QVu5d5nR/24ErdVnutyx6H/0sy7DkIh8YJmyKnvACfJICV57ETxT6VWuVR2/GvYgGvK+AAAP7/YBsc1c420EUeS3RgMX+TkN1LhBQGt6N7jDqabDiBna0JUzXVUzJvTwuhGK7rGlhTva/hynKWkf42E/IUlkXRdlWCr/GHWiX5I0AgHqIupCc1WgQ9nJGSzBwWvDfMb4NeKVIm/wxO4hUyoDwhZe4oiPo8AgyeEpvI1bo0O5nOsmRV7IjwXj6iNwH/Y7Bhh4nWDcGP96tc8+s/JAjb8kj//3jv/9bMf//pK19ETRZ1z2quyrtb0D/LiLvbNFTPChJJi/5Ei8oBWEcGn+8AYI0wInBY1/+2sWQGLKMTc92U+HEYts3kQj/3J8YL9DRXlQRZwN/mfClWFH/UWARnLOOIGV5NdsDfHk7CXzhFUf92DhM8oP/IOUgq71BfDXx6rb354H4KpgumjE2retfPztXihn2J+xbolKpu4olX6jaGTkAJM+gv77T1IY4J85D+sUQ7PI5RBptJlKeI/Zcc9ZEnyYv7QuNNXkEaXwbjXH1+jPthu6I0gNU7gRj4LdBWGGYZwt2OXRubV5KGqrJ/ROfb2p3LWFazjc8EQ843Yo3qDK+odpuv/2MO7Nqa90eEvHQCj/P5ul3Z1mKAKqhJzYbUl+jvUVHyKFd3k/5jpcmnbey8ona9bbCiNa9nLfYg/p8Lsq8sK+H/UJ9madyx/PnU6shhnLhVWlQuQnql8d07VfSiUP5x+ztjZZR7+AzpsD/Kp9rpPpYP2qOoJs9rYu51MMDL+/GJAnX/L8vOFYabf7KiYljKymhLhqWzP1jmEKMRyAFUPK69GIdFvl/9DnOgirO39V7h6w1CrlZsoODlfv7+IQIHjrFlQswqFhjz/+/ZnZm0jIBBDsSRyepP31rPBFujQJdvOJBaYGqbnfZ7nURbyLE/znUpscbQMAGkZFLyANENA9M+Cka071mpyyH04ybJpAwku0Pudg8xw99hcvS40zyXxJzJVp1oEuL5Gw3figcbbwiEfzY4GruECqAD5OgoElyiW/1HC2TYMj9W6BaNFa2hRH6hIHjbw0yZpNpg2VQcH5vq/MDwSy1KQg8ttZwiE+Yz/Aybz93cI2w3RMjP+GlcJ7b2nHylkoCaBjAuvQzvjSem6DE0ujv2GN2fT81+UNkXwPDKIs4u20eQ6TxP3WJxxsSAmiJTpQFO7GEX3RJJZaZCyT6rvfBJzPVdsEsxrIRkg4Zpf6112wfN0LwqH7wy3ZBO6PEqtcs2+AYAACmAQTmLlMf18s4P5MU1TtpdNV4R1RAnjUqdZwxsxS6EpORYFtw1Ac6n7/W0PbwX4WakhCOPQ1+x9kFFTxaZdoLDVxZ4L1MLHkS63VnF1YlfDy7Ilox5f4J9P//48iNDhAoSCtHurSPHuMVIJwpXSIHz0ud+BuWYAY9777fqPtyM3GFBi5JwVSDEi3FSzyjSfPYw6WNjUW+DEz0hv7/JFMpTc7s13vVkutet7p9tKtz/WJvF078X26lhY170w1+bDwGlgB8jnZKloDfcavdWcMueQ/Qx7Zd8efu8bApN+g2ISqNkPzxTv9TOwz799spVNoNKX5aKkGeJCcuFuv3s77kNEn2RjgAJWmXIUjAMsuy2/npRN6HLxg/aWqVCQo9vySxm3MM0Ujv1IPz5VaabWuUpJhh5lNm+IKEE94TIMulC34NXR39U2RN3T373qUKGWptRR5rqBoSN7xdPC1MMeAJByD7lGk8zanI7nHFgFTIHEU/DZXqHPnP2Am4vUgP0DcZu5L8uVHfXlYXwBH9YhghpgABI3JNVvTm9fEhD4nY09JiHkb6VWf+nSvkbn8E7gXw6HzHEvcvdy6B229GtEV9Xb311qjowj5v7pm9Y7wVXcoHhR9WsMlK/wERNbKrhRRjvddK8Y32cGysjV/Lr/XBm8Q2pObTRWYh5vMUj/jF+MUucC2r6c1Zfk/aWOEg/5eEpWHML90KO8AvnrZ5Py1Wa05zm8O2fWNkfxg/TCOI15oRHAZ+sj0R//fGt8yMy2hm8dqmwKLr+OF6ktodU7PvWDv8r+o0NE+Zug2qPzSZU3dwtMtekdBaAwBJykPTx21iRAgpPkMxK3B/ZzC2aBzCeX1QEA0iI05aAv2kPfxKGIz8N1Kk8wv498InJ9V4xefzTqfW277Zn7i3HhpLa6+uODPgT2xD8KuyL6+XhkfnO+q4x1W1OXZaWa+KO8fUySlvSZ498HRZvnTnUbW3/fPGhtLU+f2i0hDR1VuAyxuryHIbcmhmOfnJgPdoUkNIinnv451GQ/+68Lf4RSKSCjO5ZOIhKd7ymXeRUISP6tdD5pg62z/gQ4190vWD7lyw5WaWPvJjm/fgBPUip5tA1J1Bh6Grb1OQ9f1hPR2dfZPNc9Xd8TUPVqVG6QUU4MwU5GTvdWGae1BscJdJYyGzSZS+TCtubr7WEQdBvrEl1qgXFa4xteVp+pLWldEK14Qs/Yz9qzBKSgxmdr3SGddXwdPUHzHX/8YKg0LMPNBcnV2lwgbP/AOtL/+lTYbVrLSuMv0UUjM0PvvD46oSEKkrI+ECzylwygxLOvIsrjYgwmY/6Zim6ihsA2rCJQcawZrRE4b5mbB3g4AKEVKET5gpiA7R86sdwDP26C2C9Voy8FALo5OrEpEf9I9ED2vUZ/cbcWw3wQQ6AMx49Li9HQ53WYHG2ov80pUAfgcD7N1DviPU0v8vzS+e/PRZZQCiCSFYskGAAAA==" alt="สำนักงานสถิติแห่งชาติ"><img src="data:image/webp;base64,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" alt="GD Catalog"></span>
+  <h1>ระบบผู้ดูแล GD Catalog Monitor</h1>
+  <p>กำหนดรอบส่งข้อมูล ประกาศ การไหลข้อมูล และติดตามหน่วยงาน<br>จังหวัดหนองบัวลำภู</p>
+  <div class="pin"><input id="pw" type="password" inputmode="numeric" autocomplete="current-password" aria-label="รหัสผ่าน" placeholder="••••••" maxlength="64" autofocus></div>
+  <button class="b p" style="width:100%;min-height:50px;font-size:17px" id="lkB" type="submit">🔓 เข้าสู่ระบบ</button>
+  <div class="err" id="lkE" role="alert"></div>
+  <small>เข้ารหัสด้วย PBKDF2-SHA256 · ไม่มีรหัสผ่านเก็บอยู่ในหน้าเว็บ · ล็อกอัตโนมัติเมื่อไม่ได้ใช้งาน</small>
+ </form>
+</div>
+
+<div class="app" id="app" hidden>
+ <aside class="side">
+  <div class="br"><i>⚙</i><div><b>ผู้ดูแลระบบ</b><small>GD Catalog Monitor · นภ.</small></div></div>
+  <button class="nv on" data-v="ov"><span>◎</span>ภาพรวม</button>
+  <button class="nv" data-v="rd"><span>⏱</span>รอบและกำหนดส่ง</button>
+  <button class="nv" data-v="og"><span>🏛</span>หน่วยงาน<em id="nOg" hidden></em></button>
+  <button class="nv" data-v="rm"><span>🔔</span>ศูนย์แจ้งเตือน<em id="nRm" hidden></em></button>
+  <button class="nv" data-v="an"><span>📣</span>ประกาศ</button>
+  <button class="nv" data-v="fl"><span>⇄</span>การไหลข้อมูล</button>
+  <button class="nv" data-v="ct"><span>☎</span>ข้อมูลติดต่อ</button>
+  <button class="nv" data-v="sc"><span>🔐</span>ความปลอดภัย &amp; GitHub</button>
+  <div class="sp"></div>
+  <a class="nv" href="index.html" target="_blank"><span>▣</span>แดชบอร์ด</a>
+  <a class="nv" href="guide.html" target="_blank"><span>📘</span>คู่มือหน่วยงาน</a>
+  <div class="ft">© 2569 สำนักงานสถิติจังหวัดหนองบัวลำภู</div>
+ </aside>
+ <main class="main">
+  <div class="top"><h2 id="vT">ภาพรวม</h2><span class="chip" id="dChip">ข้อมูล –</span><span class="chip ok" id="sChip">เผยแพร่แล้ว ✓</span>
+   <button class="b" id="thB" type="button" title="สลับโหมดสว่าง/มืด">🌓</button><button class="b p" id="pubB" type="button">⬆ เผยแพร่</button><button class="b" id="lkOut" type="button" title="ล็อก">🔒</button></div>
+  <div class="wrap">
+
+  <!-- OVERVIEW -->
+  <section class="vw on" id="v-ov">
+   <div class="cd wz" id="wz"></div>
+   <div class="hero2">
+    <div class="cd cdn" id="ovCd"></div>
+    <div class="cd"><h3>📈 ความคืบหน้าทั้งจังหวัด <small id="ovFc"></small></h3><svg class="chart" id="ovCh" viewBox="0 0 600 200" preserveAspectRatio="none"></svg></div>
+   </div>
+   <div class="g g4" id="ovK"></div>
+   <div class="g g2" style="margin-top:16px">
+    <div class="cd"><h3>⚠ หน่วยงานที่ต้องเร่ง <small>เรียงตามความเสี่ยง</small></h3><div id="ovRisk"></div></div>
+    <div class="cd"><h3>🕘 อัปเดตล่าสุดจากหน่วยงาน <small>events.json</small></h3><div id="ovEv"></div></div>
+   </div>
+  </section>
+
+  <!-- ROUNDS -->
+  <section class="vw" id="v-rd">
+   <div class="cd" style="margin-bottom:16px"><h3>🎯 ปีเป้าหมายของเกณฑ์</h3>
+    <div class="row"><div class="fld" style="width:180px"><label>ปีปัจจุบัน (พ.ศ.)</label><input type="number" id="tY" min="2560" max="2600"></div><div class="fld" style="width:180px"><label>ย้อนหลัง (ปี)</label><input type="number" id="tB" min="1" max="10"></div>
+    <p class="hint" style="flex:1;min-width:260px;color:var(--ink2);font-size:13.5px">ใช้ในคู่มือ ตัวช่วยกรอกปีใหม่ และระบบตรวจอัตโนมัติ (collector) · เกณฑ์ = มีข้อมูลปี <b id="tRange"></b></p></div></div>
+   <div class="row" style="margin-bottom:12px"><h3 style="flex:1">รอบการส่งข้อมูล</h3><button class="b p" id="rAdd" type="button">＋ เพิ่มรอบ</button></div>
+   <div id="rList"></div>
+  </section>
+
+  <!-- ORGS -->
+  <section class="vw" id="v-og">
+   <div class="row" style="margin-bottom:12px"><div class="fld" style="flex:1;min-width:220px;margin:0"><input id="oQ" placeholder="ค้นหาหน่วยงาน…" type="search"></div>
+    <div class="seg" id="oF"><button class="on" data-f="all">ทั้งหมด</button><button data-f="todo">ยังไม่ครบ</button><button data-f="risk">เสี่ยง/เลยกำหนด</button><button data-f="ok">ครบแล้ว</button></div>
+    <div class="seg" id="oL"><button class="on" data-l="prov">ระดับจังหวัด</button><button data-l="all">ทุกระดับ</button></div>
+    <button class="b" id="oCsv" type="button">⬇ CSV</button></div>
+   <div class="tw"><table class="tb" id="oT"></table></div>
+   <p style="font-size:13px;color:var(--ink2)">ผ่าน/ทั้งหมด จากผลตรวจล่าสุดของระบบ (history.json) · “ต้องเพิ่มปี” คำนวณแบบย่อจากข้อมูลเมตา · กำหนดส่งรายหน่วยงานจะเผยแพร่ในคู่มือของหน่วยงานนั้น</p>
+  </section>
+
+  <!-- REMIND -->
+  <section class="vw" id="v-rm">
+   <div class="cd" style="margin-bottom:16px" id="rmHd"></div>
+   <div class="row" style="margin-bottom:10px"><h3 style="flex:1">ส่งข้อความเตือนหน่วยงานที่ยังไม่ครบ</h3><button class="b l" id="rmAll" type="button">💬 คัดลอกทั้งหมด (สำหรับกลุ่ม LINE)</button></div>
+   <div id="rmL"></div>
+  </section>
+
+  <!-- ANNOUNCE -->
+  <section class="vw" id="v-an">
+   <div class="cd">
+    <div class="row" style="margin-bottom:14px"><label class="sw"><input type="checkbox" id="aOn"><i></i></label><b style="font-family:Kanit">แสดงประกาศบนคู่มือและแดชบอร์ด</b></div>
+    <div class="fld"><label>ระดับ</label><div class="seg" id="aLv"><button data-l="info">ข่าวสาร</button><button data-l="warn">เตือน</button><button data-l="urgent">ด่วน</button></div></div>
+    <div class="fld"><label for="aTx">ข้อความ</label><textarea id="aTx" maxlength="240" placeholder="เช่น เปิดรอบส่งข้อมูลปี 2569 แล้ว กำหนดส่ง 20 ธ.ค. 2569"></textarea><span class="hint"><span id="aN">0</span>/240 · ใส่ปุ่มลัด: <button class="b sm" type="button" id="aGen">✨ สร้างจากรอบปัจจุบัน</button></span></div>
+    <div class="fld" style="max-width:240px"><label for="aUn">แสดงถึงวันที่</label><input type="date" id="aUn"></div>
+    <h4 style="margin:6px 0 8px">ตัวอย่าง</h4><div class="ann" id="aPv">📣 <span></span></div>
+   </div>
+  </section>
+
+  <!-- FLOW -->
+  <section class="vw" id="v-fl">
+   <div class="cd" style="margin-bottom:16px"><h3>⇄ เส้นทางข้อมูล</h3>
+    <div class="pipe" id="flP"></div></div>
+   <div class="g g2">
+    <div class="cd"><h3>⏲ รอบตรวจอัตโนมัติ (GitHub Actions)</h3>
+     <div class="fld"><label>ตรวจทุก</label><div class="seg" id="fEv"></div></div>
+     <div class="fld" style="max-width:200px"><label for="fMi">นาทีที่เริ่มตรวจ (0–59)</label><input id="fMi" type="number" min="0" max="59"></div>
+     <p style="font-size:13.5px;color:var(--ink2);margin:0">cron ที่จะใช้: <code id="fCron"></code> (เวลา UTC) · ตรวจรอบถัดไปประมาณ <b id="fNext"></b> · การเปลี่ยนรอบตรวจจะแก้ไฟล์ <code>.github/workflows/collect.yml</code> ตอนกดเผยแพร่</p></div>
+    <div class="cd"><h3>⚙ เวลาที่แสดงในคู่มือ</h3>
+     <div class="fld"><label for="fPb">Power BI รีเฟรชทุกวันเวลา</label><input id="fPb" type="time"></div>
+     <div class="fld"><label for="fDs">เวลาแปลงเป็น Data API บน Catalog</label><input id="fDs" maxlength="30"></div></div>
+   </div>
+   <div class="cd" style="margin-top:16px"><h3>▶ สั่งตรวจเดี๋ยวนี้ <small id="flLast"></small></h3>
+    <div class="row"><button class="b p" id="fRun" type="button">▶ ตรวจทันที</button><label class="row" style="gap:6px;font-size:14px"><input type="checkbox" id="fForce"> ตรวจเนื้อข้อมูลและยอดเข้าชมใหม่ด้วย (ช้ากว่า)</label><button class="b sm" id="fRef" type="button">↻ สถานะล่าสุด</button></div>
+    <div class="runs" id="fRuns"><div class="empty">ต้องตั้งค่า GitHub token ก่อน (เมนูความปลอดภัย &amp; GitHub)</div></div></div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="vw" id="v-ct">
+   <div class="cd" style="max-width:720px">
+    <div class="fld"><label>หน่วยงานผู้ประสานงาน</label><input id="cU" maxlength="120"></div>
+    <div class="row"><div class="fld" style="flex:1"><label>โทรศัพท์</label><input id="cP" maxlength="40"></div><div class="fld" style="flex:1"><label>โทรศัพท์ 2</label><input id="cP2" maxlength="40"></div></div>
+    <div class="fld"><label>อีเมล</label><input id="cE" type="email" maxlength="120"></div>
+    <div class="fld"><label>ลิงก์กลุ่ม LINE / LINE OA (ถ้ามี)</label><input id="cL" type="url" placeholder="https://line.me/…" maxlength="200"><span class="hint">ใส่แล้วคู่มือจะมีการ์ด “กลุ่ม LINE” ในส่วนติดต่อ</span></div>
+   </div>
+  </section>
+
+  <!-- SECURITY -->
+  <section class="vw" id="v-sc">
+   <div class="g g2">
+    <div class="cd"><h3>🔑 เชื่อมต่อ GitHub เพื่อเผยแพร่</h3>
+     <div class="row"><div class="fld" style="flex:1"><label>Owner</label><input id="gO"></div><div class="fld" style="flex:1"><label>Repository</label><input id="gR"></div><div class="fld" style="width:110px"><label>Branch</label><input id="gBr"></div></div>
+     <div class="fld"><label for="gT">Fine-grained personal access token</label><input id="gT" type="password" autocomplete="off" placeholder="github_pat_…"><span class="hint">สิทธิ์ที่ต้องใช้ (เฉพาะ repo นี้): Contents = Read and write · Actions = Read and write · Workflows = Read and write · token เข้ารหัสด้วยรหัสผ่านผู้ดูแลแล้วเก็บในเบราว์เซอร์เครื่องนี้เท่านั้น ไม่ถูกส่งขึ้น repo</span></div>
+     <div class="row"><button class="b p" id="gSave" type="button">บันทึกและทดสอบ</button><button class="b r" id="gDel" type="button">ลบ token จากเครื่องนี้</button><span id="gSt" class="chip">ยังไม่เชื่อมต่อ</span></div></div>
+    <div class="cd"><h3>🔐 เปลี่ยนรหัสผ่านผู้ดูแล</h3>
+     <div class="fld"><label>รหัสผ่านใหม่ (อย่างน้อย 8 ตัว แนะนำผสมตัวอักษร)</label><input id="p1" type="password" autocomplete="new-password"></div>
+     <div class="fld"><label>ยืนยันรหัสผ่านใหม่</label><input id="p2" type="password" autocomplete="new-password"></div>
+     <button class="b p" id="pSet" type="button">เปลี่ยนรหัสผ่าน</button><p style="font-size:13px;color:var(--ink2)">มีผลกับทุกเครื่องหลังกดเผยแพร่ · ค่าแฮชเก็บใน config.json ไม่มีรหัสผ่านจริงในระบบ</p>
+     <div class="fld" style="max-width:240px"><label>ล็อกอัตโนมัติเมื่อไม่ใช้งาน</label><select id="sTo"><option value="10">10 นาที</option><option value="30">30 นาที</option><option value="60">60 นาที</option></select></div></div>
+   </div>
+   <div class="cd" style="margin-top:16px"><h3>🗂 สำรอง / นำเข้า / ประวัติการแก้ไข</h3>
+    <div class="row"><button class="b" id="xDl" type="button">⬇ ดาวน์โหลด config.json</button><label class="b"><input type="file" id="xUp" accept=".json" hidden>⬆ นำเข้า config.json</label><button class="b r" id="xRv" type="button">↺ ยกเลิกการแก้ไขทั้งหมด</button></div>
+    <div id="xLog" style="margin-top:12px"></div>
+    <div class="msg" style="margin-top:12px;font-size:13.5px"><b>หลักความปลอดภัยของระบบนี้</b><br>หน้าเว็บนี้เป็นเว็บแบบ static บน GitHub Pages รหัสผ่านใช้เปิดหน้าจัดการเท่านั้น การแก้ไขจริงต้องใช้ GitHub token ที่เข้ารหัสอยู่ในเบราว์เซอร์ของผู้ดูแล ถ้าไม่มี token จะแก้อะไรบน repo ไม่ได้ แม้รู้รหัสผ่าน · ถ้าเครื่องสูญหายหรือสงสัยว่ารั่ว ให้ revoke token ที่ GitHub ทันที</div></div>
+  </section>
+
+  <div class="foot">จัดทำและพัฒนาโดย สำนักงานสถิติจังหวัดหนองบัวลำภู © 2569 · ระบบผู้ดูแล GD Catalog Monitor</div>
+  </div>
+ </main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+(()=>{'use strict';
+const AUTH0={"alg": "PBKDF2-SHA256", "iter": 310000, "salt": "c5a8a4b3d956ecc13e4fc51f80c0d693", "hash": "3d4cd523ec2e272ffbb4c18a9432d3f80fe803b63a57cec3ac050df07d2761bd"};
+const REPO0={owner:'nsonongbualamphutc-debug',repo:'NBL-GDCatalog-Monitor',branch:'main'};
+const GUIDE='https://nsonongbualamphutc-debug.github.io/NBL-GDCatalog-Monitor/guide.html';
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const LS={get(k){try{return localStorage.getItem(k)}catch(e){return null}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
+const toast=(t,ms=2600)=>{const e=$('#toast');e.textContent=t;e.classList.add('on');clearTimeout(e._t);e._t=setTimeout(()=>e.classList.remove('on'),ms)};
+const DAY=864e5,pad=n=>String(n).padStart(2,'0');
+const endOf=d=>new Date(d+'T23:59:59+07:00').getTime(),startOf=d=>new Date(d+'T00:00:00+07:00').getTime();
+const thD=(d,l)=>{try{return new Date(typeof d==='string'&&d.length===10?d+'T12:00:00+07:00':d).toLocaleDateString('th-TH',{day:'numeric',month:l?'long':'short',year:'numeric'})}catch(e){return d}};
+const thDT=t=>new Date(t).toLocaleString('th-TH',{day:'numeric',month:'short',hour:'2-digit',minute:'2-digit',timeZone:'Asia/Bangkok'});
+const todayISO=()=>new Date(Date.now()+7*36e5).toISOString().slice(0,10);
+const copy=async(t,ok)=>{try{await navigator.clipboard.writeText(t);toast(ok||'คัดลอกแล้ว ✓')}catch(e){prompt('คัดลอกข้อความนี้',t)}};
+const DEF={v:1,target:{year:2569,back:5},rounds:[],orgDue:{},notified:{},announce:{on:false,level:'info',text:'',until:''},
+ contact:{unit:'สำนักงานสถิติจังหวัดหนองบัวลำภู',phone:'0 4231 6736',phone2:'0 4231 6737',email:'saraban_nblamphu@nso.mail.go.th',line:''},
+ flow:{every:1,minute:7,pbi:'06:00',ds:'1–5 นาที'},log:[]};
+const clone=o=>JSON.parse(JSON.stringify(o));
+const merge=(a,b)=>{for(const k in b){if(b[k]&&typeof b[k]==='object'&&!Array.isArray(b[k])&&a[k]&&typeof a[k]==='object'&&!Array.isArray(a[k]))merge(a[k],b[k]);else a[k]=b[k]}return a};
+
+/* ---------- crypto ---------- */
+const enc=new TextEncoder(),hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,'0')).join(''),unhex=h=>new Uint8Array((h.match(/../g)||[]).map(x=>parseInt(x,16)));
+const rnd=n=>hex(crypto.getRandomValues(new Uint8Array(n)));
+const pbk=async(pw,salt,it)=>{const k=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveBits']);return hex(await crypto.subtle.deriveBits({name:'PBKDF2',hash:'SHA-256',salt:unhex(salt),iterations:it},k,256))};
+const aesK=async(pw,salt)=>{const k=await crypto.subtle.importKey('raw',enc.encode(pw),'PBKDF2',false,['deriveKey']);return crypto.subtle.deriveKey({name:'PBKDF2',hash:'SHA-256',salt:unhex(salt),iterations:200000},k,{name:'AES-GCM',length:256},false,['encrypt','decrypt'])};
+const seal=async(pw,txt)=>{const s=rnd(16),iv=crypto.getRandomValues(new Uint8Array(12));const ct=await crypto.subtle.encrypt({name:'AES-GCM',iv},await aesK(pw,s),enc.encode(txt));return JSON.stringify({s,iv:hex(iv),ct:hex(ct)})};
+const unseal=async(pw,blob)=>{const o=JSON.parse(blob);const pt=await crypto.subtle.decrypt({name:'AES-GCM',iv:unhex(o.iv)},await aesK(pw,o.s),unhex(o.ct));return new TextDecoder().decode(pt)};
+const eqC=(a,b)=>{if(a.length!==b.length)return false;let r=0;for(let i=0;i<a.length;i++)r|=a.charCodeAt(i)^b.charCodeAt(i);return r===0};
+
+/* ---------- state ---------- */
+let CF=clone(DEF),PUB='',PROV=null,HIST=[],META=null,EVT=[],PW='',TOK='',REPO=clone(REPO0),idleT=null,LVL='prov';
+try{REPO=merge(clone(REPO0),JSON.parse(LS.get('gdadm.repo')||'{}'))}catch(e){}
+const gj=f=>fetch('data/'+f+'?v='+Date.now(),{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject(new Error(f+' '+r.status)));
+const loadCfg=()=>gj('config.json').then(j=>{CF=merge(clone(DEF),j);PUB=JSON.stringify(CF)}).catch(()=>{CF=clone(DEF);PUB=JSON.stringify(CF)});
+const authNow=()=>(CF.auth&&CF.auth.hash)?CF.auth:AUTH0;
+
+/* ---------- lock ---------- */
+const failK='gdadm.fail';
+const lockState=()=>{try{return JSON.parse(LS.get(failK)||'{"n":0,"u":0}')}catch(e){return{n:0,u:0}}};
+const cfgReady=loadCfg();
+$('#lkF').addEventListener('submit',async e=>{e.preventDefault();const st=lockState();const E=$('#lkE');
+ if(st.u>Date.now()){E.textContent='ใส่ผิดหลายครั้ง ลองใหม่ในอีก '+Math.ceil((st.u-Date.now())/6e4)+' นาที';return}
+ const pw=$('#pw').value;if(!pw){E.textContent='กรุณาใส่รหัสผ่าน';return}
+ $('#lkB').disabled=true;$('#lkB').textContent='กำลังตรวจสอบ…';await cfgReady;
+ let ok=false;try{const a=authNow();ok=eqC(await pbk(pw,a.salt,a.iter),a.hash)}catch(x){E.textContent='เบราว์เซอร์นี้ไม่รองรับการเข้ารหัส (ต้องเปิดผ่าน https)'}
+ $('#lkB').disabled=false;$('#lkB').textContent='🔓 เข้าสู่ระบบ';
+ if(!ok){st.n++;if(st.n>=5){st.u=Date.now()+Math.min(60,5*2**(st.n-5))*6e4}LS.set(failK,JSON.stringify(st));if(!E.textContent)E.textContent='รหัสผ่านไม่ถูกต้อง'+(st.n>=3?' · เหลือ '+Math.max(0,5-st.n)+' ครั้งก่อนถูกพัก':'');$('#lkF').classList.remove('shake');void $('#lkF').offsetWidth;$('#lkF').classList.add('shake');$('#pw').select();return}
+ LS.set(failK,'{"n":0,"u":0}');PW=pw;$('#pw').value='';E.textContent='';
+ const tb=LS.get('gdadm.tok');if(tb){try{TOK=await unseal(PW,tb)}catch(x){TOK=''}}
+ $('#lock').hidden=true;$('#app').hidden=false;boot()});
+const lock=()=>{PW='';TOK='';$('#app').hidden=true;$('#lock').hidden=false;$('#pw').focus()};
+$('#lkOut').addEventListener('click',lock);
+const idle=()=>{clearTimeout(idleT);idleT=setTimeout(()=>{if(PW){lock();$('#lkE').textContent='ล็อกอัตโนมัติเพราะไม่ได้ใช้งาน'}},(+LS.get('gdadm.to')||30)*6e4)};
+['click','keydown','mousemove','touchstart'].forEach(t=>addEventListener(t,()=>{if(PW)idle()},{passive:true}));
+$('#thB').addEventListener('click',()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='dark'?'light':'dark';LS.set('gdadm.theme',r.dataset.theme)});
+
+/* ---------- nav ---------- */
+const TITLES={ov:'ภาพรวม',rd:'รอบและกำหนดส่ง',og:'หน่วยงาน',rm:'ศูนย์แจ้งเตือน',an:'ประกาศ',fl:'การไหลข้อมูล',ct:'ข้อมูลติดต่อ',sc:'ความปลอดภัย & GitHub'};
+const go=v=>{$$('.nv[data-v]').forEach(b=>b.classList.toggle('on',b.dataset.v===v));$$('.vw').forEach(s=>s.classList.toggle('on',s.id==='v-'+v));$('#vT').textContent=TITLES[v];location.hash=v;R[v]&&R[v]();scrollTo(0,0)};
+$$('.nv[data-v]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.v)));
+
+/* ---------- derived data ---------- */
+const MR=/^(CSV|JSON|XML|API|RDF|XLS|XLSX|TSV|GEOJSON|ODS)$/i;
+const yrsOf=p=>{const s=[p.title,...(p.resources||[]).map(r=>r.name)].join(' ');const m=(s.match(/25[4-7]\d/g)||[]).map(Number);const ly=parseInt(p.last_year_of_data),fy=parseInt(p.first_year_of_data);return{max:Math.max(isNaN(ly)?0:ly,...m,0),min:Math.min(isNaN(fy)?9999:fy,...(m.length?m:[9999]))}};
+const CUR=()=>+CF.target.year||2569,Y0=()=>CUR()-(+CF.target.back||5);
+const isProv=(n,t)=>/จังหวัดหนองบัวลำภู|^nbp|^nbl|หนองบัวลำภู$/.test(t||'')||/^(nbp|nbl)/i.test(n||'');
+const hLast=()=>HIST.length?HIST[HIST.length-1]:null;
+const orgRows=()=>{if(!PROV)return[];const by={};const H=hLast();const HO=H&&(H.prov_all||H.prov)&&(H.prov_all||H.prov).orgs||{};
+ PROV.raw.forEach(p=>{const o=p.organization||{};if(!o.name)return;const t=(PROV.orgs.find(x=>x.name===o.name)||{}).title||o.title;const b=by[o.name]=by[o.name]||{name:o.name,title:t,n:0,ok:0,c2:0,lvl:isProv(o.name,t)?'prov':'dept'};
+  b.n++;const y=yrsOf(p);const pass=y.max>=CUR()&&y.min<=Y0()&&(p.resources||[]).some(r=>MR.test(String(r.format||'').trim()));if(pass)b.ok++;if(y.max<CUR())b.c2++});
+ return Object.values(by).map(o=>{const h=HO[o.name];if(h){o.n=h[0];o.ok=h[1];o.score=h[2]}o.todo=Math.max(0,o.n-o.ok);o.pct=o.n?o.ok/o.n:0;
+  const d=dueFor(o.name);o.due=d&&d.due;o.own=d&&d.own;const l=o.due?endOf(o.due)-Date.now():null;o.left=l;
+  o.st=!o.todo?'ok':l!=null&&l<0?'late':l!=null&&l<=7*DAY&&o.pct<.7?'risk':'doing';o.risk=(o.todo?1:0)*((o.st==='late'?3:o.st==='risk'?2:1)*10+o.todo*(1-o.pct));return o})};
+const activeRound=()=>{const now=Date.now();const Rr=(CF.rounds||[]).filter(r=>r.due&&r.on!==false).sort((a,b)=>a.due<b.due?-1:1);return Rr.find(r=>endOf(r.due)>=now-14*DAY)||Rr[Rr.length-1]||null};
+const dueFor=org=>{const r=activeRound();if(!r)return null;const o=CF.orgDue&&CF.orgDue[org];return o?{...r,due:o,own:1}:r};
+const contactLine=()=>{const c=CF.contact||{};return `${c.unit||''} โทร ${c.phone||''}${c.phone2?', '+c.phone2:''}`};
+const lineMsg=o=>{const l=o.due?endOf(o.due)-Date.now():null;return `📊 ${o.title}\nสถานะชุดข้อมูลบน GD Catalog จังหวัดหนองบัวลำภู\n✅ ผ่านแล้ว ${o.ok} จาก ${o.n} ชุด${o.c2?`\n📅 ต้องเพิ่มข้อมูลปี ${CUR()}: ${o.c2} ชุด`:''}${o.due?`\n⏰ กำหนดส่ง ${thD(o.due,1)}${l<0?' (เลยกำหนดแล้ว)':' (อีก '+Math.ceil(l/DAY)+' วัน)'}`:''}\n\n✨ ใช้ตัวช่วยกรอกปีใหม่ กรอกแค่ตัวเลข ไม่ต้องจัดไฟล์เอง\n👉 ${GUIDE}#org=${encodeURIComponent(o.name)}\n\nสอบถาม: ${contactLine()}`};
+const stB=o=>o.st==='ok'?'<span class="st ok">ครบแล้ว</span>':o.st==='late'?'<span class="st r">เลยกำหนด</span>':o.st==='risk'?'<span class="st x">เสี่ยง</span>':'<span class="st w">กำลังทำ</span>';
+const pbar=p=>`<span class="pb"><i style="width:${Math.round(p*100)}%;background:${p>=.999?'var(--ok)':p>=.6?'#f59e0b':'var(--bad)'}"></i></span>${Math.round(p*100)}%`;
+
+/* ---------- dirty + publish ---------- */
+const LBL={target:'ปีเป้าหมาย',rounds:'รอบการส่งข้อมูล',orgDue:'กำหนดส่งรายหน่วยงาน',notified:'สถานะแจ้งเตือน',announce:'ประกาศ',contact:'ข้อมูลติดต่อ',flow:'การไหลข้อมูล',auth:'รหัสผ่านผู้ดูแล'};
+const diffs=()=>{const a=JSON.parse(PUB);return Object.keys(LBL).filter(k=>JSON.stringify(a[k]??null)!==JSON.stringify(CF[k]??null))};
+const dirty=()=>{const d=diffs();const c=$('#sChip');if(d.length){c.className='chip dr';c.textContent='ร่าง · '+d.length+' ส่วนยังไม่เผยแพร่'}else{c.className='chip ok';c.textContent='เผยแพร่แล้ว ✓'}$('#pubB').disabled=!d.length;LS.set('gdadm.draft',JSON.stringify(CF))};
+const b64=s=>{const u=enc.encode(s);let b='';for(let i=0;i<u.length;i+=0x8000)b+=String.fromCharCode.apply(null,u.subarray(i,i+0x8000));return btoa(b)};
+const ub64=s=>new TextDecoder().decode(Uint8Array.from(atob(s.replace(/\s/g,'')),c=>c.charCodeAt(0)));
+const gh=async(path,opt={})=>{if(!TOK)throw new Error('notoken');const r=await fetch('https://api.github.com'+path,{...opt,headers:{Accept:'application/vnd.github+json','X-GitHub-Api-Version':'2022-11-28',Authorization:'Bearer '+TOK,...(opt.body?{'Content-Type':'application/json'}:{})}});
+ if(!r.ok){let m='';try{m=(await r.json()).message}catch(e){}throw new Error(r.status+' '+m)}return r.status===204?null:r.json()};
+const RP=()=>`/repos/${encodeURIComponent(REPO.owner)}/${encodeURIComponent(REPO.repo)}`;
+const getFile=async p=>{try{return await gh(`${RP()}/contents/${p}?ref=${encodeURIComponent(REPO.branch)}`)}catch(e){if(/^404/.test(e.message))return null;throw e}};
+const putFile=async(p,txt,msg)=>{const cur=await getFile(p);return gh(`${RP()}/contents/${p}`,{method:'PUT',body:JSON.stringify({message:msg,content:b64(txt),branch:REPO.branch,...(cur?{sha:cur.sha}:{})})})};
+const cronOf=f=>{const ev=Math.max(1,+f.every||1),mi=Math.min(59,Math.max(0,+f.minute||0));return ev===1?`${mi} * * * *`:ev>=24?`${mi} 0 * * *`:`${mi} */${ev} * * *`};
+const evTxt=ev=>ev===1?'ทุกชั่วโมง':ev>=24?'วันละครั้ง':'ทุก '+ev+' ชั่วโมง';
+$('#pubB').addEventListener('click',async()=>{const d=diffs();if(!d.length)return;
+ const sum=d.map(k=>LBL[k]).join(', ');CF.log=[{ts:new Date().toISOString(),msg:'แก้ '+sum},...(CF.log||[])].slice(0,40);CF.updatedAt=new Date().toISOString();
+ const txt=JSON.stringify(CF,null,1)+'\n';
+ if(!TOK){dl('config.json',txt);CF.log.shift();toast('ยังไม่ได้เชื่อม GitHub จึงดาวน์โหลด config.json ให้ นำไปวางที่โฟลเดอร์ data/ ใน repo',6000);return}
+ const B=$('#pubB');B.disabled=true;B.textContent='กำลังเผยแพร่…';
+ try{await putFile('data/config.json',txt,'admin: '+sum);
+  const old=JSON.parse(PUB);if(d.includes('flow')&&cronOf(old.flow||{})!==cronOf(CF.flow)){const f=await getFile('.github/workflows/collect.yml');if(f){let y=ub64(f.content);y=y.replace(/- cron: '[^']*'[^\n]*/,`- cron: '${cronOf(CF.flow)}'      # ${evTxt(+CF.flow.every)} (เวลา UTC) · ตั้งจากระบบผู้ดูแล`).replace(/^name: .*$/m,`name: เก็บข้อมูล GD Catalog (${evTxt(+CF.flow.every)})`);await putFile('.github/workflows/collect.yml',y,'admin: ปรับรอบตรวจเป็น'+evTxt(+CF.flow.every))}}
+  PUB=JSON.stringify(CF);dirty();toast('เผยแพร่แล้ว ✓ คู่มือและแดชบอร์ดจะเห็นภายใน 1–2 นาที',4500);renderLog()}
+ catch(e){CF.log.shift();toast('เผยแพร่ไม่สำเร็จ: '+e.message,6000)}
+ B.textContent='⬆ เผยแพร่';dirty()});
+const dl=(n,t,type='application/json')=>{const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([t],{type}));a.download=n;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},1000)};
+
+/* ---------- timeline + countdown ---------- */
+const tlHTML=r=>{if(!r||!r.due)return'<div class="empty">ตั้งวันกำหนดส่งเพื่อดูไทม์ไลน์</div>';const M=[];if(r.open)M.push({t:startOf(r.open),b:'เปิดรอบ',s:thD(r.open),c:'#7a5cff'});
+ (r.remind||[]).filter(d=>d>0).sort((a,b)=>b-a).forEach(d=>M.push({t:endOf(r.due)-d*DAY,b:'เตือน '+d+' วัน',s:thD(endOf(r.due)-d*DAY),c:'#f59e0b'}));M.push({t:endOf(r.due),b:'กำหนดส่ง',s:thD(r.due),c:'#e2477a'});if(r.report)M.push({t:endOf(r.report),b:'สรุปผล',s:thD(r.report),c:'#0b8a5a'});
+ M.sort((a,b)=>a.t-b.t);const now=Date.now(),t0=Math.min(M[0].t,now),t1=Math.max(M[M.length-1].t,now),sp=Math.max(1,t1-t0),X=t=>3+(t-t0)*94/sp;
+ return `<div class="tl"><div class="ax"><i style="width:${X(Math.min(now,t1))}%"></i></div>${M.map((m,i)=>`<div class="ms${m.t<=now?' past':''}${i%2?' up':''}" style="left:${X(m.t)}%;--c:${m.c}"><span class="pt"></span><span class="lb"><b>${esc(m.b)}</b>${esc(m.s)}</span></div>`).join('')}<div class="now" style="left:${X(now)}%"><span>วันนี้</span></div></div>`};
+let cdI=null;
+const renderCd=()=>{const r=activeRound(),el=$('#ovCd');clearInterval(cdI);
+ if(!r){el.innerHTML=`<small>ยังไม่มีรอบที่กำหนดวันส่ง</small><h2 style="margin:8px 0 12px">ตั้งรอบการส่งข้อมูลแรก</h2><button class="b" type="button" onclick="document.querySelector('[data-v=rd]').click()">⏱ ไปตั้งรอบและกำหนดส่ง →</button>`;return}
+ const o=r.open?startOf(r.open):endOf(r.due)-60*DAY;
+ el.innerHTML=`<small>รอบปัจจุบัน · ${esc(r.name||'')}</small><h2 style="margin:2px 0">กำหนดส่ง ${thD(r.due,1)}</h2><div class="big"><div><b id="c1">0</b><span>วัน</span></div><div><b id="c2">00</b><span>ชั่วโมง</span></div><div><b id="c3">00</b><span>นาที</span></div><div><b id="c4">00</b><span>วินาที</span></div></div><div class="bar"><i id="c5"></i></div><small id="c6" style="display:block;margin-top:8px"></small>`;
+ const tk=()=>{const ms=endOf(r.due)-Date.now(),a=Math.abs(ms);if(!$('#c1'))return;$('#c1').textContent=Math.floor(a/DAY);$('#c2').textContent=pad(Math.floor(a%DAY/36e5));$('#c3').textContent=pad(Math.floor(a%36e5/6e4));$('#c4').textContent=pad(Math.floor(a%6e4/1e3));
+  $('#c5').style.width=Math.max(2,Math.min(100,(Date.now()-o)*100/(endOf(r.due)-o)))+'%';$('#c6').textContent=ms<0?'⚠ เลยกำหนดมาแล้ว':'ผ่านไปแล้ว '+Math.round(Math.max(0,Date.now()-o)*100/(endOf(r.due)-o))+'% ของรอบ'};tk();cdI=setInterval(tk,1000)};
+
+/* ---------- views ---------- */
+const R={};
+const wz=()=>{const r=activeRound();const S=[[!!r,'ตั้งรอบและวันส่ง','กำหนดวันส่ง วันเตือน และวันสรุปผล','rd'],[!!TOK,'เชื่อม GitHub','ใส่ token ครั้งเดียว เพื่อกดเผยแพร่ได้ทันที','sc'],[!!(CF.announce.on&&CF.announce.text),'ประกาศให้หน่วยงานรู้','แถบประกาศบนคู่มือและแดชบอร์ด','an'],[!diffs().length&&!!r,'กดเผยแพร่','ทุกหน้าอัปเดตภายใน 1–2 นาที','pub']];const n=S.filter(x=>x[0]).length;
+ const el=$('#wz');if(n===4&&LS.get('gdadm.wzx')){el.hidden=true;return}el.hidden=false;
+ el.innerHTML=`<h3>${n===4?'🎉 ตั้งค่าครบแล้ว ระบบพร้อมใช้งาน':'🚀 เริ่มต้นใช้งานใน 4 ขั้น'}<small>${n}/4 ${n===4?'· <a href="#" id="wzX">ซ่อน</a>':''}</small></h3><div class="st4">${S.map((x,i)=>`<button class="s${x[0]?' dn':''}" type="button" data-wz="${x[3]}"><i>${x[0]?'✓':i+1}</i><span><b>${x[1]}</b><small>${x[2]}</small></span></button>`).join('')}</div>`;
+ el.querySelectorAll('[data-wz]').forEach(b=>b.addEventListener('click',()=>b.dataset.wz==='pub'?$('#pubB').click():go(b.dataset.wz)));const x=$('#wzX');x&&x.addEventListener('click',e=>{e.preventDefault();LS.set('gdadm.wzx',1);el.hidden=true})};
+R.ov=()=>{wz();renderCd();const H=hLast(),P=H&&(H.prov_all||H.prov);const rows=orgRows();const L=rows.filter(o=>LVL==='all'||o.lvl==='prov');
+ const n=P?P.n:L.reduce((a,o)=>a+o.n,0),ok=P?P.pass:L.reduce((a,o)=>a+o.ok,0),c2=P?P.c2:L.reduce((a,o)=>a+o.c2,0);
+ const late=rows.filter(o=>o.st==='late'||o.st==='risk').length,done=rows.filter(o=>o.st==='ok').length;
+ const prev=HIST.length>7?(HIST[HIST.length-8].prov_all||HIST[HIST.length-8].prov):null;const dlt=prev?ok-prev.pass:null;
+ $('#ovK').innerHTML=[[n.toLocaleString(),'ชุดข้อมูลทั้งจังหวัด','linear-gradient(135deg,#206b82,#003647)',`${rows.length} หน่วยงาน`],[ok.toLocaleString(),'ผ่านครบ 3 เกณฑ์','linear-gradient(135deg,#0b8a5a,#3fd49a)',(n?Math.round(ok*100/n):0)+'%'+(dlt!=null?` · 7 วัน ${dlt>=0?'+':''}${dlt}`:'')],[c2.toLocaleString(),'ยังไม่มีปี '+CUR(),'linear-gradient(135deg,#e2477a,#a3245a)','ต้องใช้ตัวช่วยกรอกปีใหม่'],[done+' / '+rows.length,'หน่วยงานที่ครบแล้ว','linear-gradient(135deg,#7a5cff,#4a2fc0)',late?`<b style="color:var(--bad)">${late} หน่วยงานเสี่ยง/เลยกำหนด</b>`:'ไม่มีหน่วยงานเสี่ยง']]
+  .map(([b,s,g,i])=>`<div class="cd k" style="--g:${g}"><b>${b}</b><span>${s}</span><i>${i}</i></div>`).join('');
+ // chart
+ const S=HIST.slice(-90).map(h=>{const p=h.prov_all||h.prov;return{d:h.d,v:p&&p.n?p.pass*100/p.n:0}});const svg=$('#ovCh');
+ if(S.length<2){svg.innerHTML='<text x="300" y="100" text-anchor="middle" fill="currentColor" opacity=".5" font-size="14">ประวัติจะแสดงเมื่อมีข้อมูลอย่างน้อย 2 วัน</text>';$('#ovFc').textContent=''}
+ else{const mx=Math.max(100,...S.map(s=>s.v)),mn=Math.max(0,Math.min(...S.map(s=>s.v))-10);const X=i=>10+i*580/(S.length-1),Y=v=>185-(v-mn)*170/(mx-mn||1);
+  const pts=S.map((s,i)=>X(i)+','+Y(s.v)).join(' ');
+  const r=activeRound();let fc='';let proj='';if(r&&S.length>=5){const k=Math.min(14,S.length-1);const slope=(S[S.length-1].v-S[S.length-1-k].v)/k;const days=Math.max(0,(endOf(r.due)-Date.now())/DAY);const pv=Math.min(100,S[S.length-1].v+slope*days);fc=`คาดการณ์ ณ วันส่ง ≈ ${pv.toFixed(0)}%`;
+   const px=Math.min(590,X(S.length-1)+days*580/(S.length-1));proj=`<line x1="${X(S.length-1)}" y1="${Y(S[S.length-1].v)}" x2="${px}" y2="${Y(Math.max(mn,pv))}" stroke="#7a5cff" stroke-width="2" stroke-dasharray="5 5"/>`}
+  $('#ovFc').textContent=fc||('ล่าสุด '+S[S.length-1].v.toFixed(1)+'%');
+  svg.innerHTML=`<defs><linearGradient id="ga" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#10b981" stop-opacity=".35"/><stop offset="1" stop-color="#10b981" stop-opacity="0"/></linearGradient></defs>${[0,25,50,75,100].filter(v=>v>=mn).map(v=>`<line x1="10" x2="590" y1="${Y(v)}" y2="${Y(v)}" stroke="currentColor" opacity=".08"/><text x="2" y="${Y(v)-3}" font-size="10" fill="currentColor" opacity=".45">${v}%</text>`).join('')}<polygon points="${X(0)},185 ${pts} ${X(S.length-1)},185" fill="url(#ga)"/><polyline points="${pts}" fill="none" stroke="#10b981" stroke-width="3" stroke-linejoin="round"/>${proj}<circle cx="${X(S.length-1)}" cy="${Y(S[S.length-1].v)}" r="5" fill="#10b981"/>`}
+ const rk=rows.filter(o=>o.todo&&(LVL==='all'||o.lvl==='prov')).sort((a,b)=>b.risk-a.risk).slice(0,7);
+ $('#ovRisk').innerHTML=rk.length?rk.map(o=>`<div class="rem"><div class="t"><b>${esc(o.title)}</b><small>ผ่าน ${o.ok}/${o.n} · ต้องเพิ่มปี ${o.c2} ชุด${o.due?' · ส่ง '+thD(o.due):''}</small></div>${stB(o)}<button class="b sm l" data-cp="${esc(o.name)}" type="button">💬</button></div>`).join(''):'<div class="empty">🎉 ทุกหน่วยงานครบแล้ว</div>';
+ $('#ovEv').innerHTML=EVT.length?EVT.slice(-8).reverse().map(e=>`<div class="rem"><div class="t"><b>${esc(e.title)}</b><small>${esc(e.org||'')} · ${e.type==='new'?'ชุดใหม่':e.type==='imp'?'เพิ่มไฟล์: '+esc(e.res||''):'ลบชุดข้อมูล'}</small></div><small style="color:var(--ink2);white-space:nowrap">${thDT(e.ts)}</small></div>`).join(''):'<div class="empty">ยังไม่มีความเคลื่อนไหว</div>'};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-cp]');if(!b)return;const o=orgRows().find(x=>x.name===b.dataset.cp);o&&copy(lineMsg(o),'คัดลอกข้อความ LINE แล้ว ✓')});
+
+R.rd=()=>{$('#tY').value=CF.target.year;$('#tB').value=CF.target.back;$('#tRange').textContent=Y0()+'–'+CUR();const act=activeRound();
+ $('#rList').innerHTML=(CF.rounds||[]).length?CF.rounds.map((r,i)=>`<div class="rd${act===r?' act':''}" data-i="${i}">${act===r?'<span class="tag">รอบที่ใช้งานอยู่</span>':''}
+  <div class="row"><div class="fld" style="flex:2;min-width:220px"><label>ชื่อรอบ</label><input data-k="name" value="${esc(r.name||'')}" placeholder="เช่น ข้อมูลปี 2569"></div><div class="fld" style="width:120px"><label>ปีข้อมูล</label><input data-k="year" type="number" value="${esc(r.year||CUR())}"></div>
+   <label class="row" style="gap:8px;margin-top:10px"><span class="sw"><input type="checkbox" data-k="on" ${r.on!==false?'checked':''}><i></i></span>เปิดใช้</label><button class="b sm r" data-del="${i}" type="button" style="margin-top:10px">ลบ</button></div>
+  <div class="row"><div class="fld"><label>เปิดรอบ</label><input type="date" data-k="open" value="${esc(r.open||'')}"></div><div class="fld"><label>กำหนดส่ง *</label><input type="date" data-k="due" value="${esc(r.due||'')}" style="border-color:${r.due?'var(--line)':'var(--lotus)'}"></div><div class="fld"><label>สรุปผลเสนอผู้บริหาร</label><input type="date" data-k="report" value="${esc(r.report||'')}"></div></div>
+  <div class="fld"><label>เตือนล่วงหน้า (วันก่อนกำหนดส่ง)</label><div class="rch">${(r.remind||[]).sort((a,b)=>b-a).map(d=>`<span>${d} วัน <button type="button" data-rmd="${d}" aria-label="ลบ">✕</button></span>`).join('')}<input type="number" min="1" max="120" placeholder="+ วัน" data-add></div></div>
+  <div class="fld"><label>หมายเหตุที่แสดงในคู่มือ</label><input data-k="note" value="${esc(r.note||'')}" maxlength="140"></div>
+  ${tlHTML(r)}</div>`).join(''):'<div class="cd empty">ยังไม่มีรอบ กด “＋ เพิ่มรอบ” เพื่อตั้งกำหนดส่งแรก</div>'};
+$('#tY').addEventListener('input',e=>{CF.target.year=+e.target.value||2569;$('#tRange').textContent=Y0()+'–'+CUR();dirty()});$('#tB').addEventListener('input',e=>{CF.target.back=Math.max(1,+e.target.value||5);$('#tRange').textContent=Y0()+'–'+CUR();dirty()});
+$('#rAdd').addEventListener('click',()=>{const y=CUR();CF.rounds=CF.rounds||[];CF.rounds.push({id:'r'+Date.now().toString(36),name:'ข้อมูลปี '+y,year:y,open:todayISO(),due:'',remind:[14,7,3,1],report:'',note:'',on:true});dirty();R.rd()});
+$('#rList').addEventListener('change',e=>{const c=e.target.closest('.rd');if(!c)return;const r=CF.rounds[+c.dataset.i];const k=e.target.dataset.k;
+ if(k){r[k]=e.target.type==='checkbox'?e.target.checked:k==='year'?+e.target.value:e.target.value;dirty();if(['due','open','report','on'].includes(k))R.rd();return}
+ if(e.target.hasAttribute('data-add')){const v=+e.target.value;if(v>0&&!(r.remind||[]).includes(v)){r.remind=[...(r.remind||[]),v];dirty();R.rd()}}});
+$('#rList').addEventListener('input',e=>{const c=e.target.closest('.rd');const k=e.target.dataset.k;if(c&&k&&e.target.type!=='date'&&e.target.type!=='checkbox'){CF.rounds[+c.dataset.i][k]=k==='year'?+e.target.value:e.target.value;dirty()}});
+$('#rList').addEventListener('click',e=>{const c=e.target.closest('.rd');if(!c)return;const r=CF.rounds[+c.dataset.i];
+ if(e.target.dataset.rmd){r.remind=r.remind.filter(d=>d!==+e.target.dataset.rmd);dirty();R.rd()}
+ if(e.target.dataset.del!=null&&confirm('ลบรอบ “'+(r.name||'')+'” ?')){CF.rounds.splice(+e.target.dataset.del,1);dirty();R.rd()}});
+$('#rList').addEventListener('keydown',e=>{if(e.key==='Enter'&&e.target.hasAttribute('data-add'))e.target.dispatchEvent(new Event('change',{bubbles:true}))});
+
+let oF='all',oS='risk',oD=-1;
+R.og=()=>{const q=$('#oQ').value.trim();let L=orgRows().filter(o=>LVL==='all'||o.lvl==='prov').filter(o=>!q||o.title.includes(q));
+ if(oF==='todo')L=L.filter(o=>o.todo);if(oF==='risk')L=L.filter(o=>o.st==='risk'||o.st==='late');if(oF==='ok')L=L.filter(o=>!o.todo);
+ const K={title:o=>o.title,n:o=>o.n,pct:o=>o.pct,c2:o=>o.c2,due:o=>o.due||'9',risk:o=>o.risk};L.sort((a,b)=>{const x=K[oS](a),y=K[oS](b);return(x<y?-1:x>y?1:0)*oD});
+ const r=activeRound();
+ $('#oT').innerHTML=`<thead><tr><th data-s="title">หน่วยงาน</th><th data-s="n">ชุดข้อมูล</th><th data-s="pct">ผ่านเกณฑ์</th><th data-s="c2">ต้องเพิ่มปี ${CUR()}</th><th data-s="due">กำหนดส่ง</th><th data-s="risk">สถานะ</th><th>แจ้งล่าสุด</th><th></th></tr></thead><tbody>${L.map(o=>`<tr data-o="${esc(o.name)}"><td class="org">${esc(o.title)}<small>${o.lvl==='prov'?'ระดับจังหวัด':'ระดับกรม'} · ${esc(o.name)}</small></td><td>${o.n}</td><td style="white-space:nowrap">${pbar(o.pct)} <small style="color:var(--ink2)">${o.ok}/${o.n}</small></td><td>${o.c2?`<b style="color:var(--bad)">${o.c2}</b>`:'–'}</td>
+  <td><input type="date" value="${esc(CF.orgDue[o.name]||'')}" data-due title="เว้นว่าง = ใช้กำหนดส่งของรอบ" ${r?'':'disabled'}><br><small style="color:var(--ink2)">${o.due?(o.own?'เฉพาะหน่วยงาน':'ตามรอบ')+' · '+(o.left<0?'เลย '+Math.ceil(-o.left/DAY)+' วัน':'อีก '+Math.ceil(o.left/DAY)+' วัน'):'–'}</small></td><td>${stB(o)}</td>
+  <td><small>${CF.notified[o.name]?thDT(CF.notified[o.name]):'–'}</small></td><td style="white-space:nowrap"><button class="b sm l" data-cp="${esc(o.name)}" type="button" title="คัดลอกข้อความ LINE">💬</button> <button class="b sm" data-lk="${esc(o.name)}" type="button" title="คัดลอกลิงก์คู่มือของหน่วยงาน">🔗</button> <button class="b sm" data-nt="${esc(o.name)}" type="button" title="บันทึกว่าแจ้งแล้ว">✓ แจ้งแล้ว</button></td></tr>`).join('')}</tbody>`;
+ $('#nOg').hidden=!orgRows().filter(o=>o.st==='late'||o.st==='risk').length;$('#nOg').textContent=orgRows().filter(o=>o.st==='late'||o.st==='risk').length};
+$('#oT').addEventListener('click',e=>{const th=e.target.closest('th[data-s]');if(th){if(oS===th.dataset.s)oD*=-1;else{oS=th.dataset.s;oD=oS==='title'?1:-1}R.og();return}
+ const lk=e.target.closest('[data-lk]');if(lk)copy(GUIDE+'#org='+encodeURIComponent(lk.dataset.lk),'คัดลอกลิงก์แล้ว ✓');
+ const nt=e.target.closest('[data-nt]');if(nt){CF.notified[nt.dataset.nt]=new Date().toISOString();dirty();R.og()}});
+$('#oT').addEventListener('change',e=>{if(!e.target.hasAttribute('data-due'))return;const o=e.target.closest('tr').dataset.o;if(e.target.value)CF.orgDue[o]=e.target.value;else delete CF.orgDue[o];dirty();R.og()});
+$('#oQ').addEventListener('input',()=>R.og());
+$('#oF').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;oF=b.dataset.f;$$('#oF button').forEach(x=>x.classList.toggle('on',x===b));R.og()});
+$('#oL').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;LVL=b.dataset.l;$$('#oL button').forEach(x=>x.classList.toggle('on',x===b));R.og()});
+$('#oCsv').addEventListener('click',()=>{const L=orgRows().filter(o=>LVL==='all'||o.lvl==='prov');const q=v=>/[",\n]/.test(String(v))?'"'+String(v).replace(/"/g,'""')+'"':v;
+ dl('สถานะหน่วยงาน_'+todayISO()+'.csv','﻿'+[['หน่วยงาน','รหัส','ระดับ','ชุดข้อมูล','ผ่าน','ร้อยละ','ต้องเพิ่มปี','กำหนดส่ง','สถานะ','แจ้งล่าสุด'],...L.map(o=>[o.title,o.name,o.lvl==='prov'?'จังหวัด':'กรม',o.n,o.ok,Math.round(o.pct*100),o.c2,o.due||'',{ok:'ครบแล้ว',late:'เลยกำหนด',risk:'เสี่ยง',doing:'กำลังทำ'}[o.st],CF.notified[o.name]||''])].map(r=>r.map(q).join(',')).join('\r\n'),'text/csv;charset=utf-8')});
+
+R.rm=()=>{const r=activeRound();const L=orgRows().filter(o=>o.todo&&(LVL==='all'||o.lvl==='prov')).sort((a,b)=>b.risk-a.risk);
+ let hd='';if(!r)hd='<h3>ยังไม่มีรอบที่ตั้งวันส่ง</h3><p style="color:var(--ink2);margin:0">ตั้งรอบก่อน แล้วระบบจะบอกว่าวันไหนถึงกำหนดเตือน</p>';
+ else{const left=Math.ceil((endOf(r.due)-Date.now())/DAY);const hit=(r.remind||[]).includes(left)||left===0;const nx=(r.remind||[]).filter(d=>d<left).sort((a,b)=>b-a)[0];
+  hd=`<h3>${hit?'🔔 วันนี้ถึงกำหนดเตือน':'🗓 รอบ '+esc(r.name||'')}</h3><p style="margin:0">${left>=0?`เหลือ <b>${left} วัน</b> ถึงกำหนดส่ง ${thD(r.due,1)}`:`<b style="color:var(--bad)">เลยกำหนดมา ${-left} วัน</b>`} · หน่วยงานที่ยังไม่ครบ <b>${L.length}</b>${!hit&&nx!=null&&left>0?` · เตือนครั้งถัดไป ${thD(endOf(r.due)-nx*DAY)} (ก่อนส่ง ${nx} วัน)`:''}</p>${tlHTML(r)}`}
+ $('#rmHd').innerHTML=hd;
+ $('#rmL').innerHTML=L.length?L.map(o=>`<div class="rem"><div class="t"><b>${esc(o.title)}</b><small>ผ่าน ${o.ok}/${o.n} · ต้องเพิ่มปี ${o.c2} · แจ้งล่าสุด ${CF.notified[o.name]?thDT(CF.notified[o.name]):'ยังไม่เคย'}</small></div>${stB(o)}<button class="b sm l" data-cp="${esc(o.name)}" type="button">💬 คัดลอก</button><button class="b sm" data-nt2="${esc(o.name)}" type="button">✓ แจ้งแล้ว</button></div>`).join(''):'<div class="cd empty">🎉 ไม่มีหน่วยงานที่ต้องเตือน</div>';
+ $('#nRm').hidden=!L.length;$('#nRm').textContent=L.length};
+$('#rmL').addEventListener('click',e=>{const b=e.target.closest('[data-nt2]');if(b){CF.notified[b.dataset.nt2]=new Date().toISOString();dirty();R.rm();toast('บันทึกแล้ว · กดเผยแพร่เพื่อบันทึกถาวร')}});
+$('#rmAll').addEventListener('click',()=>{const r=activeRound();const L=orgRows().filter(o=>o.todo&&(LVL==='all'||o.lvl==='prov')).sort((a,b)=>a.pct-b.pct);
+ const t=`📢 แจ้งเตือนการส่งข้อมูล GD Catalog จังหวัดหนองบัวลำภู${r?`\n⏰ กำหนดส่ง ${esc(r.name||'')} : ${thD(r.due,1)}`:''}\n\nหน่วยงานที่ยังไม่ครบ ${L.length} หน่วยงาน\n${L.map((o,i)=>`${i+1}. ${o.title} — ผ่าน ${o.ok}/${o.n}${o.c2?' · ขาดปี '+CUR()+' '+o.c2+' ชุด':''}`).join('\n')}\n\n✨ ตัวช่วยกรอกปีใหม่ (กรอกแค่ตัวเลข): ${GUIDE}#fill\nดูงานของหน่วยงานท่าน: ${GUIDE}#mine\nสอบถาม: ${contactLine()}`;copy(t,'คัดลอกข้อความรวมแล้ว ✓ วางในกลุ่ม LINE ได้เลย')});
+
+R.an=()=>{const a=CF.announce;$('#aOn').checked=!!a.on;$('#aTx').value=a.text||'';$('#aUn').value=a.until||'';$$('#aLv button').forEach(b=>b.classList.toggle('on',b.dataset.l===(a.level||'info')));anPv()};
+const anPv=()=>{const a=CF.announce;$('#aPv').className='ann '+(a.level||'info');$('#aPv span').textContent=a.text||'(ยังไม่มีข้อความ)';$('#aPv').style.opacity=a.on?1:.45;$('#aN').textContent=(a.text||'').length};
+$('#aOn').addEventListener('change',e=>{CF.announce.on=e.target.checked;dirty();anPv()});$('#aTx').addEventListener('input',e=>{CF.announce.text=e.target.value;dirty();anPv()});$('#aUn').addEventListener('change',e=>{CF.announce.until=e.target.value;dirty()});
+$('#aLv').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;CF.announce.level=b.dataset.l;$$('#aLv button').forEach(x=>x.classList.toggle('on',x===b));dirty();anPv()});
+$('#aGen').addEventListener('click',()=>{const r=activeRound();if(!r){toast('ตั้งรอบและกำหนดส่งก่อน');return}CF.announce.text=`เปิดรอบส่ง${r.name||'ข้อมูล'} กำหนดส่ง ${thD(r.due,1)} · ใช้ตัวช่วยกรอกปีใหม่ กรอกแค่ตัวเลขก็ได้ไฟล์พร้อมอัปโหลด`;CF.announce.until=CF.announce.until||r.due;CF.announce.on=true;dirty();R.an()});
+
+const EVS=[1,2,3,4,6,12,24];
+const nextRun=f=>{const ev=Math.max(1,+f.every||1),mi=+f.minute||0,d=new Date();for(let i=0;i<24*8;i++){const c=new Date(d.getTime()+i*36e5);c.setUTCMinutes(mi,0,0);const ok=ev>=24?c.getUTCHours()===0:c.getUTCHours()%ev===0;if(ok&&c.getTime()>Date.now())return c.getTime()}return 0};
+R.fl=()=>{const f=CF.flow;$('#fEv').innerHTML=EVS.map(v=>`<button type="button" data-e="${v}" class="${+f.every===v?'on':''}">${v>=24?'วันละครั้ง':v===1?'1 ชม.':v+' ชม.'}</button>`).join('');$('#fMi').value=f.minute;$('#fPb').value=f.pbi||'06:00';$('#fDs').value=f.ds||'';flUpd();
+ $('#flLast').textContent=META&&META.generatedAt?'ข้อมูลล่าสุด '+thDT(META.generatedAt):'';runs()};
+const flUpd=()=>{const f=CF.flow;$('#fCron').textContent=cronOf(f);const n=nextRun(f);$('#fNext').textContent=n?thDT(n)+' น.':'–';
+ $('#flP').innerHTML=[['⬆','หน่วยงานอัปโหลด','ภายในกำหนดส่ง','linear-gradient(135deg,#7a5cff,#4a2fc0)'],['🗄','Catalog → Data API',f.ds||'1–5 นาที','linear-gradient(135deg,#00a3b4,#006c7a)'],['🔍','ระบบตรวจอัตโนมัติ',evTxt(+f.every),'linear-gradient(135deg,#e2477a,#a3245a)'],['▣','แดชบอร์ดจังหวัด','ทันทีหลังตรวจ','linear-gradient(135deg,#0b8a5a,#3fd49a)'],['📊','Power BI ผู้บริหาร','ทุกวัน '+(f.pbi||'06:00')+' น.','linear-gradient(135deg,#f59e0b,#d97706)']].map(([i,b,s,g])=>`<div><div class="pi" style="--g:${g}">${i}</div><b>${b}</b><small>${esc(s)}</small></div>`).join('')};
+$('#fEv').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;CF.flow.every=+b.dataset.e;$$('#fEv button').forEach(x=>x.classList.toggle('on',x===b));dirty();flUpd()});
+$('#fMi').addEventListener('input',e=>{CF.flow.minute=Math.min(59,Math.max(0,+e.target.value||0));dirty();flUpd()});$('#fPb').addEventListener('change',e=>{CF.flow.pbi=e.target.value;dirty();flUpd()});$('#fDs').addEventListener('input',e=>{CF.flow.ds=e.target.value;dirty();flUpd()});
+const runs=async()=>{const el=$('#fRuns');if(!TOK){el.innerHTML='<div class="empty">ต้องตั้งค่า GitHub token ก่อน (เมนูความปลอดภัย &amp; GitHub)</div>';return}
+ try{const j=await gh(`${RP()}/actions/workflows/collect.yml/runs?per_page=6`);el.innerHTML=(j.workflow_runs||[]).map(w=>`<div><span class="dot ${w.status!=='completed'?'q':w.conclusion==='success'?'s':'f'}"></span><b style="font-family:Kanit">${w.status!=='completed'?'กำลังทำงาน…':w.conclusion==='success'?'สำเร็จ':'ไม่สำเร็จ'}</b><span style="flex:1;color:var(--ink2)">${w.event==='schedule'?'ตามรอบ':w.event==='workflow_dispatch'?'สั่งด้วยมือ':w.event} · ${thDT(w.created_at)}</span><a href="${esc(w.html_url)}" target="_blank" rel="noopener">ดู log</a></div>`).join('')||'<div class="empty">ยังไม่มีประวัติ</div>'}
+ catch(e){el.innerHTML='<div class="msg b">อ่านสถานะไม่ได้: '+esc(e.message)+'</div>'}};
+$('#fRef').addEventListener('click',runs);
+$('#fRun').addEventListener('click',async e=>{if(!TOK){toast('ตั้งค่า GitHub token ก่อน');go('sc');return}e.target.disabled=true;try{await gh(`${RP()}/actions/workflows/collect.yml/dispatches`,{method:'POST',body:JSON.stringify({ref:REPO.branch,inputs:{force:$('#fForce').checked?'1':'0'}})});toast('สั่งตรวจแล้ว ✓ ใช้เวลาประมาณ 2–10 นาที');setTimeout(runs,4000);setTimeout(runs,20000)}catch(x){toast('สั่งไม่สำเร็จ: '+x.message,5000)}e.target.disabled=false});
+
+R.ct=()=>{const c=CF.contact;$('#cU').value=c.unit||'';$('#cP').value=c.phone||'';$('#cP2').value=c.phone2||'';$('#cE').value=c.email||'';$('#cL').value=c.line||''};
+[['#cU','unit'],['#cP','phone'],['#cP2','phone2'],['#cE','email'],['#cL','line']].forEach(([s,k])=>$(s).addEventListener('input',e=>{CF.contact[k]=e.target.value.trim();dirty()}));
+
+R.sc=()=>{$('#gO').value=REPO.owner;$('#gR').value=REPO.repo;$('#gBr').value=REPO.branch;$('#gT').value='';$('#sTo').value=LS.get('gdadm.to')||'30';gSt(TOK?'ok':'');renderLog()};
+const gSt=s=>{const c=$('#gSt');c.className='chip'+(s==='ok'?' ok':s==='x'?' dr':'');c.textContent=s==='ok'?'เชื่อมต่อแล้ว ✓ '+REPO.owner+'/'+REPO.repo:s==='x'?'เชื่อมต่อไม่สำเร็จ':s==='…'?'กำลังทดสอบ…':'ยังไม่เชื่อมต่อ'};
+$('#gSave').addEventListener('click',async()=>{REPO={owner:$('#gO').value.trim()||REPO0.owner,repo:$('#gR').value.trim()||REPO0.repo,branch:$('#gBr').value.trim()||'main'};LS.set('gdadm.repo',JSON.stringify(REPO));
+ const t=$('#gT').value.trim();if(t)TOK=t;if(!TOK){toast('ใส่ token ก่อน');return}gSt('…');
+ try{const j=await gh(RP());if(!j.permissions||!j.permissions.push)throw new Error('token ไม่มีสิทธิ์เขียน repo นี้');LS.set('gdadm.tok',await seal(PW,TOK));$('#gT').value='';gSt('ok');toast('เชื่อมต่อ GitHub แล้ว ✓ token เข้ารหัสเก็บในเครื่องนี้')}catch(e){gSt('x');toast('ไม่สำเร็จ: '+e.message,6000)}});
+$('#gDel').addEventListener('click',()=>{LS.del('gdadm.tok');TOK='';gSt('');toast('ลบ token จากเครื่องนี้แล้ว')});
+$('#pSet').addEventListener('click',async()=>{const a=$('#p1').value,b=$('#p2').value;if(a.length<8){toast('รหัสผ่านต้องยาวอย่างน้อย 8 ตัว');return}if(a!==b){toast('รหัสผ่านยืนยันไม่ตรงกัน');return}
+ const salt=rnd(16),it=310000;CF.auth={alg:'PBKDF2-SHA256',iter:it,salt,hash:await pbk(a,salt,it)};if(TOK)LS.set('gdadm.tok',await seal(a,TOK));PW=a;$('#p1').value=$('#p2').value='';dirty();toast('ตั้งรหัสผ่านใหม่แล้ว · กดเผยแพร่เพื่อให้มีผล',4500)});
+$('#sTo').addEventListener('change',e=>{LS.set('gdadm.to',e.target.value);idle()});
+$('#xDl').addEventListener('click',()=>dl('config.json',JSON.stringify(CF,null,1)+'\n'));
+$('#xUp').addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>{const j=JSON.parse(t);CF=merge(clone(DEF),j);dirty();toast('นำเข้าแล้ว · ตรวจแล้วกดเผยแพร่');go('ov')}).catch(()=>toast('ไฟล์ไม่ถูกต้อง'))});
+$('#xRv').addEventListener('click',()=>{if(!confirm('ยกเลิกการแก้ไขที่ยังไม่เผยแพร่ทั้งหมด?'))return;CF=JSON.parse(PUB);dirty();toast('ยกเลิกแล้ว');R.sc()});
+const renderLog=()=>{$('#xLog').innerHTML=(CF.log||[]).length?'<h4 style="margin:0 0 6px">ประวัติการเผยแพร่</h4>'+CF.log.slice(0,10).map(l=>`<div class="rem"><div class="t"><b>${esc(l.msg)}</b></div><small>${thDT(l.ts)}</small></div>`).join(''):'<p style="color:var(--ink2);font-size:13.5px">ยังไม่มีประวัติการเผยแพร่</p>'};
+
+/* ---------- boot ---------- */
+const boot=async()=>{idle();
+ try{const d=JSON.parse(LS.get('gdadm.draft')||'null');if(d&&JSON.stringify(d)!==PUB&&confirm('พบร่างที่ยังไม่เผยแพร่จากครั้งก่อน ต้องการกู้คืนไหม?'))CF=merge(clone(DEF),d)}catch(e){}
+ dirty();
+ const [p,h,m,ev]=await Promise.allSettled([gj('prov.json'),gj('history.json'),gj('meta.json'),gj('events.json')]);
+ PROV=p.value||null;HIST=h.value||[];META=m.value||null;EVT=(ev.value||[]).filter(e=>e.src==='prov');
+ $('#dChip').textContent=META&&META.generatedAt?'ข้อมูล '+thDT(META.generatedAt):PROV?'ข้อมูลพร้อม':'โหลดข้อมูลไม่ได้';
+ const v=(location.hash||'').slice(1);go(TITLES[v]?v:'ov');R.rm();R.og()};
+})();
+</script>
+</body>
+</html>
