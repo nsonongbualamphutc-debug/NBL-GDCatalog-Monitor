@@ -452,55 +452,6 @@ section.band.act .sh .no{box-shadow:0 0 0 6px color-mix(in srgb,var(--lotus) 18%
 .ps .qr svg{width:80px;height:80px}
 .ps .due2{font:600 12pt Kanit;color:#c62f45}
 
-/* hall of fame */
-.hof{position:relative;margin-top:26px;padding:30px 26px 26px;border-radius:28px;overflow:hidden;color:#fff;
- background:radial-gradient(circle at 50% 0%,rgba(255,214,102,.35),transparent 45%),radial-gradient(circle at 10% 90%,rgba(122,92,255,.45),transparent 45%),radial-gradient(circle at 95% 80%,rgba(226,71,122,.35),transparent 40%),linear-gradient(160deg,#002a38,#05384a 45%,#1c1450);box-shadow:0 30px 60px -30px rgba(0,30,45,.75)}
-.hof::before{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.55) 1px,transparent 1.4px);background-size:28px 28px;opacity:.12;mask-image:linear-gradient(180deg,#000,transparent 70%)}
-.hof .rays{position:absolute;left:50%;top:-60%;width:900px;height:900px;transform:translateX(-50%);background:repeating-conic-gradient(from 0deg,rgba(255,220,120,.10) 0 6deg,transparent 6deg 18deg);animation:rays 40s linear infinite;pointer-events:none;mask-image:radial-gradient(circle,#000 20%,transparent 60%)}
-@keyframes rays{to{transform:translateX(-50%) rotate(360deg)}}
-.hof .hh{position:relative;text-align:center;margin-bottom:22px}
-.hof .hh small{display:inline-block;font:600 12.5px Kanit;letter-spacing:2px;color:#ffd166;padding:3px 14px;border:1px solid rgba(255,209,102,.5);border-radius:99px;background:rgba(255,209,102,.08)}
-.hof .hh h3{margin:10px 0 4px;font:700 30px/1.25 Kanit;background:linear-gradient(90deg,#fff6d5,#ffd166 40%,#fff 60%,#ffd166);-webkit-background-clip:text;background-clip:text;color:transparent;background-size:200% 100%;animation:gshine 5s linear infinite}
-@keyframes gshine{to{background-position:-200% 0}}
-.hof .hh p{margin:0;color:#c7dfe6;font-size:15px}
-.pod{position:relative;display:grid;grid-template-columns:1fr 1.15fr 1fr;gap:16px;align-items:end;max-width:900px;margin:0 auto}
-.pc{display:flex;flex-direction:column;align-items:center;text-align:center;min-width:0}
-.pc .av{position:relative;width:92px;height:92px;border-radius:50%;padding:4px;background:var(--m);box-shadow:0 0 0 6px rgba(255,255,255,.06),0 18px 34px -14px var(--mg)}
-.pc .av .ic{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;background:#fff;color:#003647;font:700 26px Kanit;overflow:hidden}
-.pc .av img{width:78%;height:78%;object-fit:contain}.pc .av .ic svg{width:46%;height:46%;color:#206b82}
-.pc .rb{position:absolute;bottom:-12px;left:50%;transform:translateX(-50%);width:36px;height:36px;border-radius:50%;display:grid;place-items:center;font:700 17px Kanit;color:#fff;background:var(--m);border:3px solid #0b2f3d;box-shadow:0 6px 14px -4px rgba(0,0,0,.5)}
-.pc.p1 .av{width:118px;height:118px;animation:hglow 2.6s ease-in-out infinite}
-@keyframes hglow{50%{box-shadow:0 0 0 6px rgba(255,209,102,.18),0 0 40px 6px rgba(255,209,102,.45)}}
-.pc .crown{width:54px;height:40px;margin-bottom:-6px;filter:drop-shadow(0 6px 10px rgba(255,190,40,.6));animation:bob 3s ease-in-out infinite}
-@keyframes bob{50%{transform:translateY(-5px)}}
-.pc .nm{margin-top:20px;font:600 15.5px/1.35 Kanit;min-height:3.9em;display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;overflow:hidden;padding:0 4px}
-.pc.p1 .nm{font-size:17px}
-.pc .ps{display:flex;gap:10px;align-items:center;justify-content:center;margin:8px 0 12px;color:#cfe6ec;font-size:13.5px}
-.pc .ring{--p:0;width:52px;height:52px;border-radius:50%;display:grid;place-items:center;font:700 14px Kanit;color:#fff;background:radial-gradient(closest-side,#0b2f3d 74%,transparent 76%),conic-gradient(var(--mc) calc(var(--p)*1%),rgba(255,255,255,.15) 0)}
-.pc .ped{position:relative;width:100%;border-radius:18px 18px 8px 8px;display:grid;place-items:center;font:800 54px/1 Kanit;color:rgba(255,255,255,.92);text-shadow:0 4px 14px rgba(0,0,0,.35);background:var(--m);overflow:hidden;box-shadow:inset 0 2px 0 rgba(255,255,255,.45),0 20px 30px -18px rgba(0,0,0,.6)}
-.pc .ped::after{content:"";position:absolute;top:0;bottom:0;width:40%;left:-60%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.45),transparent);transform:skewX(-20deg);animation:sweep 4s ease-in-out infinite}
-@keyframes sweep{60%,100%{left:130%}}
-.pc.p1 .ped{height:150px;font-size:70px}.pc.p2 .ped{height:108px}.pc.p3 .ped{height:78px}
-.p1{--m:linear-gradient(145deg,#ffe58a,#f5b700 45%,#c98300);--mg:rgba(245,183,0,.7);--mc:#ffd166}
-.p2{--m:linear-gradient(145deg,#f2f6f8,#b8c4cc 45%,#7d8b95);--mg:rgba(184,196,204,.6);--mc:#dfe7ec}
-.p3{--m:linear-gradient(145deg,#f3b98a,#cd7f32 50%,#8f4f1c);--mg:rgba(205,127,50,.6);--mc:#f0a868}
-.hon{position:relative;max-width:900px;margin:22px auto 0;display:grid;gap:8px}
-.hon .r{display:grid;grid-template-columns:40px 1fr 280px;gap:12px;align-items:center;padding:10px 14px;border-radius:14px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.1);backdrop-filter:blur(6px)}
-.hon .r i{font:700 17px Kanit;font-style:normal;color:#ffd166;text-align:center}
-.hon .r b{font:600 15px Kanit;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.hon .r .br{display:flex;gap:8px;align-items:center;font-size:13.5px;color:#cfe6ec}
-.hon .r .br span{flex:1;height:7px;border-radius:9px;background:rgba(255,255,255,.14);overflow:hidden}.hon .r .br span u{display:block;height:100%;border-radius:9px;background:linear-gradient(90deg,#22d3ee,#7a5cff)}
-.hcr{position:relative;max-width:900px;margin:18px auto 0;border:1px solid rgba(255,255,255,.18);border-radius:16px;background:rgba(255,255,255,.06);padding:4px 16px;color:#e3f1f5}
-.hcr summary{cursor:pointer;font:600 15px Kanit;padding:8px 0;color:#ffd166;list-style:none}.hcr summary::-webkit-details-marker{display:none}.hof .hcr summary::after{content:none!important;display:none}.hof .hcr,.hof .hcr ol,.hof .hcr li,.hof .hcr p{color:#dcecf1!important}.hof details.hcr{background:rgba(255,255,255,.06)!important;border-color:rgba(255,255,255,.18)!important}
-.hcr ol{margin:0 0 10px;padding-left:20px;font-size:14px;line-height:1.6}.hcr li{margin:4px 0}.hcr b{color:#fff}
-.m1{--m:linear-gradient(145deg,#ffe58a,#f5b700 45%,#c98300);--mg:rgba(245,183,0,.7);--mc:#ffd166}
-.m2{--m:linear-gradient(145deg,#f2f6f8,#b8c4cc 45%,#7d8b95);--mg:rgba(184,196,204,.6);--mc:#dfe7ec}
-.m3{--m:linear-gradient(145deg,#f3b98a,#cd7f32 50%,#8f4f1c);--mg:rgba(205,127,50,.6);--mc:#f0a868}
-.hof .hf{position:relative;text-align:center;margin:18px 0 0;font-size:13px;color:#a9c7cf}
-.hof .cf{position:absolute;width:8px;height:14px;top:-20px;border-radius:2px;opacity:.9;animation:fall linear infinite}
-@keyframes fall{to{transform:translateY(560px) rotate(540deg);opacity:0}}
-@media(max-width:640px){.hof{padding:24px 12px 18px}.hof .hh h3{font-size:23px}.pod{gap:8px}.pc .av{width:64px;height:64px}.pc.p1 .av{width:82px;height:82px}.pc .av .ic{font-size:19px}.pc .crown{width:40px;height:30px}.pc .nm{font-size:13px;margin-top:16px}.pc.p1 .nm{font-size:14px}.pc .ps{flex-direction:column;gap:4px;font-size:12px}.pc .ring{width:44px;height:44px;font-size:12px}.pc.p1 .ped{height:110px;font-size:50px}.pc.p2 .ped{height:80px;font-size:40px}.pc.p3 .ped{height:58px;font-size:34px}.hon .r{grid-template-columns:30px 1fr;}.hon .r .br{grid-column:2}}
-@media(prefers-reduced-motion:reduce){.hof .rays,.hof .hh h3,.pc .crown,.pc .ped::after,.pc.p1 .av,.hof .cf{animation:none!important}.hof .cf{display:none}}
 nav.toc a[href],.rail a[href]{--sc:#206b82;--sc2:#7a5cff}
 
 /* section identity colors */
@@ -545,6 +496,99 @@ nav.toc a.on em{background:#fff!important;color:var(--sc)!important}
 @media(prefers-reduced-motion:reduce){.bdx::before{animation:none;display:none}}
 #update .big{background:linear-gradient(120deg,#3b1f8f,var(--sc) 60%,#a855f7)}
 #update .flow div b{background:linear-gradient(135deg,var(--sc2),var(--sc))}#update .flow i{background:linear-gradient(90deg,var(--sc2),var(--sc))}
+
+/* ===== video demo: new dataset ===== */
+.vp{margin:6px 0 30px;border-radius:26px;padding:20px;background:linear-gradient(135deg,color-mix(in srgb,var(--sc,#0b8a5a) 16%,var(--card)),var(--card) 55%);border:1px solid color-mix(in srgb,var(--sc,#0b8a5a) 30%,var(--line));box-shadow:var(--shadow)}
+.vp-h{display:grid;grid-template-columns:1fr auto;gap:12px 24px;align-items:start;margin-bottom:14px}
+.vp-h h3{margin:6px 0 4px;font:600 22px/1.3 Kanit}.vp-h p{margin:0;color:var(--ink2);font-size:15px}
+.vp-tag{display:inline-block;font:600 12.5px Kanit;color:#fff;padding:3px 12px;border-radius:99px;background:linear-gradient(90deg,var(--sc,#0b8a5a),var(--sc2,#34d399))}
+.vp-ch{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:6px;max-width:520px;justify-content:flex-end;counter-reset:c}
+.vp-ch li{counter-increment:c;cursor:pointer;display:flex;align-items:center;gap:6px;font:500 13.5px Kanit;padding:5px 12px 5px 5px;border-radius:99px;background:var(--card);border:1px solid var(--line);color:var(--ink2);transition:.25s}
+.vp-ch li::before{content:counter(c);width:22px;height:22px;border-radius:50%;display:grid;place-items:center;background:var(--line);color:var(--ink);font-size:12px}
+.vp-ch li.on{color:#fff;background:linear-gradient(90deg,var(--sc,#0b8a5a),var(--sc2,#34d399));border-color:transparent}.vp-ch li.on::before{background:#fff;color:var(--sc,#0b8a5a)}
+.vp-ch li.dn::before{content:"✓";background:var(--sc,#0b8a5a);color:#fff}
+.vp-scr{position:relative;border-radius:16px 16px 0 0;overflow:hidden;background:#0c1d24;outline:none}
+.vp-scr:focus-visible{box-shadow:0 0 0 3px var(--sc,#0b8a5a)}
+.vp-br{display:flex;align-items:center;gap:6px;height:34px;padding:0 12px;background:#e9eef0;border-bottom:1px solid #d4dde0}
+.vp-br i{width:10px;height:10px;border-radius:50%;background:#ff5f57}.vp-br i:nth-child(2){background:#febc2e}.vp-br i:nth-child(3){background:#28c840}
+.vp-br span{flex:1;margin-left:10px;height:22px;line-height:22px;border-radius:7px;background:#fff;padding:0 10px;font:12.5px Sarabun;color:#405055;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vp-vw{position:relative;overflow:hidden}
+.vx{position:absolute;left:0;top:0;width:960px;height:560px;transform-origin:0 0;background:#f4f7f8;color:#1f2d33;font:14px/1.5 Sarabun,sans-serif;overflow:hidden}
+.vx-hd{height:54px;background:#003647;color:#fff;display:flex;align-items:center;gap:12px;padding:0 22px}
+.vx-hd b{display:block;font:600 14px Kanit}.vx-hd small{display:block;font-size:10px;letter-spacing:1px;opacity:.7;margin-top:-3px}
+.vx-lg{width:32px;height:32px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#ffe08a,#d48a00);box-shadow:0 0 0 2px rgba(255,255,255,.3)}
+.vx-hd nav{margin-left:auto;display:flex;gap:6px}.vx-hd nav span{padding:6px 12px;border-radius:6px;font-size:13.5px;color:#cfe6ec}.vx-hd nav span.on{background:#206b82;color:#fff}
+.vx-s{position:absolute;left:0;right:0;top:54px;bottom:0;display:none}.vx-s.on{display:block;animation:vxin .35s ease}
+@keyframes vxin{from{opacity:0;transform:translateY(8px)}}
+.vx-card{width:400px;margin:42px auto 0;background:#fff;border-radius:14px;padding:24px 26px;box-shadow:0 18px 40px -22px rgba(0,40,55,.45)}
+.vx-card h4{margin:0 0 12px;font:600 19px Kanit}
+.vx-f{margin-bottom:11px}.vx-f label{display:block;font-size:12.5px;font-weight:600;color:#3b4c52;margin-bottom:3px}
+.vx-i{min-height:36px;border:1.5px solid #cdd8dc;border-radius:7px;padding:6px 10px;background:#fff;font-size:14px;transition:border-color .2s,box-shadow .2s;white-space:pre-wrap;word-break:break-word}
+.vx-i.fc{border-color:#206b82;box-shadow:0 0 0 3px rgba(32,107,130,.18)}
+.vx-i.ty::after{content:"";display:inline-block;width:2px;height:16px;background:#206b82;vertical-align:-3px;margin-left:1px;animation:vxbl .8s steps(1) infinite}
+@keyframes vxbl{50%{opacity:0}}
+.vx-ta{min-height:58px}.vx-ro{background:#eef3f5;color:#4a5b61}.vx-otp{letter-spacing:12px;font:600 20px Kanit;text-align:center}
+.vx-sel{position:relative;color:#8a9aa0;padding-right:28px}.vx-sel::after{content:"▾";position:absolute;right:10px;top:7px;color:#6b7c82}.vx-sel.v{color:#1f2d33}
+.vx-b{display:inline-block;padding:8px 16px;border-radius:7px;background:#206b82;color:#fff;font-weight:600;font-size:14px;transition:.2s}
+.vx-b.vx-gh{background:#fff;color:#206b82;border:1.5px solid #b9cfd6}.vx-b.vx-w{background:#fff;color:#222;border:1px solid #ccc}.vx-b.vx-gr{background:#3a8a3a}.vx-b.vx-or{background:#f57c1f}
+.vx-b.pr{transform:scale(.95);filter:brightness(1.15)}
+.vx-mu{color:#6b7c82;font-size:13px}
+.vx-bd{padding:20px 36px}
+.vx-row{display:flex;align-items:center;justify-content:space-between}
+.vx-search{margin:12px 0;padding:9px 12px;border:1px solid #cdd8dc;border-radius:8px;background:#fff;color:#8a9aa0}
+.vx-li{padding:12px 14px;margin-bottom:8px;background:#fff;border-radius:10px;border:1px solid #e1e8eb}.vx-li b{display:block;font:600 15px Kanit;color:#206b82}.vx-li small{color:#6b7c82}
+.vx-split{display:grid;grid-template-columns:230px 1fr;height:100%}
+.vx-side{background:#fff;border-right:1px solid #e1e8eb;padding:16px}
+.vx-sh{font:600 13px Kanit;color:#3b4c52;margin-bottom:8px}
+.vx-ty{padding:9px 12px;border-radius:8px;margin-bottom:4px;font-size:14px;color:#3b4c52;transition:.2s}.vx-ty.sel{background:#206b82;color:#fff;font-weight:600}
+.vx-main{position:relative;padding:18px 26px;overflow:hidden}
+.vx-stp{display:flex;gap:6px;margin-bottom:14px}.vx-stp b{font:500 13px Kanit;padding:5px 12px;border-radius:99px;background:#eef3f5;color:#6b7c82}.vx-stp b.on{background:#206b82;color:#fff}.vx-stp b.dn{background:#d9f2e6;color:#0b8a5a}
+.vx-stp.v{flex-direction:column;align-items:flex-start}
+.vx-tip{margin-top:16px;padding:10px 12px;border-radius:10px;background:#fff8e6;border:1px solid #f3d48a;font-size:13px;color:#7a5600;transition:.3s}
+.vx-tip.hot{background:#ffe9ef;border-color:#f3a0b8;color:#a3245a;font-weight:600}
+.vx-empty{margin-top:60px;text-align:center;color:#8a9aa0;font-size:15px}.vx-empty.ok{color:#0b8a5a;font-weight:600}
+.vx-scw{height:100%}.vx-in{transition:transform .6s cubic-bezier(.4,.1,.2,1)}
+.vx-url{font-size:12px;color:#6b7c82}
+.vx-g2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.vx-sw2{display:inline-flex;border:1.5px solid #cdd8dc;border-radius:8px;overflow:hidden}.vx-sw2 span{padding:7px 18px;font-size:14px;transition:.25s}
+.vx-sw2 .o1{background:#5b6b70;color:#fff}.vx-sw2.pub .o1{background:#fff;color:#8a9aa0}.vx-sw2.pub .o2{background:#0b8a5a;color:#fff;font-weight:600}
+.vx-hot,.vx-hot2{border-radius:10px;transition:.3s;padding:2px}.vx-hot.lit,.vx-hot2.lit{background:#fff3c4;box-shadow:0 0 0 4px #fff3c4}
+.vx-cks{display:flex;gap:16px}.vx-cks span{display:flex;align-items:center;gap:6px;font-size:14px}.vx-cks i{width:18px;height:18px;border:1.5px solid #9fb1b7;border-radius:4px;background:#fff;display:grid;place-items:center;font-style:normal;color:#fff;font-size:12px;transition:.2s}
+.vx-cks span.ck i{background:#206b82;border-color:#206b82}.vx-cks span.ck i::after{content:"✓"}
+.vx-file{font-size:13.5px;color:#0b8a5a;font-weight:600}
+.vx-pk{position:absolute;inset:0;background:rgba(0,20,28,.45);display:none;place-items:center}.vx-pk.on{display:grid}
+.vx-pkw{width:440px;background:#fff;border-radius:12px;padding:16px;box-shadow:0 30px 60px -20px rgba(0,0,0,.5)}
+.vx-pkw b{font:600 15px Kanit}.vx-pkf{margin:8px 0;font-size:13px;color:#6b7c82}
+.vx-pki{padding:9px 10px;border-radius:8px;font-size:14px;display:flex;justify-content:space-between}.vx-pki small{color:#8a9aa0}.vx-pki.sel{background:#dcecf2;font-weight:600}
+.vx-ok{position:absolute;top:14px;right:24px;padding:8px 14px;border-radius:8px;background:#0b8a5a;color:#fff;font-weight:600;font-size:13.5px;opacity:0;transform:translateY(-8px);transition:.35s}.vx-ok.on{opacity:1;transform:none}
+.vx-h3{margin:4px 0 6px;font:600 21px Kanit}.vx-pub{font:500 12px Sarabun;background:#d9f2e6;color:#0b8a5a;padding:2px 9px;border-radius:99px;vertical-align:4px}
+.vx-bd h5{margin:14px 0 6px;font:600 14px Kanit}
+.vx-res{display:flex;align-items:center;gap:10px;padding:11px 14px;background:#fff;border:1px solid #e1e8eb;border-radius:10px;transition:.2s}.vx-res.hv{border-color:#206b82;box-shadow:0 0 0 3px rgba(32,107,130,.15)}
+.vx-fmt{font:700 11px Kanit;color:#fff;background:#0b8a5a;padding:3px 7px;border-radius:5px}
+.vx-meta{margin-top:12px;border-collapse:collapse;font-size:13px}.vx-meta th{text-align:left;color:#6b7c82;font-weight:500;padding:3px 14px 3px 0}.vx-meta td{padding:3px 22px 3px 0;font-weight:600}
+.vx-b#vxApi,.vx-b#vxVis{opacity:.25}.vx-b#vxApi.lit,.vx-b#vxVis.lit{opacity:1}.vx-b#vxApi.lit{box-shadow:0 0 0 3px #fff,0 0 0 5px #e2477a}
+.vx-wait{color:#b86b00;display:flex;gap:8px;align-items:center}
+.vx-tb{border-collapse:collapse;font-size:13px;width:100%;display:none;background:#fff}.vx-tb.on{display:table;animation:vxin .4s}
+.vx-tb th{background:#f0f3f4;text-align:left;padding:6px 8px;border:1px solid #e1e6e8}.vx-tb td{padding:6px 8px;border:1px solid #eceff0}.vx-tb tr.nw td{background:#fff6d6;font-weight:600}
+.vx-win{margin-top:14px;display:inline-block;padding:9px 16px;border-radius:10px;background:linear-gradient(90deg,#0b8a5a,#22b07d);color:#fff;font:600 15px Kanit;opacity:0;transform:scale(.9);transition:.4s}.vx-win.on{opacity:1;transform:none}
+.vx-cur{position:absolute;left:480px;top:300px;width:28px;height:28px;z-index:20;pointer-events:none;filter:drop-shadow(0 3px 4px rgba(0,0,0,.35))}
+.vx-rip{position:absolute;width:44px;height:44px;margin:-18px 0 0 -18px;border-radius:50%;border:3px solid #e2477a;z-index:19;pointer-events:none;opacity:0}
+.vp-cap{position:absolute;left:50%;bottom:16px;transform:translateX(-50%);max-width:88%;text-align:center;padding:8px 18px;border-radius:12px;background:rgba(6,20,27,.82);color:#fff;font:500 16px/1.45 Kanit;box-shadow:0 10px 30px -10px rgba(0,0,0,.5);backdrop-filter:blur(6px);transition:opacity .3s;z-index:25}
+.vp-cap:empty{opacity:0}
+.vp-cap b{color:#ffd166}
+.vp-big{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:84px;height:84px;border-radius:50%;border:0;cursor:pointer;z-index:30;font-size:32px;color:#fff;background:linear-gradient(135deg,var(--sc,#0b8a5a),var(--sc2,#34d399));box-shadow:0 0 0 10px rgba(255,255,255,.18),0 20px 40px -10px rgba(0,0,0,.6);padding-left:6px}
+.vp-big[hidden]{display:none}
+.vp-c{display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:0 0 16px 16px;background:#0c1d24;color:#dbeff3}
+.vp-c button{min-width:40px;height:36px;border-radius:9px;border:0;background:rgba(255,255,255,.1);color:#fff;cursor:pointer;font:600 14px Kanit}
+.vp-c button:hover{background:rgba(255,255,255,.2)}
+.vp-t{font:500 13px Kanit;font-variant-numeric:tabular-nums;white-space:nowrap;color:#a9c7cf}
+.vp-bar{position:relative;flex:1;height:8px;border-radius:9px;background:rgba(255,255,255,.15);cursor:pointer;touch-action:none}
+.vp-fill{position:absolute;left:0;top:0;bottom:0;border-radius:9px;background:linear-gradient(90deg,var(--sc2,#34d399),var(--sc,#0b8a5a));width:0}
+.vp-fill::after{content:"";position:absolute;right:-7px;top:50%;width:14px;height:14px;margin-top:-7px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px var(--sc,#0b8a5a)}
+.vp-ticks i{position:absolute;top:-3px;width:3px;height:14px;border-radius:2px;background:#ffd166;opacity:.85}
+.vp:fullscreen{padding:16px;background:#06141b;display:flex;flex-direction:column;justify-content:center}.vp:fullscreen .vp-h{display:none}
+@media(max-width:760px){.vp{padding:12px}.vp-h{grid-template-columns:1fr}.vp-ch{justify-content:flex-start}.vp-cap{position:static;transform:none;max-width:none;border-radius:0;font-size:14px;padding:8px 12px;min-height:52px;display:flex;align-items:center;justify-content:center}.vp-cap:empty{opacity:1}.vp-big{width:64px;height:64px;font-size:24px}.vp-t{display:none}}
+[hidden]{display:none!important}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
 </head>
@@ -663,6 +707,91 @@ nav.toc a.on em{background:#fff!important;color:var(--sc)!important}
 <!-- ===== 2 NEW ===== -->
 <section class="band" id="new" data-k="NEW"><div class="in">
  <div class="sh rv"><div class="no">2</div><div><span class="kd">✚ ชุดข้อมูลใหม่ · ทำครั้งเดียวต่อชุด</span><h2>นำเข้าชุดข้อมูลใหม่</h2><p>ทำครั้งเดียวต่อ 1 ชุดข้อมูล ปีต่อไปใช้วิธีอัปเดตในสถานีที่ 3 แทน ไม่ต้องสร้างใหม่</p></div></div>
+
+ <div class="vp rv" id="vnew">
+ <div class="vp-h">
+  <div><span class="vp-tag">▶ วิดีโอสาธิต · 42 วินาที</span><h3>ดูการนำเข้าชุดข้อมูลใหม่ ทุกช่องที่ต้องกรอก</h3><p>ตั้งแต่เข้าสู่ระบบ กรอกข้อมูลเมตา อัปโหลดไฟล์ จนหน้าทรัพยากรขึ้นตาราง Data API · กดบทเพื่อข้ามไปดูได้</p></div>
+  <ol class="vp-ch" id="vnCh"></ol>
+ </div>
+ <div class="vp-scr" id="vnS" tabindex="0" aria-label="วิดีโอสาธิตการนำเข้าชุดข้อมูลใหม่ กด Space เพื่อเล่นหรือหยุด">
+  <div class="vp-br"><i></i><i></i><i></i><span id="vnU">nongbualamphu.gdcatalog.go.th</span></div>
+  <div class="vp-vw" id="vnV"><div class="vx" id="vnX">
+   <div class="vx-hd"><span class="vx-lg"></span><div><b>ระบบบัญชีข้อมูล จังหวัดหนองบัวลำภู</b><small>NONGBUALAMPHU DATA CATALOG</small></div><nav><span id="vxM1">ชุดข้อมูล</span><span>องค์กร</span><span>กลุ่ม</span><span id="vxUser">เข้าสู่ระบบ</span></nav></div>
+
+   <!-- 0 login -->
+   <div class="vx-s" data-s="0"><div class="vx-card"><h4>เข้าสู่ระบบ</h4>
+    <div class="vx-f"><label>ชื่อผู้ใช้หรืออีเมล</label><div class="vx-i" id="vxU"></div></div>
+    <div class="vx-f"><label>รหัสผ่าน</label><div class="vx-i" id="vxP"></div></div>
+    <span class="vx-b" id="vxLg">เข้าสู่ระบบ</span></div></div>
+   <!-- 1 2fa -->
+   <div class="vx-s" data-s="1"><div class="vx-card"><h4>ยืนยันตัวตนด้วย 2FA</h4><p class="vx-mu">กรอกรหัส 6 หลักจากแอปยืนยันตัวตนบนมือถือ</p>
+    <div class="vx-f"><label>รหัสยืนยัน</label><div class="vx-i vx-otp" id="vxO"></div></div>
+    <span class="vx-b" id="vxOk">ยืนยัน</span><p class="vx-mu" style="margin-top:10px">⏱ รหัสเปลี่ยนทุก 30 วินาที</p></div></div>
+   <!-- 2 dataset list -->
+   <div class="vx-s" data-s="2"><div class="vx-bd"><div class="vx-row"><h4 style="margin:0">ชุดข้อมูล 60 รายการ</h4><span class="vx-b" id="vxAdd">＋ เพิ่มชุดข้อมูล</span></div>
+    <div class="vx-search">🔍 ค้นหาชุดข้อมูล…</div>
+    <div class="vx-li"><b>จำนวนผู้ประกันตน จำแนกรายอำเภอ</b><small>สำนักงานประกันสังคมจังหวัดหนองบัวลำภู · CSV</small></div>
+    <div class="vx-li"><b>พื้นที่ปลูกข้าว จำแนกรายอำเภอ</b><small>สำนักงานเกษตรจังหวัดหนองบัวลำภู · CSV</small></div>
+    <div class="vx-li"><b>จำนวนนักเรียน จำแนกตามระดับชั้น</b><small>สำนักงานศึกษาธิการจังหวัดหนองบัวลำภู · CSV</small></div></div></div>
+   <!-- 3 choose type -->
+   <div class="vx-s" data-s="3"><div class="vx-split"><aside class="vx-side"><div class="vx-sh">▼ กรุณาเลือกประเภทของชุดข้อมูล</div>
+    <div class="vx-ty">ข้อมูลระเบียน</div><div class="vx-ty" id="vxStat">ข้อมูลสถิติ</div><div class="vx-ty">ข้อมูลภูมิสารสนเทศเชิงพื้นที่</div><div class="vx-ty">ข้อมูลหลากหลายประเภท</div><div class="vx-ty">ข้อมูลประเภทอื่นๆ</div></aside>
+    <div class="vx-main"><div class="vx-stp"><b class="on">① สร้างชุดข้อมูล</b><b>② เพิ่มข้อมูล</b></div><div class="vx-empty" id="vxPick">เลือกประเภทชุดข้อมูลทางซ้ายก่อน</div></div></div></div>
+   <!-- 4 metadata form -->
+   <div class="vx-s" data-s="4"><div class="vx-split"><aside class="vx-side"><div class="vx-stp v"><b class="on">① สร้างชุดข้อมูล</b><b>② เพิ่มข้อมูล</b></div><div class="vx-tip" id="vxTip">ช่องที่มี * ต้องกรอกทุกช่อง</div></aside>
+    <div class="vx-main vx-scw"><div class="vx-in" id="vxIn">
+     <div class="vx-f"><label>* ประเภทชุดข้อมูล</label><div class="vx-i vx-ro">ข้อมูลสถิติ</div></div>
+     <div class="vx-f"><label>* ชื่อชุดข้อมูล</label><div class="vx-i" id="vxT"></div><small class="vx-url">URL: /dataset/<span id="vxSlug">…</span></small></div>
+     <div class="vx-f"><label>* รายละเอียด</label><div class="vx-i vx-ta" id="vxD"></div></div>
+     <div class="vx-g2"><div class="vx-f"><label>คำสำคัญ</label><div class="vx-i" id="vxK"></div></div>
+     <div class="vx-f"><label>* องค์กร</label><div class="vx-i vx-sel" id="vxOrg">เลือกองค์กร</div></div></div>
+     <div class="vx-f vx-hot" id="vxAccW"><label>* การเข้าถึง</label><div class="vx-sw2"><span class="o1" id="vxPriv">ส่วนตัว</span><span class="o2" id="vxPub">สาธารณะ</span></div></div>
+     <div class="vx-g2"><div class="vx-f"><label>* หน่วยความถี่ของการปรับปรุงข้อมูล</label><div class="vx-i vx-sel" id="vxFq">เลือก</div></div>
+     <div class="vx-f"><label>* ขอบเขตเชิงภูมิศาสตร์</label><div class="vx-i vx-sel" id="vxGeo">เลือก</div></div></div>
+     <div class="vx-f"><label>* รูปแบบการเก็บข้อมูล</label><div class="vx-cks"><span id="vxCsv"><i></i>CSV</span><span><i></i>XLSX</span><span><i></i>PDF</span><span><i></i>JSON</span></div></div>
+     <div class="vx-g2"><div class="vx-f"><label>* หมวดหมู่ข้อมูลตามธรรมาภิบาล</label><div class="vx-i vx-sel" id="vxGov">เลือก</div></div>
+     <div class="vx-f"><label>* สัญญาอนุญาต</label><div class="vx-i vx-sel" id="vxLic">เลือก</div></div></div>
+     <div class="vx-g2"><div class="vx-f vx-hot2"><label>ปีข้อมูลที่เริ่มต้นจัดทำ</label><div class="vx-i" id="vxY1"></div></div>
+     <div class="vx-f vx-hot2"><label>ปีข้อมูลล่าสุดที่เผยแพร่</label><div class="vx-i" id="vxY2"></div></div></div>
+     <div class="vx-g2"><div class="vx-f"><label>หน่วยวัด</label><div class="vx-i" id="vxUn"></div></div><div></div></div>
+     <div style="text-align:right;margin:6px 0 30px"><span class="vx-b" id="vxNext">ต่อไป: เพิ่มข้อมูล →</span></div>
+    </div></div></div></div>
+   <!-- 5 add resource -->
+   <div class="vx-s" data-s="5"><div class="vx-split"><aside class="vx-side"><div class="vx-stp v"><b class="dn">✓ สร้างชุดข้อมูล</b><b class="on">② เพิ่มข้อมูล</b></div><div class="vx-tip">อัปโหลดไฟล์ CSV ที่เตรียมไว้ ไม่ใช่ลิงก์</div></aside>
+    <div class="vx-main"><div class="vx-f"><label>Data</label><div class="vx-row" style="justify-content:flex-start;gap:8px"><span class="vx-b" id="vxUp">⬆ อัปโหลด</span><span class="vx-b vx-gh">🔗 ลิงก์</span><span class="vx-file" id="vxFile"></span></div></div>
+     <div class="vx-f"><label>* ชื่อ</label><div class="vx-i" id="vxRn"></div></div>
+     <div class="vx-g2"><div class="vx-f"><label>* นามสกุลของไฟล์</label><div class="vx-i vx-sel" id="vxFmt">เลือก</div></div><div></div></div>
+     <div class="vx-g2"><div class="vx-f"><label>ปีข้อมูลที่เริ่มต้นจัดทำ</label><div class="vx-i" id="vxRy1"></div></div><div class="vx-f"><label>ปีข้อมูลล่าสุดที่เผยแพร่</label><div class="vx-i" id="vxRy2"></div></div></div>
+     <div class="vx-row" style="justify-content:flex-end;gap:8px"><span class="vx-b vx-gh">บันทึกและเพิ่มรายการ</span><span class="vx-b" id="vxDone">เสร็จสิ้น</span></div></div></div>
+    <div class="vx-pk" id="vxPk"><div class="vx-pkw"><b>เลือกไฟล์ที่จะอัปโหลด</b><div class="vx-pkf">📁 เอกสาร › ข้อมูล GD Catalog</div><div class="vx-pki" id="vxPf">📄 tourist_2564-2569.csv <small>CSV UTF-8 · 2 KB</small></div><div class="vx-pki">📄 tourist_2564-2569.xlsx <small>Excel · 18 KB</small></div><div class="vx-pki">📄 รายงานท่องเที่ยว.pdf <small>PDF · 1.2 MB</small></div></div></div></div>
+   <!-- 6 dataset page -->
+   <div class="vx-s" data-s="6"><div class="vx-bd"><div class="vx-ok" id="vxToast">✓ สร้างชุดข้อมูลเรียบร้อยแล้ว</div>
+    <p class="vx-mu" style="margin:0">ชุดข้อมูล › สำนักงานการท่องเที่ยวและกีฬาจังหวัดหนองบัวลำภู</p><h3 class="vx-h3">จำนวนนักท่องเที่ยว จำแนกรายอำเภอ <span class="vx-pub">สาธารณะ</span></h3>
+    <p class="vx-mu">จำนวนนักท่องเที่ยวรายปี จำแนกรายอำเภอ ปี 2564–2569 หน่วย: คน</p>
+    <h5>ข้อมูลและทรัพยากร</h5><div class="vx-res" id="vxRes"><span class="vx-fmt">CSV</span><b>จำนวนนักท่องเที่ยว รายอำเภอ</b><span class="vx-mu" style="margin-left:auto">สำรวจ ▾</span></div>
+    <table class="vx-meta"><tr><th>ปีข้อมูลที่เริ่มต้นจัดทำ</th><td>2564</td><th>ปีข้อมูลล่าสุดที่เผยแพร่</th><td>2569</td></tr><tr><th>หน่วยความถี่</th><td>ปี</td><th>รูปแบบ</th><td>CSV</td></tr></table></div></div>
+   <!-- 7 resource page -->
+   <div class="vx-s" data-s="7"><div class="vx-bd"><h3 class="vx-h3">จำนวนนักท่องเที่ยว รายอำเภอ</h3>
+    <div class="vx-row" style="justify-content:flex-start;gap:6px;margin:8px 0 12px"><span class="vx-b vx-w">🔧 จัดการ</span><span class="vx-b">⬇ ดาวน์โหลด ▾</span><span class="vx-b vx-gr" id="vxApi">⚗ Data API</span><span class="vx-b vx-or" id="vxVis">📊 Visualization</span></div>
+    <p class="vx-wait" id="vxWait"><span class="spin"></span> ระบบกำลังสร้างตารางข้อมูล… (1–5 นาที)</p>
+    <table class="vx-tb" id="vxTb"><tr><th>_id</th><th>ปี</th><th>อำเภอ</th><th>รายการ</th><th>จำนวน</th><th>หน่วย</th></tr>
+     <tr><td>1</td><td>2564</td><td>เมืองหนองบัวลำภู</td><td>นักท่องเที่ยว</td><td>10980</td><td>คน</td></tr><tr><td>2</td><td>2564</td><td>นากลาง</td><td>นักท่องเที่ยว</td><td>5210</td><td>คน</td></tr><tr><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td><td>…</td></tr><tr class="nw"><td>35</td><td>2569</td><td>เมืองหนองบัวลำภู</td><td>นักท่องเที่ยว</td><td>14200</td><td>คน</td></tr><tr class="nw"><td>36</td><td>2569</td><td>นากลาง</td><td>นักท่องเที่ยว</td><td>6380</td><td>คน</td></tr></table>
+    <div class="vx-win" id="vxWin">🎉 สำเร็จ ชุดข้อมูลเป็น Data API แล้ว</div></div></div>
+
+   <svg class="vx-cur" id="vnC" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 2l16 9-7 2-3 7z" fill="#fff" stroke="#10262d" stroke-width="1.5" stroke-linejoin="round"/></svg>
+   <span class="vx-rip" id="vnR"></span>
+  </div></div>
+  <div class="vp-cap" id="vnCap"></div>
+  <button class="vp-big" id="vnBig" type="button" aria-label="เล่นวิดีโอ">▶</button>
+ </div>
+ <div class="vp-c">
+  <button type="button" id="vnPl" aria-label="เล่น/หยุด">▶</button>
+  <span class="vp-t" id="vnT">0:00 / 0:42</span>
+  <div class="vp-bar" id="vnBar" role="slider" aria-label="ตำแหน่งวิดีโอ" tabindex="0"><div class="vp-fill" id="vnF"></div><div class="vp-ticks" id="vnTk"></div></div>
+  <button type="button" id="vnSp" aria-label="ความเร็ว">1×</button>
+  <button type="button" id="vnFs" aria-label="เต็มจอ">⛶</button>
+ </div>
+</div>
 
  <div class="step rv">
   <div class="t"><h3><b>1</b>เข้าสู่ระบบ</h3>
@@ -867,7 +996,6 @@ nav.toc a.on em{background:#fff!important;color:var(--sc)!important}
  <div class="mine rv">
   <div class="msel"><select id="org" aria-label="เลือกหน่วยงาน"><option value="">กำลังโหลดรายชื่อหน่วยงาน…</option></select><a class="cta s" id="orgRep" href="index.html" style="display:none">ดูรายงานเต็มบนแดชบอร์ด →</a></div>
   <div id="mout"><div class="empty">เลือกหน่วยงานเพื่อดูรายการงาน</div></div>
-  <div id="lbw"></div>
   <p style="font-size:14px;color:var(--ink2)">รายการงานด้านบนตรวจแบบย่อจากข้อมูลเมตาและชื่อไฟล์ ผลละเอียดดูได้ที่แดชบอร์ด</p>
  </div>
 </div></section>
@@ -996,33 +1124,6 @@ const MR=/^(CSV|JSON|XML|API|RDF|XLS|XLSX|TSV|GEOJSON|ODS)$/i;
 const yrsOf=p=>{const s=[p.title,...(p.resources||[]).map(r=>r.name)].join(' ');const m=(s.match(/25[4-7]\d/g)||[]).map(Number);const ly=parseInt(p.last_year_of_data),fy=parseInt(p.first_year_of_data);return{max:Math.max(isNaN(ly)?0:ly,...m,0),min:Math.min(isNaN(fy)?9999:fy,...(m.length?m:[9999]))}};
 let DATA=null;
 const isProvO=(n,t)=>{t=String(t||'').replace(/ํา/g,'ำ');return /หนองบัวลำภู/.test(t)||/nongbua|nongbualamphu|nbl|nbp|(^|_)nb(_|$)|-39$/i.test(n||'')};
-const renderLB=async j=>{const img={},ttl={};(j.orgs||[]).forEach(o=>{img[o.name]=o.image_display_url||o.image_url||'';ttl[o.name]=o.title});
- let H=null,asOf='';try{const r=await fetch((onPages?'':DASH)+'data/history.json?v='+Math.floor(Date.now()/36e5),{cache:'no-store'});if(r.ok){const h=await r.json();const last=h[h.length-1];const P=last&&(last.prov_all||last.prov);if(P&&P.orgs&&(!last.cfg||+last.cfg[0]===CUR)){H=P.orgs;asOf=last.d}}}catch(e){}
- const by={};
- if(H){for(const n in H){const v=H[n];by[n]={n,t:ttl[n]||n,c:v[0],ok:v[1],sc:v[2],md:v[3]||0}}}
- else{j.raw.forEach(p=>{const o=p.organization||{};if(!o.name)return;const y=yrsOf(p);const k=(y.min<=Y0?1:0)+(y.max>=CUR?1:0)+((p.resources||[]).some(r=>MR.test(String(r.format||'').trim()))?1:0);const b=by[o.name]=by[o.name]||{n:o.name,t:o.title,c:0,ok:0,pts:0,md:0};b.c++;b.pts+=k;if(k===3)b.ok++});for(const n in by)by[n].sc=Math.round(by[n].pts*1000/(by[n].c*3))/10}
- const L=Object.values(by).filter(o=>isProvO(o.n,o.t)&&o.c>=3&&o.sc>0).map(o=>({...o,p:o.ok/o.c})).sort((a,b)=>b.sc-a.sc||b.p-a.p||b.md-a.md||b.c-a.c);
- if(!L.length){$('#lbw').innerHTML='';return}
- let rk=0;L.forEach((o,i)=>{const pr=L[i-1];o.r=pr&&pr.sc===o.sc&&pr.p===o.p&&pr.md===o.md?pr.r:i+1});
- const T=L.slice(0,8);const sh=t=>String(t).replace(/\s*จังหวัดหนองบัวลำภู\s*$/,'')||t;
- const bld='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-5 7 5v11M9 21v-6h6v6M9 11h.01M15 11h.01"/></svg>';
- const av=o=>{const u=img[o.n];return `<span class="ic">${/^https?:/.test(u)?`<img src="${esc(u)}" alt="" loading="lazy" referrerpolicy="no-referrer" onerror="this.outerHTML=this.dataset.f" data-f='${bld}'>`:bld}</span>`};
- const crown='<svg class="crown" viewBox="0 0 64 48" aria-hidden="true"><defs><linearGradient id="cg" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#fff3b0"/><stop offset=".5" stop-color="#ffcc33"/><stop offset="1" stop-color="#d48a00"/></linearGradient></defs><path d="M6 40 2 12l16 12L32 2l14 22 16-12-4 28z" fill="url(#cg)" stroke="#b77400" stroke-width="2" stroke-linejoin="round"/><rect x="6" y="38" width="52" height="8" rx="3" fill="url(#cg)" stroke="#b77400" stroke-width="2"/><circle cx="32" cy="24" r="4" fill="#e2477a"/><circle cx="16" cy="30" r="3" fill="#22d3ee"/><circle cx="48" cy="30" r="3" fill="#22d3ee"/></svg>';
- const card=(o,slot)=>!o?'<div></div>':`<div class="pc p${slot} m${Math.min(o.r,3)}">${o.r===1?crown:''}<div class="av">${av(o)}<span class="rb">${o.r}</span></div><div class="nm" title="${esc(o.t)}">${esc(sh(o.t))}</div><div class="ps"><span class="ring" style="--p:${Math.round(o.sc)}">${Math.round(o.sc)}</span><span>คะแนนเกณฑ์<br>ผ่านครบ <b style="color:#fff">${o.ok}</b>/${o.c} ชุด</span></div><div class="ped">${o.r}</div></div>`;
- const cf=Array.from({length:18},(_,i)=>`<i class="cf" style="left:${(i*53)%100}%;background:${['#ffd166','#22d3ee','#e2477a','#7a5cff','#3fd49a'][i%5]};animation-duration:${6+(i%5)*1.6}s;animation-delay:${(i*0.7)%6}s"></i>`).join('');
- const nOrg=Object.values(by).filter(o=>isProvO(o.n,o.t)).length;
- $('#lbw').innerHTML=`<div class="hof"><div class="rays"></div>${cf}<div class="hh"><small>HALL OF FAME</small><h3>ทำเนียบเกียรติยศ หน่วยงานข้อมูลดีเด่น</h3><p>หน่วยงานระดับจังหวัดหนองบัวลำภู จัดอันดับด้วยคะแนนเกณฑ์ 3 ข้อ ชุดเดียวกับแดชบอร์ด${asOf?' · ข้อมูล ณ '+thD(asOf,1):''}</p></div>
-  <div class="pod">${card(T[1],2)}${card(T[0],1)}${card(T[2],3)}</div>
-  ${T.length>3?`<div class="hon">${T.slice(3).map(o=>`<div class="r"><i>${o.r}</i><b title="${esc(o.t)}">${esc(sh(o.t))}</b><div class="br"><span><u style="width:${Math.round(o.sc)}%"></u></span>${Math.round(o.sc)} คะแนน · ครบ ${o.ok}/${o.c}</div></div>`).join('')}</div>`:''}
-  <details class="hcr"><summary>⚖ เกณฑ์การจัดอันดับ (โปร่งใส ตรวจสอบได้)</summary><ol>
-   <li><b>คะแนนเกณฑ์ (0–100)</b> = ร้อยละของเกณฑ์ที่ผ่าน เฉลี่ยทุกชุดข้อมูลของหน่วยงาน แต่ละชุดมี 3 เกณฑ์ คือ ย้อนหลัง 5 ปี (${Y0}–${CUR-1}) · มีปีปัจจุบัน ${CUR} · Machine Readable ชุดที่ผ่าน 2 ข้อได้ 66.7 คะแนน ไม่ใช่ 0 จึงเห็นความพยายามที่ยังไม่ครบ</li>
-   <li><b>ใช้ค่าเฉลี่ย ไม่ใช่จำนวนชุด</b> หน่วยงานที่มีชุดข้อมูลมากหรือน้อยจึงเทียบกันได้อย่างเป็นธรรม</li>
-   <li><b>คะแนนเท่ากัน</b> ดูสัดส่วนชุดที่ผ่านครบ 3 ข้อ → ความครบถ้วนของข้อมูลเมตา ถ้ายังเท่ากันได้<b>อันดับร่วม</b></li>
-   <li><b>ผู้มีสิทธิ์</b> หน่วยงานระดับจังหวัดที่มีชุดข้อมูลสาธารณะอย่างน้อย 3 ชุด (${L.length} จาก ${nOrg} หน่วยงาน) หน่วยงานระดับกรมไม่นำมาจัดอันดับ</li>
-   <li><b>แหล่งผล</b> ${H?'ผลตรวจอัตโนมัติของระบบ ชุดเดียวกับแดชบอร์ดจังหวัด':'ตรวจแบบย่อจากข้อมูลเมตา (ผลตรวจของระบบยังไม่พร้อม)'} อัปเดตทุกรอบตรวจ ทุกหน่วยงานใช้กติกาเดียวกัน</li></ol></details>
-  </div>`;
- const io2=new IntersectionObserver(es=>{if(!es[0].isIntersecting)return;io2.disconnect();document.querySelectorAll('.hof .ring').forEach(r=>{const t=+r.style.getPropertyValue('--p');let v=0;const st=()=>{v=Math.min(t,v+3);r.style.setProperty('--p',v);if(v<t)requestAnimationFrame(st)};r.style.setProperty('--p',0);st()})},{threshold:.3});io2.observe($('#lbw'))};
-
 let showOrg=o=>{const L=DATA.raw.filter(p=>(p.organization||{}).name===o);const rep=$('#orgRep');rep.style.display=o?'':'none';rep.href=(onPages?'index.html':DASH)+'#org-'+encodeURIComponent(o);LS.set('gdguide.org',o);
  if(!o){$('#mout').innerHTML='<div class="empty">เลือกหน่วยงานเพื่อดูรายการงาน</div>';return}
  if(!L.length){$('#mout').innerHTML='<div class="empty">หน่วยงานนี้ยังไม่มีชุดข้อมูลสาธารณะ → เริ่มที่สถานี 1–2</div>';return}
@@ -1031,7 +1132,7 @@ let showOrg=o=>{const L=DATA.raw.filter(p=>(p.organization||{}).name===o);const 
  $('#mout').innerHTML=`<div class="mk"><div><b>${L.length}</b><span>ชุดข้อมูลทั้งหมด</span></div><div><b style="color:var(--ok)">${L.length-todo.length}</b><span>ผ่านแล้ว</span></div><div><b style="color:var(--bad)">${c('c2')}</b><span>ต้องเพิ่มปี ${CUR}</span></div><div><b style="color:var(--warn)">${c('c1')+c('c3')}</b><span>ขาดย้อนหลัง / ไม่ใช่ CSV</span></div></div>
  ${todo.length?todo.slice(0,40).map(({p,f})=>`<div class="tk"><div class="tt"><b>${esc(p.title)}</b><small>${f.map(x=>`<span class="chip ${x[0]}">${esc(x[1])}</span>`).join('')}</small></div><a class="copy" style="display:inline-flex;align-items:center;text-decoration:none" href="${CAT}/dataset/resources/${encodeURIComponent(p.name)}" target="_blank" rel="noopener">แก้ไข →</a></div>`).join('')+(todo.length>40?`<p class="empty">และอีก ${todo.length-40} ชุด ดูทั้งหมดบนแดชบอร์ด</p>`:''):'<div class="empty">🎉 ทุกชุดผ่านเกณฑ์แบบย่อแล้ว</div>'}`};
 fetch((onPages?'':DASH)+'data/prov.json',{cache:'no-store'}).then(r=>r.ok?r.json():Promise.reject()).then(j=>{DATA=j;const orgs=[...new Map(j.raw.map(p=>[(p.organization||{}).name,(p.organization||{}).title])).entries()].filter(x=>x[0]).sort((a,b)=>a[1].localeCompare(b[1],'th'));
- renderLB(j);$('#org').innerHTML='<option value="">— เลือกหน่วยงานของท่าน —</option>'+orgs.map(([n,t])=>`<option value="${esc(n)}">${esc(t)}</option>`).join('');const sv=LS.get('gdguide.org');if(sv&&orgs.some(o=>o[0]===sv)){$('#org').value=sv;showOrg(sv)}}).catch(()=>{$('#org').innerHTML='<option value="">โหลดรายชื่อไม่ได้ในหน้าตัวอย่างนี้</option>';$('#mout').innerHTML=`<div class="empty">เปิดคู่มือจาก <a href="${GUIDE}#mine">เว็บไซต์จริง</a> เพื่อดูงานของหน่วยงาน หรือดูที่ <a href="${DASH}">แดชบอร์ด</a></div>`});
+ $('#org').innerHTML='<option value="">— เลือกหน่วยงานของท่าน —</option>'+orgs.map(([n,t])=>`<option value="${esc(n)}">${esc(t)}</option>`).join('');const sv=LS.get('gdguide.org');if(sv&&orgs.some(o=>o[0]===sv)){$('#org').value=sv;showOrg(sv)}}).catch(()=>{$('#org').innerHTML='<option value="">โหลดรายชื่อไม่ได้ในหน้าตัวอย่างนี้</option>';$('#mout').innerHTML=`<div class="empty">เปิดคู่มือจาก <a href="${GUIDE}#mine">เว็บไซต์จริง</a> เพื่อดูงานของหน่วยงาน หรือดูที่ <a href="${DASH}">แดชบอร์ด</a></div>`});
 $('#org').addEventListener('change',e=>DATA&&showOrg(e.target.value));
 
 /* rail + active section */
@@ -1346,6 +1447,78 @@ const paintBig=(j,H)=>{const raw=j.raw||[];const orgs=new Set(raw.map(p=>(p.orga
  cnt($('#bd1'),raw.length);cnt($('#bd2'),orgs.size);cnt($('#bd3'),mr);$('#bw1').style.setProperty('--w','100%');$('#bw2').style.setProperty('--w',Math.min(100,orgs.size*2)+'%');$('#bw3').style.setProperty('--w',(res?mr*100/res:0)+'%');
  if(H){cnt($('#bd4'),Math.round(H.pass*100/Math.max(1,H.n)),'%');$('#bw4').style.setProperty('--w',(H.pass*100/Math.max(1,H.n))+'%')}else{let ok=0;raw.forEach(p=>{const y=yrsOf(p);if(y.max>=CUR&&y.min<=Y0&&(p.resources||[]).some(r=>MR.test(String(r.format||'').trim())))ok++});cnt($('#bd4'),Math.round(ok*100/Math.max(1,raw.length)),'%');$('#bw4').style.setProperty('--w',(ok*100/Math.max(1,raw.length))+'%')}};
 {let n=0;const w=setInterval(()=>{if(DATA||++n>80){clearInterval(w);if(!DATA){$('#bdx').hidden=true;return}fetch((onPages?'':DASH)+'data/history.json?v='+Math.floor(Date.now()/36e5),{cache:'no-store'}).then(r=>r.ok?r.json():null).then(h=>{const l=h&&h[h.length-1];paintBig(DATA,l&&(l.prov_all||l.prov));if(l)$('#bdT').textContent='อัปเดต '+thD(l.d)}).catch(()=>paintBig(DATA,null))}},250)}
+
+/* ===== video demo engine (declarative, seekable) ===== */
+{const R=document.getElementById('vnew');if(R){
+ const $v=id=>document.getElementById(id),X=$v('vnX'),V=$v('vnV'),S=$v('vnS'),C=$v('vnC'),RP=$v('vnR'),CAP=$v('vnCap');
+ const scenes=[...X.querySelectorAll('.vx-s')];const s=1000;
+ const CH=[[0,'เข้าสู่ระบบ'],[8.4,'เพิ่มชุดข้อมูล'],[13.4,'กรอกข้อมูลเมตา'],[27.4,'อัปโหลดไฟล์ CSV'],[34.2,'ตรวจผล']].map(([t,n])=>({t:t*s,n}));
+ const D=43*s;
+ const SC=[[0,0,'nongbualamphu.gdcatalog.go.th/user/login'],[5.4,1,'nongbualamphu.gdcatalog.go.th/2fa/verify'],[8.4,2,'nongbualamphu.gdcatalog.go.th/dataset/'],[10.9,3,'nongbualamphu.gdcatalog.go.th/dataset/new'],[13.0,4,'nongbualamphu.gdcatalog.go.th/dataset/new'],[27.4,5,'…/dataset/tourist-district/resource/new'],[34.2,6,'nongbualamphu.gdcatalog.go.th/dataset/tourist-district'],[36.6,7,'…/dataset/tourist-district/resource/9f3c…']].map(([t,i,u])=>({t:t*s,i,u}));
+ const TY=[[1.5,'vxU','nbp_tourism',1.1],[3.5,'vxP','••••••••••',.8],[6.0,'vxO','482917',1.2],
+  [13.8,'vxT','จำนวนนักท่องเที่ยว จำแนกรายอำเภอ',2.0],[16.2,'vxD','จำนวนนักท่องเที่ยวรายปี จำแนกรายอำเภอ ปี 2564–2569 หน่วย: คน แหล่งข้อมูล: สำนักงานการท่องเที่ยวและกีฬาจังหวัด',2.2],[18.6,'vxK','ท่องเที่ยว, นักท่องเที่ยว',.8],
+  [25.0,'vxY1','2564',.45],[25.7,'vxY2','2569',.45],[26.3,'vxUn','คน',.3],
+  [30.4,'vxRn','จำนวนนักท่องเที่ยว รายอำเภอ',1.2],[32.0,'vxRy1','2564',.4],[32.6,'vxRy2','2569',.4]].map(([t,id,x,d])=>({t:t*s,el:$v(id),x,d:d*s}));
+ const TX=[[15.9,'vxSlug','tourist-district'],[19.9,'vxOrg','สำนักงานการท่องเที่ยวและกีฬาจังหวัดหนองบัวลำภู'],[22.3,'vxFq','ปี'],[22.9,'vxGeo','จังหวัด'],[24.0,'vxGov','ข้อมูลสาธารณะ'],[24.4,'vxLic','Open Data Common'],
+  [29.7,'vxFile','📄 tourist_2564-2569.csv ✓'],[31.6,'vxFmt','CSV'],[9.4,'vxUser','nbp_tourism ▾'],[12.0,'vxPick','✓ ข้อมูลสถิติ · มีช่องปีข้อมูลให้กรอก'],[21.0,'vxTip','⚠ เปลี่ยน “การเข้าถึง” เป็นสาธารณะ ไม่อย่างนั้นแดชบอร์ดมองไม่เห็น'],[24.6,'vxTip','ปีแรกและปีล่าสุดในไฟล์ ใช้ตรวจเกณฑ์ย้อนหลัง 5 ปี และปีปัจจุบัน']].map(([t,id,x])=>({t:t*s,el:$v(id),x}));
+ const CL=[[9.4,'vxM1','on'],[12.0,'vxStat','sel'],[12.0,'vxPick','ok'],[21.0,'vxAccW','lit'],[21.3,'vxPub','x'],[21.3,'vxAccW','pub'],[21.0,'vxTip','hot'],[24.6,'vxTip','x2'],[23.6,'vxCsv','ck'],[24.9,'vxY1','x'],[19.9,'vxOrg','v'],[22.3,'vxFq','v'],[22.9,'vxGeo','v'],[24.0,'vxGov','v'],[24.4,'vxLic','v'],[31.6,'vxFmt','v'],
+  [28.6,'vxPk','on'],[29.3,'vxPf','sel'],[29.7,'vxPk','off'],[34.6,'vxToast','on'],[35.9,'vxRes','hv'],[38.6,'vxTb','on'],[38.6,'vxApi','lit'],[38.6,'vxVis','lit'],[39.2,'vxWin','on']].map(([t,id,c])=>({t:t*s,el:$v(id),c}));
+ // special: accW uses child switch; tip hot removed when x2
+ const SCR=[[19.6,0],[20.1,190],[22.6,190],[23.1,400],[26.6,400]].map(([t,y])=>({t:t*s,y}));
+ const CU=[[0,null,480,300],[.6,'vxU'],[2.8,'vxP'],[4.5,'vxLg'],[6.0,'vxO'],[7.4,'vxOk'],[8.6,'vxM1'],[9.8,'vxAdd'],[11.3,'vxStat'],[13.4,'vxT'],[15.9,'vxD'],[18.3,'vxK'],[19.3,'vxOrg'],[20.5,'vxPub'],[21.8,'vxFq'],[22.5,'vxGeo'],[23.2,'vxCsv'],[23.7,'vxGov'],[24.1,'vxLic'],[24.7,'vxY1'],[25.5,'vxY2'],[26.6,'vxNext'],[27.8,'vxUp'],[28.8,'vxPf'],[30.2,'vxRn'],[31.2,'vxFmt'],[31.8,'vxRy1'],[32.4,'vxRy2'],[33.1,'vxDone'],[35.2,'vxRes'],[37.6,'vxApi']].map(([t,id,x,y])=>({t:t*s,el:id?$v(id):null,x,y}));
+ const CK=[1.4,3.4,5.2,8.0,9.3,10.5,12.0,13.6,19.9,21.2,22.3,22.9,23.6,24.0,24.4,26.9,28.4,29.5,31.6,33.6,35.9].map(t=>t*s);
+ const PRESS=[[5.2,'vxLg'],[8.0,'vxOk'],[10.5,'vxAdd'],[26.9,'vxNext'],[28.4,'vxUp'],[33.6,'vxDone']].map(([t,id])=>({t:t*s,el:$v(id)}));
+ const CA=[[0,'<b>1</b> เปิด nongbualamphu.gdcatalog.go.th กด “เข้าสู่ระบบ” ใส่ชื่อผู้ใช้และรหัสผ่าน'],[5.6,'ใส่<b>รหัส 6 หลัก</b>จากแอป 2FA บนมือถือ'],[8.5,'<b>2</b> เมนู “ชุดข้อมูล” → กด <b>＋ เพิ่มชุดข้อมูล</b>'],[11.0,'เลือกประเภท <b>ข้อมูลสถิติ</b> สำหรับข้อมูลตัวเลขรายปี'],[13.5,'<b>3</b> ตั้งชื่อชุดข้อมูลให้ชัด <b>ไม่ใส่ปีในชื่อ</b> ใช้ชุดเดิมได้ทุกปี'],[16.1,'รายละเอียด: ข้อมูลอะไร ช่วงปีไหน หน่วยอะไร มาจากไหน'],[19.2,'เลือกองค์กรของท่าน'],[20.4,'⚠ สำคัญที่สุด: การเข้าถึง = <b>สาธารณะ</b>'],[21.8,'ความถี่ = ปี · ขอบเขต = จังหวัด'],[23.2,'ติ๊ก <b>CSV</b> · ข้อมูลสาธารณะ · Open Data Common'],[24.7,'ปีแรก <b>2564</b> และปีล่าสุด <b>2569</b> ตามที่มีในไฟล์'],[26.6,'กด “ต่อไป: เพิ่มข้อมูล”'],[27.5,'<b>4</b> กด <b>⬆ อัปโหลด</b> แล้วเลือกไฟล์ <b>.csv</b> (ไม่ใช่ Excel/PDF)'],[30.2,'ตั้งชื่อไฟล์ เลือกนามสกุล CSV ใส่ปีอีกครั้ง'],[33.0,'กด <b>เสร็จสิ้น</b>'],[34.3,'<b>5</b> เผยแพร่แล้ว คลิกชื่อไฟล์เพื่อเปิดหน้าทรัพยากร'],[36.7,'รอ 1–5 นาที ระบบแปลงไฟล์เป็นตาราง'],[38.7,'ขึ้นตาราง + ปุ่ม <b>Data API</b> = <b>สำเร็จ 🎉</b> แดชบอร์ดนับผ่าน']].map(([t,x])=>({t:t*s,x}));
+ const init=new Map();[...TY,...TX].forEach(o=>{if(o.el&&!init.has(o.el))init.set(o.el,o.el.innerHTML)});
+ const clsAll=[...new Set(CL.map(o=>o.el))];
+ const last=(A,now)=>{let r=null;for(const o of A)if(o.t<=now)r=o;return r};
+ const ease=p=>p<.5?2*p*p:1-Math.pow(-2*p+2,2)/2;
+ let sc=1;const fit=()=>{const w=S.clientWidth;let h=w*560/960;if(document.fullscreenElement===R){const mh=innerHeight-110;if(h>mh){h=mh}}sc=Math.min(w/960,h/560);X.style.transform=`scale(${sc})`;X.style.left=((w-960*sc)/2)+'px';V.style.height=(560*sc)+'px'};
+ const posOf=el=>{if(!el)return null;const r=el.getBoundingClientRect(),b=X.getBoundingClientRect();if(!r.width)return null;return{x:(r.left-b.left)/sc+Math.min(r.width/sc*.5,60),y:(r.top-b.top)/sc+r.height/sc*.6}};
+ const render=now=>{
+  const sc0=last(SC,now)||SC[0];scenes.forEach((e,i)=>e.classList.toggle('on',i===sc0.i));$v('vnU').textContent=sc0.u;
+  init.forEach((h,el)=>{el.innerHTML=h;el.classList.remove('fc','ty')});
+  for(const o of TX)if(o.t<=now)o.el.textContent=o.x;
+  for(const o of TY){if(now<o.t-350)continue;const k=Math.max(0,Math.min(1,(now-o.t)/o.d));o.el.textContent=[...o.x].slice(0,Math.round([...o.x].length*k)).join('');if(now<o.t+o.d+450){o.el.classList.add('fc');if(k<1||now<o.t+o.d+450)o.el.classList.add('ty')}}
+  clsAll.forEach(el=>{if(el)el.className=el.className.split(' ').filter(c=>!['on','sel','ok','lit','pub','hot','ck','v','hv','x','x2','off'].includes(c)).join(' ')});
+  const st={};for(const o of CL){if(o.t>now||!o.el)continue;if(o.c==='off'){o.el.classList.remove('on');continue}if(o.c==='x2'){o.el.classList.remove('hot');continue}if(o.c==='x')continue;o.el.classList.add(o.c)}
+  $v('vxAccW').querySelector('.vx-sw2').classList.toggle('pub',now>=21.3*s);$v('vxAccW').classList.toggle('lit',now>=20.4*s&&now<23*s);
+  $v('vxY1').parentNode.classList.toggle('lit',now>=24.7*s&&now<26.4*s);$v('vxY2').parentNode.classList.toggle('lit',now>=24.7*s&&now<26.4*s);
+  $v('vxWait').style.display=now>=38.6*s?'none':'flex';
+  PRESS.forEach(o=>o.el.classList.toggle('pr',now>=o.t&&now<o.t+220));
+  // scroll
+  const a=last(SCR,now),nx=SCR.find(o=>o.t>now);let y=a?a.y:0;if(a&&nx&&nx.y!==a.y){y=a.y}$v('vxIn').style.transform=`translateY(${-y}px)`;
+  // cursor
+  let ki=-1;CU.forEach((o,i)=>{if(o.t<=now)ki=i});const k=CU[Math.max(0,ki)];const tgt=k.el?posOf(k.el):{x:k.x,y:k.y};let p=tgt||{x:480,y:300};
+  if(ki>0){const pv=CU[ki-1];const from=pv.el?posOf(pv.el):{x:pv.x,y:pv.y};const q=Math.min(1,(now-k.t)/700);if(from&&tgt){const e=ease(q);p={x:from.x+(tgt.x-from.x)*e,y:from.y+(tgt.y-from.y)*e}}}
+  C.style.left=p.x+'px';C.style.top=p.y+'px';
+  const c=CK.filter(t=>t<=now).pop();if(c!=null&&now-c<520){const q=(now-c)/520;RP.style.left=(p.x+4)+'px';RP.style.top=(p.y+4)+'px';RP.style.opacity=1-q;RP.style.transform=`scale(${.4+q*1.2})`}else RP.style.opacity=0;
+  const ca=last(CA,now);CAP.innerHTML=ca?ca.x:'';
+  // chapters/progress
+  const ci=CH.reduce((a2,o,i)=>o.t<=now?i:a2,0);[...$v('vnCh').children].forEach((li,i)=>{li.classList.toggle('on',i===ci);li.classList.toggle('dn',i<ci)});
+  $v('vnF').style.width=Math.min(100,now*100/D)+'%';const f=t=>Math.floor(t/60000)+':'+String(Math.floor(t/1000)%60).padStart(2,'0');$v('vnT').textContent=f(Math.min(now,D))+' / '+f(D)};
+ $v('vnCh').innerHTML=CH.map(o=>`<li tabindex="0">${o.n}</li>`).join('');$v('vnTk').innerHTML=CH.slice(1).map(o=>`<i style="left:${o.t*100/D}%"></i>`).join('');
+ let now=0,play=false,spd=1,lt=0,raf=0,vis=false,user=false;
+ const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+ const loop=t=>{if(!play)return;const dt=lt?t-lt:0;lt=t;now+=dt*spd;if(now>D+2200)now=0;render(now);raf=requestAnimationFrame(loop)};
+ const setPlay=v=>{play=v;$v('vnPl').textContent=v?'⏸':'▶';$v('vnBig').hidden=v;cancelAnimationFrame(raf);lt=0;if(v)raf=requestAnimationFrame(loop)};
+ const seek=t=>{now=Math.max(0,Math.min(D,t));render(now)};
+ $v('vnPl').addEventListener('click',()=>{user=true;setPlay(!play)});$v('vnBig').addEventListener('click',()=>{user=true;if(now>=D)now=0;setPlay(true)});
+ S.addEventListener('click',e=>{if(e.target.closest('.vp-big'))return;user=true;setPlay(!play)});
+ S.addEventListener('keydown',e=>{if(e.key===' '||e.key==='k'){e.preventDefault();user=true;setPlay(!play)}if(e.key==='ArrowRight')seek(now+5000);if(e.key==='ArrowLeft')seek(now-5000)});
+ $v('vnCh').addEventListener('click',e=>{const li=e.target.closest('li');if(!li)return;user=true;seek(CH[[...li.parentNode.children].indexOf(li)].t+1);setPlay(true)});
+ $v('vnCh').addEventListener('keydown',e=>{if(e.key==='Enter')e.target.click()});
+ const bar=$v('vnBar');let drag=false;const bx=e=>{const r=bar.getBoundingClientRect();seek((e.clientX-r.left)/r.width*D)};
+ bar.addEventListener('pointerdown',e=>{drag=true;bar.setPointerCapture(e.pointerId);bx(e)});bar.addEventListener('pointermove',e=>{if(drag)bx(e)});bar.addEventListener('pointerup',()=>{drag=false});
+ bar.addEventListener('keydown',e=>{if(e.key==='ArrowRight')seek(now+3000);if(e.key==='ArrowLeft')seek(now-3000)});
+ const SP=[1,1.5,2,.75];$v('vnSp').addEventListener('click',e=>{spd=SP[(SP.indexOf(spd)+1)%SP.length];e.target.textContent=spd+'×'});
+ $v('vnFs').addEventListener('click',()=>{if(document.fullscreenElement)document.exitFullscreen();else R.requestFullscreen&&R.requestFullscreen().catch(()=>{})});
+ document.addEventListener('fullscreenchange',()=>{fit();render(now)});
+ addEventListener('resize',()=>{fit();render(now)});
+ fit();render(0);
+ new IntersectionObserver(es=>{vis=es[0].isIntersecting;if(vis&&!reduce&&!user&&!play)setPlay(true);if(!vis&&play){setPlay(false);user=false}},{threshold:.45}).observe(S);
+}}
+
 console.log('%cคู่มือ GD Catalog จังหวัดหนองบัวลำภู%c\nจัดทำและพัฒนาโดย สำนักงานสถิติจังหวัดหนองบัวลำภู © 2569','font:700 16px Kanit;color:#206b82','color:#666');
 /* share */
 $('#url').textContent=GUIDE;$('#cpUrl').addEventListener('click',e=>copy(GUIDE,e.target));
