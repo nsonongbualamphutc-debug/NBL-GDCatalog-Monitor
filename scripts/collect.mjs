@@ -21,7 +21,8 @@ const core = html.match(/\/\*CORE-START\*\/([\s\S]*?)\/\*CORE-END\*\//)[1];
 const DEF = Function('return ' + html.match(/const DEF=(\{[^;]*\});/)[1])();
 const CFG = Object.assign({}, DEF);
 // admin-controlled target year (data/config.json written by admin.html)
-try { const ac = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'config.json'), 'utf8')); if (ac.target) { if (+ac.target.year > 2500) CFG.cur = +ac.target.year; if (+ac.target.back > 0) CFG.back = +ac.target.back; } } catch {}
+let ADM = {};
+try { const ac = ADM = JSON.parse(await fs.readFile(path.join(ROOT, 'data', 'config.json'), 'utf8')); if (ac.target) { if (+ac.target.year > 2500) CFG.cur = +ac.target.year; if (+ac.target.back > 0) CFG.back = +ac.target.back; } } catch {}
 const S = { orgs: {}, store: { prov: { orgs: [], raw: [], ok: false }, nat: { orgs: [], raw: [], ok: false } }, deep: {} };
 const C = Function('CFG', 'S', core + '\nreturn {SRCS,analyze,scoped,ISSUES,toBE,PBI:typeof PBI!=="undefined"?PBI:{}};')(CFG, S);
 const API = k => C.SRCS[k].site + '/api/3/action/';
@@ -206,6 +207,23 @@ const hi = history.findIndex(h => h.d === TODAY);
 if (hi >= 0) history[hi] = entry; else history.push(entry);
 history.sort((a, b) => a.d < b.d ? -1 : 1);
 await writeJSON('history.json', history.slice(-1100));
+
+// ---------- round archive: บันทึกผลสุดท้ายเมื่อพ้นวันกำหนดส่งของแต่ละรอบ ----------
+{
+  const rounds = (ADM.rounds || []).filter(r => r && r.id && r.due && r.on !== false);
+  let arch = await readJSON('rounds.json', []); if (!Array.isArray(arch)) arch = [];
+  let add = 0;
+  for (const r of rounds) {
+    const end = Date.parse(r.due + 'T23:59:59+07:00');
+    if (!(NOW > end) || arch.some(a => a.id === r.id)) continue;
+    CFG.prov = false; const sc = C.scoped('prov'); S.orgs = sc.orgs; const D = sc.raw.map(C.analyze);
+    arch.push({ id: r.id, name: r.name || r.id, year: r.year || CFG.cur, open: r.open || '', due: r.due, closedAt: NOW, cfg: [CFG.cur, CFG.back],
+      prov: entry.prov, prov_all: entry.prov_all,
+      ds: D.map(d => [d.id, d.org, d.lvl === 'prov' ? 1 : 0, d.status === 'pass' ? 1 : 0, +d.c1, +d.c2, +d.c3, d.md, d.title]) });
+    add++; log('archived round', r.id);
+  }
+  if (add) await writeJSON('rounds.json', arch);
+}
 
 // ---------- meta ----------
 if (changed.length || !meta.generatedAt) {
