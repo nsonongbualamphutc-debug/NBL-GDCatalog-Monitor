@@ -764,6 +764,40 @@ header.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1
 .hx.run .hbars span{animation:hbar .7s calc(4.5s + var(--i)*.09s) cubic-bezier(.3,1.3,.5,1) forwards}@keyframes hbar{to{transform:scaleY(1)}}
 .hx.run .hst .bad{animation:hfo .3s 6.1s forwards}.hx.run .hst .ok{animation:hfi .4s 6.2s forwards}@keyframes hfo{to{opacity:0}}@keyframes hfi{to{opacity:1}}
 @media(max-width:600px){.hv.hxw{display:block;margin:22px -6px 0}.hero .tbtn span{display:none}.hero .tbtn{padding:0 12px}}
+/* v12 quality block */
+.qbx{margin-top:22px;padding:18px 20px;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:var(--shadow)}
+.qh{display:flex;flex-wrap:wrap;gap:14px;justify-content:space-between;align-items:flex-start}.qh b{font:600 19px Kanit}.qh small{display:block;color:var(--ink2);font-size:14px;max-width:520px}
+.qbc{display:flex;flex-wrap:wrap;gap:8px}.qbc span{display:flex;align-items:center;gap:7px;padding:6px 12px;border-radius:99px;border:1px solid var(--line);font:14px Kanit;color:var(--ink2);cursor:pointer;user-select:none}
+.qbc span b{font-size:15px;color:var(--ink2)}.qbc span.on b{color:var(--warn)}.qbc span.sel{border-color:var(--teal2);background:color-mix(in srgb,var(--teal2) 10%,transparent);color:var(--ink)}
+.ql{margin-top:14px;display:grid;gap:8px}
+.qi{border:1px solid var(--line);border-radius:14px;background:var(--bg)}.qi summary{display:flex;gap:10px;align-items:center;padding:11px 14px;cursor:pointer;list-style:none;font:500 15.5px Kanit}.qi summary::-webkit-details-marker{display:none}
+.qi summary i{width:10px;height:10px;border-radius:50%;flex:none;background:var(--ok)}.qi.lv1 summary i{background:var(--warn)}.qi.lv2 summary i{background:var(--bad)}
+.qi summary span{flex:1}.qi summary em{font-style:normal;font-size:13px;color:var(--ink2)}
+.qi ul{margin:0;padding:0 14px 4px 34px}.qi li{margin:6px 0}.qi li b{font-weight:600}.qi li small{display:block;color:var(--ink2);font-size:13.5px}.qi li span{display:block;color:var(--teal2);font-size:14px}
+.qi li.l2::marker{color:var(--bad)}.qi li.l1::marker{color:var(--warn)}
+.qi p{padding:0 14px 12px 34px;margin:0}
+.qok{margin:12px 0 0;color:var(--ok);font:500 16px Kanit}
+/* v12 search */
+.tsb{flex:none;display:inline-flex;align-items:center;gap:7px;padding:6px 12px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font:15px Kanit;cursor:pointer;margin-right:6px}
+.tsb kbd,.sqi kbd{font:11px ui-monospace,monospace;padding:1px 6px;border-radius:5px;border:1px solid var(--line);color:var(--ink2);background:var(--bg)}
+.tsb:hover{border-color:var(--teal2)}
+.sq{position:fixed;inset:0;z-index:100;background:rgba(2,16,24,.55);backdrop-filter:blur(6px);display:flex;justify-content:center;align-items:flex-start;padding:10vh 16px 16px}
+.sqb{width:min(720px,100%);max-height:78vh;display:flex;flex-direction:column;border-radius:20px;background:var(--card);border:1px solid var(--line);box-shadow:0 40px 90px -30px rgba(0,0,0,.6);overflow:hidden;animation:sqin .22s cubic-bezier(.2,.8,.2,1)}
+@keyframes sqin{from{opacity:0;transform:translateY(-10px) scale(.98)}}
+.sqi{display:flex;align-items:center;gap:10px;padding:14px 18px;border-bottom:1px solid var(--line)}.sqi span{font-size:20px}
+.sqi input{flex:1;border:0;outline:0;background:none;color:var(--ink);font:19px Kanit}
+.sqs{display:flex;flex-wrap:wrap;gap:6px;padding:12px 18px 0}.sqs button{padding:5px 12px;border-radius:99px;border:1px solid var(--line);background:var(--bg);color:var(--ink2);font:14px Kanit;cursor:pointer}.sqs button:hover{border-color:var(--teal2);color:var(--ink)}
+.sqr{overflow:auto;padding:10px 10px 14px}
+.sqh{display:block;width:100%;text-align:left;padding:10px 12px;border-radius:12px;border:0;background:none;color:var(--ink);cursor:pointer;font:inherit}
+.sqh.on,.sqh:hover{background:color-mix(in srgb,var(--teal2) 10%,transparent)}
+.sqh em{font:normal 12px Kanit;color:#fff;padding:1px 9px;border-radius:99px;background:var(--sc,var(--teal));margin-right:8px}
+.sqh b{font:500 16px Kanit}.sqh span{display:block;color:var(--ink2);font-size:14.5px;margin-top:3px}
+.sqh mark{background:color-mix(in srgb,#ffd84d 70%,transparent);color:inherit;border-radius:3px;padding:0 1px}
+.sqe{padding:14px;color:var(--ink2);margin:0}
+.sqh em[data-s=prep]{--sc:#1d7fa3}.sqh em[data-s=tool]{--sc:#0e9488}.sqh em[data-s=new]{--sc:#0b8a5a}.sqh em[data-s=update]{--sc:#7a5cff}.sqh em[data-s=check]{--sc:#d97706}.sqh em[data-s=due]{--sc:#e2477a}
+.sqflash{animation:sqfl 2.2s ease-out;border-radius:6px}@keyframes sqfl{0%,30%{background:color-mix(in srgb,#ffd84d 55%,transparent);box-shadow:0 0 0 6px color-mix(in srgb,#ffd84d 35%,transparent)}}
+.sqfab{position:fixed;right:16px;bottom:16px;z-index:40;width:52px;height:52px;border-radius:50%;border:0;font-size:22px;background:linear-gradient(135deg,#e2477a,#a855f7);color:#fff;box-shadow:0 14px 30px -10px #a855f7;cursor:pointer;display:none}
+@media(max-width:900px){.sqfab{display:block}}
 @media(prefers-reduced-motion:reduce){.hx *{animation-duration:0s!important;animation-delay:0s!important}}
 @media(prefers-reduced-motion:reduce){.hv .hvimg,section.band.act .sh .no.nimg img{animation:none}}
 </style>
@@ -1684,6 +1718,80 @@ const hashOrg=()=>{const m=location.hash.match(/^#org=(.+)$/);if(!m||!DATA)retur
 {let n=0;const w=setInterval(()=>{if(DATA||++n>60){clearInterval(w);if(DATA)hashOrg()}},250)}
 addEventListener('hashchange',hashOrg);
 
+/* shared: load the dashboard's CORE analyzer (same rules as index.html / collect.mjs) */
+const loadCore=async(base,tgt)=>{const h=await fetch(base+'index.html',{cache:'no-store'}).then(r=>r.ok?r.text():Promise.reject(new Error('index')));
+ const m=h.match(/\/\*CORE-START\*\/([\s\S]*?)\/\*CORE-END\*\//),dm=h.match(/const DEF=(\{[^;]*\});/);if(!m||!dm)throw new Error('core');
+ const CF=Object.assign({},Function('return '+dm[1])());if(tgt){if(+tgt.year>2500)CF.cur=+tgt.year;if(+tgt.back>0)CF.back=+tgt.back}CF.prov=false;
+ const S={orgs:{},store:{prov:{orgs:[],raw:[],ok:false},nat:{orgs:[],raw:[],ok:false}},deep:{}};
+ const C=Function('CFG','S',m[1]+'\nreturn {analyze,scoped,MDF:typeof MDF!=="undefined"?MDF:[]};')(CF,S);
+ const run=(prov,deep)=>{S.store.prov=Object.assign({ok:true},prov);S.deep=deep||{};const sc=C.scoped('prov');S.orgs=sc.orgs;return sc.raw.map(C.analyze)};
+ const label=k=>(C.MDF.find(x=>x[0]===k)||[k,k])[1];
+ return {CF,run,label}};
+/* extra quality checks (outside the 3 criteria) */
+const qIssues=(d,label)=>{const L=[];
+ if(d.mdMiss&&d.mdMiss.length)L.push({k:'md',lv:d.md<60?2:1,t:'ข้อมูลเมตายังไม่ครบ ('+d.md+'%)',x:'ขาด: '+d.mdMiss.map(label).join(', '),f:'เปิด “แก้ไขชุดข้อมูล” แล้วกรอกช่องที่ขาดให้ครบ'});
+ if(d.sched==='late')L.push({k:'late',lv:2,t:'เลยรอบปรับปรุงมา '+d.lateDays+' วัน',x:'ความถี่ที่ระบุ: ทุก '+(d.freq||'-'),f:'อัปเดตข้อมูลตามรอบ หรือแก้ “ความถี่การปรับปรุง” ให้ตรงกับความจริง'});
+ else if(d.sched==='soon')L.push({k:'soon',lv:0,t:'ใกล้ถึงรอบปรับปรุงภายใน 30 วัน',x:'ความถี่ที่ระบุ: ทุก '+(d.freq||'-'),f:'เตรียมข้อมูลรอบใหม่ไว้ล่วงหน้า'});
+ (d.anomalies||[]).forEach(a=>L.push({k:'ano',lv:2,t:a,x:'',f:'แก้ “ปีแรก/ปีสุดท้ายของข้อมูล” ในข้อมูลเมตาให้ถูกต้อง'}));
+ if(d.mism)L.push({k:'mism',lv:2,t:'ปีในข้อมูลเมตาไม่ตรงกับปีในไฟล์',x:'ข้อมูลเมตาบอกว่ามีปีปัจจุบัน แต่ในตารางข้อมูลยังไม่มี',f:'เพิ่มแถวปีล่าสุดในไฟล์ หรือแก้ปีสุดท้ายในข้อมูลเมตา'});
+ if(d.nres&&!d.dict)L.push({k:'dict',lv:0,t:'ยังไม่มี Data Dictionary',x:'คำอธิบายคอลัมน์ของไฟล์',f:'ใช้ตัวช่วยสร้าง Data Dictionary ในเครื่องมือตรวจไฟล์ แล้วอัปโหลดเป็นทรัพยากรเพิ่ม'});
+ return L};
+/* ================= mine: extra quality checks ================= */
+let QC=null,QD=null;
+const qcReady=(async()=>{try{QC=await loadCore(onPages?'':DASH,(CFG&&CFG.target)||null);
+ let n=0;while(!DATA&&n++<80)await new Promise(r=>setTimeout(r,250));if(!DATA)return;
+ const deep=await fetch((onPages?'':DASH)+'data/deep.json?v='+Math.floor(Date.now()/36e5)).then(r=>r.ok?r.json():{}).catch(()=>({}));
+ QD=QC.run(DATA,deep&&deep.map?deep.map:deep)}catch(e){QC=null}})();
+const qBlock=async o=>{await qcReady;const mout=$('#mout');if(!QD||!mout||$('#mout .qbx'))return;
+ const L=QD.filter(d=>d.org===o).map(d=>({d,q:qIssues(d,QC.label)})).filter(x=>x.q.length);
+ const cnt=k=>L.filter(x=>x.q.some(i=>i.k===k)).length;const all=QD.filter(d=>d.org===o).length;
+ const sev=x=>Math.max(...x.q.map(i=>i.lv));L.sort((a,b)=>sev(b)-sev(a));
+ const box=document.createElement('div');box.className='qbx';
+ box.innerHTML=`<div class="qh"><div><b>🔎 ตรวจคุณภาพเพิ่มเติม</b><small>นอกเหนือจาก 3 เกณฑ์ · ใช้กฎเดียวกับแดชบอร์ด · ไม่มีผลต่อการผ่านเกณฑ์ แต่ช่วยให้ข้อมูลน่าเชื่อถือและพร้อมใช้</small></div>
+  <div class="qbc">${[['md','ข้อมูลเมตาไม่ครบ'],['late','เลยรอบปรับปรุง'],['ano','ปีในเมตาผิดปกติ'],['mism','เมตาไม่ตรงไฟล์'],['dict','ไม่มี Dictionary']].map(([k,t])=>`<span class="${cnt(k)?'on':''}" data-k="${k}"><b>${cnt(k)}</b>${t}</span>`).join('')}</div></div>
+  ${L.length?`<div class="ql">${L.map(({d,q})=>`<details class="qi lv${sev({q})}"><summary><i></i><span>${esc(d.title)}</span><em>${q.length} รายการ</em></summary>
+   <ul>${q.map(i=>`<li class="l${i.lv}"><b>${esc(i.t)}</b>${i.x?`<small>${esc(i.x)}</small>`:''}<span>→ ${esc(i.f)}</span></li>`).join('')}</ul>
+   <p><a class="copy" href="${CAT}/dataset/edit/${encodeURIComponent(d.name)}" target="_blank" rel="noopener">✎ แก้ไขข้อมูลเมตา</a> <a class="copy" href="${CAT}/dataset/${encodeURIComponent(d.name)}" target="_blank" rel="noopener">เปิดชุดข้อมูล ↗</a></p></details>`).join('')}</div>`
+  :`<p class="qok">✓ ทั้ง ${all} ชุดข้อมูลไม่มีประเด็นคุณภาพเพิ่มเติม</p>`}`;
+ mout.appendChild(box);
+ box.querySelectorAll('.qbc span[data-k]').forEach(s=>s.addEventListener('click',()=>{const k=s.dataset.k,on=s.classList.toggle('sel');box.querySelectorAll('.qbc span').forEach(x=>x!==s&&x.classList.remove('sel'));
+  box.querySelectorAll('.qi').forEach((dt,i)=>{dt.hidden=on&&!L[i].q.some(x=>x.k===k)})}))};
+{const _s2=showOrg;showOrg=o=>{_s2(o);if(o)qBlock(o)}}
+/* ================= search in guide ================= */
+{const SYN=[[/อัพ/g,'อัป'],[/เดท/g,'เดต'],[/เมทา/g,'เมตา'],[/ดาวโหลด|ดาวห์โหลด/g,'ดาวน์โหลด'],[/ดิกชันนารี|ดิคชันนารี/g,'dictionary'],[/เอพีไอ/g,'api'],[/ซีเอสวี/g,'csv']];
+ const nz=s=>{s=String(s||'').toLowerCase().replace(/\u0e4d\u0e32/g,'\u0e33').replace(/\s+/g,' ');SYN.forEach(([a,b])=>s=s.replace(a,b));return s};
+ let IDX=null;const SKIP='.hxw,.vp,.vplayer,#printSheet,.fm,.sq,script,style,svg,canvas,.rail,nav';
+ const build=()=>{IDX=[];document.querySelectorAll('main section[id], body > section[id]').forEach(sec=>{const h2=sec.querySelector('h2');const st=h2?h2.textContent.trim():sec.id;let head=st;
+  sec.querySelectorAll('h2,h3,h4,summary,p,li,td,dd,dt,div,small').forEach(el=>{if(el.closest(SKIP))return;if(el.matches('h3,h4,summary'))head=el.textContent.trim();
+   if(!el.matches('h2,h3,h4,summary')&&![...el.childNodes].some(n=>n.nodeType===3&&n.textContent.trim().length>2))return;if(el.matches('small')&&el.parentElement.matches('p,li,td,div'))return;if(el.querySelector('p,li,ul,ol,table,div'))return;const t=el.textContent.replace(/\s+/g,' ').trim();if(t.length<3)return;
+   IDX.push({sec:sec.id,st,head:el.matches('h2,h3,h4,summary')?t:head,t,n:nz(t),hd:el.matches('h2,h3,h4,summary'),el})})})};
+ const box=document.createElement('div');box.className='sq';box.hidden=true;box.setAttribute('role','dialog');box.setAttribute('aria-label','ค้นหาในคู่มือ');
+ box.innerHTML=`<div class="sqb"><div class="sqi"><span>🔍</span><input id="sqIn" type="search" placeholder="พิมพ์สิ่งที่อยากรู้ เช่น ถอดถอน, UTF-8, Data API" autocomplete="off"><kbd>Esc</kbd></div>
+  <div class="sqs" id="sqSug">${['ถอดถอน','UTF-8','Data API','ไม่สามารถแสดงผล','ข้อมูลเมตา','ปีปัจจุบัน','Data Dictionary','Merge','ดาวน์โหลดไฟล์เดิม','กำหนดส่ง'].map(x=>`<button type="button">${x}</button>`).join('')}</div>
+  <div class="sqr" id="sqR"></div></div>`;
+ document.body.appendChild(box);
+ const inp=box.querySelector('#sqIn'),out=box.querySelector('#sqR');
+ const hl=(t,ws)=>{let s=esc(t);ws.forEach(w=>{if(!w)return;const re=new RegExp(w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),'gi');s=s.replace(re,m=>'<mark>'+m+'</mark>')});return s};
+ const snip=(t,w)=>{const i=nz(t).indexOf(w);if(i<0||t.length<140)return t.slice(0,160)+(t.length>160?'…':'');const a=Math.max(0,i-50);return(a?'…':'')+t.slice(a,a+150)+(a+150<t.length?'…':'')};
+ let hits=[],cur=0;
+ const find=()=>{const q=nz(inp.value.trim());box.querySelector('#sqSug').hidden=!!q;if(!q){out.innerHTML='<p class="sqe">พิมพ์คำค้น หรือเลือกคำที่พบบ่อยด้านบน</p>';hits=[];return}
+  const ws=q.split(' ').filter(Boolean);const seen=new Set();
+  hits=IDX.filter(x=>ws.every(w=>x.n.includes(w))).map(x=>({x,s:(x.hd?5:0)+(nz(x.head).includes(ws[0])?3:0)-x.t.length/400})).sort((a,b)=>b.s-a.s).filter(({x})=>{const k=x.sec+'|'+x.t.slice(0,60);if(seen.has(k))return false;seen.add(k);return true}).slice(0,24);
+  cur=0;out.innerHTML=hits.length?hits.map(({x},i)=>`<button type="button" class="sqh${i?'':' on'}" data-i="${i}"><em data-s="${x.sec}">${esc(x.st)}</em><b>${hl(x.hd?x.t:x.head,ws)}</b>${x.hd?'':`<span>${hl(snip(x.t,ws[0]),ws)}</span>`}</button>`).join(''):`<p class="sqe">ไม่พบ “${esc(inp.value)}” ลองคำอื่น หรือถามเจ้าหน้าที่ใน <a href="#contact" data-close>ติดต่อ</a></p>`};
+ const jump=i=>{const h=hits[i];if(!h)return;close();let el=h.x.el;const d=el.closest('details');if(d)d.open=true;
+  el.scrollIntoView({behavior:'smooth',block:'center'});el.classList.remove('sqflash');void el.offsetWidth;el.classList.add('sqflash')};
+ const open=()=>{if(!IDX)build();box.hidden=false;document.body.style.overflow='hidden';inp.focus();inp.select();find()};
+ const close=()=>{box.hidden=true;document.body.style.overflow=''};
+ inp.addEventListener('input',find);
+ inp.addEventListener('keydown',e=>{const B=out.querySelectorAll('.sqh');if(e.key==='ArrowDown'||e.key==='ArrowUp'){e.preventDefault();if(!B.length)return;B[cur]&&B[cur].classList.remove('on');cur=(cur+(e.key==='ArrowDown'?1:-1)+B.length)%B.length;B[cur].classList.add('on');B[cur].scrollIntoView({block:'nearest'})}else if(e.key==='Enter'){jump(cur)}});
+ out.addEventListener('click',e=>{const b=e.target.closest('.sqh');if(b)jump(+b.dataset.i);if(e.target.closest('[data-close]'))close()});
+ box.querySelector('#sqSug').addEventListener('click',e=>{const b=e.target.closest('button');if(b){inp.value=b.textContent;find();inp.focus()}});
+ box.addEventListener('click',e=>{if(e.target===box)close()});
+ addEventListener('keydown',e=>{if(e.key==='Escape'&&!box.hidden)close();else if(box.hidden&&((e.key==='/'&&!/input|textarea|select/i.test(document.activeElement.tagName))||((e.ctrlKey||e.metaKey)&&e.key.toLowerCase()==='k'))){e.preventDefault();open()}});
+ const sc=document.querySelector('nav.toc .scroll');if(sc){const b=document.createElement('button');b.type='button';b.className='tsb';b.innerHTML='🔍 <span>ค้นหา</span><kbd>/</kbd>';b.addEventListener('click',open);sc.prepend(b)}
+ const fab=document.createElement('button');fab.type='button';fab.className='sqfab';fab.setAttribute('aria-label','ค้นหาในคู่มือ');fab.textContent='🔍';fab.addEventListener('click',open);document.body.appendChild(fab);
+ const ct=document.querySelector('.hero .ctas');if(ct){const b=document.createElement('button');b.type='button';b.className='cta s';b.innerHTML='🔍 ค้นหาในคู่มือ';b.addEventListener('click',open);ct.appendChild(b)}
+}
 /* ================= A4 print sheet ================= */
 const printSheet=()=>{const r=activeRound(),c=CFG.contact||{};const qr=($('#qr svg')||{}).outerHTML||'';
  $('#printSheet').innerHTML=`<div class="hd"><div><h1>คู่มือย่อ: นำเข้าและอัปเดตชุดข้อมูลบน GD Catalog</h1><div class="sub">จังหวัดหนองบัวลำภู · nongbualamphu.gdcatalog.go.th</div>${r?`<div class="due2">กำหนดส่ง${esc(r.name?' '+r.name:'')}: ${thD(r.due,1)}</div>`:''}</div><div class="qr">${qr}</div></div>
