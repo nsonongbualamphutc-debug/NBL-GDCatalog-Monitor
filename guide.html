@@ -668,10 +668,46 @@ nav.toc a.on em{background:#fff!important;color:var(--sc)!important}
 .sh .no.nimg b{position:absolute;right:-6px;top:-6px;width:30px;height:30px;border-radius:50%;display:grid;place-items:center;font:700 15px Kanit;color:#fff;background:linear-gradient(145deg,var(--sc2,var(--teal)),var(--sc,var(--deep)));box-shadow:0 0 0 3px var(--bg)}
 section.band.act .sh .no.nimg img{animation:icb 2.4s ease-in-out infinite}
 @keyframes icb{50%{transform:translateY(-5px)}}
-:root:not([data-theme=dark]) section#new{background:url(assets/guide/bg-new.webp) center top/cover no-repeat,var(--bg)}
-:root:not([data-theme=dark]) section#update{background:url(assets/guide/bg-update.webp) center top/cover no-repeat,var(--bg)}
-:root:not([data-theme=dark]) section#check{background:url(assets/guide/bg-check.webp) center top/cover no-repeat,var(--bg)}
+:root:not([data-theme=dark]) section#new{background:linear-gradient(color-mix(in srgb,var(--bg) 82%,transparent),var(--bg) 70%),url(assets/guide/bg-new.webp) center top/100% auto no-repeat,var(--bg)}
+:root:not([data-theme=dark]) section#update{background:linear-gradient(color-mix(in srgb,var(--bg) 82%,transparent),var(--bg) 70%),url(assets/guide/bg-update.webp) center top/100% auto no-repeat,var(--bg)}
+:root:not([data-theme=dark]) section#check{background:linear-gradient(color-mix(in srgb,var(--bg) 82%,transparent),var(--bg) 70%),url(assets/guide/bg-check.webp) center top/100% auto no-repeat,var(--bg)}
 .hv .ring li{color:var(--ink)}
+/* v11 cinematic hero */
+header.hero{color-scheme:dark;--heroInk:#eaf6f8;--heroInk2:#a9c8d0;background:radial-gradient(700px 420px at 78% 38%,rgba(34,211,238,.20),transparent 65%),radial-gradient(620px 380px at 95% 0%,rgba(226,71,122,.28),transparent 62%),radial-gradient(600px 400px at 0% 100%,rgba(122,92,255,.22),transparent 62%),linear-gradient(170deg,#021119 0%,#03202c 55%,#062f3d 100%);padding-bottom:clamp(28px,4vw,48px)}
+header.hero .net{opacity:.55;background-image:linear-gradient(rgba(95,180,204,.10) 1px,transparent 1px),linear-gradient(90deg,rgba(95,180,204,.10) 1px,transparent 1px)}
+header.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:1px;background:linear-gradient(90deg,transparent,#22d3ee,#e2477a,transparent);opacity:.6}
+.hero .brand{color:#eaf6f8}.hero .tbtn{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.14);color:#eaf6f8}
+.hero .kick{background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.3);color:#9ee7f5;letter-spacing:.02em}
+.hero h1{font-size:clamp(30px,4vw,48px);line-height:1.2;color:#fff}
+.hero h1 span{background:linear-gradient(90deg,#ff7aa4,#a78bfa 50%,#22d3ee);-webkit-background-clip:text;background-clip:text}
+.hero p.lead{font-size:clamp(16px,1.5vw,18px);max-width:540px}
+.hero .cta.p{background:linear-gradient(135deg,#e2477a,#a855f7);box-shadow:0 10px 26px -10px #e2477a}
+.hero .cta.s{color:#eaf6f8;border-color:rgba(255,255,255,.18);background:rgba(255,255,255,.04)}
+.hero .cta.s:hover{border-color:#22d3ee}
+.hero .stats{gap:0;margin-top:24px}.hero .stats div{padding:0 22px;border-left:1px solid rgba(255,255,255,.12)}.hero .stats div:first-child{padding-left:0;border-left:0}
+.hero .stats div b{font-size:24px;background:linear-gradient(180deg,#fff,#9ee7f5);-webkit-background-clip:text;background-clip:text;color:transparent}.hero .stats div span{font-size:13px}
+.hgrid{grid-template-columns:minmax(0,1fr) minmax(0,1fr)}
+.hv{min-height:0;aspect-ratio:1200/680}
+.hv .hvimg{width:112%;top:50%;-webkit-mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 58%,transparent 100%);mask-image:radial-gradient(ellipse 62% 60% at 50% 50%,#000 58%,transparent 100%);filter:saturate(1.15) drop-shadow(0 0 40px rgba(34,211,238,.25))}
+.hv::before{content:"";position:absolute;left:12%;right:12%;bottom:6%;height:18%;border-radius:50%;background:radial-gradient(closest-side,rgba(34,211,238,.35),transparent);filter:blur(18px)}
+.hv .g1,.hv .g2{display:none}
+.hv .g3{right:0;bottom:2%;width:auto;transform:none;padding:10px 14px;background:rgba(6,30,40,.72)!important;border-color:rgba(34,211,238,.28)!important}
+.hv .g3 small{font-size:11px;letter-spacing:.04em;color:#9ee7f5;margin-bottom:4px}
+.hv .g3 .ring .r{width:52px;height:52px;font-size:14px}.hv .g3 .ring ul{font-size:12.5px;color:#eaf6f8}
+.hero .route{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.10);padding:16px 8px 4px;margin-top:clamp(20px,3vw,32px)}
+.route::before{top:44px;height:3px;opacity:.85}.route .dot{top:38px;width:14px;height:14px}
+.route .st .ic{width:60px;height:56px;margin:0 auto 8px}
+.hero .st b{font-size:15.5px}.hero .st small{font-size:13px;color:#a9c8d0}
+.hero .crit{gap:10px}
+.hero .cr{background:rgba(255,255,255,.04);border-color:rgba(255,255,255,.10);box-shadow:none;padding:12px 16px}
+.hero .cr b{font-size:16.5px;color:#fff}.hero .cr span{font-size:14px;color:#a9c8d0}.hero .cr i{width:26px;height:26px;font-size:14px}
+.hero .bdx{margin-top:12px;background:linear-gradient(90deg,rgba(0,54,71,.85),rgba(6,40,52,.85));border-color:rgba(34,211,238,.22);box-shadow:none}
+.hero .due{background:rgba(255,255,255,.05);border-color:rgba(255,255,255,.12)}
+.sh .no.nimg{width:68px;height:68px}.sh .no.nimg b{width:24px;height:24px;font-size:13px;right:-4px;top:-4px}
+.hero .route .st[href] b{color:var(--sc2);font-family:Kanit;font-weight:500}
+.hero .hv .g3 .ring .r{color:#fff;background:radial-gradient(closest-side,#082834 76%,transparent 78%),conic-gradient(#3fd49a calc(var(--p)*1%),rgba(255,255,255,.12) 0)}
+@media(max-width:900px){.hgrid{grid-template-columns:1fr}.hv{max-width:560px;margin:0 auto;width:100%}}
+@media(max-width:600px){.hero .stats div{padding:0 12px}.route .st .ic{width:56px;height:52px}.sh .no.nimg{width:52px;height:52px}}
 @media(prefers-reduced-motion:reduce){.hv .hvimg,section.band.act .sh .no.nimg img{animation:none}}
 </style>
 <script>new MutationObserver(()=>{for(const c of document.querySelectorAll('.stack td:not([data-l])')){let i=0,p=c;while(p=p.previousElementSibling)i+=p.colSpan;c.dataset.l=c.closest('table').rows[0].cells[i]?.textContent||''}}).observe(document,{childList:true,subtree:true})</script>
