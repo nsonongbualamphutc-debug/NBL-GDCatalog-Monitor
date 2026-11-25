@@ -231,6 +231,37 @@ body{background:radial-gradient(900px 600px at 85% -10%,light-dark(rgba(122,92,2
 .lk .tags{display:flex;gap:6px;justify-content:center;flex-wrap:wrap;margin-top:14px}.lk .tags span{font:12px Kanit;padding:3px 10px;border-radius:99px;border:1px solid rgba(120,200,220,.22);color:#9cc0c9;background:rgba(255,255,255,.03)}
 .lk small{color:#7f9ea7}
 @media(max-width:900px){.main::before{inset:0}}
+/* ===== v14: drill-down, health, archive, backup ===== */
+.tb td.org{cursor:pointer}.tb td.org .chev{display:inline-grid;place-items:center;width:20px;height:20px;margin-right:6px;border-radius:6px;border:1px solid var(--line);font-size:11px;color:var(--ink2);transition:transform .2s;vertical-align:1px}
+.tb tr.op td.org .chev{transform:rotate(90deg);border-color:var(--cy);color:var(--cy)}
+.tb tr.op td{background:light-dark(#f2f8fa,rgba(34,211,238,.05))}
+.tb tr.ddr>td{padding:0 10px 14px;background:light-dark(#f2f8fa,rgba(34,211,238,.05))}
+.dd{border:1px solid var(--line);border-radius:16px;background:light-dark(#fff,rgba(0,0,0,.22));padding:12px 14px;animation:fi .25s}
+.ddh{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:10px}.ddh .sp1{flex:1}
+.ddk{white-space:nowrap;font:500 13px Kanit;padding:3px 10px;border-radius:99px;border:1px solid var(--line);color:var(--ink2)}.ddk b{color:var(--ink);margin-right:3px}.ddk.r b{color:var(--bad)}.ddk.w b{color:var(--warn)}.ddk.gr b{color:var(--ok)}
+.ddt{width:100%;border-collapse:collapse;font-size:14px}.ddt th{font:600 12.5px Kanit;color:var(--ink2);text-align:left;padding:6px 8px;border-bottom:1px solid var(--line);position:static;background:none;cursor:default}
+.ddt td{padding:7px 8px;border-bottom:1px solid var(--line);vertical-align:top}.ddt tr:last-child td{border-bottom:0}
+.ddt td.t b{font-weight:600}.ddt td.t small{display:block;color:var(--ink2);font-size:12px}
+.ddt .m{width:22px;height:22px;border-radius:7px;display:inline-grid;place-items:center;font:700 12px Kanit;margin-right:3px}.ddt .m.y{background:color-mix(in srgb,var(--ok) 18%,transparent);color:var(--ok)}.ddt .m.n{background:color-mix(in srgb,var(--bad) 18%,transparent);color:var(--bad)}
+.ddt .fx div{font-size:13px;line-height:1.45}.ddt .fx .q{color:var(--warn)}.ddt .lnk a{display:inline-grid;place-items:center;width:30px;height:30px;border-radius:9px;border:1px solid var(--line);text-decoration:none;margin-left:4px;color:var(--ink)}.ddt .lnk a:hover{border-color:var(--cy)}
+.ddt td.ok b::after{content:" ✓";color:var(--ok)}
+/* health banner */
+.hb{display:flex;gap:12px;align-items:flex-start;padding:12px 16px;border-radius:16px;margin-bottom:16px;border:1px solid color-mix(in srgb,var(--bad) 45%,transparent);background:linear-gradient(90deg,color-mix(in srgb,var(--bad) 18%,transparent),transparent);animation:fi .3s}
+.hb.w{border-color:color-mix(in srgb,var(--warn) 45%,transparent);background:linear-gradient(90deg,color-mix(in srgb,var(--warn) 16%,transparent),transparent)}
+.hb i{font-style:normal;font-size:22px;line-height:1}.hb div{flex:1}.hb b{font:600 15.5px Kanit;display:block}.hb small{display:block;color:var(--ink2);font-size:13.5px}.hb .b{flex:none}
+.hl{display:grid;gap:8px}.hl div{display:flex;gap:10px;align-items:center;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:light-dark(#f7fafb,rgba(255,255,255,.025))}
+.hl em{width:10px;height:10px;border-radius:50%;flex:none;background:var(--ink2)}.hl .ok em{background:var(--ok);box-shadow:0 0 8px var(--ok)}.hl .bad em{background:var(--bad);box-shadow:0 0 8px var(--bad)}.hl .w em{background:var(--warn);box-shadow:0 0 8px var(--warn)}
+.hl b{font:500 14.5px Kanit;flex:1}.hl small{color:var(--ink2);font-size:13px;text-align:right}
+/* archive */
+.ar{display:grid;gap:10px}.arc{display:grid;grid-template-columns:1fr auto;gap:10px;align-items:center;padding:12px 14px;border-radius:14px;border:1px solid var(--line);background:light-dark(#f7fafb,rgba(255,255,255,.025))}
+.arc b{font:600 15.5px Kanit}.arc small{display:block;color:var(--ink2);font-size:13px}.arc .nums{display:flex;gap:14px;margin-top:4px;font-size:13.5px}.arc .nums span b{font-size:17px;margin-right:3px}
+.cmpw{margin-top:14px}.cmpw .row{margin-bottom:10px}
+.dl{font:600 13px Kanit}.dl.u{color:var(--ok)}.dl.d{color:var(--bad)}
+/* backup */
+.bkd{margin-top:10px;display:grid;gap:6px}.bkd label{display:flex;gap:8px;align-items:center;font-size:14px}
+.vh{display:grid;gap:6px;margin-top:8px}
+.mdl{position:fixed;inset:0;z-index:60;background:rgba(2,10,16,.6);backdrop-filter:blur(6px);display:grid;place-items:center;padding:16px}
+.mdl .cd{width:min(560px,100%);max-height:80vh;overflow:auto}.mdl ul{margin:8px 0 12px;padding-left:20px}.mdl li{margin:3px 0}
 </style>
 </head>
 <body>
@@ -693,7 +724,7 @@ const rpRender=()=>{const y=CUR(),r=activeRound(),now=Date.now(),ref=$('#rpRef')
  if($('#rpK2').checked){let L=O;if(RPS==='todo')L=O.filter(o=>o.todo||(Q&&o.q));if(RPS==='one')L=O.filter(o=>o.name===$('#rpOne').value);
   L.forEach(o=>{const d=dueFor(o.name);const link=GURL+'#org='+encodeURIComponent(o.name);
    const rows=o.L.map(d2=>({d:d2,q:Q?qIssues(d2,RPC.label).filter(i=>i.lv>0):[]})).filter(x=>x.d.status!=='pass'||x.q.length).sort((a,b)=>(a.d.status==='pass')-(b.d.status==='pass')||a.d.score-b.d.score);
-   pages.push(`<div class="rpg" data-org="1">${rpHead('รายการชุดข้อมูลที่ต้องดำเนินการ',sub,'เอกสารแนบ')}${ref?`<div class="rpref">เอกสารแนบหนังสือ${esc(ref)}</div>`:''}
+   pages.push(`<div class="rpg" data-org="1" data-oname="${esc(o.name)}">${rpHead('รายการชุดข้อมูลที่ต้องดำเนินการ',sub,'เอกสารแนบ')}${ref?`<div class="rpref">เอกสารแนบหนังสือ${esc(ref)}</div>`:''}
     <div class="rpsum"><div><h2>${esc(o.title)}</h2><p>ชุดข้อมูลทั้งหมด <b>${o.n}</b> ชุด · ผ่านครบ 3 เกณฑ์ <b>${o.ok}</b> ชุด · ต้องดำเนินการ <b style="color:#b42318">${o.todo}</b> ชุด${Q&&o.q?` · ควรปรับปรุงคุณภาพ <b style="color:#8a5a00">${o.q}</b> ชุด`:''}</p>
      ${d&&d.due?`<p>กำหนดส่งภายใน <b>${thD(d.due,1)}</b>${d.own?' (กำหนดเฉพาะหน่วยงาน)':''}</p>`:''}<p style="font-size:13px;color:#444">ดูรายการล่าสุดและตัวช่วยกรอกข้อมูลได้ที่คู่มือออนไลน์ (สแกน QR)</p></div>
      ${$('#rpK4').checked?`<div class="qr">${QRS(link)}งานของหน่วยงาน</div>`:''}</div>
@@ -727,6 +758,151 @@ const skinK=()=>{const ks=$$('#ovK .k');if(!ks.length||ks[0].querySelector('.ki'
  ks.forEach((k,i)=>{const c=C[i]||C[0];k.style.setProperty('--c',c[0]);k.insertAdjacentHTML('afterbegin',`<span class="ki">${KI[c[1]]}</span>`);k.insertAdjacentHTML('beforeend',spark(ser[i]||[]))})};
 {const _ov=R.ov;R.ov=()=>{_ov();skinK()}}
 
+/* ===================== v14 ===================== */
+/* ---------- 1) drill-down รายชุดข้อมูล ---------- */
+const EXP=new Set();
+const mk=(v,t)=>`<span class="m ${v?'y':'n'}" title="${t}">${v?'✓':'✕'}</span>`;
+const ddRows=o=>(RPD||[]).filter(d=>d.org===o).map(d=>({d,q:qIssues(d,RPC.label).filter(i=>i.lv>0)}));
+const ddHTML=o=>{if(!RPD)return '<div class="dd"><div class="empty">กำลังตรวจรายชุดข้อมูล…</div></div>';const L=ddRows(o);if(!L.length)return '<div class="dd"><div class="empty">ไม่พบชุดข้อมูล</div></div>';
+ const n=L.length,ok=L.filter(x=>x.d.status==='pass').length,c=k=>L.filter(x=>!x.d[k]).length,q=L.filter(x=>x.q.length).length;
+ L.sort((a,b)=>(a.d.status==='pass')-(b.d.status==='pass')||a.d.score-b.d.score||b.q.length-a.q.length);
+ return `<div class="dd" data-dd="${esc(o)}"><div class="ddh"><span class="ddk gr"><b>${ok}/${n}</b>ผ่านครบ</span><span class="ddk ${c('c1')?'r':''}"><b>${c('c1')}</b>① ขาดย้อนหลัง</span><span class="ddk ${c('c2')?'r':''}"><b>${c('c2')}</b>② ขาดปี ${CUR()}</span><span class="ddk ${c('c3')?'r':''}"><b>${c('c3')}</b>③ ไม่ MR</span><span class="ddk ${q?'w':''}"><b>${q}</b>ประเด็นคุณภาพ</span><span class="sp1"></span>
+  <div class="seg ddf"><button type="button" data-f="bad" class="on">ยังไม่ผ่าน</button><button type="button" data-f="q">คุณภาพ</button><button type="button" data-f="all">ทั้งหมด</button></div><button class="b sm" type="button" data-ddcsv="${esc(o)}">⬇ CSV</button></div>
+  <table class="ddt"><thead><tr><th>ชุดข้อมูล</th><th>เกณฑ์</th><th>สิ่งที่ต้องดำเนินการ</th><th>แก้ไขล่าสุด</th><th></th></tr></thead><tbody>
+  ${L.map(({d,q})=>`<tr data-p="${d.status==='pass'?1:0}" data-q="${q.length?1:0}"${d.status==='pass'?' hidden':''}><td class="t${d.status==='pass'?' ok':''}"><b>${esc(d.title)}</b><small>${esc(d.type||'')}${d.fy?` · ปี ${d.fy}–${d.ly}`:''} · ข้อมูลเมตา ${d.md}%</small></td>
+   <td style="white-space:nowrap">${mk(d.c1,'ย้อนหลังครบ')}${mk(d.c2,'มีปี '+CUR())}${mk(d.c3,'Machine Readable')}</td>
+   <td class="fx">${d.fixes.map(f=>`<div>• ${esc(f)}</div>`).join('')}${q.map(i=>`<div class="q">◦ ${esc(i.t)}${i.x?' — '+esc(i.x):''}</div>`).join('')}${!d.fixes.length&&!q.length?'<div style="color:var(--ok)">ผ่านครบ ไม่มีประเด็น</div>':''}</td>
+   <td style="white-space:nowrap"><small>${d.mm?thD(Date.parse(d.mm)):'–'}</small></td>
+   <td class="lnk" style="white-space:nowrap"><a href="${esc(d.url)}" target="_blank" rel="noopener" title="เปิดบน Catalog">↗</a><a href="${esc(d.url.replace('/dataset/','/dataset/edit/'))}" target="_blank" rel="noopener" title="หน้าแก้ไขข้อมูลเมตา">✎</a></td></tr>`).join('')}</tbody></table></div>`};
+const ddApply=()=>{$$('#oT tbody>tr[data-o]').forEach(tr=>{const td=tr.querySelector('td.org');if(td&&!td.querySelector('.chev'))td.insertAdjacentHTML('afterbegin','<span class="chev">▶</span>');const o=tr.dataset.o,op=EXP.has(o);tr.classList.toggle('op',op);
+  const nx=tr.nextElementSibling,has=nx&&nx.classList.contains('ddr');if(op&&!has)tr.insertAdjacentHTML('afterend',`<tr class="ddr"><td colspan="8">${ddHTML(o)}</td></tr>`);if(!op&&has)nx.remove()})};
+{const _og=R.og;R.og=()=>{_og();ddApply()}}
+$('#oT').addEventListener('click',async e=>{const td=e.target.closest('td.org');if(td&&!e.target.closest('input,button,a')){const o=td.parentElement.dataset.o;EXP.has(o)?EXP.delete(o):EXP.add(o);ddApply();
+  if(!RPD&&EXP.size){try{await rpData()}catch(err){toast('ตรวจรายชุดข้อมูลไม่ได้: '+err.message)}$$('#oT tr.ddr').forEach(r=>{const tr=r.previousElementSibling;r.firstElementChild.innerHTML=ddHTML(tr.dataset.o)})}return}
+ const f=e.target.closest('.ddf button');if(f){const dd=f.closest('.dd');dd.querySelectorAll('.ddf button').forEach(b=>b.classList.toggle('on',b===f));dd.querySelectorAll('tbody tr').forEach(r=>r.hidden=f.dataset.f==='bad'?r.dataset.p==='1':f.dataset.f==='q'?r.dataset.q!=='1':false);return}
+ const c=e.target.closest('[data-ddcsv]');if(c){const o=c.dataset.ddcsv,L=ddRows(o);const rows=[['ชุดข้อมูล','ผ่านครบ','ย้อนหลัง','ปี '+CUR(),'MR','ข้อมูลเมตา%','สิ่งที่ต้องดำเนินการ','ประเด็นคุณภาพ','ลิงก์']].concat(L.map(({d,q})=>[d.title,d.status==='pass'?'ผ่าน':'ไม่ผ่าน',d.c1?'✓':'✕',d.c2?'✓':'✕',d.c3?'✓':'✕',d.md,d.fixes.join(' | '),q.map(i=>i.t).join(' | '),d.url]));
+  dl('ชุดข้อมูล_'+o+'.csv','\ufeff'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n'),'text/csv;charset=utf-8')}});
+
+/* ---------- 2) สุขภาพระบบ ---------- */
+let HL=[];const CATB='https://nongbualamphu.gdcatalog.go.th/api/3/action/';
+const jp=(u,ms=12000)=>new Promise((ok,no)=>{const cb='__hc'+Math.random().toString(36).slice(2);const s=document.createElement('script');const t=setTimeout(()=>{clean();no(new Error('timeout'))},ms);
+ const clean=()=>{clearTimeout(t);delete window[cb];s.remove()};window[cb]=d=>{clean();ok(d)};s.onerror=()=>{clean();no(new Error('net'))};s.src=u+(u.includes('?')?'&':'?')+'callback='+cb;document.head.appendChild(s)});
+const ago=ms=>ms<36e5?Math.round(ms/6e4)+' นาที':ms<864e5?Math.round(ms/36e5)+' ชั่วโมง':Math.round(ms/864e5)+' วัน';
+const health=async()=>{const ev=Math.max(1,+(CF.flow&&CF.flow.every)||1),lim=(ev*2+1)*36e5,L=[];
+ // runs
+ try{const u=`/repos/${encodeURIComponent(REPO.owner)}/${encodeURIComponent(REPO.repo)}/actions/workflows/collect.yml/runs?per_page=10`;
+  const j=TOK?await gh(u):await fetch('https://api.github.com'+u,{headers:{Accept:'application/vnd.github+json'}}).then(r=>r.ok?r.json():Promise.reject(new Error(r.status)));
+  const R=(j.workflow_runs||[]).filter(r=>r.status==='completed');const last=R[0],okr=R.find(r=>r.conclusion==='success');
+  if(!last)L.push({k:'w',t:'ระบบตรวจอัตโนมัติ',s:'ยังไม่พบประวัติการรัน'});
+  else if(last.conclusion!=='success')L.push({k:'bad',t:'การตรวจรอบล่าสุดล้มเหลว',s:thDT(last.updated_at||last.created_at)+' · '+(last.conclusion||''),u:last.html_url,x:'มักเกิดจาก Catalog ล่ม/ตอบช้า หรือ API เปลี่ยน — ระบบจะลองใหม่รอบถัดไปเอง ถ้าล้มติดกันหลายรอบให้เปิดดูรายละเอียด'});
+  else L.push({k:'ok',t:'การตรวจรอบล่าสุดสำเร็จ',s:thDT(last.updated_at||last.created_at),u:last.html_url});
+  const lt=okr?Date.parse(okr.updated_at||okr.created_at):0;if(lt&&Date.now()-lt>lim)L.push({k:'bad',t:'ระบบตรวจอัตโนมัติไม่ได้ทำงานมา '+ago(Date.now()-lt),s:'ตั้งไว้'+evTxt(ev),u:`https://github.com/${REPO.owner}/${REPO.repo}/actions`,x:'ตรวจที่แท็บ Actions ว่า workflow ถูกปิด (GitHub ปิดตารางเวลาอัตโนมัติเมื่อ repo ไม่มีความเคลื่อนไหว 60 วัน) หรือกด “ตรวจทันที” ในเมนูการไหลข้อมูล'});
+ }catch(e){L.push({k:'w',t:'ตรวจสถานะ GitHub Actions ไม่ได้',s:String(e.message||e)})}
+ // data freshness
+ const H=HIST[HIST.length-1];if(H){const d0=Date.parse(H.d+'T00:00:00+07:00');const days=Math.floor((Date.now()-d0)/864e5);L.push(days>1?{k:'bad',t:'ประวัติรายวันไม่อัปเดตมา '+days+' วัน',s:'ล่าสุด '+thD(d0)}:{k:'ok',t:'ประวัติรายวันเป็นปัจจุบัน',s:'ล่าสุด '+thD(d0)})}
+ // catalog
+ try{const t0=performance.now();const r=await jp(CATB+'package_search?rows=0');const ms=Math.round(performance.now()-t0);L.push(r&&r.success?{k:ms>6000?'w':'ok',t:'ระบบบัญชีข้อมูลจังหวัด (Catalog) ตอบสนอง',s:(r.result.count||0).toLocaleString()+' ชุด · '+ms+' ms'}:{k:'bad',t:'Catalog ตอบกลับผิดปกติ',s:''})}
+ catch(e){L.push({k:'bad',t:'เชื่อมต่อ Catalog ไม่ได้',s:e.message==='timeout'?'ไม่ตอบสนองเกิน 12 วินาที':'เครือข่ายผิดพลาด',x:'ถ้าเป็นนานผิดปกติ ให้ประสานผู้ดูแลระบบ Catalog'})}
+ // token
+ if(TOK){try{await gh(RP());L.push({k:'ok',t:'GitHub token ใช้งานได้',s:REPO.owner+'/'+REPO.repo})}catch(e){L.push({k:'bad',t:/^401/.test(e.message)?'GitHub token หมดอายุหรือถูกยกเลิก':'GitHub token ใช้ไม่ได้',s:e.message,x:'สร้าง token ใหม่แล้วบันทึกในเมนูความปลอดภัย & GitHub'})}}
+ else L.push({k:'w',t:'ยังไม่ได้เชื่อม GitHub token บนเครื่องนี้',s:'เผยแพร่ได้แบบดาวน์โหลดไฟล์เท่านั้น'});
+ HL=L;renderHealth()};
+const renderHealth=()=>{const bad=HL.filter(x=>x.k==='bad');let hb=$('#hb');if(!hb){hb=document.createElement('div');hb.id='hb';$('.wrap').prepend(hb)}
+ hb.innerHTML=bad.length?`<div class="hb"><i>⚠</i><div><b>${esc(bad[0].t)}${bad.length>1?` และอีก ${bad.length-1} เรื่อง`:''}</b><small>${esc(bad[0].x||bad[0].s||'')}</small></div><button class="b sm" type="button" data-go="fl">ดูสถานะระบบ</button></div>`:'';
+ const box=$('#hlL');if(box)box.innerHTML=HL.map(x=>`<div class="${x.k}"><em></em><b>${esc(x.t)}${x.x&&x.k!=='ok'?`<br><small style="text-align:left;display:block">${esc(x.x)}</small>`:''}</b><small>${esc(x.s||'')}${x.u?` · <a href="${esc(x.u)}" target="_blank" rel="noopener">เปิด ↗</a>`:''}</small></div>`).join('')||'<div><b>กำลังตรวจ…</b></div>'};
+document.addEventListener('click',e=>{const b=e.target.closest('[data-go]');if(b)go(b.dataset.go)});
+{const fl=$('#v-fl');if(fl)fl.insertAdjacentHTML('afterbegin',`<div class="cd" style="margin-bottom:16px"><h3>🩺 สถานะระบบ<small><button class="b sm" id="hlR" type="button">↻ ตรวจอีกครั้ง</button></small></h3><div class="hl" id="hlL"></div></div>`);
+ const r=$('#hlR');r&&r.addEventListener('click',()=>{HL=[];renderHealth();health()})}
+
+/* ---------- 3) ผลสรุปรอบที่ปิดแล้ว ---------- */
+let ARCH=null;
+const arTot=a=>{const P=(LVL==='all'?a.prov_all:a.prov)||a.prov_all||{};return P};
+const renderArch=()=>{const el=$('#arL');if(!el)return;if(!ARCH){el.innerHTML='<div class="empty">กำลังโหลด…</div>';return}
+ const cur=(()=>{const H=HIST[HIST.length-1];return H?{id:'_now',name:'ปัจจุบัน (ยังไม่ปิดรอบ)',due:'',closedAt:Date.parse(H.d),prov:H.prov,prov_all:H.prov_all,ds:null}:null})();
+ const A=[...ARCH].sort((a,b)=>b.closedAt-a.closedAt);
+ el.innerHTML=(A.length?A.map(a=>{const P=arTot(a);return `<div class="arc"><div><b>📦 ${esc(a.name)}</b><small>กำหนดส่ง ${a.due?thD(a.due,1):'–'} · บันทึกผลเมื่อ ${thDT(a.closedAt)}${a.manual?' (บันทึกด้วยมือ)':''}</small>
+  <div class="nums"><span><b>${P.pass||0}/${P.n||0}</b>ผ่านครบ (${P.n?Math.round(P.pass*1000/P.n)/10:0}%)</span><span><b>${P.c2||0}</b>มีปี ${a.cfg?a.cfg[0]:''}</span><span><b>${P.md||0}%</b>เมตาเฉลี่ย</span></div></div>
+  <div class="row"><button class="b sm" type="button" data-arcsv="${esc(a.id)}">⬇ CSV</button></div></div>`}).join(''):'<div class="empty">ยังไม่มีรอบที่ปิด · ระบบจะบันทึกผลให้อัตโนมัติเมื่อพ้นวันกำหนดส่งของแต่ละรอบ</div>');
+ const opts=[...(cur?[cur]:[]),...A].map(a=>`<option value="${esc(a.id)}">${esc(a.name)}</option>`).join('');
+ $('#arA').innerHTML=opts;$('#arB').innerHTML=opts;if(A.length){$('#arA').value=A[0].id;$('#arB').value=cur?'_now':(A[1]||A[0]).id}renderCmp()};
+const arGet=id=>{if(id==='_now'){const H=HIST[HIST.length-1];return H?{id:'_now',name:'ปัจจุบัน',prov:H.prov,prov_all:H.prov_all}:null}return (ARCH||[]).find(a=>a.id===id)};
+const renderCmp=()=>{const a=arGet($('#arA').value),b=arGet($('#arB').value),o=$('#arC');if(!a||!b||a===b){o.innerHTML='';return}
+ const PA=arTot(a),PB=arTot(b),orgs=new Set([...Object.keys(PA.orgs||{}),...Object.keys(PB.orgs||{})]);const T=n=>((PROV&&PROV.orgs||[]).find(x=>x.name===n)||{}).title||n;
+ const pct=x=>x&&x[0]?x[1]*100/x[0]:null,dl2=(x,y)=>x==null||y==null?'':`<span class="dl ${y-x>=0?'u':'d'}">${y-x>=0?'▲':'▼'} ${Math.abs(Math.round((y-x)*10)/10)}</span>`;
+ const rows=[...orgs].map(n=>({n,t:T(n),a:(PA.orgs||{})[n],b:(PB.orgs||{})[n]})).sort((x,y)=>x.t.localeCompare(y.t,'th'));
+ o.innerHTML=`<div class="tw" style="margin-top:10px"><table class="tb"><thead><tr><th>หน่วยงาน</th><th>${esc(a.name)}</th><th>${esc(b.name)}</th><th>เปลี่ยนแปลง</th></tr></thead><tbody>
+  <tr><td class="org">ภาพรวมจังหวัด</td><td>${PA.pass}/${PA.n} (${PA.n?(PA.pass*100/PA.n).toFixed(1):0}%)</td><td>${PB.pass}/${PB.n} (${PB.n?(PB.pass*100/PB.n).toFixed(1):0}%)</td><td>${dl2(PA.n?PA.pass*100/PA.n:null,PB.n?PB.pass*100/PB.n:null)} จุด</td></tr>
+  ${rows.map(r=>`<tr><td class="org">${esc(r.t)}</td><td>${r.a?`${r.a[1]}/${r.a[0]} (${pct(r.a).toFixed(0)}%)`:'–'}</td><td>${r.b?`${r.b[1]}/${r.b[0]} (${pct(r.b).toFixed(0)}%)`:'–'}</td><td>${dl2(pct(r.a),pct(r.b))}</td></tr>`).join('')}</tbody></table></div>`};
+const loadArch=async()=>{try{ARCH=await gj('rounds.json')}catch(e){ARCH=[]}if(!Array.isArray(ARCH))ARCH=[];renderArch()};
+{const rd=$('#v-rd');if(rd)rd.insertAdjacentHTML('beforeend',`<div class="cd" style="margin-top:16px"><h3>📦 ผลสรุปรอบที่ปิดแล้ว<small><button class="b sm" id="arSnap" type="button" title="บันทึกผลรอบที่ใช้งานอยู่ ณ ตอนนี้">📸 บันทึกผลตอนนี้</button></small></h3>
+ <p class="hint" style="font-size:13.5px;color:var(--ink2);margin:0 0 10px">ระบบตรวจอัตโนมัติจะบันทึกผลสุดท้ายของแต่ละรอบให้เองเมื่อพ้นวันกำหนดส่ง (ไฟล์ data/rounds.json) ใช้เทียบรอบปีต่อปีและทำรายงานประจำปี</p>
+ <div class="ar" id="arL"></div>
+ <div class="cmpw"><h3 style="margin-top:14px">⇆ เปรียบเทียบรอบ</h3><div class="row"><div class="fld" style="flex:1"><label>รอบ A</label><select id="arA"></select></div><div class="fld" style="flex:1"><label>รอบ B</label><select id="arB"></select></div></div><div id="arC"></div></div></div>`);
+ $('#arA').addEventListener('change',renderCmp);$('#arB').addEventListener('change',renderCmp);
+ $('#arL').addEventListener('click',e=>{const b=e.target.closest('[data-arcsv]');if(!b)return;const a=(ARCH||[]).find(x=>x.id===b.dataset.arcsv);if(!a||!a.ds)return toast('รอบนี้ไม่มีรายชุดข้อมูล');
+  const rows=[['รอบ','ชุดข้อมูล','หน่วยงาน','ระดับจังหวัด','ผ่านครบ','ย้อนหลัง','ปีปัจจุบัน','MR','ข้อมูลเมตา%']].concat(a.ds.map(d=>[a.name,d[8]||d[0],d[1],d[2]?'ใช่':'',d[3]?'ผ่าน':'ไม่ผ่าน',d[4]?'✓':'✕',d[5]?'✓':'✕',d[6]?'✓':'✕',d[7]]));
+  dl('ผลรอบ_'+a.id+'.csv','\ufeff'+rows.map(r=>r.map(v=>'"'+String(v).replace(/"/g,'""')+'"').join(',')).join('\r\n'),'text/csv;charset=utf-8')});
+ $('#arSnap').addEventListener('click',async()=>{const r=activeRound();if(!r)return toast('ยังไม่มีรอบที่ใช้งานอยู่');if(!TOK)return toast('ต้องเชื่อม GitHub token ก่อน (เมนูความปลอดภัย & GitHub)');
+  if(!confirm(`บันทึกผลของ “${r.name}” ณ ตอนนี้ลงในประวัติรอบ?\n(ถ้ามีผลของรอบนี้อยู่แล้วจะถูกแทนที่)`))return;
+  const B=$('#arSnap');B.disabled=true;B.textContent='กำลังบันทึก…';
+  try{if(!RPD)await rpData();const H=HIST[HIST.length-1]||{};const f=await getFile('data/rounds.json');let A=f?JSON.parse(ub64(f.content)):[];if(!Array.isArray(A))A=[];
+   A=A.filter(x=>x.id!==r.id);A.push({id:r.id,name:r.name,year:r.year||CUR(),open:r.open||'',due:r.due||'',closedAt:Date.now(),manual:1,cfg:[CUR(),+CF.target.back],prov:H.prov,prov_all:H.prov_all,ds:RPD.map(d=>[d.id,d.org,d.lvl==='prov'?1:0,d.status==='pass'?1:0,+d.c1,+d.c2,+d.c3,d.md,d.title])});
+   await putFile('data/rounds.json',JSON.stringify(A)+'\n','admin: บันทึกผลรอบ '+r.name);ARCH=A;renderArch();toast('บันทึกผลรอบแล้ว ✓')}catch(e){toast('บันทึกไม่สำเร็จ: '+e.message,6000)}
+  B.disabled=false;B.textContent='📸 บันทึกผลตอนนี้'})}
+{const _rd=R.rd;R.rd=()=>{_rd();if(ARCH===null)loadArch();else renderArch()}}
+
+/* ---------- 4) ส่งออก Word ---------- */
+const wordDoc=()=>{const out=$('#rpOut');if(!out.querySelector('.rpg'))return toast('กด “สร้างเอกสาร” ก่อน');
+ const pages=[...out.querySelectorAll('.rpg')].map(pg=>{const c=pg.cloneNode(true);c.querySelectorAll('.lg,.pn,.rpch,.rpft').forEach(x=>x.remove());
+  c.querySelectorAll('.qr').forEach(q=>{q.outerHTML=`<p style="font-size:13pt">ดูรายการล่าสุดที่: ${esc(GURL)}#org=${esc(encodeURIComponent((c.dataset.oname)||''))}</p>`});
+  c.querySelectorAll('.rpsec').forEach(s=>{if(/แนวโน้ม/.test(s.textContent))s.remove()});
+  c.querySelectorAll('.rpst').forEach(s=>{s.outerHTML='<ol>'+[...s.children].map(d=>`<li><b>${esc(d.querySelector('b').textContent.replace(/^\d+/,''))}</b> — ${esc(d.childNodes[d.childNodes.length-1].textContent)}</li>`).join('')+'</ol>'});
+  c.querySelectorAll('.rpk4').forEach(k=>{k.outerHTML='<table class="rpt"><tr>'+[...k.children].map(d=>`<td style="width:25%"><b style="font-size:20pt">${esc(d.querySelector('b').textContent)}</b><br>${esc(d.querySelector('small').textContent)}${d.querySelector('em')?'<br>'+esc(d.querySelector('em').textContent):''}</td>`).join('')+'</tr></table>'});
+  c.querySelectorAll('.rpsum').forEach(s=>{const q=s.querySelector('.qr');if(q)q.remove()});
+  c.querySelectorAll('table').forEach(t=>{t.setAttribute('border','1');t.setAttribute('cellspacing','0');t.setAttribute('cellpadding','4');t.setAttribute('width','100%')});c.querySelectorAll('p').forEach(p=>{if(/สแกน QR/.test(p.textContent))p.remove()});
+  return c.innerHTML});
+ const css=`@page WordSection1{size:595.3pt 841.9pt;margin:56.7pt 56.7pt 56.7pt 70.9pt}div.WordSection1{page:WordSection1}
+ body{font-family:"TH SarabunPSK","TH Sarabun New",Sarabun,sans-serif;font-size:16pt;line-height:1.15}h1{font-size:20pt;color:#003647;margin:0}h2{font-size:18pt;color:#003647;margin:0}
+ .rph small,.rpref,.rpnote{font-size:14pt;color:#333}.rpsec{font-size:17pt;font-weight:bold;color:#003647;margin:10pt 0 4pt}.rpcont{font-weight:bold}
+ table.rpt{border-collapse:collapse;width:100%}table.rpt th,table.rpt td{border:1px solid #9fb3ba;padding:2pt 4pt;font-size:14pt;vertical-align:top}table.rpt th{background:#e6eff2}
+ .c{text-align:center}.n{text-align:right}.y{color:#0b7a50}.x{color:#b42318}.q{color:#8a5a00}.rpok{color:#0b7a50}.rpno{color:#b42318}`;
+ const html=`<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head><meta charset="utf-8"><title>รายงาน</title>
+ <!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]--><style>${css}</style></head><body><div class="WordSection1">${pages.join('<br clear=all style="page-break-before:always">')}</div></body></html>`;
+ dl('รายงานแนบหนังสือ_'+new Date().toISOString().slice(0,10)+'.doc','\ufeff'+html,'application/msword')};
+{const pr=$('#rpPr');if(pr){pr.insertAdjacentHTML('afterend',' <button class="b" id="rpWd" type="button" disabled>📝 ดาวน์โหลด Word</button>');$('#rpWd').addEventListener('click',wordDoc);
+ new MutationObserver(()=>{$('#rpWd').disabled=pr.disabled}).observe(pr,{attributes:true,attributeFilter:['disabled']})}}
+
+/* ---------- 5) สำรอง / กู้คืน ---------- */
+const SNAPK='gdadm.snaps';
+const snaps=()=>{try{return JSON.parse(LS.get(SNAPK)||'[]')}catch(e){return[]}};
+const pushSnap=(txt,why)=>{const L=snaps().filter(s=>s.t!==txt);L.unshift({ts:Date.now(),why,t:txt});LS.set(SNAPK,JSON.stringify(L.slice(0,8)))};
+// เก็บสำเนาเวอร์ชันที่เผยแพร่อยู่ก่อนทุกครั้งที่กดเผยแพร่
+$('#pubB').addEventListener('click',()=>{if(diffs().length)pushSnap(PUB,'ก่อนเผยแพร่')},true);
+const secDiff=j=>Object.keys(LBL).filter(k=>k!=='notified'&&JSON.stringify(j[k]??null)!==JSON.stringify(CF[k]??null));
+const askRestore=(j,src)=>{if(!j||typeof j!=='object'||!j.target||!Array.isArray(j.rounds))return toast('ไฟล์ไม่ใช่ค่าตั้งค่าของระบบนี้');
+ const d=secDiff(j);const m=document.createElement('div');m.className='mdl';
+ m.innerHTML=`<div class="cd"><h3>↺ กู้คืนค่าตั้งค่า</h3><p style="margin:0;color:var(--ink2);font-size:14px">จาก: ${esc(src)}${j.updatedAt?' · บันทึกเมื่อ '+thDT(j.updatedAt):''}</p>
+  ${d.length?`<p style="margin:10px 0 0">ส่วนที่จะเปลี่ยน:</p><ul>${d.map(k=>`<li>${LBL[k]}</li>`).join('')}</ul>`:'<p>ไม่มีส่วนใดต่างจากปัจจุบัน</p>'}
+  <div class="bkd">${d.includes('auth')?'<label><input type="checkbox" id="rsA"> กู้คืนรหัสผ่านผู้ดูแลด้วย (ไม่แนะนำ — ปกติให้คงรหัสปัจจุบัน)</label>':''}</div>
+  <div class="row" style="margin-top:12px"><button class="b p" id="rsGo" type="button" ${d.length?'':'disabled'}>กู้คืนเป็นร่าง</button><button class="b" id="rsX" type="button">ยกเลิก</button></div>
+  <p class="hint" style="font-size:13px;color:var(--ink2)">ค่าที่กู้คืนจะเป็น “ร่าง” ก่อน ตรวจแล้วกดเผยแพร่จึงมีผลจริง</p></div>`;
+ document.body.appendChild(m);const close=()=>m.remove();m.addEventListener('click',e=>{if(e.target===m)close()});m.querySelector('#rsX').addEventListener('click',close);
+ m.querySelector('#rsGo').addEventListener('click',()=>{const keep=!(m.querySelector('#rsA')&&m.querySelector('#rsA').checked);const auth=CF.auth,log=CF.log;CF=merge(clone(DEF),j);if(keep)CF.auth=auth;CF.log=log;dirty();close();toast('กู้คืนเป็นร่างแล้ว · ตรวจแล้วกดเผยแพร่',5000);R.sc&&R.sc()})};
+// แทนที่ปุ่มนำเข้าเดิม
+{const old=$('#xUp');if(old){const n=old.cloneNode(true);old.replaceWith(n);n.addEventListener('change',e=>{const f=e.target.files[0];if(!f)return;f.text().then(t=>askRestore(JSON.parse(t),'ไฟล์ '+f.name)).catch(()=>toast('ไฟล์ไม่ถูกต้อง'));e.target.value=''})}}
+{const old=$('#xDl');if(old){const n=old.cloneNode(true);old.replaceWith(n);n.textContent='⬇ ดาวน์โหลดไฟล์สำรอง';n.addEventListener('click',()=>{const d=new Date(),p=x=>String(x).padStart(2,'0');dl(`gdcatalog-admin-backup_${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}-${p(d.getHours())}${p(d.getMinutes())}.json`,JSON.stringify(CF,null,1)+'\n')})}}
+const renderBk=async()=>{const el=$('#bkL');if(!el)return;const S=snaps();
+ let html=`<h4 style="margin:14px 0 6px">สำเนาอัตโนมัติในเครื่องนี้ <small style="font:400 12.5px Sarabun;color:var(--ink2)">(เก็บก่อนเผยแพร่ทุกครั้ง · 8 ครั้งล่าสุด)</small></h4>`+(S.length?S.map((s,i)=>`<div class="rem"><div class="t"><b>${thDT(s.ts)}</b><small>${esc(s.why)}</small></div><button class="b sm" type="button" data-snap="${i}">↺ กู้คืน</button></div>`).join(''):'<p style="color:var(--ink2);font-size:13.5px;margin:0">ยังไม่มี · จะเริ่มเก็บเมื่อกดเผยแพร่ครั้งถัดไป</p>');
+ html+=`<h4 style="margin:14px 0 6px">ประวัติไฟล์บน GitHub</h4><div id="bkG">${TOK?'<p style="color:var(--ink2);font-size:13.5px;margin:0">กำลังโหลด…</p>':'<p style="color:var(--ink2);font-size:13.5px;margin:0">เชื่อม GitHub token เพื่อดูและกู้คืนเวอร์ชันย้อนหลังทั้งหมด</p>'}</div>`;
+ el.innerHTML=html;
+ if(TOK){try{const C=await gh(`${RP()}/commits?path=data/config.json&sha=${encodeURIComponent(REPO.branch)}&per_page=12`);
+  $('#bkG').innerHTML=C.length?C.map(c=>`<div class="rem"><div class="t"><b>${esc((c.commit.message||'').split('\n')[0])}</b><small>${thDT(c.commit.author.date)} · ${esc(c.sha.slice(0,7))}</small></div><button class="b sm" type="button" data-sha="${esc(c.sha)}">↺ กู้คืน</button></div>`).join(''):'<p>ไม่พบประวัติ</p>'}
+ catch(e){$('#bkG').innerHTML=`<p style="color:var(--bad);font-size:13.5px;margin:0">โหลดประวัติไม่ได้: ${esc(e.message)}</p>`}}};
+{const x=$('#xLog');if(x){x.insertAdjacentHTML('beforebegin','<div id="bkL"></div>');
+ $('#bkL').addEventListener('click',async e=>{const s=e.target.closest('[data-snap]');if(s){const it=snaps()[+s.dataset.snap];if(it)askRestore(JSON.parse(it.t),'สำเนาในเครื่อง '+thDT(it.ts));return}
+  const g=e.target.closest('[data-sha]');if(g){try{const f=await gh(`${RP()}/contents/data/config.json?ref=${g.dataset.sha}`);askRestore(JSON.parse(ub64(f.content)),'GitHub '+g.dataset.sha.slice(0,7))}catch(err){toast('โหลดเวอร์ชันนี้ไม่ได้: '+err.message)}}})}}
+{const _sc=R.sc;R.sc=()=>{_sc&&_sc();renderBk()}}
+
 /* ---------- boot ---------- */
 const boot=async()=>{idle();
  try{const d=JSON.parse(LS.get('gdadm.draft')||'null');if(d&&JSON.stringify(d)!==PUB&&confirm('พบร่างที่ยังไม่เผยแพร่จากครั้งก่อน ต้องการกู้คืนไหม?'))CF=merge(clone(DEF),d)}catch(e){}
@@ -734,7 +910,7 @@ const boot=async()=>{idle();
  const [p,h,m,ev]=await Promise.allSettled([gj('prov.json'),gj('history.json'),gj('meta.json'),gj('events.json')]);
  PROV=p.value||null;HIST=h.value||[];META=m.value||null;EVT=(ev.value||[]).filter(e=>e.src==='prov');
  $('#dChip').textContent=META&&META.generatedAt?'ข้อมูล '+thDT(META.generatedAt):PROV?'ข้อมูลพร้อม':'โหลดข้อมูลไม่ได้';
- const v=(location.hash||'').slice(1);go(TITLES[v]?v:'ov');R.rm();R.og()};
+ const v=(location.hash||'').slice(1);go(TITLES[v]?v:'ov');R.rm();R.og();health();setInterval(()=>{if(!document.hidden)health()},6e5)};
 })();
 </script>
 </body>

@@ -858,6 +858,7 @@ body::after{opacity:.25}
 
 /* admin config: announcement + round strip */
 .annc[hidden],.rstrip[hidden]{display:none!important}
+.annc.sysw{background:linear-gradient(90deg,#9f1d2f,#c62f45);padding-right:16px}.annc.sysw a{color:#fff;text-decoration:underline}
 .annc{position:relative;z-index:60;display:flex;gap:10px;align-items:center;justify-content:center;padding:9px 48px 9px 16px;font:500 14.5px/1.45 Kanit,sans-serif;color:#fff;background:linear-gradient(90deg,#206b82,#003647);text-align:center}
 .annc.warn{background:linear-gradient(90deg,#b86b00,#e08e00)}.annc.urgent{background:linear-gradient(90deg,#c62f45,#e2477a)}.annc a{color:#fff;font-weight:600}
 .annc button{position:absolute;right:10px;top:50%;transform:translateY(-50%);width:28px;height:28px;border-radius:50%;border:0;background:rgba(255,255,255,.2);color:#fff;cursor:pointer}
@@ -879,6 +880,7 @@ body::after{opacity:.25}
 </div>
 
 <!-- TOP BAR -->
+<div class="annc sysw" id="sysw" hidden><span>⚠</span><span id="syswT"></span></div>
 <div class="annc" id="annc" hidden><span>📣</span><span id="anncT"></span><button type="button" id="anncX" aria-label="ปิดประกาศ">✕</button></div>
 <header class="top">
   <div class="wrap">
@@ -1828,6 +1830,17 @@ function bind(){
   if(r){st.hidden=false;const tk=()=>{const ms=end(r.due)-Date.now(),A=Math.abs(ms);st.classList.toggle('x',ms<0);st.innerHTML=`<span>⏰ กำหนดส่ง${esc(r.name?' '+r.name:'')}: <b>${thD(r.due)}</b></span><span class="cdx">${ms<0?'เลยกำหนด':'เหลือ'} <span>${Math.floor(A/864e5)} วัน</span><span>${pd(Math.floor(A%864e5/36e5))}:${pd(Math.floor(A%36e5/6e4))}:${pd(Math.floor(A%6e4/1e3))}</span></span><a href="guide.html#fill" target="_blank" rel="noopener">✨ ตัวช่วยกรอกปีใหม่ →</a>`};tk();setInterval(tk,1000)}
   const t=c.target||{};if(+t.year>2500&&LS.get('gdhm.admy',0)!==+t.year+'/'+(+t.back||5)){LS.set('gdhm.admy',+t.year+'/'+(+t.back||5));if(CFG.cur!==+t.year||CFG.back!==(+t.back||5)){CFG.cur=+t.year;CFG.back=+t.back||5;LS.set('gdhm.cfg',CFG);try{applyScope();renderAll()}catch(e){}}}
  }).catch(()=>{})})();
+
+/* ---------- system health (GitHub Actions) ---------- */
+(function(){const h=location.hostname,seg=location.pathname.split('/').filter(Boolean);const own=/\.github\.io$/.test(h)?h.split('.')[0]:'nsonongbualamphutc-debug',repo=/\.github\.io$/.test(h)&&seg[0]&&!/\.html$/.test(seg[0])?seg[0]:'NBL-GDCatalog-Monitor';
+ const K='gdhm.sysh',show=(t)=>{const el=document.getElementById('sysw');if(!el)return;if(!t){el.hidden=true;return}el.hidden=false;document.getElementById('syswT').innerHTML=t};
+ let c=null;try{c=JSON.parse(sessionStorage.getItem(K)||'null')}catch(e){}
+ const go=j=>{const every=Math.max(1,+(j.every||1)),R=(j.runs||[]).filter(r=>r.status==='completed'),okr=R.find(r=>r.conclusion==='success');if(!R.length)return show('');
+  const lt=okr?Date.parse(okr.updated_at):0,age=Date.now()-lt;if(lt&&age<=(every*2+1)*36e5)return show('');
+  const a=age<864e5?Math.round(age/36e5)+' ชั่วโมง':Math.round(age/864e5)+' วัน';show(`ระบบตรวจอัตโนมัติขัดข้องชั่วคราว · ข้อมูลบนแดชบอร์ดอัปเดตล่าสุดเมื่อ ${lt?a+'ก่อน':'ไม่ทราบ'} ตัวเลขอาจยังไม่เป็นปัจจุบัน · เจ้าหน้าที่กำลังตรวจสอบ`)};
+ if(c&&Date.now()-c.ts<6e5)return go(c);
+ Promise.all([fetch(`https://api.github.com/repos/${own}/${repo}/actions/workflows/collect.yml/runs?per_page=10`,{headers:{Accept:'application/vnd.github+json'}}).then(r=>r.ok?r.json():null),fetch('data/config.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).catch(()=>null)])
+  .then(([j,cf])=>{if(!j)return;const o={ts:Date.now(),every:cf&&cf.flow&&cf.flow.every||1,runs:(j.workflow_runs||[]).map(r=>({status:r.status,conclusion:r.conclusion,updated_at:r.updated_at}))};try{sessionStorage.setItem(K,JSON.stringify(o))}catch(e){}go(o)}).catch(()=>{})})();
 
 /* ---------- Live import feed ---------- */
 let feedMode='res';
